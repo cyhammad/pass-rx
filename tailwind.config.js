@@ -21,6 +21,7 @@ module.exports = {
         "text-green": "#00DF80",
         "text-success": "#118D57",
         "table-button-green": "#18B668",
+        "border-color": "#E9E9E9",
       },
     },
   },
