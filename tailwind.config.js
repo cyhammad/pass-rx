@@ -10,6 +10,7 @@ module.exports = {
       colors: {
         primary: "#2396F3",
         dark: "#121212",
+        darkGray: "#202328",
         green: "#00A76F",
         error: "#FF472B",
         gray: "#637381",
@@ -22,6 +23,7 @@ module.exports = {
         "text-success": "#118D57",
         "table-button-green": "#18B668",
         "border-color": "#E9E9E9",
+        "border-dark": "#4E4E4E",
       },
     },
   },

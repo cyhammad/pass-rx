@@ -18,9 +18,9 @@ const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      <div className="relative flex h-[calc(100vh-72px)] w-5 items-end py-32 sm:hidden">
+      <div className="relative flex h-[calc(100vh-83px)] w-5 items-end py-32 sm:hidden">
         <button
-          className="absolute -left-3 flex h-10 w-10 items-center justify-center rounded-r-full bg-dark text-white"
+          className="absolute -left-3 flex h-10 w-10 items-center justify-center rounded-r-full border border-dashed border-white/70 bg-dark/50 text-white"
           onClick={() => setIsOpen(!isOpen)}
         >
           {arrowRightIcon}

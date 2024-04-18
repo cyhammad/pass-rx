@@ -1,20 +1,29 @@
 "use client";
 
-import { increment } from "@/lib/features/counter/counterSlice";
-import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import SalesGraph from "@/components/graphs/SalesGraph";
+import Card1 from "@/components/sections/dashboard/Card1";
+import Card2 from "@/components/sections/dashboard/Card2";
+import StatSlider from "@/components/sections/dashboard/StatSlider";
 
 export default function Home() {
-  const count = useAppSelector((state) => state.counter.value);
-  const dispatch = useAppDispatch();
   return (
-    <main className="flex items-center justify-center text-primary">
-      PASS RX ADMIN PANEL {count}
-      <button
-        className="h-10 w-10 bg-red-500 text-white"
-        onClick={() => dispatch(increment())}
-      >
-        +
-      </button>
+    <main className="flex w-full flex-col gap-y-6 p-3 py-5 sm:p-6 md:p-7">
+      <h1 className="text-2xl">Goodmorning, Vikram</h1>
+      <div className="hidden gap-3 pr-5 lg:flex xl:gap-6">
+        <Card1 />
+        <Card2 />
+        <SalesGraph />
+      </div>
+      <div className="hidden flex-col gap-3 pr-5 sm:flex lg:hidden xl:gap-6">
+        <div className="flex gap-3">
+          <Card1 />
+          <Card2 />
+        </div>
+        <SalesGraph />
+      </div>
+      <div className="sm:hidden">
+        <StatSlider />
+      </div>
     </main>
   );
 }
