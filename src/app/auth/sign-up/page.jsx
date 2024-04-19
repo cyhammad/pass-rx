@@ -1,8 +1,8 @@
-import SignInForm from "@/components/forms/SignInForm";
+import SignUpForm from "@/components/forms/SignUpForm";
 import Image from "next/image";
 import Link from "next/link";
 
-const SignInPage = () => {
+const SignUpPage = () => {
   return (
     <div className="flex h-screen">
       <div className="hidden h-full w-1/2 items-center bg-[url('/bg.svg')] bg-cover bg-center tracking-[2%] text-white sm:flex lg:w-2/3">
@@ -19,20 +19,20 @@ const SignInPage = () => {
           <span className="text-[18px] lg:text-[22px]">UNI.</span>
         </div>
       </div>
-      <div className="flex w-full flex-col justify-center bg-white px-8 sm:w-[480px] md:px-12 lg:w-1/3 lg:px-16">
+      <div className="flex w-full flex-col justify-center bg-white px-8 py-10 sm:w-[480px] md:px-12 lg:w-1/3 lg:px-16">
         <div className="flex flex-col gap-y-3">
-          <h2 className="text-2xl leading-[38.4px] tracking-[2%] text-dark">
-            Sign in to Unimetrics
+          <h2 className="text-xl tracking-[2%] text-dark lg:text-2xl lg:leading-[38.4px]">
+            Get Started absolutely free for 7-days Trial
           </h2>
-          <h3 className="text-sm leading-[22.4px]">
-            New user?{" "}
-            <Link href="/auth/sign-up" className="text-primary">
-              Create an account
+          <h3 className="text-xs leading-[22.4px] lg:text-sm">
+            Already have an account?&nbsp;
+            <Link href="/auth/sign-in" className="text-primary">
+              Login
             </Link>
           </h3>
-          <SignInForm />
+          <SignUpForm />
         </div>
-        <div className="mt-8 flex justify-center gap-5 text-gray">
+        <div className="flex justify-center gap-5 text-gray lg:mt-8">
           <div className="flex flex-col items-center">
             <Image src="/appleIcon.svg" width={40} height={40} />
             <p className="mt-2 text-sm">Apple</p>
@@ -47,4 +47,4 @@ const SignInPage = () => {
   );
 };
 
-export default SignInPage;
+export default SignUpPage;
