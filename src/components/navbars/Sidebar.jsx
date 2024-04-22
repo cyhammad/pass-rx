@@ -18,7 +18,7 @@ const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      <div className="relative flex h-[calc(100vh-83px)] w-5 items-end py-32 sm:hidden">
+      <div className="relative z-50 flex h-[calc(100vh-83px)] w-5 items-end py-32 sm:hidden">
         <button
           className="absolute -left-3 flex h-10 w-10 items-center justify-center rounded-r-full border border-dashed border-white/70 bg-dark/50 text-white"
           onClick={() => setIsOpen(!isOpen)}
@@ -27,7 +27,7 @@ const Sidebar = () => {
         </button>
       </div>
       <aside
-        className={`flex h-[calc(100vh-72px)] flex-col bg-dark px-4 py-6 text-white sm:h-[calc(100vh-83px)] ${isOpen ? "absolute block w-screen sm:static sm:w-64" : "hidden w-0 sm:flex sm:w-24"} transition-all duration-300`}
+        className={`z-50 flex h-[calc(100vh-72px)] flex-col bg-dark px-4 py-6 text-white sm:h-[calc(100vh-83px)] ${isOpen ? "absolute block w-screen sm:static sm:w-64" : "hidden w-0 sm:flex sm:w-24"} transition-all duration-300`}
       >
         <div
           className={`flex flex-col ${isOpen ? "transition-all duration-300" : "transition-all duration-300"} border-b border-white/10 py-2`}
