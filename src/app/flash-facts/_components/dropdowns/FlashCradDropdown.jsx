@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import { openModal } from "@/lib/features/deleteModal/deleteModalSlice";
+import { toggle } from "@/lib/features/editFlashCard/editFlashCradSlice";
 
 const FlashCardDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [showModal, setShowModal] = useState(false); // Step 1: State for modal visibility
 
   const dropdownRef = useRef(null);
 
@@ -32,6 +32,9 @@ const FlashCardDropdown = () => {
     toggleMenu();
     dispatch(openModal());
   };
+  const handleEditClick = () => {
+    dispatch(toggle());
+  };
   return (
     <div className="relative" ref={dropdownRef}>
       <button
@@ -48,7 +51,7 @@ const FlashCardDropdown = () => {
           className="absolute right-0 top-7 flex w-40 flex-col justify-between rounded-xl bg-dark pb-2.5 text-white"
         >
           <div className="flex flex-col gap-y-1.5 py-2">
-            <button className="flex items-center justify-between px-4 py-1.5">
+            <button className="flex items-center justify-between px-4 py-1.5" onClick={() => handleEditClick()}>
               <div className="flex items-center gap-x-2">
                 {pencil}
                 <span className="text-xs">Edit</span>

@@ -1,8 +1,9 @@
 import React from "react";
 
-export default function Button1({ title, textColor, bgColor, icon }) {
+export default function Button1({ title, textColor, bgColor, icon,onClick }) {
   return (
     <button
+    onClick={onClick}
       className={`flex items-center rounded-md px-2 py-3 lg:px-8 bg-${bgColor} text-${textColor}`}
     >
       {icon && (

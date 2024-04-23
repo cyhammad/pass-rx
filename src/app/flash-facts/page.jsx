@@ -1,4 +1,4 @@
-import FlashFacts from '@/components/sections/flashFacts/FlashFacts'
+import FlashFacts from '@/app/flash-facts/_components/FlashFacts'
 import React from 'react'
 
 export default function FlashFactsPage() {

@@ -1,48 +1,56 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { toggle } from "@/lib/features/deleteModal/deleteModalSlice";
+import { motion, AnimatePresence } from "framer-motion";
 
-const DeleteModal = () => {
+const DeleteModal = ({ name1, name2 }) => {
   const dispatch = useDispatch();
 
   const closeModal = () => {
     dispatch(toggle());
   };
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center px-5">
+    <motion.div
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -8 }}
+      transition={{ duration: 0.3 }}
+      className="fixed inset-0 z-50 flex items-center justify-center px-5"
+    >
       <div
         className="fixed inset-0 bg-black bg-opacity-50"
         onClick={() => closeModal()}
       ></div>
+
       <div className="z-50  flex  h-[50vh] max-w-lg flex-col items-center justify-between rounded-lg bg-white shadow-md md:h-[50vh]">
         <div className="flex w-full items-center justify-between border-b border-black/10 px-6 py-2 md:gap-56 md:py-3">
-          <p className="text-lg font-semibold">Delete Flash Card</p>
+          <p className="text-lg font-semibold ">Delete {name1}</p>
           <span onClick={() => closeModal()} className="cursor-pointer">
             {cross}
           </span>
         </div>
         <div className="mt-[-2rem] flex w-2/3 flex-col  items-center">
           <span className="">{alert}</span>
-          <p className="text-center text-sm sm:text-lg">
-            Are you sure you want to delete this flash card.{" "}
+          <p className="text-center text-sm sm:text-lg ">
+            Are you sure you want to delete this {name2}.{" "}
           </p>
         </div>
         <div className="mb-3 flex w-full justify-between px-5 ">
           <button
-            className="hover:bg-gray-400 mr-2 w-1/2 rounded-lg border  border-black/10 py-4 font-medium focus:outline-none"
+            className="hover:bg-gray-400 mr-2 w-1/2 rounded-lg border  border-black/10 py-2 font-medium focus:outline-none md:py-4"
             onClick={() => closeModal()}
           >
             Cancel
           </button>
           <button
-            className="w-1/2 rounded-lg  bg-error-light  py-4 font-medium text-white  focus:outline-none"
+            className="w-1/2 rounded-lg  bg-error-light  py-2   font-medium text-white focus:outline-none  md:py-4"
             // onClick={confirmDelete}
           >
             Delete
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
