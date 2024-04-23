@@ -1,28 +1,61 @@
 "use client";
 import { searchIcon } from "@/svgs/topbarSvgs";
 import Button1 from "@/components/buttons/Button1";
-import Card from "./Card";
+import Card from "./cards/Card";
 import ThreeDotLoader from "@/components/loaders/ThreeDotLoader";
 import { useSelector, useDispatch } from "react-redux";
 import DeleteModal from "@/components/modals/DeleteModal";
+import { motion, AnimatePresence } from "framer-motion";
+import FlashCard from "./cards/FlashCard";
+import { useEffect, useRef, useState } from "react";
+import { toggle } from "@/lib/features/editFlashCard/editFlashCradSlice";
 
 export default function FlashFacts() {
+  const [isOpen, setIsOpen] = useState(false);
   const cardData = Array.from({ length: 12 }, (_, index) => index + 1);
   const isDeleteModalOpen = useSelector((state) => state.deleteModal.value);
+  const isEditFlashCardOpen  = useSelector((state) => state.editFlashCrad.value);
   const dispatch = useDispatch();
+  const toggleFlash = () => {
+    console.log(isOpen);
+    setIsOpen(!isOpen);
+  };
+
+  const toggleEditFlash = () => {
+    dispatch(toggle());
+  };
 
   return (
     <div className="flex w-full flex-col ">
-      {isDeleteModalOpen && <DeleteModal />}
+      <AnimatePresence>{isDeleteModalOpen && <DeleteModal name1={"Flash Card"} name2={"flash card"} />}</AnimatePresence>
+      <AnimatePresence>
+        {isOpen && (
+          <FlashCard
+            toggleFlash={toggleFlash}
+            title={"Add Flash Card"}
+            buttonTitle={"Add"}
+          />
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {isEditFlashCardOpen && (
+          <FlashCard
+            toggleFlash={toggleEditFlash}
+            title={"Edit Flash Card"}
+            buttonTitle={"Update"}
+          />
+        )}
+      </AnimatePresence>
+
       <div className="flex w-full flex-col justify-between sm:flex-row sm:items-center">
         <h1 className=" text-[1.46rem] font-medium leading-10  sm:text-[1.125rem] lg:text-[1.46rem] ">
           Flash Facts
         </h1>
         <span className="mt-3 flex items-center justify-between gap-2 sm:mt-0 lg:gap-6">
           <div className="flex md:gap-1 lg:gap-3">
-            <p className="text-xs font-semibold text-text-gray-2">Discipline</p>
+            <p className="sm:text-xs font-semibold text-text-gray-2 text-[10px]">Discipline</p>
             <div className="flex items-center gap-x-1">
-              <span className="text-xs font-medium ">Show all</span>
+              <span className="sm:text-xs font-medium text-[10px]  ml-1 sm:ml-2">Show all</span>
               {chevronDown}
             </div>{" "}
           </div>
@@ -41,6 +74,7 @@ export default function FlashFacts() {
             icon={addsvg}
             title={"New Flash Card"}
             bgColor={"black"}
+            onClick={toggleFlash} // Pass toggleFlash function here
             textColor={"white"}
           />
         </span>

@@ -1,4 +1,4 @@
-import FlashCradDropdown from "@/components/dropdowns/FlashCradDropdown";
+import FlashCradDropdown from "@/app/flash-facts/_components/dropdowns/FlashCradDropdown";
 import React from "react";
 
 export default function Card({ discipline, text1, text2 }) {
