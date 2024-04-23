@@ -15,8 +15,8 @@ const ProfileUpdateForm = () => {
       }}
     >
       <Form>
-        <div className="flex">
-          <div className="flex w-2/3 flex-col gap-y-6 px-4 py-5">
+        <div className="flex flex-col sm:flex-row">
+          <div className="flex sm:w-2/3 flex-col gap-y-6 px-4 py-5">
             <div className="flex flex-col gap-y-3">
               <label htmlFor="username" className="text-sm font-medium">
                 Name

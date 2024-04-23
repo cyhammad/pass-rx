@@ -7,7 +7,7 @@ export const metadata = {
 
 const ProfileSettingsLayout = ({ children }) => {
   return (
-    <div className="flex px-7 py-6">
+    <div className="flex flex-col py-4 sm:px-4 md:flex-row md:px-7 md:py-6">
       <ProfileSidebar />
       {children}
     </div>
