@@ -57,7 +57,7 @@ export default function FlashFacts() {
             <div className="flex items-center gap-x-1">
               <span className="sm:text-xs font-medium text-[10px]  ml-1 sm:ml-2">Show all</span>
               {chevronDown}
-            </div>{" "}
+            </div>
           </div>
           {/* Search bar */}
           <div className="hidden items-center justify-center gap-x-2 rounded-lg border border-border-color px-4 py-3 shadow-[0px_2px_12px_0px_#C9C9C938] md:flex">
