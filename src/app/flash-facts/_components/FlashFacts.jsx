@@ -5,16 +5,16 @@ import Card from "./cards/Card";
 import ThreeDotLoader from "@/components/loaders/ThreeDotLoader";
 import { useSelector, useDispatch } from "react-redux";
 import DeleteModal from "@/components/modals/DeleteModal";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import FlashCard from "./cards/FlashCard";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { toggle } from "@/lib/features/editFlashCard/editFlashCradSlice";
 
 export default function FlashFacts() {
   const [isOpen, setIsOpen] = useState(false);
   const cardData = Array.from({ length: 12 }, (_, index) => index + 1);
   const isDeleteModalOpen = useSelector((state) => state.deleteModal.value);
-  const isEditFlashCardOpen  = useSelector((state) => state.editFlashCrad.value);
+  const isEditFlashCardOpen = useSelector((state) => state.editFlashCrad.value);
   const dispatch = useDispatch();
   const toggleFlash = () => {
     console.log(isOpen);
@@ -27,7 +27,11 @@ export default function FlashFacts() {
 
   return (
     <div className="flex w-full flex-col ">
-      <AnimatePresence>{isDeleteModalOpen && <DeleteModal name1={"Flash Card"} name2={"flash card"} />}</AnimatePresence>
+      <AnimatePresence>
+        {isDeleteModalOpen && (
+          <DeleteModal name1={"Flash Card"} name2={"flash card"} />
+        )}
+      </AnimatePresence>
       <AnimatePresence>
         {isOpen && (
           <FlashCard
@@ -53,9 +57,13 @@ export default function FlashFacts() {
         </h1>
         <span className="mt-3 flex items-center justify-between gap-2 sm:mt-0 lg:gap-6">
           <div className="flex md:gap-1 lg:gap-3">
-            <p className="sm:text-xs font-semibold text-text-gray-2 text-[10px]">Discipline</p>
+            <p className="text-[10px] font-semibold text-text-gray-2 sm:text-xs">
+              Discipline
+            </p>
             <div className="flex items-center gap-x-1">
-              <span className="sm:text-xs font-medium text-[10px]  ml-1 sm:ml-2">Show all</span>
+              <span className="ml-1 text-[10px] font-medium  sm:ml-2 sm:text-xs">
+                Show all
+              </span>
               {chevronDown}
             </div>
           </div>

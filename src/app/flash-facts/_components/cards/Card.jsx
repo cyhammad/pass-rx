@@ -1,4 +1,4 @@
-import FlashCradDropdown from "@/app/flash-facts/_components/dropdowns/FlashCradDropdown";
+import CardDropDown from "@/components/dropdowns/CardDropDown";
 import React from "react";
 
 export default function Card({ discipline, text1, text2 }) {
@@ -9,7 +9,7 @@ export default function Card({ discipline, text1, text2 }) {
         <p className="mt-2 text-xs text-text-success">{text2}</p>
         <p className="mt-4 text-[10px] text-text-gray-2">{discipline}</p>
       </div>
-      <FlashCradDropdown />
+      <CardDropDown name={"Flash Card"} />
     </div>
   );
 }

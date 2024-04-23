@@ -10,7 +10,7 @@ export default function QuizBank() {
   return (
     <div className="flex w-full flex-col mt-8 ">
       <div className="flex w-full flex-col justify-start">
-        <h1 className=" text-2xl font-semibold  sm:text-[1.125rem] lg:text-[1.46rem] ">
+      <h1 className=" text-[1.125rem] font-semibold  sm:text-2xl ">
           Quiz Bank
         </h1>
         <AddQuizCard />
