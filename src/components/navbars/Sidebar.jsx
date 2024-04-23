@@ -1,5 +1,5 @@
 "use client";
-
+import { useRouter } from "next/navigation";
 import {
   arrowRightIcon,
   bricksIcon,
@@ -14,6 +14,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const Sidebar = () => {
+  const router = useRouter();
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -36,11 +37,18 @@ const Sidebar = () => {
             <div className="flex w-7 justify-center">{homeIcon}</div>{" "}
             <span className={isOpen ? "block" : "hidden"}>Dashboard</span>
           </button>
-          <button className="flex gap-x-2 p-4 text-white hover:text-primary">
+          <button className="flex gap-x-2 p-4 text-white hover:text-primary"  onClick={() => {
+              router.push("/quiz-bank");
+            }}>
             <div className="flex w-7 justify-center">{quizBankIcon2}</div>{" "}
             <span className={isOpen ? "block" : "hidden"}>Quiz&nbsp;Bank</span>
           </button>
-          <button className="flex gap-x-2 p-4 text-white hover:text-primary">
+          <button
+            className="flex gap-x-2 p-4 text-white hover:text-primary"
+            onClick={() => {
+              router.push("/flash-facts");
+            }}
+          >
             <div className="flex w-7 justify-center">{flashFactsIcon}</div>{" "}
             <span className={isOpen ? "block" : "hidden"}>
               Flash&nbsp;Facts

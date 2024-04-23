@@ -22,7 +22,7 @@ const DeleteModal = ({ name1, name2 }) => {
         onClick={() => closeModal()}
       ></div>
 
-      <div className="z-50  flex  h-[50vh] max-w-lg flex-col items-center justify-between rounded-lg bg-white shadow-md md:h-[50vh]">
+      <div className="z-50  flex  h-[300px] max-w-lg flex-col items-center justify-between rounded-lg bg-white shadow-md md:h-[412.35px]">
         <div className="flex w-full items-center justify-between border-b border-black/10 px-6 py-2 md:gap-56 md:py-3">
           <p className="text-lg font-semibold ">Delete {name1}</p>
           <span onClick={() => closeModal()} className="cursor-pointer">
