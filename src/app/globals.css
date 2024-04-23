@@ -10,3 +10,20 @@
 button:focus {
   outline: none;
 }
+
+.profile-nav {
+  background-color: #2396f3;
+  color: white;
+}
+
+.profile-nav::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: -8px;
+  width: 4px;
+  height: 24px;
+  background: #2396f3;
+  z-index: 1;
+  border-radius: 6px;
+}

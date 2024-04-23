@@ -8,7 +8,7 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: "Admin | PASS RX",
+  title: "Admin Dashboard | PASS RX",
   description: "Admin Panel of Pass RX",
 };
 
@@ -16,9 +16,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={poppins.className}>
-        <StoreProvider>
-          {children}
-        </StoreProvider>
+        <StoreProvider>{children}</StoreProvider>
       </body>
     </html>
   );
