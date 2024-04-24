@@ -16,6 +16,7 @@ module.exports = {
         gray: "#637381",
         "light-gray":"#fafafa",
         "error-light": "#FF5630",
+        "dark-grayish-red":"#817575",
         "text-gray": "#9F9F9F",
         "text-gray-2": "#A1A5B7",
         "text-gray-dark": "#637381",

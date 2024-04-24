@@ -49,8 +49,8 @@ const FlashCard = ({ toggleFlash ,title,buttonTitle}) => {
           </div>
           <div className="relative md:mt-6 mt-2 w-full items-center justify-center gap-x-2 rounded-lg border border-border-color px-4 py-3">
             <textarea
-              name="search"
-              id="search"
+              name="text"
+              id="text"
               placeholder=""
               className="h-16 w-full resize-none outline-none"
             ></textarea>
@@ -65,9 +65,9 @@ const FlashCard = ({ toggleFlash ,title,buttonTitle}) => {
           <p className="ml-1 md:mt-8 text-sm text-black/30 ">Answer</p>
           <div className="relative md:mt-3 mt-2 w-full items-center md:mb-14 mb-6 justify-center gap-x-2 rounded-lg border border-border-color px-4 py-3 ">
             <input
-              type="search"
-              name="search"
-              id="search"
+              type="text"
+              name="text"
+              id="text"
               placeholder=""
               className=" w-full outline-none"
             />
