@@ -10,6 +10,7 @@ import {
   quizBankIcon2,
   subscriptionIcon,
 } from "@/svgs/sidebarSvgs";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
@@ -32,32 +33,47 @@ const Sidebar = () => {
         <div
           className={`flex flex-col ${isOpen ? "transition-all duration-300" : "transition-all duration-300"} border-b border-white/10 py-2`}
         >
-          <button className="flex gap-x-2 p-4 text-white hover:text-primary">
+          <Link
+            href="/"
+            className="flex gap-x-2 p-4 text-white hover:text-primary"
+          >
             <div className="flex w-7 justify-center">{homeIcon}</div>{" "}
             <span className={isOpen ? "block" : "hidden"}>Dashboard</span>
-          </button>
-          <button className="flex gap-x-2 p-4 text-white hover:text-primary">
+          </Link>
+          <Link
+            href="/quiz-bank"
+            className="flex gap-x-2 p-4 text-white hover:text-primary"
+          >
             <div className="flex w-7 justify-center">{quizBankIcon2}</div>{" "}
             <span className={isOpen ? "block" : "hidden"}>Quiz&nbsp;Bank</span>
-          </button>
-          <button className="flex gap-x-2 p-4 text-white hover:text-primary">
+          </Link>
+          <Link
+            href="/flash-facts"
+            className="flex gap-x-2 p-4 text-white hover:text-primary"
+          >
             <div className="flex w-7 justify-center">{flashFactsIcon}</div>{" "}
             <span className={isOpen ? "block" : "hidden"}>
               Flash&nbsp;Facts
             </span>
-          </button>
-          <button className="flex gap-x-2 p-4 text-white hover:text-primary">
+          </Link>
+          <Link
+            href="/bricks"
+            className="flex gap-x-2 p-4 text-white hover:text-primary"
+          >
             <div className="flex w-7 justify-center">{bricksIcon}</div>{" "}
             <span className={isOpen ? "block" : "hidden"}>Bricks</span>
-          </button>
+          </Link>
         </div>
         <div
           className={`flex h-full flex-col ${isOpen ? "transition-all duration-300" : "transition-all duration-300"} justify-between border-b border-white/10 py-2`}
         >
-          <button className="flex gap-x-2 p-4 text-white hover:text-primary">
+          <Link
+            href="/subscriptions"
+            className="flex gap-x-2 p-4 text-white hover:text-primary"
+          >
             <div className="flex w-7 justify-center">{subscriptionIcon}</div>{" "}
             <span className={isOpen ? "block" : "hidden"}>Subscriptions</span>
-          </button>
+          </Link>
           <button
             className={`flex w-full justify-center p-4 text-white hover:text-primary ${isOpen ? "rotate-180 transform transition-all duration-300" : "rotate-0 transform transition-all duration-300"}`}
             onClick={() => setIsOpen(!isOpen)}
