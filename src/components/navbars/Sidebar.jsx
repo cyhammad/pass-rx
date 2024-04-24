@@ -1,5 +1,5 @@
 "use client";
-
+import { useRouter } from "next/navigation";
 import {
   arrowRightIcon,
   bricksIcon,
@@ -15,6 +15,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const Sidebar = () => {
+  const router = useRouter();
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   return (

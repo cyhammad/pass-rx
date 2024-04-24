@@ -19,7 +19,7 @@ const FlashCard = ({ toggleFlash ,title,buttonTitle}) => {
         onClick={() => closeModal()}
       ></div>
 
-      <div className="z-50  flex  h-[50vh] w-[700px] flex-col items-center   rounded-lg  bg-white px-5 shadow-md md:h-[64.4vh] md:px-10">
+      <div className="z-50  flex h-[352px] md:h-[502px] w-[700px] flex-col items-center   rounded-lg  bg-white px-5 shadow-md md:px-10">
         <div className="mt-4 flex w-full items-center  justify-between md:mt-11 ">
           <p className="font-medium text-sm md:text-xl">{title}</p>
           <div className="flex  w-[62%] sm:w-[42%] md:gap-3">
