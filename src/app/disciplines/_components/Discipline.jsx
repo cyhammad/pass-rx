@@ -1,23 +1,42 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import ThreeDotLoader from "@/components/loaders/ThreeDotLoader";
 import Card from "./cards/Card";
 import AddDisciplineCard from "./cards/AddDisciplineCard";
 import { useSelector, useDispatch } from "react-redux";
-import { AnimatePresence } from "framer-motion";
 import DeleteModal from "@/components/modals/DeleteModal";
 import { toggle } from "@/lib/features/editFlashCard/editFlashCradSlice";
 import EditDisciplineCard from "./cards/EditDisciplineCard";
+import { searchIcon } from "@/svgs/topbarSvgs";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Discipline() {
   const [isOpen, setIsOpen] = useState(false);
+  const cardData = Array.from({ length: 12 }, (_, index) => index + 1);
+  const isDeleteModalOpen = useSelector((state) => state.deleteModal.value);
+  const isEditFlashCardOpen = useSelector((state) => state.editFlashCrad.value);
+  const [showSearchInput, setShowSearchInput] = useState(false);
+  const searchRef = useRef(null);
+
+  const handleSearchButtonClick = () => {
+    setShowSearchInput(!showSearchInput);
+  };
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (searchRef.current && !searchRef.current.contains(event.target)) {
+        setShowSearchInput(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
   const toggleFlash = () => {
     console.log(isOpen);
     setIsOpen(!isOpen);
   };
-  const cardData = Array.from({ length: 12 }, (_, index) => index + 1);
-  const isDeleteModalOpen = useSelector((state) => state.deleteModal.value);
-  const isEditFlashCardOpen = useSelector((state) => state.editFlashCrad.value);
 
   const dispatch = useDispatch();
   const toggleEditFlash = () => {
@@ -54,11 +73,42 @@ export default function Discipline() {
           Disciplines
         </h1>
         <AddDisciplineCard onClick={toggleFlash} />
-        <div className="mt-9 flex items-center justify-between">
+        <div className="mt-9  flex  h-8 items-center justify-between">
           <p className="text-text-gray">Total Quiz banks (125)</p>
-          <button className="flex h-10 w-10 items-center justify-center rounded-full bg-white">
-            {search}
-          </button>
+          <div className="flex">
+            <AnimatePresence>
+              {showSearchInput && (
+                <motion.div
+                  ref={searchRef}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="flex items-center justify-center gap-x-2 rounded-lg border border-border-color px-4 py-3 shadow-[0px_2px_12px_0px_#C9C9C938] md:flex"
+                >
+                  <button>{searchIcon}</button>
+                  <input
+                    type="search"
+                    name="search"
+                    id="search"
+                    placeholder="Search"
+                    className="bg-light-gray outline-none md:w-[180px] lg:w-[280px]"
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
+            {!showSearchInput && (
+              <motion.button
+                initial={{ opacity: 0, y: -30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-white"
+                onClick={handleSearchButtonClick}
+              >
+                {search}
+              </motion.button>
+            )}
+          </div>
         </div>
         <div className="mt-4 grid grid-cols-1  gap-x-3 gap-y-3 sm:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4">
           {cardData.map((number) => (

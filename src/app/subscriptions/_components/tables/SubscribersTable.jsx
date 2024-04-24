@@ -2,6 +2,7 @@ import { searchIcon } from "@/svgs/topbarSvgs";
 import Image from "next/image";
 import React from "react";
 import ThreeDotLoader from "@/components/loaders/ThreeDotLoader";
+import TableDropdown from "../dropdowns/TableDropdown";
 
 const SubscribersTable = () => {
   return (
@@ -47,7 +48,13 @@ const SubscribersTable = () => {
                 Total Amount Paid
               </th>
               <th className="min-w-[180px] rounded-e-md py-3 text-start font-semibold">
+                Due Amount
+              </th>
+              <th className="min-w-[180px] rounded-e-md py-3 text-start font-semibold">
                 Next Bill Date
+              </th>
+              <th className="min-w-[80px] rounded-e-md py-3 text-start font-semibold">
+                Action
               </th>
             </tr>
           </thead>
@@ -78,9 +85,15 @@ const SubscribersTable = () => {
                 <span className="font-semibold text-text-charcoal">$800</span>
               </td>
               <td>
+                <span className="font-semibold text-text-charcoal">$20</span>
+              </td>
+              <td>
                 <span className="font-semibold text-text-charcoal">
                   02 Jan 23
                 </span>
+              </td>
+              <td>
+                <TableDropdown />
               </td>
             </tr>
             <tr>
@@ -109,9 +122,15 @@ const SubscribersTable = () => {
                 <span className="font-semibold text-text-charcoal">$800</span>
               </td>
               <td>
+                <span className="font-semibold text-text-charcoal">$20</span>
+              </td>
+              <td>
                 <span className="font-semibold text-text-charcoal">
                   02 Jan 23
                 </span>
+              </td>
+              <td>
+                <TableDropdown />
               </td>
             </tr>
             <tr>
@@ -140,9 +159,15 @@ const SubscribersTable = () => {
                 <span className="font-semibold text-text-charcoal">$800</span>
               </td>
               <td>
+                <span className="font-semibold text-text-charcoal">$20</span>
+              </td>
+              <td>
                 <span className="font-semibold text-text-charcoal">
                   02 Jan 23
                 </span>
+              </td>
+              <td>
+                <TableDropdown />
               </td>
             </tr>
             <tr>
@@ -171,9 +196,15 @@ const SubscribersTable = () => {
                 <span className="font-semibold text-text-charcoal">$800</span>
               </td>
               <td>
+                <span className="font-semibold text-text-charcoal">$40</span>
+              </td>
+              <td>
                 <span className="font-semibold text-text-charcoal">
                   02 Jan 23
                 </span>
+              </td>
+              <td>
+                <TableDropdown />
               </td>
             </tr>
             <tr>
@@ -202,9 +233,15 @@ const SubscribersTable = () => {
                 <span className="font-semibold text-text-charcoal">$800</span>
               </td>
               <td>
+                <span className="font-semibold text-text-charcoal">$20</span>
+              </td>
+              <td>
                 <span className="font-semibold text-text-charcoal">
                   02 Jan 23
                 </span>
+              </td>
+              <td>
+                <TableDropdown />
               </td>
             </tr>
             <tr>
@@ -233,13 +270,19 @@ const SubscribersTable = () => {
                 <span className="font-semibold text-text-charcoal">$800</span>
               </td>
               <td>
+                <span className="font-semibold text-text-charcoal">$20</span>
+              </td>
+              <td>
                 <span className="font-semibold text-text-charcoal">
                   02 Jan 23
                 </span>
               </td>
+              <td>
+                <TableDropdown />
+              </td>
             </tr>
             <tr>
-              <td colSpan={4}>
+              <td colSpan={6}>
                 <div className="my-5 flex sm:justify-center">
                   <ThreeDotLoader />
                 </div>
