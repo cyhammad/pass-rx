@@ -16,15 +16,27 @@ export default function StoreProvider({ children }) {
 
   return (
     <Provider store={storeRef.current}>
-      {pathname.startsWith("/auth") ? (
-        children
-      ) : (
+      {pathname.startsWith("/user") ? (
         <>
           <Topbar />
           <div className="flex max-h-[calc(100vh-72px)] sm:max-h-[calc(100vh-83px)]">
-            <Sidebar />
-            <div className="w-full overflow-y-auto">{children}</div>
+            <Sidebar user={"jiji"} />
+            <div className="w-full overflow-y-auto ">{children}</div>
           </div>
+        </>
+      ) : (
+        <>
+          {pathname.includes("/auth") ? (
+            children
+          ) : (
+            <>
+              <Topbar />
+              <div className="flex max-h-[calc(100vh-72px)] sm:max-h-[calc(100vh-83px)]">
+                <Sidebar />
+                <div className="w-full overflow-y-auto">{children}</div>
+              </div>
+            </>
+          )}
         </>
       )}
     </Provider>

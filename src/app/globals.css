@@ -5,6 +5,7 @@
 * {
   margin: 0;
   padding: 0;
+  overscroll-behavior: none;
 }
 
 button:focus {
@@ -26,4 +27,12 @@ button:focus {
   background: #2396f3;
   z-index: 1;
   border-radius: 6px;
+}
+@media (min-width: 1404px) {
+  .apexcharts-legend {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    place-self: center !important;
+    column-gap: 4vw;
+  }
 }

@@ -2,7 +2,7 @@
 
 import { searchIcon } from "@/svgs/topbarSvgs";
 import Image from "next/image";
-import ProfileDropdown from "../dropdowns/ProfileDropdown";
+import ProfileDropdown from "../adminComponents/dropdowns/ProfileDropdown";
 
 const Topbar = () => {
   return (
