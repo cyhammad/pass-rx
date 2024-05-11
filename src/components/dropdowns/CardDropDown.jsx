@@ -1,15 +1,15 @@
-import React from 'react'
-
+import React from "react";
 
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import { openModal } from "@/lib/features/deleteModal/deleteModalSlice";
 import { toggle } from "@/lib/features/editFlashCard/editFlashCradSlice";
+import { useRouter } from "next/navigation";
 
-const CardDropDown = ({name}) => {
+const CardDropDown = ({ name }) => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const router = useRouter();
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -51,7 +51,7 @@ const CardDropDown = ({name}) => {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
-          className="absolute right-0 top-7 flex w-40 flex-col justify-between rounded-xl bg-dark pb-2.5 text-white"
+          className="absolute right-0 top-7 flex w-40 flex-col justify-between rounded-xl bg-dark text-white"
         >
           <div className="flex flex-col gap-y-1.5 py-2">
             <button

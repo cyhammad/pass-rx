@@ -21,9 +21,11 @@ export default function StoreProvider({ children }) {
       ) : (
         <>
           <Topbar />
-          <div className="flex max-h-[calc(100vh-72px)] sm:max-h-[calc(100vh-83px)]">
+          <div className="flex max-h-[calc(100vh-72px)] bg-light-gray sm:max-h-[calc(100vh-83px)]">
             <Sidebar />
-            <div className="w-full overflow-y-auto">{children}</div>
+            <div className="relative w-full overflow-y-auto bg-light-gray">
+              {children}
+            </div>
           </div>
         </>
       )}

@@ -1,11 +1,15 @@
+import Link from "next/link";
 import React from "react";
 
 export default function AddQuizCard() {
   return (
-    <div className="mt-[38px] flex h-[233px] w-[262px] flex-col items-center justify-center rounded-2xl bg-dark text-white sm:w-[272px]">
+    <Link
+      href="/quiz-bank/add"
+      className="mt-[38px] flex h-[233px] w-[262px] flex-col items-center justify-center rounded-2xl bg-dark text-white sm:w-[272px]"
+    >
       <span>{add}</span>
       <p className="mt-4 text-sm font-medium">New Quizbank</p>
-    </div>
+    </Link>
   );
 }
 const add = (
