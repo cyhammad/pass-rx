@@ -1,5 +1,5 @@
 import { searchIcon } from "@/svgs/topbarSvgs";
-import GoBackBar from "./_components/GoBackBar";
+import GoBackBar from "../_components/GoBackBar";
 
 const QuizBankAddPage = () => {
   return (

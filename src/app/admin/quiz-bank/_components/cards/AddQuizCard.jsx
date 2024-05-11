@@ -4,7 +4,7 @@ import React from "react";
 export default function AddQuizCard() {
   return (
     <Link
-      href="/quiz-bank/add"
+      href="/admin/quiz-bank/add"
       className="mt-[38px] flex h-[233px] w-[262px] flex-col items-center justify-center rounded-2xl bg-dark text-white sm:w-[272px]"
     >
       <span>{add}</span>

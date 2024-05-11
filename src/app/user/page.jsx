@@ -27,7 +27,6 @@ export default function page() {
         </div>
         <div className="flex justify-between gap-x-6 ">
           <Card1 />
-
           <SubscriptionCard />
         </div>
       </div>
