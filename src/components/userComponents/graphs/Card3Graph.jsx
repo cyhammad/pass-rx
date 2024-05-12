@@ -11,7 +11,6 @@ export default function Card3Graph() {
       data: [30, 5, 20, 15, 40, 30, 50],
     },
   ];
-
   const options = {
     chart: {
       height: "60%",

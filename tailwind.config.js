@@ -14,10 +14,13 @@ module.exports = {
         green: "#00A76F",
         error: "#FF472B",
         gray: "#637381",
+        "red-exam":"#F95E6C",
         "user-gray":"#6E6B7B",
         "dark-border":"#222222",
         "light-border":"#DDDDDD",
         "gray-bg":"#F6F8FB",
+        "green":"#28C76F",
+        "orange":"#E0A563",
         "light-gray":"#fafafa",
         "gray-border":"#71717133",
         "text-secondary":"#888889",
@@ -35,8 +38,12 @@ module.exports = {
         "border-color": "#E9E9E9",
         "border-dark": "#4E4E4E",
         "table-header": "#F1F1F2",
+        "checkbox":"#E5E7EB"
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+
+  ],
 };

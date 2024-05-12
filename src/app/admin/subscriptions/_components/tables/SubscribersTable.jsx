@@ -22,7 +22,7 @@ const SubscribersTable = () => {
           </span>
         </div>
         {/* Search bar */}
-        <div className="hidden items-center justify-center gap-x-2 rounded-lg border border-border-color px-4 py-3 shadow-[0px_2px_12px_0px_#C9C9C938] sm:flex">
+        <div className="hidden items-center bg-white justify-center gap-x-2 rounded-lg border border-border-color px-4 py-1 shadow-[0px_2px_12px_0px_#C9C9C938] sm:flex">
           <button>{searchIcon}</button>
           <input
             type="search"

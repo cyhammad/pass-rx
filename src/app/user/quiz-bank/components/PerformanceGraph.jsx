@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 const ReactApexChart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
-export default function FlashFactsPerformanceCard() {
+export default function PerformanceGraph() {
   const series = [63, 12, 15, 9];
   const options = {
     stroke: {
@@ -15,10 +15,19 @@ export default function FlashFactsPerformanceCard() {
       width: "100%",
       type: "donut",
     },
-    labels: ["Nailed It", "Answered", "Completed", "Unanswered"],
     dataLabels: {
-      enabled: false,
+      enabled: true,
+      textAnchor: "middle",
+
+      style: {
+        fontSize: "12px",
+        fontFamily: "Helvetica, Arial, sans-serif",
+        fontWeight: "400",
+        colors: ["#FFFFFF"],
+      },
     },
+    labels: ["Correct", "Completed", "Answered", "Unanswered"],
+
     fill: {
       colors: ["#2396F3", "#1C78C3", "#71A4F7", "#72C0F8"],
     },
@@ -26,31 +35,7 @@ export default function FlashFactsPerformanceCard() {
       pie: {
         expandOnClick: false,
         donut: {
-          size: "70%",
-          background: "transparent",
-          labels: {
-            show: true,
-            name: {
-              show: true,
-              fontSize: "14px",
-              fontWeight: 400,
-              color: "#9F9F9F",
-              offsetY: 25,
-              formatter: function (val) {
-                return val + "!";
-              },
-            },
-            value: {
-              show: true,
-              fontSize: "28.91px",
-              fontWeight: 700,
-              color: undefined,
-              offsetY: -14,
-              formatter: function (val) {
-                return val + "%";
-              },
-            },
-          },
+          size: "58%",
         },
       },
     },
@@ -66,16 +51,15 @@ export default function FlashFactsPerformanceCard() {
           seriesName,
           " - ",
           opts.w.globals.series[opts.seriesIndex],
-          "%",
+          
         ];
       },
-      position: "bottom",
-      horizontalAlign: "center",
-      floating: false,
+      position: "left",
+      horizontalAlign: 'center', 
       fontSize: "14px",
       fontWeight: 400,
       labels: {
-        colors: "#9F9F9F",
+        colors: "#637381",
       },
       markers: {
         width: 20,
@@ -83,38 +67,48 @@ export default function FlashFactsPerformanceCard() {
         radius: 5,
       },
       itemMargin: {
-        horizontal: 8,
-        vertical: 4,
+        vertical:9,
       },
     },
+    responsive: [
+      {
+        breakpoint: 640,
+        options: {
+          legend: {
+            position: "bottom",
+            // itemMargin: {
+            //   horizontal: 29,
+            // },
+          }
+        }
+      }
+    ]
   };
 
   return (
-    <div className="flex h-[485px] w-full flex-col justify-between  rounded-xl bg-white pb-5  drop-shadow-sm">
-      <div className="flex items-start justify-between px-6 pt-[18px] ">
+    <div className="flex sm:h-[310px] min-h-[310px]  max-w-[634px] mt-4 flex-col justify-between rounded-xl bg-white pb-10  shadow">
+      <div className="flex items-start justify-between px-6 pt-[18px]  ">
         <div className="flex flex-col justify-between">
-          <h3 className="sm:text-xl text-base  font-medium leading-none">
-            Flash Facts Performance
+          <h3 className="text-base font-medium leading-none sm:text-xl">
+            Performance
           </h3>
-          <p className="mt-1 text-sm text-text-gray">12 Decks</p>
+          <p className="mt-1 text-sm text-text-gray">12 Tests</p>
         </div>
-        <div className="flex items-center gap-x-1 sm:gap-x-2">
+        <div className="flex items-center gap-x-2">
           <span className="text-[10px] font-medium">This Year</span>
           {chevronDown}
         </div>
+        
       </div>
-      <div id="chart  h-full">
+      <div id="chart" className="md:h-[321px] h-[350px] px-2">
         <ReactApexChart
           options={options}
           series={series}
           type="donut"
           width={"100%"}
-          height={321}
+          height={"100%"}
         />
       </div>
-      <button class=" mx-6 rounded-[10px]  bg-primary px-4  py-4  text-sm font-semibold text-white ">
-        Create New Deck
-      </button>
     </div>
   );
 }

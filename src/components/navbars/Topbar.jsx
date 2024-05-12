@@ -19,14 +19,14 @@ const Topbar = () => {
         </button>
       </div>
       <div className="flex w-full items-center justify-end md:pl-8 md:pr-8 pr-4 py-4 sm:justify-between">
-        <div className="hidden items-center justify-center gap-x-2 rounded-lg border border-border-color px-4 py-3 shadow-[0px_2px_12px_0px_#C9C9C938] sm:flex">
+        <div className="hidden items-center justify-center gap-x-2 rounded-lg border border-border-color px-4 py-1 shadow-[0px_2px_12px_0px_#C9C9C938] sm:flex">
           <button>{searchIcon}</button>
           <input
             type="search"
             name="search"
             id="search"
             placeholder="Search"
-            className="md:min-w-[280px]"
+            className="md:min-w-[280px]  py-[0.55rem]  focus:border-white  focus:ring-white  border border-white"
           />
         </div>
         <ProfileDropdown />

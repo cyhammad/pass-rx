@@ -6,6 +6,21 @@
   margin: 0;
   padding: 0;
   overscroll-behavior: none;
+
+}
+
+.user-screen::-webkit-scrollbar {
+  width: 6px;
+  height: 10px;
+  background-color: #f5f5f5;
+}
+
+.user-screen::-webkit-scrollbar-thumb {
+  background-color: #2396F3;
+  border-radius: 10px;
+}
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
 }
 
 button:focus {
@@ -28,11 +43,40 @@ button:focus {
   z-index: 1;
   border-radius: 6px;
 }
-@media (min-width: 1404px) {
+/* @media (min-width: 1404px) {
   .apexcharts-legend {
     display: grid !important;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     place-self: center !important;
     column-gap: 4vw;
   }
+} */
+input[type="search"] {
+  border-width: 1px;
+  border-color: #fff;
+}
+
+input[type="search"]:focus{
+  border-width: 1px;
+  border-color: #fff !important;
+  outline: #fff;
+  box-shadow: 0 0 0 3px #fff !important;
+}
+input[type="text"]:focus{
+  border-width: 1px;
+  border-color: #DDDDDD !important;
+  outline: #ffffff;
+  box-shadow: 0 0 0 3px #ffffff !important;
+}
+
+
+textarea {
+  border-width: 1px;
+  border-color:#fafafa ;
+}
+textarea:focus{
+  border-width: 1px;
+  border-color: white !important;
+  outline: white;
+  box-shadow: 0 0 0 3px white !important;
 }

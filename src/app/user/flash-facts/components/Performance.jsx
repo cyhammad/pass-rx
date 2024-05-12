@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 const ReactApexChart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
-export default function FlashFactsPerformanceCard() {
+export default function Performance() {
   const series = [63, 12, 15, 9];
   const options = {
     stroke: {
@@ -69,7 +69,7 @@ export default function FlashFactsPerformanceCard() {
           "%",
         ];
       },
-      position: "bottom",
+      position: "left",
       horizontalAlign: "center",
       floating: false,
       fontSize: "14px",
@@ -87,34 +87,44 @@ export default function FlashFactsPerformanceCard() {
         vertical: 4,
       },
     },
+    responsive: [
+        {
+          breakpoint: 640,
+          options: {
+            legend: {
+              position: "bottom",
+              // itemMargin: {
+              //   horizontal: 29,
+              // },
+            }
+          }
+        }
+      ]
   };
 
   return (
-    <div className="flex h-[485px] w-full flex-col justify-between  rounded-xl bg-white pb-5  drop-shadow-sm">
-      <div className="flex items-start justify-between px-6 pt-[18px] ">
+    <div className="mt-4 flex min-h-[310px]  max-w-[634px] flex-col justify-between rounded-xl bg-white pb-10 shadow  sm:h-[310px]">
+      <div className="flex items-start justify-between px-6 pt-[18px]  ">
         <div className="flex flex-col justify-between">
-          <h3 className="sm:text-xl text-base  font-medium leading-none">
-            Flash Facts Performance
+          <h3 className="text-base font-medium leading-none sm:text-xl">
+            Performance
           </h3>
-          <p className="mt-1 text-sm text-text-gray">12 Decks</p>
+          <p className="mt-1 text-sm text-text-gray">12 Tests</p>
         </div>
-        <div className="flex items-center gap-x-1 sm:gap-x-2">
+        <div className="flex items-center gap-x-2">
           <span className="text-[10px] font-medium">This Year</span>
           {chevronDown}
         </div>
       </div>
-      <div id="chart  h-full">
+      <div id="chart" className="h-[350px] px-2 md:h-[321px]">
         <ReactApexChart
           options={options}
           series={series}
           type="donut"
           width={"100%"}
-          height={321}
+          height={"100%"}
         />
       </div>
-      <button class=" mx-6 rounded-[10px]  bg-primary px-4  py-4  text-sm font-semibold text-white ">
-        Create New Deck
-      </button>
     </div>
   );
 }

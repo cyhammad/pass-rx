@@ -10,7 +10,7 @@ import React from "react";
 
 export default function page() {
   return (
-    <main className="flex w-full flex-col gap-y-6 bg-light-gray p-3 py-5 sm:p-6 md:p-7">
+    <main className=" flex w-full flex-col gap-y-6 bg-light-gray p-3 py-5 sm:p-6 md:p-7">
       <h1 className="text-2xl">Goodmorning, Vikram</h1>
       {/* Large and higher screen stats */}
       <div className=" hidden justify-between gap-x-3 xl:flex">

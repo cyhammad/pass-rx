@@ -64,13 +64,12 @@ const FlashCard = ({ toggleFlash ,title,buttonTitle}) => {
 
           <p className="ml-1 md:mt-8 text-sm text-black/30 ">Answer</p>
           <div className="relative md:mt-3 mt-2 w-full items-center md:mb-14 mb-6 justify-center gap-x-2 rounded-lg border border-border-color px-4 py-3 ">
-            <textarea
-              type="text"
+          <textarea
               name="text"
               id="text"
               placeholder=""
               className="h-6 w-full resize-none outline-none"
-            />
+            ></textarea>
             <label
               for="floating_outlined"
               class="dark:bg-gray-900 absolute start-1  top-2 z-10 origin-[0] -translate-y-4 scale-75 transform bg-white px-2 text-sm text-black/40 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:px-2 peer-focus:text-blue-600  peer-focus:dark:text-blue-500"

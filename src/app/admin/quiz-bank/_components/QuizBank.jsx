@@ -44,7 +44,7 @@ export default function QuizBank() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="flex items-center justify-center gap-x-2 rounded-lg border border-border-color px-4 py-3 shadow-[0px_2px_12px_0px_#C9C9C938] md:flex"
+                  className="flex items-center  bg-white justify-center gap-x-2 rounded-lg border border-border-color px-4 py-1 shadow-[0px_2px_12px_0px_#C9C9C938] md:flex"
                 >
                   <button>{searchIcon}</button>
                   <input
@@ -52,7 +52,7 @@ export default function QuizBank() {
                     name="search"
                     id="search"
                     placeholder="Search"
-                    className="bg-light-gray outline-none md:w-[180px] lg:w-[280px]"
+                    className=" outline-none md:w-[180px] lg:w-[280px]"
                   />
                 </motion.div>
               )}

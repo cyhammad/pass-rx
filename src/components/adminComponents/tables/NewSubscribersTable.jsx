@@ -7,8 +7,8 @@ const NewSubscribersTable = () => {
   return (
     <div className="flex w-full flex-col rounded-xl border border-black/10 p-7">
       <div className="flex w-full justify-between">
-        <div className="flex flex-col">
-          <div className="flex items-center gap-2">
+        <div className="flex flex-col ">
+          <div className="flex items-center gap-2 ">
             <span className="text-[18px] font-semibold text-text-charcoal">
               New Subscribers
             </span>
@@ -21,14 +21,14 @@ const NewSubscribersTable = () => {
           </span>
         </div>
         {/* Search bar */}
-        <div className="hidden items-center justify-center gap-x-2 rounded-lg border border-border-color px-4 py-3 shadow-[0px_2px_12px_0px_#C9C9C938] sm:flex">
+        <div className="hidden items-center max-h-[52px] justify-center gap-x-2 py-1 rounded-lg border border-border-color px-4 shadow-[0px_2px_12px_0px_#C9C9C938] sm:flex">
           <button>{searchIcon}</button>
           <input
             type="search"
             name="search"
             id="search"
             placeholder="Search"
-            className="w-[280px]"
+            className="lg:min-w-[280px]  py-[0.55rem] focus:outline-none focus:border-white ring-transparent appearance-none focus:ring-white outline-none border border-white"
           />
         </div>
       </div>
