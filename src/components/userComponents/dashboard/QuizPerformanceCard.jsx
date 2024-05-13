@@ -26,7 +26,7 @@ export default function QuizPerformanceCard() {
         colors: ["#FFFFFF"],
       },
     },
-    labels: ["Correct", "Don’t Know", "Ok", "Unanswered"],
+    labels: ["Correct", "Answered", "Completed", "Unanswered"],
 
     fill: {
       colors: ["#2396F3", "#1C78C3", "#71A4F7", "#72C0F8"],
@@ -61,7 +61,7 @@ export default function QuizPerformanceCard() {
       fontSize: "14px",
       fontWeight: 400,
       labels: {
-        colors: "#637381",
+        colors: "#9F9F9F",
       },
       markers: {
         width: 20,

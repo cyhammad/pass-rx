@@ -15,7 +15,8 @@ export default function FlashFactsPerformanceCard() {
       width: "100%",
       type: "donut",
     },
-    labels: ["Nailed It", "Answered", "Completed", "Unanswered"],
+    labels: ["Nailed it", "Don't Know", "Ok", "Unanswered"],
+
     dataLabels: {
       enabled: false,
     },
