@@ -20,14 +20,14 @@ export default function Step3({ setStep }) {
           </div>
           <p className=" mt-2  text-center text-primary ">Deck Settings</p>
         </div>
-        <Line bg={"primary"} />
+        <Line bg={"bg-primary"} />
         <div className="flex flex-col">
           <div className="flex h-9 w-9 items-center justify-center self-center rounded-full bg-primary text-sm  font-medium text-white ">
             02
           </div>
           <p className=" mt-2 text-center  text-primary">Choose Cards</p>
         </div>
-        <Line bg={"primary"} />
+        <Line bg={"bg-primary"} />
 
         <div className="flex flex-col">
           <div className="flex h-9 w-9 items-center justify-center self-center rounded-full  bg-primary   text-sm font-medium text-white ">

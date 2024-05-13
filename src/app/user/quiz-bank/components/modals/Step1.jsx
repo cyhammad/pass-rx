@@ -11,16 +11,16 @@ export default function Step1({setStep}) {
           <div className="flex h-9 w-9 items-center justify-center self-center rounded-full bg-primary text-sm font-medium text-white ">
             01
           </div>
-          <p className=" mt-2  text-center text-primary ">Test Settings</p>
+          <p className=" mt-2   text-center text-primary ">Test Settings</p>
         </div>
-        <Line bg={"text-gray-2"} />
+        <Line bg={"bg-text-gray-2"} />
         <div className="flex flex-col">
           <div className="flex h-9 w-9 items-center justify-center self-center rounded-full border-2  border-text-gray  text-sm font-medium  ">
             02
           </div>
           <p className=" mt-2 text-center text-user-gray">Choose Questions</p>
         </div>
-        <Line bg={"text-gray-2"} />
+        <Line bg={"bg-text-gray-2"} />
 
         <div className="flex flex-col">
           <div className="flex h-9 w-9 items-center justify-center self-center rounded-full border-2  border-text-gray  text-sm font-medium  ">

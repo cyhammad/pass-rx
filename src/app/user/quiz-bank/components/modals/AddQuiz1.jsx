@@ -6,21 +6,21 @@ import Step3 from "./Step3";
 export function Line({ bg }) {
   return (
     <div className="mt-4 flex w-[13vw] justify-between sm:w-[111px]">
-      <div className={`h-1 w-1 rounded-full bg-${bg} `}></div>
-      <div className={`h-1 w-1 rounded-full bg-${bg}`}></div>
-      <div className={`h-1 w-1 rounded-full bg-${bg}`}></div>
-      <div className={`hidden h-1 w-1 rounded-full sm:inline bg-${bg}`}></div>
-      <div className={`h-1 w-1 rounded-full bg-${bg}`}></div>
-      <div className={`hidden h-1 w-1 rounded-full sm:inline bg-${bg}`}></div>
-      <div className={`hidden h-1 w-1 rounded-full sm:inline bg-${bg}`}></div>
-      <div className={`hidden h-1 w-1 rounded-full sm:inline bg-${bg}`}></div>
-      <div className={`hidden h-1 w-1 rounded-full sm:inline bg-${bg}`}></div>
-      <div className={`hidden h-1 w-1 rounded-full sm:inline bg-${bg}`}></div>
-      <div className={`hidden h-1 w-1 rounded-full sm:inline bg-${bg}`}></div>
-      <div className={`hidden h-1 w-1 rounded-full sm:inline bg-${bg}`}></div>
-      <div className={`hidden h-1 w-1 rounded-full sm:inline bg-${bg}`}></div>
-      <div className={`hidden h-1 w-1 rounded-full sm:inline bg-${bg}`}></div>
-      <div className={`hidden h-1 w-1 rounded-full sm:inline bg-${bg}`}></div>
+      <div className={`h-1 w-1 rounded-full ${bg} `}></div>
+      <div className={`h-1 w-1 rounded-full ${bg}`}></div>
+      <div className={`h-1 w-1 rounded-full ${bg}`}></div>
+      <div className={`hidden h-1 w-1 rounded-full sm:inline ${bg}`}></div>
+      <div className={`h-1 w-1 rounded-full ${bg}`}></div>
+      <div className={`hidden h-1 w-1 rounded-full sm:inline ${bg}`}></div>
+      <div className={`hidden h-1 w-1 rounded-full sm:inline ${bg}`}></div>
+      <div className={`hidden h-1 w-1 rounded-full sm:inline ${bg}`}></div>
+      <div className={`hidden h-1 w-1 rounded-full sm:inline ${bg}`}></div>
+      <div className={`hidden h-1 w-1 rounded-full sm:inline ${bg}`}></div>
+      <div className={`hidden h-1 w-1 rounded-full sm:inline ${bg}`}></div>
+      <div className={`hidden h-1 w-1 rounded-full sm:inline ${bg}`}></div>
+      <div className={`hidden h-1 w-1 rounded-full sm:inline ${bg}`}></div>
+      <div className={`hidden h-1 w-1 rounded-full sm:inline ${bg}`}></div>
+      <div className={`hidden h-1 w-1 rounded-full sm:inline ${bg}`}></div>
     </div>
   );
 }

@@ -12,14 +12,14 @@ export default function Step1({ setStep }) {
           </div>
           <p className=" mt-2  text-center text-primary ">Deck Settings</p>
         </div>
-        <Line bg={"text-gray-2"} />
+        <Line bg={"bg-text-gray-2"} />
         <div className="flex flex-col">
           <div className="flex h-9 w-9 items-center justify-center self-center rounded-full border-2  border-text-gray  text-sm font-medium  ">
             02
           </div>
           <p className=" mt-2 text-center text-user-gray">Choose Cards</p>
         </div>
-        <Line bg={"text-gray-2"} />
+        <Line bg={"bg-text-gray-2"} />
 
         <div className="flex flex-col">
           <div className="flex h-9 w-9 items-center justify-center self-center rounded-full border-2  border-text-gray  text-sm font-medium  ">
