@@ -30,7 +30,7 @@ export default function Card() {
         name="text"
         id="text"
         placeholder="$110"
-        className={`mt-7 h-[72px] w-full bg-transparent text-5xl border border-white font-bold outline-none placeholder:text-black md:mt-11 ${editable ? "" : "pointer-events-none"}`}
+        className={`mt-7 h-[72px] focus:ring-light-gray focus:border-white focus:outline-none  w-full bg-transparent text-5xl border border-white font-bold outline-none placeholder:text-black md:mt-11 ${editable ? "" : "pointer-events-none"}`}
         value={text}
         onChange={handleChange}
         disabled={!editable}

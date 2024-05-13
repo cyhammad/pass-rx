@@ -43,7 +43,7 @@ export default function Step3({ setStep }) {
           <input
             placeholder="Test333"
             type="text"
-            className=" mt-3 block w-[290px] 	 rounded-lg border border-light-border bg-white shadow-sm active:border-light-gray sm:w-[354px] "
+            className=" mt-3  focus:ring-light-border focus:border-light-border focus:outline-none block w-[290px] 	modal rounded-lg border border-light-border bg-white shadow-sm active:border-light-gray sm:w-[354px] "
           ></input>
         </div>
         <div className="mt-10 flex flex-col items-center">

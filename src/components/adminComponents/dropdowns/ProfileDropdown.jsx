@@ -29,7 +29,7 @@ const ProfileDropdown = () => {
   };
 
   return (
-    <div className="relative z-[51]" ref={dropdownRef}>
+    <div className="relative z-[49]" ref={dropdownRef}>
       <button
         className="flex h-10 w-10 items-center justify-center rounded-full bg-darkGray text-center"
         onClick={() => toggleMenu()}

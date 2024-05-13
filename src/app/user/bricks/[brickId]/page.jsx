@@ -158,7 +158,7 @@ export default function page() {
         </div>
       </div>
       <div className="mt-10  w-full border border-light-border"></div>
-      <div className=" mt-6 flex flex-col justify-between gap-x-[4rem] lg:flex-row lg:pr-11 xl:ml-[10rem] pb-10">
+      <div className=" mt-6 flex flex-col justify-between gap-x-[4rem] lg:flex-row lg:pr-11 pb-10 ">
         <Topics />
         <LearningObjectives />
       </div>

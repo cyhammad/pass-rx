@@ -42,7 +42,7 @@ export default function Step3({ setStep }) {
           <input
             placeholder="Deck Test"
             type="text"
-            className=" mt-3 block w-[290px] 	 rounded-lg border border-light-border bg-white shadow-sm active:border-light-gray sm:w-[354px] "
+            className=" mt-3 block w-[290px]  focus:ring-light-border focus:border-light-border focus:outline-none rounded-lg border border-light-border bg-white shadow-sm active:border-light-gray sm:w-[354px] "
           ></input>
         </div>
         <div className="mt-8 flex flex-col items-center">

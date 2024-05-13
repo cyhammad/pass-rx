@@ -23,7 +23,7 @@ export default function AddDeck({ toggle }) {
         // onClick={() => closeModal()}
       ></div>
 
-      <div className="z-50  flex  w-[655px] flex-col items-center rounded-lg   bg-white  shadow-md ">
+      <div className="z-[52]  flex  w-[655px] flex-col items-center rounded-lg   bg-white  shadow-md ">
         <div className="flex w-full items-center  justify-between  border-b  border-b-black/10 py-3 ">
           <p className="pl-5 text-sm font-medium md:text-lg ">New Test</p>
           <button

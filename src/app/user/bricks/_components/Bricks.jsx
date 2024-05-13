@@ -17,7 +17,7 @@ export default function Bricks() {
   const check = useSelector((state) => state.brick.name);
   const handleCardClick = (brick) => {
     dispatch(setBrick(brick));
-    router.push(`/admin/bricks/${brick}`);
+    router.push(`/user/bricks/${brick}`);
     console.log(check);
   };
   const handleTabClick = (tabName) => {

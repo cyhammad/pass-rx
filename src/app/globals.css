@@ -62,12 +62,12 @@ input[type="search"]:focus{
   outline: #fff;
   box-shadow: 0 0 0 3px #fff !important;
 }
-input[type="text"]:focus{
-  border-width: 1px;
-  border-color: #DDDDDD !important;
-  outline: #ffffff;
-  box-shadow: 0 0 0 3px #ffffff !important;
-}
+/* input[type="text"]:focus{
+  border-color: #fafafa;
+  outline: #fafafa;
+  box-shadow: 0 0 0 1px #fafafa ;
+} */
+
 
 
 textarea {

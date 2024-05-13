@@ -31,9 +31,9 @@ export default function Step2({ setStep }) {
         </div>
       </div>
       <div className=" flex sm:mt-0 mt-3 flex-col justify-between sm:self-center border-b border-checkbox pb-10 max-w[489px]">
-        <div className="overflow-auto  user-screen h-[424px] sm:px-6 mt-3 pr-3">
+        <div className="overflow-auto  user-screen h-[45svh] sm:px-6 mt-3 pr-3">
           {data.map((number) => (
-            <div key={number} className="flex justify-between sm:gap-[8vw] ">
+            <div key={number} className="flex justify-between sm:gap-[8vw] 2xl:gap-20 ">
               <div className="flex items-center gap-[10px]  border-b border-checkbox/40 sm:px-5   py-3.5">
                 <CheckBox />
                 <p className="sm:text-sm text-xs font-semibold">Discipline Name</p>
