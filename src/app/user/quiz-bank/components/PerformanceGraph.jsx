@@ -34,6 +34,7 @@ export default function PerformanceGraph() {
     plotOptions: {
       pie: {
         expandOnClick: false,
+        offsetX: 100,
         donut: {
           size: "58%",
         },
@@ -47,15 +48,10 @@ export default function PerformanceGraph() {
     legend: {
       show: true,
       formatter: function (seriesName, opts) {
-        return [
-          seriesName,
-          " - ",
-          opts.w.globals.series[opts.seriesIndex],
-          
-        ];
+        return [seriesName, " - ", opts.w.globals.series[opts.seriesIndex]];
       },
       position: "left",
-      horizontalAlign: 'center', 
+      horizontalAlign: "center",
       fontSize: "14px",
       fontWeight: 400,
       labels: {
@@ -67,26 +63,47 @@ export default function PerformanceGraph() {
         radius: 5,
       },
       itemMargin: {
-        vertical:9,
+        vertical: 9,
       },
     },
     responsive: [
       {
         breakpoint: 640,
         options: {
+          plotOptions: {
+            pie: {
+              offsetX: 0,
+            },
+          },
           legend: {
             position: "bottom",
             // itemMargin: {
             //   horizontal: 29,
             // },
-          }
-        }
+          },
+        },
+      },
+      {
+        breakpoint: 768,
+        options: {
+          plotOptions: {
+            pie: {
+              offsetX: 60,
+            },
+          },
+          legend: {
+            position: "left",
+            // itemMargin: {
+            //   horizontal: 29,
+            // },
+          },
+        },
       }
-    ]
+    ],
   };
 
   return (
-    <div className="flex sm:h-[310px] min-h-[310px]  max-w-[634px] mt-4 flex-col justify-between rounded-xl bg-white pb-10  shadow">
+    <div className="mt-4 flex min-h-[310px]  max-w-[634px] flex-col justify-between rounded-xl bg-white pb-10 shadow  sm:h-[310px]">
       <div className="flex items-start justify-between px-6 pt-[18px]  ">
         <div className="flex flex-col justify-between">
           <h3 className="text-base font-medium leading-none sm:text-xl">
@@ -98,9 +115,8 @@ export default function PerformanceGraph() {
           <span className="text-[10px] font-medium">This Year</span>
           {chevronDown}
         </div>
-        
       </div>
-      <div id="chart" className="md:h-[321px] h-[350px] px-2">
+      <div id="chart" className="h-[350px] px-2 md:h-[321px]">
         <ReactApexChart
           options={options}
           series={series}
