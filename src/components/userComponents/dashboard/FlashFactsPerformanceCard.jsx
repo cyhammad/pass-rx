@@ -63,10 +63,12 @@ export default function FlashFactsPerformanceCard() {
       show: true,
       formatter: function (seriesName, opts) {
         return [
+          "<div style='width:120px'>",
           seriesName,
           " - ",
           opts.w.globals.series[opts.seriesIndex],
           "%",
+          "</div>",
         ];
       },
       position: "bottom",
@@ -93,7 +95,7 @@ export default function FlashFactsPerformanceCard() {
     <div className="flex h-[485px] w-full flex-col justify-between  rounded-xl bg-white pb-5  drop-shadow-sm">
       <div className="flex items-start justify-between px-6 pt-[18px] ">
         <div className="flex flex-col justify-between">
-          <h3 className="sm:text-xl text-base  font-medium leading-none">
+          <h3 className="text-base font-medium  leading-none sm:text-xl">
             Flash Facts Performance
           </h3>
           <p className="mt-1 text-sm text-text-gray">12 Decks</p>
