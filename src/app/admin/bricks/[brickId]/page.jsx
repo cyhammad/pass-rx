@@ -41,9 +41,6 @@ export default function page() {
   }, []); // Empty dependency array ensures the effect runs only once
   
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
   const handleEditClick = () => {
     setEditable(true);
     setButtonTitle1("Discard");

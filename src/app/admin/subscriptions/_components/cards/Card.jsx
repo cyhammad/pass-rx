@@ -1,55 +1,24 @@
 "use client";
 import { useState } from "react";
 
-export default function Card() {
-  const [editable, setEditable] = useState(false);
-  const [text, setText] = useState("$110");
+export default function Card( {title , text,value}) {
 
-  const handleEditClick = () => {
-    setEditable(true);
-  };
-
-  const handleChange = (event) => {
-    setText(event.target.value);
-  };
-
-  const handleSave = () => {
-    setEditable(false);
-    // You can perform any save operation here, if needed
-  };
   return (
-    <div className="h-[325px]   max-w-[330px] rounded-2xl  bg-white p-6 shadow md:p-9 md:h-[395px]">
+    <div className="   max-w-[330px] rounded-2xl  bg-white p-6 shadow-lg  md:p-9 h-[308px]">
       <span>{star}</span>
-      <p className="mt-3 font-semibold">Yearly Subscription</p>
+      <p className="mt-3 font-semibold">{title}</p>
       <p className="mt-4 text-xs text-dark-grayish-red">
-        Display stars in Google organic search risult and showcase reviews on
-        your website
+        {text}
       </p>
       <input
         type="text"
         name="text"
         id="text"
-        placeholder="$110"
-        className={`mt-7 h-[72px] focus:ring-light-gray focus:border-white focus:outline-none  w-full bg-transparent text-5xl border border-white font-bold outline-none placeholder:text-black md:mt-11 ${editable ? "" : "pointer-events-none"}`}
-        value={text}
-        onChange={handleChange}
-        disabled={!editable}
+        placeholder={value}
+        className={`mt-7 h-[72px] focus:ring-light-gray focus:border-white focus:outline-none  w-full bg-transparent text-5xl border border-white font-bold outline-none placeholder:text-black md:mt-11 `}
+        disabled={true}
       />
-      {editable ? (
-        <button
-          className="mt-4 w-full rounded-lg border border-primary bg-primary px-1 py-2 font-semibold text-white focus:outline-none md:py-4 md:text-[18px]"
-          onClick={handleSave}
-        >
-          Save
-        </button>
-      ) : (
-        <button
-          className="mt-4 w-full rounded-lg border border-primary px-1 py-2 font-semibold text-primary focus:outline-none md:py-4 md:text-[18px]"
-          onClick={handleEditClick}
-        >
-          Edit
-        </button>
-      )}
+     
     </div>
   );
 }

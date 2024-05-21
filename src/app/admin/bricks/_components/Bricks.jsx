@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { AnimatePresence } from "framer-motion";
 import { setBrick } from "@/lib/features/brick/brickSlice";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function Bricks() {
   const dispatch = useDispatch();
@@ -33,13 +34,13 @@ export default function Bricks() {
       </AnimatePresence>
       <div className="mt-14 flex items-center gap-2 self-center">
         <h1 className="text-[32px] font-semibold">Bricks</h1>
-        {addSquare}
+        <Link href={"/admin/bricks/add"}> {addSquare}</Link>
       </div>
       <p className="mt-2 max-w-[571px] self-center text-center font-normal">
         Our comprehensive library of digital learning modules, designed to help
         you build your foundation of medical knowledge.
       </p>
-      <div className=" mt-8 flex w-[95%]  bg-white  items-center justify-center gap-x-2 self-center rounded-lg border border-border-color px-4 py-1 shadow-[0px_2px_12px_0px_#C9C9C938] sm:w-[372px]">
+      <div className=" mt-8 flex w-[95%]  items-center  justify-center gap-x-2 self-center rounded-lg border border-border-color bg-white px-4 py-1 shadow-[0px_2px_12px_0px_#C9C9C938] sm:w-[372px]">
         <button>{searchIcon}</button>
         <input
           type="search"
@@ -77,7 +78,7 @@ export default function Bricks() {
       </div>
       <div className="mt-8 grid grid-cols-1 justify-items-center gap-x-[18px] gap-y-6 px-3   sm:gap-y-6 sm:px-14 md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
         {cardData.map((number) => (
-          <div key={number} >
+          <div key={number}>
             <Card handleCardClick={handleCardClick} number={number} />
           </div>
         ))}

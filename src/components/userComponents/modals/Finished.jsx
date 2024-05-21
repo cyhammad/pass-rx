@@ -20,7 +20,7 @@ const Finished = ({ text1, text2, toggleFinish }) => {
         onClick={() => closeModal()}
       ></div>
 
-      <div className="z-50  w-[454.1px] flex py-11 flex-col items-center justify-between rounded-[53.42px] bg-white shadow-md min-h-[530px] px-6">
+      <div className="z-50  w-[430 .1px] flex py-11 flex-col items-center justify-between rounded-[53.42px] bg-white shadow-md min-h-[530px] px-6">
         <span>{svg}</span>
         <div className="text-center mt-5">
           <h3 className="text-2xl font-semibold">{text1}</h3>
