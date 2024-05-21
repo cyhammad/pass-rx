@@ -31,6 +31,7 @@ export default function EditDisciplineCard({
         <div className="mx-10 mt-[-1.7rem]  h-12 w-[90%] rounded-lg border border-border-color px-4  md:flex ">
           <input
             type="search"
+            autocomplete="off"
             name="search"
             id="search"
             placeholder="Discipline Name"

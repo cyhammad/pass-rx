@@ -28,6 +28,7 @@ const SubscribersTable = () => {
             type="search"
             name="search"
             id="search"
+            autocomplete="off"
             placeholder="Search"
             className="w-[280px] bg-transparent outline-none"
           />

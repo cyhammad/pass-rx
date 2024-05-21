@@ -33,7 +33,6 @@ export default function Bricks() {
       </AnimatePresence>
       <div className="mt-14 flex items-center gap-2 self-center">
         <h1 className="text-[32px] font-semibold">Bricks</h1>
-        {addSquare}
       </div>
       <p className="mt-2 max-w-[571px] self-center text-center font-normal">
         Our comprehensive library of digital learning modules, designed to help
@@ -45,6 +44,7 @@ export default function Bricks() {
           type="search"
           name="search"
           id="search"
+          autocomplete="off"
           placeholder="Search"
           className="w-full  outline-none sm:w-[372px]"
         />

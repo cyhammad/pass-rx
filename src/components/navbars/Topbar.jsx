@@ -24,6 +24,7 @@ const Topbar = () => {
           <input
             type="search"
             name="search"
+            autocomplete="off"
             id="search"
             placeholder="Search"
             className="md:min-w-[280px]  py-[0.55rem]  focus:border-white  focus:ring-white  border border-white"

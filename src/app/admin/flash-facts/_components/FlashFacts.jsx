@@ -73,6 +73,7 @@ export default function FlashFacts() {
             <input
               type="search"
               name="search"
+              autocomplete="off"
               id="search"
               placeholder="Search"
               className=" outline-none md:w-[180px] lg:w-[280px]"

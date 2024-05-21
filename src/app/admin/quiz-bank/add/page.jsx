@@ -15,7 +15,7 @@ const QuizBankAddPage = () => {
         <div className="flex w-full max-w-[793px] flex-col gap-y-8 rounded-xl bg-white px-6 py-7 shadow">
           <div className="relative flex min-h-[54px] w-full items-center rounded-md border border-black/10 px-4 py-3">
             <input
-              className="w-full border-none text-sm outline-none focus:outline-none"
+              className="w-full border-none text-sm outline-none focus:border-light-border focus:outline-none focus:ring-white active:border-light-gray "
               type="text"
               name="title"
               id="title"
@@ -46,14 +46,15 @@ const QuizBankAddPage = () => {
           <span className="text-center text-sm font-medium text-dark">
             Add Disciplines
           </span>
-          <div className="flex w-full max-w-[375px] items-center gap-x-3 self-center rounded-md border border-black/10 p-4">
+          <div className="flex w-full max-w-[375px] items-center gap-x-3 self-center rounded-md border border-black/10 py-2 px-4 ">
             <button>{searchIcon}</button>
             <input
               type="search"
               name="search"
               id="search"
+              autocomplete="off"
               placeholder="Search"
-              className="w-full border-none text-sm outline-none focus:outline-none md:min-w-[280px]"
+              className="w-full border-none text-sm outline-none  focus:outline-none md:min-w-[280px]"
             />
           </div>
           <div className="grid w-full grid-cols-2 gap-x-5 gap-y-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">

@@ -91,6 +91,7 @@ export default function Discipline() {
                     type="search"
                     name="search"
                     id="search"
+                    autocomplete="off"
                     placeholder="Search"
                     className="outline-none md:w-[180px] lg:w-[280px]"
                   />

@@ -130,6 +130,7 @@ const QuizBankAddPage = () => {
                 className="w-full border-none text-sm outline-none focus:border-light-border focus:outline-none focus:ring-white active:border-light-gray "
                 type="topic"
                 ref={newTopicRef}
+                autocomplete="off"
                 name="topic"
                 id="topic"
                 value={newTopicInput}

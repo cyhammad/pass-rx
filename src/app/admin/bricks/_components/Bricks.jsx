@@ -46,6 +46,7 @@ export default function Bricks() {
           type="search"
           name="search"
           id="search"
+          autocomplete="off"
           placeholder="Search"
           className="w-full  outline-none sm:w-[372px]"
         />
