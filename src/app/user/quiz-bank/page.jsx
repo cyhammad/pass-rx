@@ -11,11 +11,16 @@ export default function page() {
     setIsOpen(!isOpen);
   };
   return (
-    <div className="bg-light-gray pr-3 pt-6 sm:px-6 md:px-8 select-none">
-      <AnimatePresence>{isOpen && <AddQuiz1 toggle={toggle}/>}</AnimatePresence>
+    <div className="select-none bg-light-gray pr-3 pt-6 sm:px-6 md:px-8">
+      <AnimatePresence>
+        {isOpen && <AddQuiz1 toggle={toggle} />}
+      </AnimatePresence>
       <div className="flex items-center justify-between">
         <h3 className="text-2xl font-semibold">Quiz Bank</h3>
-        <button onClick={toggle} className="rounded-lg bg-primary  px-2 py-3 text-xs font-medium text-white sm:w-[282px]  sm:px-3 sm:text-base">
+        <button
+          onClick={toggle}
+          className="rounded-lg bg-primary  px-2 py-3 text-xs font-medium text-white sm:w-[282px]  sm:px-3 sm:text-base"
+        >
           Create New Test
         </button>
       </div>

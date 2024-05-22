@@ -5,7 +5,7 @@ import Step2 from "./Step2";
 import Step3 from "./Step3";
 export function Line({ bg }) {
   return (
-    <div className="mt-4 flex w-[13vw] justify-between sm:w-[111px]">
+    <div className="mt-4 flex w-[13vw] justify-between opacity-20 sm:w-[111px]">
       <div className={`h-1 w-1 rounded-full ${bg} `}></div>
       <div className={`h-1 w-1 rounded-full ${bg}`}></div>
       <div className={`h-1 w-1 rounded-full ${bg}`}></div>
