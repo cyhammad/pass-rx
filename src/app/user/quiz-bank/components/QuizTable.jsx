@@ -40,13 +40,13 @@ export default function QuizTable() {
         <table className="mt-5 w-full min-w-fit table-auto">
           <thead className="bg-table-header">
             <tr className="text-text-gray-2">
-              <th className="min-w-[230px] rounded-s-md py-3 pl-6 text-start font-semibold">
+              <th className="min-w-[290px] rounded-s-md py-3 pl-6 text-start font-semibold">
                 Name
               </th>
-              <th className="min-w-[230px] py-3 text-start font-semibold">
+              <th className="min-w-[190px] py-3 text-start font-semibold">
                 Mode
               </th>
-              <th className="min-w-[230px] py-3 text-start font-semibold">
+              <th className="min-w-[150px] py-3 text-start font-semibold">
                 Questions
               </th>
               <th className="min-w-[230px] py-3 text-start font-semibold">
