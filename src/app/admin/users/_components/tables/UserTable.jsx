@@ -1,25 +1,25 @@
 import { searchIcon } from "@/svgs/topbarSvgs";
 import ThreeDotLoader from "@/components/loaders/ThreeDotLoader";
+import TableDropdown from "../dropdowns/TableDropdown";
+import StatusBtn from "../StatusBtn";
 
-const SubscribersTable = () => {
+export default function UserTable() {
   return (
     <div className="flex w-full flex-col rounded-xl border border-black/10 bg-white p-7">
       <div className="flex w-full justify-between">
         <div className="flex flex-col">
           <div className="flex items-center gap-2">
             <span className="text-[18px] font-semibold text-text-charcoal">
-              New Subscribers
+              Users
             </span>
             <span className="flex items-center gap-0.5 text-xs text-text-green">
               {arrowUpIcon} 4.25%
             </span>
           </div>
-          <span className="text-sm font-semibold text-text-gray">
-            All Time{" "}
-          </span>
+          <span className="text-sm font-semibold text-text-gray">All Time</span>
         </div>
         {/* Search bar */}
-        <div className="hidden items-center bg-white justify-center gap-x-2 rounded-lg border border-border-color px-4 py-1 shadow-[0px_2px_12px_0px_#C9C9C938] sm:flex">
+        <div className="hidden items-center justify-center gap-x-2 rounded-lg border border-border-color bg-white px-4 py-1 shadow-[0px_2px_12px_0px_#C9C9C938] sm:flex">
           <button>{searchIcon}</button>
           <input
             type="search"
@@ -40,16 +40,16 @@ const SubscribersTable = () => {
                 Name
               </th>
               <th className="min-w-[200px] py-3 text-start font-semibold">
-                Subscription Type
+                Quizzes Made
               </th>
               <th className="min-w-[180px] py-3 text-start font-semibold">
-                Total Amount Paid
+                Facts Made
               </th>
               <th className="min-w-[180px] rounded-e-md py-3 text-start font-semibold">
-                Due Amount
+                Status
               </th>
               <th className="min-w-[180px] rounded-e-md py-3 text-start font-semibold">
-                Next Bill Date
+                Date Joined
               </th>
               <th className="min-w-[80px] rounded-e-md py-3 text-start font-semibold">
                 Action
@@ -80,10 +80,47 @@ const SubscribersTable = () => {
                 </div>
               </td>
               <td>
-                <span className="font-semibold text-text-charcoal">$800</span>
+                <span className="font-semibold ml-5 text-text-charcoal">$800</span>
               </td>
               <td>
-                <span className="font-semibold text-text-charcoal">$20</span>
+                <StatusBtn status={"active"} />
+              </td>             
+              <td>
+                <span className="font-semibold text-text-charcoal">
+                  02 Jan 23
+                </span>
+              </td>
+              <td>
+                <TableDropdown />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div className="flex items-center gap-x-5 py-5">
+                  <div className="h-[70px] w-[70px] rounded-lg bg-[url('/example/person.png')] bg-cover bg-center"></div>
+                  <div className="flex flex-col gap-y-1.5">
+                    <span className="text-charcoal font-semibold">
+                      Brad Simmons
+                    </span>
+                    <span className="text-sm font-medium text-text-gray-2">
+                      brad.simmons@gmail.com
+                    </span>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div className="flex flex-col gap-y-1.5 py-5">
+                  <span className="text-charcoal font-semibold">Monthly</span>
+                  <span className="text-sm font-medium text-text-gray-2">
+                    Both Exam Types
+                  </span>
+                </div>
+              </td>
+              <td>
+                <span className="font-semibold ml-5 text-text-charcoal">$800</span>
+              </td>
+              <td>
+              <StatusBtn status={"Suspend"} />
               </td>
               <td>
                 <span className="font-semibold text-text-charcoal">
@@ -117,47 +154,10 @@ const SubscribersTable = () => {
                 </div>
               </td>
               <td>
-                <span className="font-semibold text-text-charcoal">$800</span>
+                <span className="font-semibold  ml-5 text-text-charcoal">$800</span>
               </td>
               <td>
-                <span className="font-semibold text-text-charcoal">$20</span>
-              </td>
-              <td>
-                <span className="font-semibold text-text-charcoal">
-                  02 Jan 23
-                </span>
-              </td>
-              <td>
-                <TableDropdown />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div className="flex items-center gap-x-5 py-5">
-                  <div className="h-[70px] w-[70px] rounded-lg bg-[url('/example/person.png')] bg-cover bg-center"></div>
-                  <div className="flex flex-col gap-y-1.5">
-                    <span className="text-charcoal font-semibold">
-                      Brad Simmons
-                    </span>
-                    <span className="text-sm font-medium text-text-gray-2">
-                      brad.simmons@gmail.com
-                    </span>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div className="flex flex-col gap-y-1.5 py-5">
-                  <span className="text-charcoal font-semibold">Monthly</span>
-                  <span className="text-sm font-medium text-text-gray-2">
-                    Both Exam Types
-                  </span>
-                </div>
-              </td>
-              <td>
-                <span className="font-semibold text-text-charcoal">$800</span>
-              </td>
-              <td>
-                <span className="font-semibold text-text-charcoal">$20</span>
+              <StatusBtn status={"Suspend"} />
               </td>
               <td>
                 <span className="font-semibold text-text-charcoal">
@@ -191,47 +191,10 @@ const SubscribersTable = () => {
                 </div>
               </td>
               <td>
-                <span className="font-semibold text-text-charcoal">$800</span>
+                <span className="font-semibold ml-5 text-text-charcoal">$800</span>
               </td>
               <td>
-                <span className="font-semibold text-text-charcoal">$40</span>
-              </td>
-              <td>
-                <span className="font-semibold text-text-charcoal">
-                  02 Jan 23
-                </span>
-              </td>
-              <td>
-                <TableDropdown />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div className="flex items-center gap-x-5 py-5">
-                  <div className="h-[70px] w-[70px] rounded-lg bg-[url('/example/person.png')] bg-cover bg-center"></div>
-                  <div className="flex flex-col gap-y-1.5">
-                    <span className="text-charcoal font-semibold">
-                      Brad Simmons
-                    </span>
-                    <span className="text-sm font-medium text-text-gray-2">
-                      brad.simmons@gmail.com
-                    </span>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div className="flex flex-col gap-y-1.5 py-5">
-                  <span className="text-charcoal font-semibold">Monthly</span>
-                  <span className="text-sm font-medium text-text-gray-2">
-                    Both Exam Types
-                  </span>
-                </div>
-              </td>
-              <td>
-                <span className="font-semibold text-text-charcoal">$800</span>
-              </td>
-              <td>
-                <span className="font-semibold text-text-charcoal">$20</span>
+              <StatusBtn status={"active"} />
               </td>
               <td>
                 <span className="font-semibold text-text-charcoal">
@@ -265,10 +228,47 @@ const SubscribersTable = () => {
                 </div>
               </td>
               <td>
-                <span className="font-semibold text-text-charcoal">$800</span>
+                <span className="font-semibold ml-5 text-text-charcoal">$800</span>
               </td>
               <td>
-                <span className="font-semibold text-text-charcoal">$20</span>
+              <StatusBtn status={"active"} />
+              </td>
+              <td>
+                <span className="font-semibold text-text-charcoal">
+                  02 Jan 23
+                </span>
+              </td>
+              <td>
+                <TableDropdown />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div className="flex items-center gap-x-5 py-5">
+                  <div className="h-[70px] w-[70px] rounded-lg bg-[url('/example/person.png')] bg-cover bg-center"></div>
+                  <div className="flex flex-col gap-y-1.5">
+                    <span className="text-charcoal font-semibold">
+                      Brad Simmons
+                    </span>
+                    <span className="text-sm font-medium text-text-gray-2">
+                      brad.simmons@gmail.com
+                    </span>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div className="flex flex-col gap-y-1.5 py-5">
+                  <span className="text-charcoal font-semibold">Monthly</span>
+                  <span className="text-sm font-medium text-text-gray-2">
+                    Both Exam Types
+                  </span>
+                </div>
+              </td>
+              <td>
+                <span className="font-semibold ml-5 text-text-charcoal">$800</span>
+              </td>
+              <td>
+              <StatusBtn status={"active"} />
               </td>
               <td>
                 <span className="font-semibold text-text-charcoal">
@@ -291,7 +291,7 @@ const SubscribersTable = () => {
       </div>
     </div>
   );
-};
+}
 
 const arrowUpIcon = (
   <svg
@@ -324,5 +324,3 @@ const arrowUpIcon = (
     />
   </svg>
 );
-
-export default SubscribersTable;
