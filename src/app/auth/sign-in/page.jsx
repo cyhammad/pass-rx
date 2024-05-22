@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const SignInPage = () => {
+  console.log("AUTH SEC = ", process.env.AUTH_SECRET);
   return (
     <div className="flex h-screen">
       <div className="hidden h-full w-1/2 items-center bg-[url('/bg.svg')] bg-cover bg-center tracking-[2%] text-white sm:flex lg:w-2/3">

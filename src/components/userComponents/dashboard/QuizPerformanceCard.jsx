@@ -46,6 +46,7 @@ export default function QuizPerformanceCard() {
     colors: ["#2396F3", "#1C78C3", "#71A4F7", "#72C0F8"],
     legend: {
       show: true,
+      width: "100%",
       formatter: function (seriesName, opts) {
         return [
           "<div style='width:120px'>",

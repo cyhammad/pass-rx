@@ -5,6 +5,8 @@ import { useState } from "react";
 
 const SignInForm = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const handleLogin = () => {
+  };
   return (
     <div className="flex flex-col gap-4 py-5">
       <input
@@ -30,8 +32,15 @@ const SignInForm = () => {
           />
         </button>
       </div>
-      <h3 className="flex justify-end text-sm text-[#212B36] leading-[22.4px]">Forgot Password?</h3>
-      <button className="rounded-md bg-primary py-3 text-white h-[60px]">Login</button>
+      <h3 className="flex justify-end text-sm leading-[22.4px] text-[#212B36]">
+        Forgot Password?
+      </h3>
+      <button
+        className="h-[60px] rounded-md bg-primary py-3 text-white"
+        onClick={() => handleLogin()}
+      >
+        Login
+      </button>
       <div className="flex items-center ">
         <div className="w-full border-t border-slate-200"></div>
         <div className="mx-3 text-sm font-medium text-gray">OR</div>
