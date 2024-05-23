@@ -5,8 +5,9 @@ export const authConfig = {
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
-      const isOnDashboard = nextUrl.pathname.startsWith("/admin");
-      if (isOnDashboard) {
+      console.log("HERE USER", auth)
+      const isOnAdminDashboard = nextUrl.pathname.startsWith("/admin");
+      if (isOnAdminDashboard) {
         if (isLoggedIn) return true;
         return false; // Redirect unauthenticated users to login page
       } else if (isLoggedIn) {

@@ -1,8 +1,8 @@
-"use client";
-
 import { searchIcon } from "@/svgs/topbarSvgs";
 import Image from "next/image";
 import ProfileDropdown from "../adminComponents/dropdowns/ProfileDropdown";
+import ExampleDropdown from "../adminComponents/dropdowns/ExampleDropdown";
+import LogoutButton from "../adminComponents/buttons/LogoutButton";
 
 const Topbar = () => {
   return (
@@ -30,7 +30,8 @@ const Topbar = () => {
             className="md:min-w-[280px]  py-[0.55rem]  focus:border-white  focus:ring-white  border border-white"
           />
         </div>
-        <ProfileDropdown />
+        <ProfileDropdown logoutButton={<LogoutButton />} />
+        {/* <ExampleDropdown /> */}
       </div>
     </header>
   );

@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import LogoutButton from "../buttons/LogoutButton";
 
-const ProfileDropdown = () => {
+const ProfileDropdown = ({logoutButton}) => {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
   const dropdownRef = useRef(null);
@@ -78,7 +78,7 @@ const ProfileDropdown = () => {
               <div className="p-1">{chevronRight}</div>
             </button>
           </div>
-          {/* <LogoutButton /> */}
+          {logoutButton}
         </motion.div>
       )}
     </div>

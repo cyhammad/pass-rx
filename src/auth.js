@@ -41,11 +41,12 @@ export const { auth, signIn, signOut } = NextAuth({
         if (parsedCredentials.success) {
           const { email, password } = parsedCredentials.data;
           const user = await getUser(email, password);
-          if (!user) {
-            return null;
+          console.log("USER", user);
+          if (user.success) {
+            cookies().set("token", user.token);
+            return user;
           }
-          cookies().set("token", user.token);
-          return user;
+          return null;
         }
         return null;
       },
