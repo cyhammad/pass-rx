@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { chevronRight, profileIcon, settingsIcon } from "@/svgs/topbarSvgs";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import LogoutButton from "../buttons/LogoutButton";
 
 const ProfileDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -77,9 +78,7 @@ const ProfileDropdown = () => {
               <div className="p-1">{chevronRight}</div>
             </button>
           </div>
-          <button className="button w-full px-5 pb-1.5 pt-2.5 text-start text-sm">
-            Log out
-          </button>
+          {/* <LogoutButton /> */}
         </motion.div>
       )}
     </div>

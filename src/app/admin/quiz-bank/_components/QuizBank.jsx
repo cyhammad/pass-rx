@@ -49,7 +49,7 @@ export default function QuizBank() {
                   <button>{searchIcon}</button>
                   <input
                     type="search"
-                    autocomplete="off"
+                    autoComplete="off"
                     name="search"
                     id="search"
                     placeholder="Search"

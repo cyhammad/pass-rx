@@ -52,7 +52,7 @@ const QuizBankAddPage = () => {
               type="search"
               name="search"
               id="search"
-              autocomplete="off"
+              autoComplete="off"
               placeholder="Search"
               className="w-full border-none text-sm outline-none  focus:outline-none md:min-w-[280px]"
             />

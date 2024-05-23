@@ -28,7 +28,7 @@ const SignInForm = () => {
           required
           minLength={6}
         />
-        <button
+        <div
           className={`absolute inset-y-0 right-2 top-2 flex h-10 w-10 items-center justify-center ${!showPassword ? "bg-[#919EAB14]" : "bg-[#919EAB33]"} rounded-full`}
           onClick={() => setShowPassword(!showPassword)}
         >
@@ -38,7 +38,7 @@ const SignInForm = () => {
             width={24}
             height={24}
           />
-        </button>
+        </div>
       </div>
       <h3 className="flex justify-end text-sm leading-[22.4px] text-[#212B36]">
         Forgot Password?

@@ -18,7 +18,6 @@ export default function Bricks() {
   const handleCardClick = (brick) => {
     dispatch(setBrick(brick));
     router.push(`/user/bricks/${brick}`);
-    console.log(check);
   };
   const handleTabClick = (tabName) => {
     setSelectedTab(tabName);
@@ -44,7 +43,7 @@ export default function Bricks() {
           type="search"
           name="search"
           id="search"
-          autocomplete="off"
+          autoComplete="off"
           placeholder="Search"
           className="w-full  outline-none sm:w-[372px]"
         />

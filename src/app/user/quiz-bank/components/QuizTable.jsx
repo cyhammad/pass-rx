@@ -27,7 +27,7 @@ export default function QuizTable() {
               type="search"
               name="search"
               id="search"
-              autocomplete="off"
+              autoComplete="off"
               placeholder="Search"
               className="w-[280px] bg-transparent outline-none"
             />

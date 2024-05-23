@@ -17,7 +17,6 @@ export default function FlashFacts() {
   const isEditFlashCardOpen = useSelector((state) => state.editFlashCrad.value);
   const dispatch = useDispatch();
   const toggleFlash = () => {
-    console.log(isOpen);
     setIsOpen(!isOpen);
   };
 
@@ -73,7 +72,7 @@ export default function FlashFacts() {
             <input
               type="search"
               name="search"
-              autocomplete="off"
+              autoComplete="off"
               id="search"
               placeholder="Search"
               className=" outline-none md:w-[180px] lg:w-[280px]"

@@ -34,7 +34,6 @@ export default function Discipline() {
     };
   }, []);
   const toggleFlash = () => {
-    console.log(isOpen);
     setIsOpen(!isOpen);
   };
 
@@ -91,7 +90,7 @@ export default function Discipline() {
                     type="search"
                     name="search"
                     id="search"
-                    autocomplete="off"
+                    autoComplete="off"
                     placeholder="Search"
                     className="outline-none md:w-[180px] lg:w-[280px]"
                   />

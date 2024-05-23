@@ -2,7 +2,7 @@
 <g clip-path="url(#clip0_494_4907)">
 <rect y="-17" width="1145" height="1052" fill="url(#pattern0_494_4907)"/>
 </g>
-<rect width="960" height="1029" fill="url(#paint0_linear_494_4907)" fill-opacity="0.85"/>
+<rect width="960" height="1029" fill="url(#paint0_linear_494_4907)" fillOpacity="0.85"/>
 <defs>
 <pattern id="pattern0_494_4907" patternContentUnits="objectBoundingBox" width="1" height="1">
 <use xlink:href="#image0_494_4907" transform="matrix(0.000602082 0 0 0.000655308 -0.189384 0)"/>

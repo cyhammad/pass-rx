@@ -17,7 +17,6 @@ import { use, useState } from "react";
 const Sidebar = ({ user }) => {
 
   const hoverText = user ? 'text-black' : 'text-primary';
-  console.log(hoverText)
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>

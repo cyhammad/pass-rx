@@ -26,7 +26,7 @@ const NewSubscribersTable = () => {
           <input
             type="search"
             name="search"
-            autocomplete="off"
+            autoComplete="off"
             id="search"
             placeholder="Search"
             className="lg:min-w-[280px]  py-[0.55rem] focus:outline-none focus:border-white ring-transparent appearance-none focus:ring-white outline-none border border-white"

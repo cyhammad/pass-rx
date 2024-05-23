@@ -37,12 +37,9 @@ const QuizBankAddPage = () => {
     const { selectionStart, value } = target;
 
     if (event.key === "Enter") {
-      console.log("a");
       target.value = [...value]
         .map((c, i) => (i === selectionStart - 1 ? `\n${bulletWithSpace}` : c))
         .join("");
-      console.log(target.value);
-
       target.selectionStart = selectionStart + bulletWithSpace.length;
       target.selectionEnd = selectionStart + bulletWithSpace.length;
     }
@@ -130,7 +127,7 @@ const QuizBankAddPage = () => {
                 className="w-full border-none text-sm outline-none focus:border-light-border focus:outline-none focus:ring-white active:border-light-gray "
                 type="topic"
                 ref={newTopicRef}
-                autocomplete="off"
+                autoComplete="off"
                 name="topic"
                 id="topic"
                 value={newTopicInput}

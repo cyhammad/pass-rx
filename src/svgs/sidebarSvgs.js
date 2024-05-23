@@ -298,7 +298,7 @@ export const circleIcon = (
       height="37"
       rx="18.5"
       fill="black"
-      fill-opacity="0.2"
+      fillOpacity="0.2"
       stroke="white"
     />
   </svg>
