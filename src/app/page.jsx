@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 
-export default async function Rootpage({ children }) {
+export default async function Rootpage() {
   const session = await auth();
   console.log("AUTH", session);
   if (!!session) {
