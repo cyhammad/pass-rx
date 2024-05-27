@@ -1,11 +1,14 @@
-import React from "react";
-import AdminHome from "./admin/page";
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 
-export default function Rootpage({ children }) {
-  return (
-    <p>HELLO</p>
-  )
+export default async function Rootpage({ children }) {
+  const session = await auth();
+  console.log("AUTH", session);
+  if (!!session) {
+    if (session.user.role === "admin") {
+      return redirect("/admin");
+    }
+    return redirect("/user");
+  }
+  return redirect("/auth/sign-in");
 }
