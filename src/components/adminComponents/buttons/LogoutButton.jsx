@@ -6,6 +6,7 @@ const LogoutButton = () => {
   const logout = async () => {
     "use server";
     cookies().delete("token");
+    cookies().delete("role");
     await signOut();
   };
   return (

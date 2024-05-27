@@ -40,13 +40,13 @@ export const { auth, signIn, signOut } = NextAuth({
           .safeParse(credentials);
         if (parsedCredentials.success) {
           const { email, password } = parsedCredentials.data;
-          const user = await getUser(email, password);
-          console.log("USER", user);
-          if (user.success) {
-            cookies().set("token", user.token);
-            return user;
-          }
-          return null;
+          const userDB = await getUser(email, password);
+          const user = {
+            email: email,
+            role: userDB.role,
+            token: userDB.token,
+          };
+          return user;
         }
         return null;
       },
