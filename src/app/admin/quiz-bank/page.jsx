@@ -6,9 +6,7 @@ import { auth } from "@/auth";
 
 export default async function QuizBankPage() {
   const session = await auth();
-  console.log("SESSION", session);
   const quizzes = await fetchQuizBanksAdmin(session.user.accessToken);
-  console.log("quizzes", quizzes);
 
   return <QuizBank quizzes={quizzes} />;
 }

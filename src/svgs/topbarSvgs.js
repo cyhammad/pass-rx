@@ -32,8 +32,8 @@ export const profileIcon = (
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
+      fillRule="evenodd"
+      clipRule="evenodd"
       d="M6.48857 10.5096C3.58786 10.5096 1.11072 10.9482 1.11072 12.7046C1.11072 14.4611 3.57215 14.9154 6.48857 14.9154C9.38929 14.9154 11.8657 14.4761 11.8657 12.7204C11.8657 10.9646 9.405 10.5096 6.48857 10.5096Z"
       stroke="white"
       strokeWidth="1.5"
@@ -41,8 +41,8 @@ export const profileIcon = (
       strokeLinejoin="round"
     />
     <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
+      fillRule="evenodd"
+      clipRule="evenodd"
       d="M6.48854 8.00441C8.39212 8.00441 9.93497 6.46084 9.93497 4.55727C9.93497 2.6537 8.39212 1.11084 6.48854 1.11084C4.58497 1.11084 3.0414 2.6537 3.0414 4.55727C3.03497 6.45441 4.56783 7.99798 6.46426 8.00441H6.48854Z"
       stroke="white"
       strokeWidth="1.42857"

@@ -64,7 +64,7 @@ export default function BricksCard() {
         </ul>
       </div>
 
-      <button class=" mt-2 flex  items-center justify-center rounded-[10px] border border-black/35 px-4 py-[0.82rem] font-semibold ">
+      <button className=" mt-2 flex  items-center justify-center rounded-[10px] border border-black/35 px-4 py-[0.82rem] font-semibold ">
         Explore Bricks {arrow}{" "}
       </button>
     </div>
@@ -81,9 +81,9 @@ const arrow = (
     <path
       d="M6.4668 2.72003L10.8135 7.0667C11.3268 7.58003 11.3268 8.42003 10.8135 8.93336L6.4668 13.28"
       stroke="#121214"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );

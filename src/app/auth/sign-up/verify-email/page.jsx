@@ -12,12 +12,10 @@ const VerifyEmailPage = () => {
   const router = useRouter();
   const email = searchParams.get("email");
   const [error, setError] = useState("");
-  console.log("searchParams", searchParams.get("email"));
   const [otp, setOtp] = useState("");
   const handleVerify = async () => {
     const verification = await verifyEmailOTP(email, otp);
     const verificationObj = JSON.parse(verification);
-    console.log("verificationObj", verificationObj);
     if (verificationObj.status === 400) {
       setError(verificationObj.message);
     } else {

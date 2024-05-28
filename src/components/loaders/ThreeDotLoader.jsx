@@ -10,7 +10,7 @@ const ThreeDotLoader = () => {
       radius="5"
       ariaLabel="three-dots-loading"
       wrapperStyle={{}}
-      wrapperClass=""
+      wrapperclassName=""
     />
   );
 };

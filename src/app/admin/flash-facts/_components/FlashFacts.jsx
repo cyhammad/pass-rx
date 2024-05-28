@@ -123,16 +123,16 @@ const addsvg = (
     <path
       d="M8.5 12H16.5"
       stroke="#111213"
-      stroke-width="1.2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M12.5 16V8"
       stroke="#111213"
-      stroke-width="1.2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
@@ -148,9 +148,9 @@ const chevronDown = (
     <path
       d="M10.5 1.65039L6 6.15039L1.5 1.65039"
       stroke="#A1A5B7"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );

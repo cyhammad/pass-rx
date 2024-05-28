@@ -75,16 +75,16 @@ const cross = (
     <path
       d="M14.9062 24.5955L24.7444 14.7573"
       stroke="#DBDBDB"
-      stroke-width="1.2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M24.7444 24.5952L14.9062 14.7571"
       stroke="#DBDBDB"
-      stroke-width="1.2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );

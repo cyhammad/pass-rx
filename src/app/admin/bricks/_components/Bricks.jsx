@@ -99,23 +99,23 @@ const addSquare = (
       d="M11.3125 27.7913H18.6875C24.8333 27.7913 27.2917 25.333 27.2917 19.1872V11.8122C27.2917 5.66634 24.8333 3.20801 18.6875 3.20801H11.3125C5.16668 3.20801 2.70834 5.66634 2.70834 11.8122V19.1872C2.70834 25.333 5.16668 27.7913 11.3125 27.7913Z"
       fill="white"
       stroke="#2396F3"
-      stroke-width="1.4"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M10.0833 15.5H19.9167"
       stroke="#2396F3"
-      stroke-width="1.4"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M15 20.4163V10.583"
       stroke="#2396F3"
-      stroke-width="1.4"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );

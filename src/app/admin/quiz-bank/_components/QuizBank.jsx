@@ -103,16 +103,16 @@ const search = (
     <path
       d="M10.4354 19.0568C15.1966 19.0568 19.0564 15.1971 19.0564 10.4359C19.0564 5.67466 15.1966 1.81494 10.4354 1.81494C5.67423 1.81494 1.81451 5.67466 1.81451 10.4359C1.81451 15.1971 5.67423 19.0568 10.4354 19.0568Z"
       stroke="#9F9F9F"
-      stroke-width="1.51656"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.51656"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M19.9639 19.9643L18.1489 18.1494"
       stroke="#9F9F9F"
-      stroke-width="1.51656"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="1.51656"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );

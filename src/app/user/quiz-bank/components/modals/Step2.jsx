@@ -49,7 +49,7 @@ export default function Step2({ setStep }) {
       </div>
       <button
           onClick={() => setStep("step3")}
-          class="  flex  items-center justify-center mb-7 mt-8 sm:w-[335px]  w-[250px] self-center  rounded-[10px] bg-primary px-4 py-5 text-sm font-semibold text-white "
+          className="  flex  items-center justify-center mb-7 mt-8 sm:w-[335px]  w-[250px] self-center  rounded-[10px] bg-primary px-4 py-5 text-sm font-semibold text-white "
         >
           Next Step {arrow}{" "}
         </button>
@@ -67,8 +67,8 @@ const arrow = (
     <path
       d="M7.5 15.6536L12.5 10.6536L7.5 5.65356"
       stroke="white"
-      stroke-width="2"
-      stroke-linecap="round"
+      strokeWidth="2"
+      strokeLinecap="round"
     />
   </svg>
 );

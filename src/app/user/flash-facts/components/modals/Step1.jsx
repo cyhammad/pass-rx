@@ -35,7 +35,7 @@ export default function Step1({ setStep }) {
             <div className="flex items-center  gap-2 font-medium text-text-gray-2">
               <input
                 type="radio"
-                class="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
+                className="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
                 name="radio"
               />
               <p className="text-xs sm:text-base">All</p>
@@ -43,7 +43,7 @@ export default function Step1({ setStep }) {
             <div className="flex items-center gap-2   font-medium text-text-gray-2">
               <input
                 type="radio"
-                class="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
+                className="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
                 name="radio"
               />
               <p className="text-xs sm:text-base">Rated</p>
@@ -51,7 +51,7 @@ export default function Step1({ setStep }) {
             <div className="flex items-center gap-2 font-medium text-text-gray-2">
               <input
                 type="radio"
-                class="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
+                className="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
                 name="radio"
               />
               <p className="text-xs sm:text-base">Unrated</p>
@@ -81,7 +81,7 @@ export default function Step1({ setStep }) {
             <div className="flex items-center  gap-2 font-medium text-text-gray-2">
               <input
                 type="radio"
-                class="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
+                className="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
                 name="radio"
               />
               <p className="text-xs sm:text-base">All</p>
@@ -89,7 +89,7 @@ export default function Step1({ setStep }) {
             <div className="flex items-center gap-2   font-medium text-text-gray-2">
               <input
                 type="radio"
-                class="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
+                className="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
                 name="radio"
               />
               <p className="text-xs sm:text-base">Marked Only</p>
@@ -97,7 +97,7 @@ export default function Step1({ setStep }) {
             <div className="flex items-center gap-2 font-medium text-text-gray-2">
               <input
                 type="radio"
-                class="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
+                className="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
                 name="radio"
               />
               <p className="text-xs sm:text-base">Unmarked Only</p>
@@ -106,7 +106,7 @@ export default function Step1({ setStep }) {
         </div>
         <button
           onClick={() => setStep("step2")}
-          class=" mb-7 mt-8 flex  items-center justify-center  rounded-[10px] bg-primary px-4 py-5 text-sm font-semibold text-white "
+          className=" mb-7 mt-8 flex  items-center justify-center  rounded-[10px] bg-primary px-4 py-5 text-sm font-semibold text-white "
         >
           Next Step {arrow}
         </button>
@@ -125,8 +125,8 @@ const arrow = (
     <path
       d="M7.5 15.6536L12.5 10.6536L7.5 5.65356"
       stroke="white"
-      stroke-width="2"
-      stroke-linecap="round"
+      strokeWidth="2"
+      strokeLinecap="round"
     />
   </svg>
 );

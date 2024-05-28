@@ -24,7 +24,7 @@ export default function CheckBox({ name }) {
           <path
             d="M1.2793 3.49842L4.65679 6.87591L10.8489 0.683838"
             stroke="white"
-            stroke-width="1.12583"
+            strokeWidth="1.12583"
           />
         </svg>
       )}

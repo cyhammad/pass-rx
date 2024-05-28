@@ -42,7 +42,7 @@ const FlashCard = ({ toggleFlash ,title,buttonTitle}) => {
             <DisciplineDropdowns/>
             <label
               for="floating_outlined"
-              class="dark:bg-gray-900 absolute start-1  top-2 z-10 origin-[0] -translate-y-4 scale-75 transform bg-white px-2 text-sm text-black/40 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:px-2 peer-focus:text-blue-600  peer-focus:dark:text-blue-500"
+              className="dark:bg-gray-900 absolute start-1  top-2 z-10 origin-[0] -translate-y-4 scale-75 transform bg-white px-2 text-sm text-black/40 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:px-2 peer-focus:text-blue-600  peer-focus:dark:text-blue-500"
             >
               Discipline
             </label>
@@ -56,7 +56,7 @@ const FlashCard = ({ toggleFlash ,title,buttonTitle}) => {
             ></textarea>
             <label
               for="floating_outlined"
-              class="dark:bg-gray-900 absolute start-1 top-2 z-10 origin-[0] -translate-y-4 scale-75 transform bg-white px-2 text-sm text-black/40 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500"
+              className="dark:bg-gray-900 absolute start-1 top-2 z-10 origin-[0] -translate-y-4 scale-75 transform bg-white px-2 text-sm text-black/40 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500"
             >
               Question
             </label>
@@ -72,7 +72,7 @@ const FlashCard = ({ toggleFlash ,title,buttonTitle}) => {
             ></textarea>
             <label
               for="floating_outlined"
-              class="dark:bg-gray-900 absolute start-1  top-2 z-10 origin-[0] -translate-y-4 scale-75 transform bg-white px-2 text-sm text-black/40 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:px-2 peer-focus:text-blue-600  peer-focus:dark:text-blue-500"
+              className="dark:bg-gray-900 absolute start-1  top-2 z-10 origin-[0] -translate-y-4 scale-75 transform bg-white px-2 text-sm text-black/40 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:px-2 peer-focus:text-blue-600  peer-focus:dark:text-blue-500"
             >
               Answer
             </label>
@@ -93,8 +93,8 @@ const cross = (
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
+      fillRule="evenodd"
+      clipRule="evenodd"
       d="M7.9962 8.93906L11.7657 12.7088C11.8914 12.8302 12.0597 12.8974 12.2344 12.8959C12.4091 12.8944 12.5763 12.8243 12.6998 12.7007C12.8234 12.5772 12.8934 12.41 12.895 12.2353C12.8965 12.0606 12.8293 11.8922 12.7079 11.7666L8.93842 7.99678L12.7079 4.227C12.8293 4.10132 12.8965 3.93298 12.895 3.75826C12.8934 3.58353 12.8234 3.41639 12.6998 3.29284C12.5763 3.16928 12.4091 3.0992 12.2344 3.09768C12.0597 3.09616 11.8914 3.16333 11.7657 3.28472L7.9962 7.0545L4.22669 3.28472C4.10045 3.16633 3.93311 3.10171 3.76007 3.10452C3.58703 3.10733 3.42188 3.17735 3.29955 3.29978C3.17722 3.4222 3.10731 3.58742 3.10463 3.76047C3.10194 3.93352 3.16668 4.10083 3.28515 4.227L7.05399 7.99678L3.28448 11.7666C3.22084 11.828 3.17008 11.9016 3.13515 11.9829C3.10023 12.0642 3.08185 12.1516 3.08108 12.2401C3.08031 12.3286 3.09717 12.4163 3.13067 12.4982C3.16418 12.5801 3.21366 12.6545 3.27622 12.7171C3.33879 12.7797 3.41319 12.8291 3.49508 12.8627C3.57697 12.8962 3.66471 12.913 3.75319 12.9123C3.84167 12.9115 3.9291 12.8931 4.0104 12.8582C4.0917 12.8233 4.16522 12.7725 4.22669 12.7088L7.9962 8.93906Z"
       fill="#121212"
     />
@@ -108,8 +108,8 @@ const alert = (
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
+      fillRule="evenodd"
+      clipRule="evenodd"
       d="M166.38 120.565L109.814 26.7549C105.165 19.4831 97.1304 15.083 88.4999 15.083C79.8694 15.083 71.8345 19.4831 67.1861 26.7549L10.6199 120.565C6.55291 127.344 6.41234 135.779 10.2511 142.69C14.6907 150.472 22.9747 155.262 31.9336 155.227H145.066C153.964 155.322 162.234 150.653 166.749 142.985C170.702 135.998 170.561 127.418 166.38 120.565ZM88.4999 125.727C84.4268 125.727 81.1249 122.425 81.1249 118.352C81.1249 114.279 84.4268 110.977 88.4999 110.977C92.573 110.977 95.8749 114.279 95.8749 118.352C95.8749 122.425 92.573 125.727 88.4999 125.727ZM88.4999 103.602C92.573 103.602 95.8749 100.3 95.8749 96.2274V66.7274C95.8749 62.6543 92.573 59.3524 88.4999 59.3524C84.4268 59.3524 81.1249 62.6543 81.1249 66.7274V96.2274C81.1249 100.3 84.4268 103.602 88.4999 103.602Z"
       fill="#FF5630"
     />

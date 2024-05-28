@@ -100,7 +100,7 @@ export default function QuizPerformanceCard() {
           height={321}
         />
       </div>
-      <button class=" mx-6 rounded-[10px]  bg-primary px-4 py-4 text-sm font-semibold text-white ">
+      <button className=" mx-6 rounded-[10px]  bg-primary px-4 py-4 text-sm font-semibold text-white ">
         Create New Test{" "}
       </button>
     </div>

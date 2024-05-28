@@ -11,7 +11,7 @@ export default function SubscriptionCard() {
         <p className="px-1.5 text-sm font-medium text-white">
           4 Days Remaining
         </p>
-        <button class=" rounded-[10px]  bg-white px-4  py-4  text-sm font-semibold ">
+        <button className=" rounded-[10px]  bg-white px-4  py-4  text-sm font-semibold ">
           View Subscription Plans
         </button>
       </div>
