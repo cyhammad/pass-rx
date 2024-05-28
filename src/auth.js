@@ -4,7 +4,7 @@ import Credentials from "next-auth/providers/credentials";
 import { z } from "zod";
 import { cookies } from "next/headers";
 
-async function getUser(email, password) {
+export async function getUser(email, password) {
   try {
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
