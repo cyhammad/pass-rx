@@ -1,4 +1,3 @@
-import { cookies } from "next/headers";
 import { getUserData } from "./app/lib/data";
 
 export const authConfig = {
