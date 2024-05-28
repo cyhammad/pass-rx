@@ -1,6 +1,7 @@
 import Topbar from "@/components/navbars/Topbar";
 import Sidebar from "@/components/navbars/Sidebar";
 import { auth } from "@/auth";
+import { redirect } from "next/navigation";
 
 export const metadata = {
   title: "Admin Dashboard | PASS RX",
@@ -8,8 +9,12 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  const auth1 = await auth();
-  console.log("AUTH", auth1 ? auth1: "NO USER")
+  const session = await auth();
+
+  console.log("SESSION", session)
+  if (session.user.role !== "admin") {
+    return redirect("/user")
+  }
   return (
     <>
       <Topbar />

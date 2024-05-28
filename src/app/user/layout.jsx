@@ -1,8 +1,14 @@
+import { auth } from "@/auth";
 import Sidebar from "@/components/navbars/Sidebar";
 import Topbar from "@/components/navbars/Topbar";
+import { redirect } from "next/navigation";
 import React from "react";
 
-export default function layout({ children }) {
+export default async function layout({ children }) {
+  const session = await auth();
+  if (session.user.role && session.user.role !== "user") {
+    return redirect("/admin")
+  }
   return (
     <>
       <Topbar />

@@ -6,7 +6,7 @@ import Card from "./cards/Card";
 import { searchIcon } from "@/svgs/topbarSvgs";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function QuizBank() {
+export default function QuizBank({quizzes}) {
   const cardData = Array.from({ length: 12 }, (_, index) => index + 1);
   const [showSearchInput, setShowSearchInput] = useState(false);
   const searchRef = useRef(null);
@@ -73,11 +73,11 @@ export default function QuizBank() {
         </div>
 
         <div className="mt-4 grid grid-cols-1  gap-x-3 gap-y-3 sm:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4">
-          {cardData.map((number) => (
-            <div key={number}>
+          {quizzes.map((quiz) => (
+            <div key={quiz._id}>
               <Card
-                text1={"Quizbank Name"}
-                number={"20 Discipline"}
+                text1={quiz.title}
+                number={quiz.disciplines.length+" Discipline"}
                 questions={"(15,462 Questions)"}
                 lastUpdated={"Last Updated on 12 Jan, 2023"}
               />
