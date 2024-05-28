@@ -67,7 +67,7 @@ function LoginButton() {
       className="h-[60px] rounded-md bg-primary py-3 text-white"
       aria-disabled={pending}
     >
-      Login
+      {pending ? "Loading..." : "Login"}
     </button>
   );
 }

@@ -34,9 +34,11 @@ export const authConfig = {
     },
     async jwt({ token, user }) {
       // console.log("JWT CALLBACK");
+      // console.log("TOKEN", token);
+      // console.log("USER", user);
       if (user) {
         const userData = await getUserData(user.token);
-        token = { ...token, ...userData.user };
+        token = { ...token, ...userData.user, accessToken: user.token};
         user = { ...user, ...userData.user };
       }
       return token;

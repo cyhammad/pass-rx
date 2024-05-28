@@ -1,9 +1,18 @@
 import { unstable_noStore as noStore } from "next/cache";
 
-export async function fetchQuizBanksAdmin() {
+export async function fetchQuizBanksAdmin(token) {
   noStore();
-  const quizzes = await fetch(`${process.env.BASE_URL}/admin/quizzes`);
+  const headers = new Headers();
+  headers.append("Authorization", `Bearer ${token}`);
+  headers.append("Cookie", "token=" + token);
+  const requestOptions = {
+    method: "GET",
+    headers: headers,
+    redirect: "follow",
+  };
+  const quizzes = await fetch(`${process.env.BASE_URL}/admin/quizzes`, requestOptions);
   console.log("QUIZZES:", quizzes);
+  return quizzes.json();
 }
 
 export async function getUserData(token) {

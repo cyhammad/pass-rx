@@ -6,7 +6,7 @@ import React from "react";
 
 export default async function layout({ children }) {
   const session = await auth();
-  if (session.user.role !== "user") {
+  if (session.user.role && session.user.role !== "user") {
     return redirect("/admin")
   }
   return (

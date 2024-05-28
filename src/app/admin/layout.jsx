@@ -11,7 +11,7 @@ export const metadata = {
 export default async function RootLayout({ children }) {
   const session = await auth();
 
-  console.log("AUTH", session)
+  console.log("SESSION", session)
   if (session.user.role !== "admin") {
     return redirect("/user")
   }
