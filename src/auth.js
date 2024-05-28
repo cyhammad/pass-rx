@@ -2,7 +2,6 @@ import NextAuth from "next-auth";
 import { authConfig } from "./auth.config";
 import Credentials from "next-auth/providers/credentials";
 import { z } from "zod";
-import { cookies } from "next/headers";
 
 export async function getUser(email, password) {
   try {
@@ -41,13 +40,17 @@ export const { auth, signIn, signOut } = NextAuth({
         if (parsedCredentials.success) {
           const { email, password } = parsedCredentials.data;
           const userDB = await getUser(email, password);
+          console.log("USER DB", userDB);
+          if (!userDB.success){
+            return null;
+          }
           const user = {
             email: email,
             role: userDB.role,
             token: userDB.token,
           };
           // const user = {name: "Hammad", email: "example@gmail.com", role: "admin"}
-          // console.log("USER ehe", user);
+          console.log("USER ehe", user);
           return user;
         }
         return null;
