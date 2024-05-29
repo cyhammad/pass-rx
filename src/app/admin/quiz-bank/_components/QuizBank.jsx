@@ -7,7 +7,6 @@ import { searchIcon } from "@/svgs/topbarSvgs";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function QuizBank({quizzes}) {
-  const cardData = Array.from({ length: 12 }, (_, index) => index + 1);
   const [showSearchInput, setShowSearchInput] = useState(false);
   const searchRef = useRef(null);
 
@@ -34,7 +33,7 @@ export default function QuizBank({quizzes}) {
         </h1>
         <AddQuizCard />
         <div className="mt-9 flex h-8 items-center justify-between">
-          <p className="text-text-gray">Total Quiz banks (125)</p>
+          <p className="text-text-gray">Total Quiz banks ({quizzes.length})</p>
           <div className="flex">
             <AnimatePresence>
               {showSearchInput && (

@@ -11,15 +11,24 @@ import DisciplineCard from "./DisciplineCard";
 export default function Discipline({ disciplines, token, revalidateData }) {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [showSearchInput, setShowSearchInput] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
   const searchRef = useRef(null);
+
+  const filterDisciplines = (disciplines, searchValue) => {
+    return disciplines.filter((discipline) =>
+      discipline.name.toLowerCase().includes(searchValue.toLowerCase()),
+    );
+  };
 
   const handleSearchButtonClick = () => {
     setShowSearchInput(!showSearchInput);
+    setSearchValue("");
   };
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (searchRef.current && !searchRef.current.contains(event.target)) {
         setShowSearchInput(false);
+        setSearchValue("");
       }
     };
 
@@ -70,6 +79,8 @@ export default function Discipline({ disciplines, token, revalidateData }) {
                     id="search"
                     autoComplete="off"
                     placeholder="Search"
+                    value={searchValue}
+                    onChange={(e) => setSearchValue(e.target.value)}
                     className="outline-none md:w-[180px] lg:w-[280px]"
                   />
                 </motion.div>
@@ -88,17 +99,25 @@ export default function Discipline({ disciplines, token, revalidateData }) {
             )}
           </div>
         </div>
-        <div className="mt-4 grid grid-cols-1  gap-x-3 gap-y-3 sm:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4">
-          {disciplines.map((discipline) => (
-            <div key={discipline._id}>
-              <DisciplineCard
-                discipline={discipline}
-                token={token}
-                revalidateData={revalidateData}
-              />
-            </div>
-          ))}
-        </div>
+        {filterDisciplines(disciplines, searchValue).length > 0 ? (
+          <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {filterDisciplines(disciplines, searchValue).map((discipline) => (
+              <div key={discipline._id}>
+                <DisciplineCard
+                  discipline={discipline}
+                  token={token}
+                  revalidateData={revalidateData}
+                />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="flex h-40 w-full items-center justify-center">
+            <p className="text-text-gray">
+              No discipline found with search term "{searchValue}"
+            </p>
+          </div>
+        )}
         <div className="my-5 flex justify-center">
           <ThreeDotLoader />
         </div>
