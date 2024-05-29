@@ -1,4 +1,4 @@
-import { deleteDiscipline } from "@/app/lib/actions";
+import { deleteDiscipline } from "@/app/lib/actions/disciplineActions";
 import { motion } from "framer-motion";
 import { useState } from "react";
 

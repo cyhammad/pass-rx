@@ -1,12 +1,10 @@
-import React from 'react'
-
-
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
-const CardDropDown = ({name}) => {
+const QuizCardDropdown = ({ quizId, setIsDeleteModalOpen }) => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const router = useRouter();
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -26,12 +24,13 @@ const CardDropDown = ({name}) => {
     setIsOpen(!isOpen);
   };
   const handleDeleteClick = () => {
-    toggleMenu()
+    setIsDeleteModalOpen(true); // Step 5: Set isDeleteModalOpen to true on delete button click
+    toggleMenu();
   };
 
   const handleEditClick = () => {
-    toggleMenu()
-
+    router.push(`/admin/quiz-bank/edit/${quizId}`); // Step 3: Redirect to edit page on edit button click
+    toggleMenu();
   };
   return (
     <div className="relative" ref={dropdownRef}>
@@ -64,7 +63,7 @@ const CardDropDown = ({name}) => {
             >
               <div className="flex items-center gap-x-2">
                 {cross}
-                <span className="text-xs">Delete {name}</span>
+                <span className="text-xs">Delete Quizbank</span>
               </div>
             </button>
           </div>
@@ -74,7 +73,7 @@ const CardDropDown = ({name}) => {
   );
 };
 
-export default CardDropDown;
+export default QuizCardDropdown;
 
 const option = (
   <svg

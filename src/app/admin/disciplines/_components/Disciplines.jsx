@@ -2,13 +2,13 @@
 
 import { useState, useRef, useEffect } from "react";
 import ThreeDotLoader from "@/components/loaders/ThreeDotLoader";
-import AddDisciplineCard from "./AddDisciplineCard";
+import AddDisciplineCard from "./cards/AddDisciplineCard";
 import { searchIcon } from "@/svgs/topbarSvgs";
 import { motion, AnimatePresence } from "framer-motion";
-import AddDisciplineModal from "./AddDisciplineModal";
-import DisciplineCard from "./DisciplineCard";
+import AddDisciplineModal from "./modals/AddDisciplineModal";
+import DisciplineCard from "./cards/DisciplineCard";
 
-export default function Discipline({ disciplines, token, revalidateData }) {
+export default function Disciplines({ disciplines, token, revalidateData }) {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [showSearchInput, setShowSearchInput] = useState(false);
   const [searchValue, setSearchValue] = useState("");

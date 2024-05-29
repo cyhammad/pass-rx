@@ -1,22 +1,37 @@
-import { addDiscipline } from "@/app/lib/actions";
+"use client";
+
+import { updateDiscipline } from "@/app/lib/actions/disciplineActions";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-export default function AddDisciplineModal({ toggleModal, token, revalidateData }) {
-  const [disciplineName, setDisciplineName] = useState("");
+export default function EditDisciplineModal({
+  setIsOpen,
+  discipline,
+  token,
+  revalidateData,
+}) {
+  const [newDisciplineName, setNewDisciplineName] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   const closeModal = () => {
-    toggleModal();
+    setIsOpen(false);
   };
-  const handleCreateDiscipline = async () => {
-    if (disciplineName === "") {
+  const handleUpdateDiscipline = async () => {
+    if (newDisciplineName === "") {
       setError("Discipline Name is required");
       return;
     }
-    const res = await addDiscipline(token, disciplineName);
+    if (newDisciplineName === discipline.name) {
+      setError("Discipline name is the same");
+      return;
+    }
+    const res = await updateDiscipline(
+      token,
+      newDisciplineName,
+      discipline._id,
+    );
     const resObj = JSON.parse(res);
-    if (resObj.message === "Discipline created successfully") {
+    if (resObj.message === "Discipline updated successfully") {
       revalidateData();
       setSuccess(true);
       setTimeout(() => {
@@ -35,10 +50,10 @@ export default function AddDisciplineModal({ toggleModal, token, revalidateData 
     }, 5000);
   }
 
-  //   on pressing enter key invoke addDiscipline function
+  //   on pressing enter key invoke updateDiscipline function
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
-      handleCreateDiscipline();
+      handleUpdateDiscipline();
     }
   };
 
@@ -56,7 +71,7 @@ export default function AddDisciplineModal({ toggleModal, token, revalidateData 
       ></div>
       <div className="z-50 flex w-[505px] flex-col items-center justify-between rounded-lg bg-white shadow-md">
         <div className="flex w-full items-center justify-between border-b border-black/10 px-6 pt-2 md:gap-56 md:py-3">
-          <p className="text-lg font-semibold ">Add New Discipline</p>
+          <p className="text-lg font-semibold ">Edit Discipline</p>
           <span onClick={() => closeModal()} className="cursor-pointer">
             {cross}
           </span>
@@ -68,10 +83,10 @@ export default function AddDisciplineModal({ toggleModal, token, revalidateData 
                 type="text"
                 name="disciplineName"
                 id="disciplineName"
-                placeholder="Discipline Name"
+                placeholder={"Old: " + discipline.name}
                 className="w-full border-none text-sm outline-none focus:border-none focus:outline-none focus:ring-transparent"
-                value={disciplineName}
-                onChange={(e) => setDisciplineName(e.target.value)}
+                value={newDisciplineName}
+                onChange={(e) => setNewDisciplineName(e.target.value)}
                 onKeyDown={(e) => handleKeyPress(e)}
               />
             </div>
@@ -91,9 +106,9 @@ export default function AddDisciplineModal({ toggleModal, token, revalidateData 
             </button>
             <button
               className="w-1/2 rounded-lg bg-primary py-2 font-medium text-white focus:outline-none md:py-4"
-              onClick={() => handleCreateDiscipline()}
+              onClick={() => handleUpdateDiscipline()}
             >
-              Add
+              Update
             </button>
           </div>
         </div>

@@ -1,37 +1,22 @@
-"use client";
-
-import { updateDiscipline } from "@/app/lib/actions";
+import { addDiscipline } from "@/app/lib/actions/disciplineActions";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-export default function EditDisciplineModal({
-  setIsOpen,
-  discipline,
-  token,
-  revalidateData,
-}) {
-  const [newDisciplineName, setNewDisciplineName] = useState("");
+export default function AddDisciplineModal({ toggleModal, token, revalidateData }) {
+  const [disciplineName, setDisciplineName] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   const closeModal = () => {
-    setIsOpen(false);
+    toggleModal();
   };
-  const handleUpdateDiscipline = async () => {
-    if (newDisciplineName === "") {
+  const handleCreateDiscipline = async () => {
+    if (disciplineName === "") {
       setError("Discipline Name is required");
       return;
     }
-    if (newDisciplineName === discipline.name) {
-      setError("Discipline name is the same");
-      return;
-    }
-    const res = await updateDiscipline(
-      token,
-      newDisciplineName,
-      discipline._id,
-    );
+    const res = await addDiscipline(token, disciplineName);
     const resObj = JSON.parse(res);
-    if (resObj.message === "Discipline updated successfully") {
+    if (resObj.message === "Discipline created successfully") {
       revalidateData();
       setSuccess(true);
       setTimeout(() => {
@@ -50,10 +35,10 @@ export default function EditDisciplineModal({
     }, 5000);
   }
 
-  //   on pressing enter key invoke updateDiscipline function
+  //   on pressing enter key invoke addDiscipline function
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
-      handleUpdateDiscipline();
+      handleCreateDiscipline();
     }
   };
 
@@ -71,7 +56,7 @@ export default function EditDisciplineModal({
       ></div>
       <div className="z-50 flex w-[505px] flex-col items-center justify-between rounded-lg bg-white shadow-md">
         <div className="flex w-full items-center justify-between border-b border-black/10 px-6 pt-2 md:gap-56 md:py-3">
-          <p className="text-lg font-semibold ">Edit Discipline</p>
+          <p className="text-lg font-semibold ">Add New Discipline</p>
           <span onClick={() => closeModal()} className="cursor-pointer">
             {cross}
           </span>
@@ -83,10 +68,10 @@ export default function EditDisciplineModal({
                 type="text"
                 name="disciplineName"
                 id="disciplineName"
-                placeholder={"Old: " + discipline.name}
+                placeholder="Discipline Name"
                 className="w-full border-none text-sm outline-none focus:border-none focus:outline-none focus:ring-transparent"
-                value={newDisciplineName}
-                onChange={(e) => setNewDisciplineName(e.target.value)}
+                value={disciplineName}
+                onChange={(e) => setDisciplineName(e.target.value)}
                 onKeyDown={(e) => handleKeyPress(e)}
               />
             </div>
@@ -106,9 +91,9 @@ export default function EditDisciplineModal({
             </button>
             <button
               className="w-1/2 rounded-lg bg-primary py-2 font-medium text-white focus:outline-none md:py-4"
-              onClick={() => handleUpdateDiscipline()}
+              onClick={() => handleCreateDiscipline()}
             >
-              Update
+              Add
             </button>
           </div>
         </div>

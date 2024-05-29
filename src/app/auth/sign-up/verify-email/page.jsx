@@ -1,6 +1,6 @@
 "use client";
 
-import { verifyEmailOTP } from "@/app/lib/actions";
+import { verifyEmailOTP } from "@/app/lib/actions/authActions";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect, useRouter, useSearchParams } from "next/navigation";

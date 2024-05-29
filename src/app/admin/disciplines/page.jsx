@@ -1,7 +1,7 @@
-import Discipline from "./_components/Discipline";
 import { fetchDisciplinesAdmin } from "@/app/lib/data";
 import { auth } from "@/auth";
 import { revalidatePath } from "next/cache";
+import Disciplines from "./_components/Disciplines";
 
 export default async function DisciplinePage() {
   const session = await auth();
@@ -11,7 +11,7 @@ export default async function DisciplinePage() {
     revalidatePath("/admin/disciplines");
   };
   return (
-    <Discipline
+    <Disciplines
       disciplines={disciplines}
       token={session.user.accessToken}
       revalidateData={revalidateData}

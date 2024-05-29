@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import DeleteDisciplineModal from "./DeleteDisciplineModal";
-import DisciplineCardDropdown from "./DisciplineCardDropdown";
+import DeleteDisciplineModal from "../modals/DeleteDisciplineModal";
+import DisciplineCardDropdown from "../dropdowns/DisciplineCardDropdown";
 import { AnimatePresence } from "framer-motion";
-import EditDisciplineModal from "./EditDisciplineModal";
+import EditDisciplineModal from "../modals/EditDisciplineModal";
 
 export default function DisciplineCard({ discipline, token, revalidateData }) {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);

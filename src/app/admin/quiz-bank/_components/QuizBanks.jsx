@@ -2,21 +2,30 @@
 import { useState, useRef, useEffect } from "react";
 import ThreeDotLoader from "@/components/loaders/ThreeDotLoader";
 import AddQuizCard from "./cards/AddQuizCard";
-import Card from "./cards/Card";
 import { searchIcon } from "@/svgs/topbarSvgs";
 import { motion, AnimatePresence } from "framer-motion";
+import QuizBankCard from "./cards/QuizBankCard";
 
-export default function QuizBank({quizzes}) {
+export default function QuizBanks({ quizzes, token, revalidateData }) {
   const [showSearchInput, setShowSearchInput] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
   const searchRef = useRef(null);
+
+  const filterQuizzes = (quizzes, searchValue) => {
+    return quizzes.filter((quiz) =>
+      quiz.title.toLowerCase().includes(searchValue.toLowerCase()),
+    );
+  };
 
   const handleSearchButtonClick = () => {
     setShowSearchInput(!showSearchInput);
+    setSearchValue("");
   };
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (searchRef.current && !searchRef.current.contains(event.target)) {
         setShowSearchInput(false);
+        setSearchValue("");
       }
     };
 
@@ -43,14 +52,16 @@ export default function QuizBank({quizzes}) {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="flex items-center  bg-white justify-center gap-x-2 rounded-lg border border-border-color px-4 py-1 shadow-[0px_2px_12px_0px_#C9C9C938] md:flex"
+                  className="flex items-center justify-center gap-x-2 rounded-lg border border-border-color bg-white px-4 py-1 shadow-[0px_2px_12px_0px_#C9C9C938] md:flex"
                 >
                   <button>{searchIcon}</button>
                   <input
                     type="search"
                     autoComplete="off"
-                    name="search"
-                    id="search"
+                    name="searchquizbanks"
+                    id="searchquizbanks"
+                    value={searchValue}
+                    onChange={(e) => setSearchValue(e.target.value)}
                     placeholder="Search"
                     className=" outline-none md:w-[180px] lg:w-[280px]"
                   />
@@ -70,19 +81,22 @@ export default function QuizBank({quizzes}) {
             )}
           </div>
         </div>
+        {filterQuizzes(quizzes, searchValue).length === 0 ? (
+          <p className="mt-5 text-center text-text-gray">No Quiz Bank found</p>
+        ) : (
+          <div className="mt-4 grid grid-cols-1  gap-x-3 gap-y-3 sm:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4">
+            {filterQuizzes(quizzes, searchValue).map((quiz) => (
+              <div key={quiz._id}>
+                <QuizBankCard
+                  quiz={quiz}
+                  token={token}
+                  revalidateData={revalidateData}
+                />
+              </div>
+            ))}
+          </div>
+        )}
 
-        <div className="mt-4 grid grid-cols-1  gap-x-3 gap-y-3 sm:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4">
-          {quizzes.map((quiz) => (
-            <div key={quiz._id}>
-              <Card
-                text1={quiz.title}
-                number={quiz.disciplines.length+" Discipline"}
-                questions={"(15,462 Questions)"}
-                lastUpdated={"Last Updated on 12 Jan, 2023"}
-              />
-            </div>
-          ))}
-        </div>
         <div className="my-5 flex justify-center">
           <ThreeDotLoader />
         </div>

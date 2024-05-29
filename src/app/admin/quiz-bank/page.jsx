@@ -1,9 +1,7 @@
-import FlashFacts from "@/app/admin/flash-facts/_components/FlashFacts";
-
-import QuizBank from "./_components/QuizBank";
 import { fetchQuizBanksAdmin } from "@/app/lib/data";
 import { auth } from "@/auth";
 import { revalidatePath } from "next/cache";
+import QuizBanks from "./_components/QuizBanks";
 
 export default async function QuizBankPage() {
   const session = await auth();
@@ -13,7 +11,7 @@ export default async function QuizBankPage() {
     revalidatePath("/admin/quiz-bank");
   };
   return (
-    <QuizBank
+    <QuizBanks
       quizzes={quizzes}
       token={session.user.accessToken}
       revalidateData={revalidateData}

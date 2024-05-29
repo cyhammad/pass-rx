@@ -1,9 +1,9 @@
 "use client";
 
+import { authenticate } from "@/app/lib/actions/authActions";
 import Image from "next/image";
 import { useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
-import { authenticate } from "@/app/lib/actions";
 
 const SignInForm = () => {
   const [showPassword, setShowPassword] = useState(false);
