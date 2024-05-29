@@ -1,8 +1,20 @@
-import FlashFacts from '@/app/admin/flash-facts/_components/FlashFacts'
-import React from 'react'
-import Discipline from './_components/Discipline'
-export default function DisciplinePage() {
+import Discipline from "./_components/Discipline";
+import { fetchDisciplinesAdmin } from "@/app/lib/data";
+import { auth } from "@/auth";
+import { revalidatePath } from "next/cache";
+
+export default async function DisciplinePage() {
+  const session = await auth();
+  const disciplines = await fetchDisciplinesAdmin(session.user.accessToken);
+  const revalidateData = async () => {
+    "use server";
+    revalidatePath("/admin/disciplines");
+  };
   return (
-    <Discipline/>
-  )
+    <Discipline
+      disciplines={disciplines}
+      token={session.user.accessToken}
+      revalidateData={revalidateData}
+    />
+  );
 }

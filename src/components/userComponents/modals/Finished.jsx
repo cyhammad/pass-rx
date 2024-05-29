@@ -1,4 +1,4 @@
-import React from "react";
+
 import { useDispatch } from "react-redux";
 import { toggle } from "@/lib/features/deleteModal/deleteModalSlice";
 import { motion, AnimatePresence } from "framer-motion";

@@ -48,8 +48,6 @@ export const { auth, signIn, signOut } = NextAuth({
             role: userDB.role,
             token: userDB.token,
           };
-          // const user = {name: "Hammad", email: "example@gmail.com", role: "admin"}
-          console.log("USER ehe", user);
           return user;
         }
         return null;

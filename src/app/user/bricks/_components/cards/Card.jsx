@@ -1,4 +1,4 @@
-import React from "react";
+
 import Image from "next/image";
 import CardDropDown from "../dropdowns/CardDropDown"; // Assuming this component is correctly implemented
 

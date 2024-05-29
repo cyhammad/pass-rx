@@ -1,5 +1,5 @@
 import { ticbox } from "@/svgs/userDasboard";
-import React from "react";
+
 import Card1Graph from "../graphs/Card1Graph";
 export default function Card1() {
   return (

@@ -1,4 +1,4 @@
-import React from "react";
+
 import CardDropDown from "../dropdowns/CardDropDown";
 
 export default function Card({ lastUpdated, text1, number, questions }) {

@@ -1,4 +1,4 @@
-import React from "react";
+
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { cross } from "@/svgs/commonSvgs";
@@ -107,7 +107,7 @@ const pencil = (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <g clip-path="url(#clip0_481_6415)">
+    <g clipPath="url(#clip0_481_6415)">
       <path
         d="M7.41065 2.51562L0.808079 9.11867C0.774861 9.15198 0.750876 9.19405 0.739455 9.23926L0.00762279 12.1767C-0.0142684 12.2651 0.0117155 12.3591 0.0762469 12.4237C0.125074 12.4725 0.191604 12.4995 0.259657 12.4995C0.280501 12.4995 0.301821 12.497 0.32257 12.4917L3.25999 11.7598C3.30577 11.7484 3.34736 11.7245 3.38058 11.6913L9.98372 5.0887L7.41065 2.51562Z"
         fill="#121212"

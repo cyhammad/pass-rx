@@ -1,6 +1,6 @@
 import { searchIcon } from "@/svgs/topbarSvgs";
 import Image from "next/image";
-import React from "react";
+
 import ThreeDotLoader from "../../loaders/ThreeDotLoader";
 
 const NewSubscribersTable = () => {

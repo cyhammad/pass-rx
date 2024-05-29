@@ -1,10 +1,12 @@
+"use client";
+
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { useDispatch } from "react-redux";
-import { openModal } from "@/lib/features/deleteModal/deleteModalSlice";
-import { toggle } from "@/lib/features/editFlashCard/editFlashCradSlice";
 
-const CardDropDown = ({ name }) => {
+const DisciplineCardDropdown = ({
+  setIsDeleteModalOpen,
+  setIsEditModalOpen,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -25,14 +27,11 @@ const CardDropDown = ({ name }) => {
     setIsOpen(!isOpen);
   };
 
-  const dispatch = useDispatch();
-
   const handleDeleteClick = () => {
-    toggleMenu();
-    dispatch(openModal());
+    setIsDeleteModalOpen(true);
   };
   const handleEditClick = () => {
-    dispatch(toggle());
+    setIsEditModalOpen(true);
   };
   return (
     <div className="relative" ref={dropdownRef}>
@@ -65,7 +64,7 @@ const CardDropDown = ({ name }) => {
             >
               <div className="flex items-center gap-x-2">
                 {cross}
-                <span className="text-xs">Delete {name}</span>
+                <span className="text-xs">Delete discipline</span>
               </div>
             </button>
           </div>
@@ -75,7 +74,7 @@ const CardDropDown = ({ name }) => {
   );
 };
 
-export default CardDropDown;
+export default DisciplineCardDropdown;
 
 const option = (
   <svg

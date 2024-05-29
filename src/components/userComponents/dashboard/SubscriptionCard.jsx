@@ -1,5 +1,5 @@
 import { star } from "@/svgs/userDasboard";
-import React from "react";
+
 
 export default function SubscriptionCard() {
   return (

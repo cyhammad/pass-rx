@@ -6,7 +6,7 @@ import FlashFactsPerformanceCard from "@/components/userComponents/dashboard/Fla
 import QuizPerformanceCard from "@/components/userComponents/dashboard/QuizPerformanceCard";
 import StatSlider from "@/components/userComponents/dashboard/StatsSlider";
 import SubscriptionCard from "@/components/userComponents/dashboard/SubscriptionCard";
-import React from "react";
+
 
 export default function page() {
   return (

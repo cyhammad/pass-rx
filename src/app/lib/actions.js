@@ -12,7 +12,6 @@ const getFormData = (data, name) => {
 export async function authenticate(prevState, formData) {
   const email = getFormData(formData, "email");
   const password = getFormData(formData, "password");
-  console.log("Email:", email, "Password:", password);
   try {
     await signIn("credentials", {
       email,
@@ -37,11 +36,6 @@ export async function signUp(prevState, formData) {
     const lastName = getFormData(formData, "lastname");
     const email = getFormData(formData, "email");
     const password = getFormData(formData, "password");
-    console.log("FORM DATA", formData);
-    console.log("FIRST NAME", firstName);
-    console.log("LAST NAME", lastName);
-    console.log("EMAIL", email);
-    console.log("PASSWORD", password);
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append(
@@ -70,7 +64,6 @@ export async function signUp(prevState, formData) {
       .then((response) => response.text())
       .then((result) => (userResponse = result))
       .catch((error) => console.error(error));
-    console.log("USER RESPONSE", userResponse);
     if (JSON.parse(userResponse).success) {
       return "Success";
     }
@@ -87,7 +80,6 @@ export async function signUp(prevState, formData) {
 }
 
 export const verifyEmailOTP = async (email, OTP) => {
-  console.log("Email,", email, "OTP,", OTP);
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
   myHeaders.append(
@@ -99,7 +91,6 @@ export const verifyEmailOTP = async (email, OTP) => {
     email: email,
     otp: parseInt(OTP),
   });
-  console.log("RAW", raw);
 
   const requestOptions = {
     method: "POST",
@@ -112,7 +103,88 @@ export const verifyEmailOTP = async (email, OTP) => {
   await fetch(`${process.env.BASE_URL}/auth/verify-otp`, requestOptions)
     .then((response) => response.text())
     .then((result) => {
-      console.log(result);
+      res = result;
+    })
+    .catch((error) => console.error(error));
+  return res;
+};
+
+export const addDiscipline = async (token, disciplineName) => {
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  myHeaders.append("Authorization", `Bearer ${token}`);
+  myHeaders.append("Cookie", "token=" + token);
+
+  const raw = JSON.stringify({
+    name: disciplineName,
+  });
+
+  const requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: raw,
+    redirect: "follow",
+  };
+  let res;
+
+  await fetch(`${process.env.BASE_URL}/admin/disciplines`, requestOptions)
+    .then((response) => response.text())
+    .then((result) => {
+      res = result;
+    })
+    .catch((error) => console.error(error));
+  return res;
+};
+
+export const updateDiscipline = async (token, disciplineName, disciplineId) => {
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  myHeaders.append("Authorization", `Bearer ${token}`);
+  myHeaders.append("Cookie", "token=" + token);
+
+  const raw = JSON.stringify({
+    name: disciplineName,
+  });
+
+  const requestOptions = {
+    method: "PATCH",
+    headers: myHeaders,
+    body: raw,
+    redirect: "follow",
+  };
+  let res;
+
+  await fetch(
+    `${process.env.BASE_URL}/admin/disciplines/${disciplineId}`,
+    requestOptions,
+  )
+    .then((response) => response.text())
+    .then((result) => {
+      res = result;
+    })
+    .catch((error) => console.error(error));
+  return res;
+};
+
+export const deleteDiscipline = async (token, disciplineId) => {
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  myHeaders.append("Authorization", `Bearer ${token}`);
+  myHeaders.append("Cookie", "token=" + token);
+
+  const requestOptions = {
+    method: "DELETE",
+    headers: myHeaders,
+    redirect: "follow",
+  };
+  let res;
+
+  await fetch(
+    `${process.env.BASE_URL}/admin/disciplines/${disciplineId}`,
+    requestOptions,
+  )
+    .then((response) => response.text())
+    .then((result) => {
       res = result;
     })
     .catch((error) => console.error(error));

@@ -1,5 +1,5 @@
 import CardDropDown from "@/components/adminComponents/dropdowns/CardDropDown";
-import React from "react";
+
 
 export default function Card({ discipline, text1, text2 }) {
   return (

@@ -1,5 +1,5 @@
 import { clipboard } from "@/svgs/userDasboard";
-import React from "react";
+
 import Card3Graph from "../graphs/Card3Graph";
 
 export default function Card3() {

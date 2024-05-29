@@ -11,8 +11,21 @@ export async function fetchQuizBanksAdmin(token) {
     redirect: "follow",
   };
   const quizzes = await fetch(`${process.env.BASE_URL}/admin/quizzes`, requestOptions);
-  console.log("QUIZZES:", quizzes);
   return quizzes.json();
+}
+
+export async function fetchDisciplinesAdmin(token) {
+  noStore();
+  const headers = new Headers();
+  headers.append("Authorization", `Bearer ${token}`);
+  headers.append("Cookie", "token=" + token);
+  const requestOptions = {
+    method: "GET",
+    headers: headers,
+    redirect: "follow",
+  };
+  const disciplines = await fetch(`${process.env.BASE_URL}/admin/disciplines`, requestOptions);
+  return disciplines.json();
 }
 
 export async function getUserData(token) {

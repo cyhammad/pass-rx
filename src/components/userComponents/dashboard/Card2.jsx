@@ -1,5 +1,5 @@
 import { flash } from "@/svgs/userDasboard";
-import React from "react";
+
 import Card2Graph from "../graphs/Card2Graph";
 
 export default function Card2() {

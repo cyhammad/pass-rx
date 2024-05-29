@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+
 import Card from "./cards/Card";
 import SubscribersTable from "./tables/SubscribersTable";
 export default function Subscription() {

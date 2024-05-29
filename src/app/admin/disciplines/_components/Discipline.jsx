@@ -1,20 +1,15 @@
 "use client";
+
 import { useState, useRef, useEffect } from "react";
 import ThreeDotLoader from "@/components/loaders/ThreeDotLoader";
-import Card from "./cards/Card";
-import AddDisciplineCard from "./cards/AddDisciplineCard";
-import { useSelector, useDispatch } from "react-redux";
-import DeleteModal from "@/components/adminComponents/modals/DeleteModal";
-import { toggle } from "@/lib/features/editFlashCard/editFlashCradSlice";
-import EditDisciplineCard from "./cards/EditDisciplineCard";
+import AddDisciplineCard from "./AddDisciplineCard";
 import { searchIcon } from "@/svgs/topbarSvgs";
 import { motion, AnimatePresence } from "framer-motion";
+import AddDisciplineModal from "./AddDisciplineModal";
+import DisciplineCard from "./DisciplineCard";
 
-export default function Discipline() {
-  const [isOpen, setIsOpen] = useState(false);
-  const cardData = Array.from({ length: 12 }, (_, index) => index + 1);
-  const isDeleteModalOpen = useSelector((state) => state.deleteModal.value);
-  const isEditFlashCardOpen = useSelector((state) => state.editFlashCrad.value);
+export default function Discipline({ disciplines, token, revalidateData }) {
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [showSearchInput, setShowSearchInput] = useState(false);
   const searchRef = useRef(null);
 
@@ -33,47 +28,30 @@ export default function Discipline() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-  const toggleFlash = () => {
-    setIsOpen(!isOpen);
+  const toggleModal = () => {
+    setIsAddModalOpen(!isAddModalOpen);
   };
 
-  const dispatch = useDispatch();
-  const toggleEditFlash = () => {
-    dispatch(toggle());
-  };
   return (
     <div className="mt-8 flex w-full flex-col ">
       <AnimatePresence>
-        {isDeleteModalOpen && (
-          <DeleteModal name1={"Discipline"} name2={"discipline name"} />
-        )}
-      </AnimatePresence>
-      <AnimatePresence>
-        {isEditFlashCardOpen && (
-          <EditDisciplineCard
-            toggleFlash={toggleEditFlash}
-            buttonTitle={"Update"}
-            title={"Edit Discipline"}
+        {isAddModalOpen && (
+          <AddDisciplineModal
+            toggleModal={toggleModal}
+            token={token}
+            revalidateData={revalidateData}
           />
         )}
       </AnimatePresence>
-      <AnimatePresence>
-        {isOpen && (
-          <EditDisciplineCard
-            toggleFlash={toggleFlash}
-            buttonTitle={"Add"}
-            title={"Add New Discipline"}
-          />
-        )}
-      </AnimatePresence>
-
       <div className="flex w-full flex-col justify-start">
         <h1 className=" text-[1.125rem] font-semibold  sm:text-2xl ">
           Disciplines
         </h1>
-        <AddDisciplineCard onClick={toggleFlash} />
+        <AddDisciplineCard onClick={toggleModal} />
         <div className="mt-9  flex  h-8 items-center justify-between">
-          <p className="text-text-gray">Total Quiz banks (125)</p>
+          <p className="text-text-gray">
+            Total Quiz banks ({disciplines.length})
+          </p>
           <div className="flex">
             <AnimatePresence>
               {showSearchInput && (
@@ -83,7 +61,7 @@ export default function Discipline() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 0 }}
                   transition={{ duration: 0.1 }}
-                  className="flex items-center justify-center gap-x-2 rounded-lg border border-border-color px-4 py-1 bg-white shadow-[0px_2px_12px_0px_#C9C9C938] md:flex"
+                  className="flex items-center justify-center gap-x-2 rounded-lg border border-border-color bg-white px-4 py-1 shadow-[0px_2px_12px_0px_#C9C9C938] md:flex"
                 >
                   <button>{searchIcon}</button>
                   <input
@@ -99,7 +77,7 @@ export default function Discipline() {
             </AnimatePresence>
             {!showSearchInput && (
               <motion.button
-                initial={{ opacity:1, y: -5 }}
+                initial={{ opacity: 1, y: -5 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.1 }}
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-white"
@@ -111,12 +89,12 @@ export default function Discipline() {
           </div>
         </div>
         <div className="mt-4 grid grid-cols-1  gap-x-3 gap-y-3 sm:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4">
-          {cardData.map((number) => (
-            <div key={number}>
-              <Card
-                text1={"Discipline Name"}
-                questionNumber={"1,25,461 Questions "}
-                lastUpdated={"Last Updated on 12 Jan, 2023"}
+          {disciplines.map((discipline) => (
+            <div key={discipline._id}>
+              <DisciplineCard
+                discipline={discipline}
+                token={token}
+                revalidateData={revalidateData}
               />
             </div>
           ))}

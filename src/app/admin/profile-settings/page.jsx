@@ -1,4 +1,4 @@
-import React from "react";
+
 import ProfileUpdateForm from "./_components/ProfileUpdateForm";
 
 const ProfileSettingsPage = () => {

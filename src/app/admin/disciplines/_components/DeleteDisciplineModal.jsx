@@ -1,13 +1,32 @@
-
-import { useDispatch } from "react-redux";
-import { toggle } from "@/lib/features/deleteModal/deleteModalSlice";
+import { deleteDiscipline } from "@/app/lib/actions";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
-const DeleteModal = ({ name1, name2 }) => {
-  const dispatch = useDispatch();
+const DeleteDisciplineModal = ({
+  setIsOpen,
+  discipline,
+  token,
+  revalidateData,
+}) => {
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
 
   const closeModal = () => {
-    dispatch(toggle());
+    setIsOpen(false);
+  };
+  const handleDeleteDiscipline = async () => {
+    const res = await deleteDiscipline(token, discipline._id);
+    const resObj = JSON.parse(res);
+    if (resObj.message === "Discipline deleted successfully") {
+      revalidateData();
+      setSuccess(true);
+      setTimeout(() => {
+        setSuccess(false);
+        closeModal();
+      }, 2000);
+    } else {
+      setError(resObj.message);
+    }
   };
   return (
     <motion.div
@@ -24,7 +43,7 @@ const DeleteModal = ({ name1, name2 }) => {
 
       <div className="z-50  flex  h-[300px] max-w-lg flex-col items-center justify-between rounded-lg bg-white shadow-md md:h-[412.35px]">
         <div className="flex w-full items-center justify-between border-b border-black/10 px-6 py-2 md:gap-56 md:py-3">
-          <p className="text-lg font-semibold ">Delete {name1}</p>
+          <p className="text-lg font-semibold ">Delete Discipline</p>
           <span onClick={() => closeModal()} className="cursor-pointer">
             {cross}
           </span>
@@ -32,7 +51,11 @@ const DeleteModal = ({ name1, name2 }) => {
         <div className="mt-[-2rem] flex w-2/3 flex-col  items-center">
           <span className="">{alert}</span>
           <p className="text-center text-sm sm:text-lg ">
-            Are you sure you want to delete this {name2}.{" "}
+            {error === "" && !success
+              ? `Are you sure you want to delete "${discipline.name}" discipline.`
+              : !success
+                ? error
+                : "Discipline deleted successfully"}
           </p>
         </div>
         <div className="mb-3 flex w-full justify-between px-5 ">
@@ -44,7 +67,7 @@ const DeleteModal = ({ name1, name2 }) => {
           </button>
           <button
             className="w-1/2 rounded-lg  bg-error-light  py-2   font-medium text-white focus:outline-none  md:py-4"
-            // onClick={confirmDelete}
+            onClick={() => handleDeleteDiscipline()}
           >
             Delete
           </button>
@@ -54,7 +77,7 @@ const DeleteModal = ({ name1, name2 }) => {
   );
 };
 
-export default DeleteModal;
+export default DeleteDisciplineModal;
 const cross = (
   <svg
     width="40"
