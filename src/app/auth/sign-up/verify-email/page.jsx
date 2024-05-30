@@ -3,7 +3,7 @@
 import { verifyEmailOTP } from "@/app/lib/actions/authActions";
 import Image from "next/image";
 import Link from "next/link";
-import { redirect, useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import OTPInput from "react-otp-input";
 

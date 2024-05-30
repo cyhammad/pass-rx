@@ -51,17 +51,6 @@ button:focus {
     column-gap: 4vw;
   }
 } */
-input[type="search"] {
-  border-width: 1px;
-  border-color: #fff;
-}
-
-input[type="search"]:focus{
-  border-width: 1px;
-  border-color: #fff !important;
-  outline: #fff;
-  box-shadow: 0 0 0 3px #fff !important;
-}
 /* input[type="text"]:focus{
   border-color: #fafafa;
   outline: #fafafa;
