@@ -1,18 +1,36 @@
+"use client";
+
+import { useState } from "react";
+
 const Question = ({ question }) => {
+  const [selectedOption, setSelectedOption] = useState(0);
+  const options = ["Option 1", "Option 2", "Option 3", "Option 4"];
   return (
     <div className="flex flex-col gap-y-3 p-3 text-sm">
-      <div className="flex gap-x-3 items-start">
+      <div className="flex items-start gap-x-3">
         <span className="leading-[22px]">
           How can we differentiate so many different foods if we can only taste
           four flavors on our tongue: sweet, bitter, sour, and salty?
         </span>
-        <button className="p-2">
-            {threeDots}
-        </button>
+        <button className="p-2">{threeDots}</button>
       </div>
-      <div className="flex flex-col gap-y-2">
+      <div className="flex flex-col gap-y-2 text-sm">
         <span className="text-text-gray/50">Possible Options</span>
-        
+        {options.map((option, index) => (
+          <div
+            key={index}
+            className={`flex items-center gap-x-8 rounded-lg cursor-pointer ${
+              selectedOption === index ? "text-green" : "text-white"
+            }`}
+            onClick={() => setSelectedOption(index)}
+          >
+            <span>{option}</span>
+            {selectedOption === index && greenTick}
+          </div>
+        ))}
+        <span className="mt-4 cursor-pointer text-xs text-primary hover:underline">
+          View detailed explanation
+        </span>
       </div>
     </div>
   );
@@ -40,6 +58,24 @@ const threeDots = (
       d="M2.00016 15.7207C2.92064 15.7207 3.66683 14.9745 3.66683 14.054C3.66683 13.1336 2.92064 12.3874 2.00016 12.3874C1.07969 12.3874 0.333496 13.1336 0.333496 14.054C0.333496 14.9745 1.07969 15.7207 2.00016 15.7207Z"
       fill="white"
       fillOpacity="0.45"
+    />
+  </svg>
+);
+
+const greenTick = (
+  <svg
+    width="14"
+    height="10"
+    viewBox="0 0 14 10"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M1 5.22072L4.96755 9.18827L12.9167 1.25317"
+      stroke="#00DF80"
+      strokeWidth="1.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
