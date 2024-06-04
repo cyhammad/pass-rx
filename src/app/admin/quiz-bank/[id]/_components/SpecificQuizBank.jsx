@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import DisciplineButton from "./DisciplineButton";
 import { Poppins } from "next/font/google";
 import Question from "./Question";
+import DisciplineColumn from "./DisciplineColumn";
+import AddQuestionModal from "./modals/AddQuestionModal";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -14,6 +15,7 @@ const SpecificQuizBank = ({ quizbank, token }) => {
   const [selectedDiscipline, setSelectedDiscipline] = useState(
     quizbank.disciplines[0],
   );
+  const [showAddQuestionModal, setShowAddQuestionModal] = useState(false);
   const [showDisciplines, setShowDisciplines] = useState(true);
   console.log("QuizBank", quizbank);
   const [disciplineSearch, setDisciplineSearch] = useState("");
@@ -27,13 +29,23 @@ const SpecificQuizBank = ({ quizbank, token }) => {
   );
   return (
     <>
+      {showAddQuestionModal && (
+        <AddQuestionModal
+          quizbank={quizbank}
+          token={token}
+          setShowModal={setShowAddQuestionModal}
+        />
+      )}
       <div className="flex w-full flex-col justify-between gap-3 pb-4 pt-8 sm:flex-row sm:items-center">
         <h1 className="text-2xl font-semibold">{quizbank.title}</h1>
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
           <span className="text-sm text-text-secondary">
             last updated: {renderDate(quizbank.updatedAt)}
           </span>
-          <button className="button flex min-h-[48px] min-w-[185px] items-center justify-center gap-x-3 rounded-md bg-primary px-5 text-sm text-white">
+          <button
+            className="button flex min-h-[48px] min-w-[185px] items-center justify-center gap-x-3 rounded-md bg-primary px-5 text-sm text-white"
+            onClick={() => setShowAddQuestionModal(true)}
+          >
             {plusIcon} Add New Question
           </button>
           <button className="button flex min-h-[48px] min-w-[185px] items-center justify-center gap-x-3 rounded-md bg-green px-5 text-sm text-white">
@@ -73,38 +85,12 @@ const SpecificQuizBank = ({ quizbank, token }) => {
           </div>
         </div>
         <div className="relative flex h-full flex-col sm:flex-row">
-          <div
-            className={`${!showDisciplines && "hidden"} z-20 flex w-full flex-col justify-between gap-y-10 bg-mattBlack pb-7 pl-4 sm:static sm:h-full sm:max-w-[285px]`}
-          >
-            <div className="flex w-full flex-col">
-              <div className="mb-4 mr-4 mt-2 flex h-[50px] items-center gap-x-1 overflow-hidden rounded-lg border border-blackBorder p-4 sm:hidden sm:min-w-[302px]">
-                {searchIcon}
-                <input
-                  type="search"
-                  name="disciplineSearch"
-                  id="disciplineSearch"
-                  placeholder="Search Disciplines"
-                  value={disciplineSearch}
-                  onChange={(e) => setDisciplineSearch(e.target.value)}
-                  className="w-full border-none bg-transparent text-xs text-white outline-none ring-transparent focus:border-none focus:outline-none focus:ring-transparent"
-                />
-              </div>
-              {filteredDisciplines.map((discipline) => (
-                <DisciplineButton
-                  key={discipline.id}
-                  selected={selectedDiscipline._id === discipline._id}
-                  onClick={() => setSelectedDiscipline(discipline)}
-                  discipline={discipline}
-                />
-              ))}
-              <button className="mt-10 w-fit rounded-md border border-primary px-5 py-2 text-sm text-primary sm:hidden">
-                + New Discipline
-              </button>
-            </div>
-            <button className="hidden w-fit rounded-md border border-primary px-5 py-2 text-sm text-primary sm:block">
-              + New Discipline
-            </button>
-          </div>
+          <DisciplineColumn
+            disciplines={filteredDisciplines}
+            selectedDiscipline={selectedDiscipline}
+            setSelectedDiscipline={setSelectedDiscipline}
+            showDisciplines={showDisciplines}
+          />
           <div className="flex h-full w-full flex-col bg-almostBlack p-4">
             <div className="mb-7 flex w-full justify-between">
               <div className="flex items-center gap-x-2">
