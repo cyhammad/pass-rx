@@ -121,3 +121,26 @@ export const getQuizBank = async (token, quizId) => {
     throw error;
   }
 };
+
+export const getQuestionsByQuizId = async (token, quizId) => {
+  try {
+    const myHeaders = new Headers();
+    myHeaders.append("Authorization", `Bearer ${token}`);
+    myHeaders.append("Cookie", "token=" + token);
+
+    const requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
+    };
+    let quizBankResponse;
+    const quizBank = await fetch(
+      `${process.env.BASE_URL}/admin/questions?quizbankId=${quizId}`,
+      requestOptions,
+    );
+    quizBankResponse = await quizBank.json();
+    return quizBankResponse;
+  } catch (error) {
+    throw error;
+  }
+};

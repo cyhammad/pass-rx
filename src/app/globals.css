@@ -6,7 +6,7 @@
   margin: 0;
   padding: 0;
   overscroll-behavior: none;
-
+  scrollbar-width: none;
 }
 
 .user-screen::-webkit-scrollbar {
@@ -16,7 +16,7 @@
 }
 
 .user-screen::-webkit-scrollbar-thumb {
-  background-color: #2396F3;
+  background-color: #2396f3;
   border-radius: 10px;
 }
 input[type="search"]::-webkit-search-cancel-button {
@@ -66,7 +66,6 @@ button:focus {
 }
 
 .flip-card-front,
-
 .flip-card-back {
   position: absolute;
   backface-visibility: hidden;
@@ -74,17 +73,4 @@ button:focus {
 
 .flip-card-back {
   transform: rotateY(180deg);
-}
-
-
-
-textarea {
-  border-width: 1px;
-  border-color:#fafafa ;
-}
-textarea:focus{
-  border-width: 1px;
-  border-color: white !important;
-  outline: white;
-  box-shadow: 0 0 0 3px white !important;
 }

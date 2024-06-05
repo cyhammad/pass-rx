@@ -1,7 +1,7 @@
 const DisciplineButton = ({ selected, onClick, discipline, key }) => {
   return (
     <button
-      className={`${selected ? "bg-darkBlack border-l-2 border-primary" : "hover:bg-darkBlack hover:border-l-2 hover:border-primary/30"} flex h-[56px] w-full items-center justify-between px-5`}
+      className={`${selected ? "border-l-2 border-primary bg-darkBlack" : "hover:border-l-2 hover:border-primary/30 hover:bg-darkBlack"} flex h-[56px] w-full items-center justify-between px-5`}
       key={key}
       onClick={onClick}
     >

@@ -15,9 +15,9 @@ const SelectDifficultyDropdown = ({ difficulty, setDifficulty }) => {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="relative flex h-[54px] min-w-[250px] items-center rounded-lg border border-blackBorder px-3 text-start"
+        className="relative flex h-[54px] w-full items-center rounded-lg border border-blackBorder px-3 text-start sm:w-fit sm:min-w-[250px]"
       >
-        <span className="absolute -top-2 left-3 bg-mattBlack px-1 text-xs text-text-gray">
+        <span className="absolute -top-2 left-3 bg-almostBlack px-1 text-xs text-text-gray">
           Difficulty
         </span>
         <span className="w-full text-sm">{difficulty}</span>
@@ -30,7 +30,7 @@ const SelectDifficultyDropdown = ({ difficulty, setDifficulty }) => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className={`absolute mt-1 w-full overflow-hidden rounded-lg bg-darkBlack`}
+            className={`absolute z-50 mt-1 w-full overflow-hidden rounded-lg border border-blackBorder bg-darkBlack`}
           >
             {difficulties.map((difficulty) => (
               <button

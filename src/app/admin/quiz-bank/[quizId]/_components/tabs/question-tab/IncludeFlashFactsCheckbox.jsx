@@ -1,16 +1,16 @@
 "use client";
 
 const IncludeFlashFactsCheckbox = ({
-  includeFlashFacts,
-  setIncludeFlashFacts,
+  includeToFlashFacts,
+  setIncludeToFlashFacts,
 }) => {
   return (
     <div className="flex items-center gap-2">
       <button
-        onClick={() => setIncludeFlashFacts(!includeFlashFacts)}
-        className={`flex h-4 w-4 items-center justify-center rounded pl-[1px]  ${includeFlashFacts ? "bg-primary" : "border border-blackBorder"}`}
+        onClick={() => setIncludeToFlashFacts(!includeToFlashFacts)}
+        className={`flex h-4 w-4 items-center justify-center rounded pl-[1px]  ${includeToFlashFacts ? "bg-primary" : "border border-blackBorder"}`}
       >
-        {includeFlashFacts && tick}
+        {includeToFlashFacts && tick}
       </button>
       <span className="text-sm">Add to flash facts too</span>
     </div>

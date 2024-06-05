@@ -1,31 +1,23 @@
-"use client";
-
-import { useState } from "react";
-
 const Question = ({ question }) => {
-  const [selectedOption, setSelectedOption] = useState(0);
-  const options = ["Option 1", "Option 2", "Option 3", "Option 4"];
   return (
-    <div className="flex flex-col gap-y-3 p-3 text-sm">
-      <div className="flex items-start gap-x-3">
-        <span className="leading-[22px]">
-          How can we differentiate so many different foods if we can only taste
-          four flavors on our tongue: sweet, bitter, sour, and salty?
-        </span>
+    <div className="flex w-full flex-col gap-y-3 p-3 text-sm">
+      <div className="flex items-center justify-between gap-x-3">
+        <span className="leading-[22px]">{question.question}</span>
         <button className="p-2">{threeDots}</button>
       </div>
       <div className="flex flex-col gap-y-2 text-sm">
         <span className="text-text-gray/50">Possible Options</span>
-        {options.map((option, index) => (
+        {question.answers.map((answer, index) => (
           <div
             key={index}
-            className={`flex items-center gap-x-8 rounded-lg cursor-pointer ${
-              selectedOption === index ? "text-green" : "text-white"
+            className={`flex cursor-pointer items-center gap-x-8 rounded-lg ${
+              question.correctAnswerIndex === index
+                ? "text-green"
+                : "text-white"
             }`}
-            onClick={() => setSelectedOption(index)}
           >
-            <span>{option}</span>
-            {selectedOption === index && greenTick}
+            <span>{answer.answer}</span>
+            {question.correctAnswerIndex === index && greenTick}
           </div>
         ))}
         <span className="mt-4 cursor-pointer text-xs text-primary hover:underline">

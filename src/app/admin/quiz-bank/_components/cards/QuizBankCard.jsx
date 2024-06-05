@@ -27,7 +27,10 @@ export default function QuizBankCard({ quiz, revalidateData, token }) {
       </AnimatePresence>
       <div className="flex h-[138px] w-full justify-between rounded-2xl bg-white p-5 drop-shadow-sm">
         <div className="w-10/12">
-          <Link href={`/admin/quiz-bank/${quiz._id}`} className="text-lg">
+          <Link
+            href={`/admin/quiz-bank/${quiz._id}/discipline/${quiz.disciplines[0]?._id}`}
+            className="text-lg"
+          >
             {quiz.title}
           </Link>
           <p className="mt-2 flex items-center gap-[5px] text-[13px]">
