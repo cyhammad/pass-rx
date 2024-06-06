@@ -87,7 +87,7 @@ export default function Step1({ setStep }) {
               />
               <p className="text-xs sm:text-base">All</p>
             </div>
-            <div className="flex items-center gap-2   font-medium text-text-gray-2">
+            <div className="flex items-center gap-2 font-medium text-text-gray-2">
               <input
                 type="radio"
                 className="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"

@@ -17,9 +17,11 @@ export default async function RootLayout({ children }) {
   return (
     <>
       <Topbar />
-      <div className="flex max-h-[calc(100vh-72px)] sm:max-h-[calc(100vh-83px)]">
+      <div className="flex max-h-[calc(100vh-72px)] bg-light-gray sm:max-h-[calc(100vh-83px)]">
         <Sidebar />
-        <div className="w-full overflow-y-auto">{children}</div>
+        <div className="absolute w-full overflow-y-auto sm:static">
+          {children}
+        </div>
       </div>
     </>
   );

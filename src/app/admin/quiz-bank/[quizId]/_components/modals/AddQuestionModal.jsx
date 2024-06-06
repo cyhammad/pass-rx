@@ -14,6 +14,7 @@ const AddQuestionModal = ({
   revalidateData,
 }) => {
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
   const [selectedTab, setSelectedTab] = useState("Question");
   const [selectedDiscipline, setSelectedDiscipline] = useState(
     prevSelectedDiscipline,
@@ -40,7 +41,6 @@ const AddQuestionModal = ({
       quizbank._id,
       includeToFlashFacts,
     );
-    console.log("RESPONSE", res);
     if (res.message === "Created successfully") {
       setSuccess(true);
       revalidateData();
@@ -48,6 +48,8 @@ const AddQuestionModal = ({
       setInterval(() => {
         setShowModal(false);
       }, 2000);
+    } else {
+      setError(true);
     }
   };
   return (
@@ -81,6 +83,11 @@ const AddQuestionModal = ({
             </button>
           </div>
         </div>
+        {error && (
+          <div className="flex h-full items-center justify-center text-center text-red-300">
+            Error Occured! Please try again
+          </div>
+        )}
         {success ? (
           <div className="flex h-full items-center justify-center text-center">
             Created Successfully

@@ -6,7 +6,7 @@ import StatusBtn from "./StatusBtn";
 
 export default function FlashFactsTable() {
   return (
-    <div className="flex w-full mt-8 flex-col rounded-xl border border-black/10 bg-white p-7">
+    <div className="mt-8 flex w-full flex-col rounded-xl border border-black/10 bg-white p-7">
       <div className="flex w-full justify-between">
         <div className="flex flex-col">
           <span className="text-[18px] font-semibold text-text-charcoal">
@@ -17,8 +17,10 @@ export default function FlashFactsTable() {
           </span>
         </div>
         <div className="flex justify-between lg:gap-3">
-          <div className="md:flex  hidden items-center gap-x-2">
-            <span className=" lg:text-base md:text-sm font-medium">All Time</span>
+          <div className="hidden  items-center gap-x-2 md:flex">
+            <span className=" font-medium md:text-sm lg:text-base">
+              All Time
+            </span>
             {chevronDown}
           </div>
           <div className="hidden items-center justify-center gap-x-2 rounded-lg border border-border-color px-4 py-1 shadow-[0px_2px_12px_0px_#C9C9C938] md:flex">
@@ -29,7 +31,7 @@ export default function FlashFactsTable() {
               id="search"
               autoComplete="off"
               placeholder="Search"
-              className="w-[280px] bg-transparent outline-none"
+              className="w-[280px] bg-transparent outline-none focus:ring-transparent"
             />
           </div>
         </div>
@@ -61,10 +63,12 @@ export default function FlashFactsTable() {
                 <span className="text-charcoal font-semibold">Deck Name</span>
               </td>
               <td>
-                <span className="font-semibold text-text-charcoal ml-14">120</span>
+                <span className="ml-14 font-semibold text-text-charcoal">
+                  120
+                </span>
               </td>
               <td>
-                <span className="font-semibold text-text-charcoal ml-4">
+                <span className="ml-4 font-semibold text-text-charcoal">
                   02 Jan 23
                 </span>
               </td>
@@ -80,10 +84,12 @@ export default function FlashFactsTable() {
                 <span className="text-charcoal font-semibold">Deck Name</span>
               </td>
               <td>
-                <span className="font-semibold text-text-charcoal ml-14">120</span>
+                <span className="ml-14 font-semibold text-text-charcoal">
+                  120
+                </span>
               </td>
               <td>
-                <span className="font-semibold text-text-charcoal ml-4">
+                <span className="ml-4 font-semibold text-text-charcoal">
                   02 Jan 23
                 </span>
               </td>
@@ -99,10 +105,12 @@ export default function FlashFactsTable() {
                 <span className="text-charcoal font-semibold">Deck Name</span>
               </td>
               <td>
-                <span className="font-semibold text-text-charcoal ml-14">120</span>
+                <span className="ml-14 font-semibold text-text-charcoal">
+                  120
+                </span>
               </td>
               <td>
-                <span className="font-semibold text-text-charcoal ml-4">
+                <span className="ml-4 font-semibold text-text-charcoal">
                   02 Jan 23
                 </span>
               </td>
@@ -118,10 +126,12 @@ export default function FlashFactsTable() {
                 <span className="text-charcoal font-semibold">Deck Name</span>
               </td>
               <td>
-                <span className="font-semibold text-text-charcoal ml-14">120</span>
+                <span className="ml-14 font-semibold text-text-charcoal">
+                  120
+                </span>
               </td>
               <td>
-                <span className="font-semibold text-text-charcoal ml-4">
+                <span className="ml-4 font-semibold text-text-charcoal">
                   02 Jan 23
                 </span>
               </td>
@@ -137,10 +147,12 @@ export default function FlashFactsTable() {
                 <span className="text-charcoal font-semibold">Deck Name</span>
               </td>
               <td>
-                <span className="font-semibold text-text-charcoal ml-14">120</span>
+                <span className="ml-14 font-semibold text-text-charcoal">
+                  120
+                </span>
               </td>
               <td>
-                <span className="font-semibold text-text-charcoal ml-4">
+                <span className="ml-4 font-semibold text-text-charcoal">
                   02 Jan 23
                 </span>
               </td>
@@ -197,8 +209,16 @@ const arrowUpIcon = (
 );
 
 const chevronDown = (
-<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M10.6611 13.5927C10.4569 13.5931 10.2591 13.522 10.1018 13.3918L4.85867 9.02246C4.48706 8.71358 4.43619 8.16193 4.74507 7.79031C5.05395 7.4187 5.6056 7.36783 5.97721 7.67671L10.6611 11.5916L15.345 7.81653C15.5255 7.66992 15.7571 7.60132 15.9883 7.62593C16.2196 7.65053 16.4315 7.7663 16.5771 7.94761C16.7389 8.12925 16.8177 8.3701 16.7945 8.61223C16.7712 8.85436 16.6482 9.07586 16.4548 9.22345L11.2116 13.4442C11.0499 13.5539 10.8561 13.6062 10.6611 13.5927Z" fill="#212B36"/>
-</svg>
-
+  <svg
+    width="22"
+    height="22"
+    viewBox="0 0 22 22"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M10.6611 13.5927C10.4569 13.5931 10.2591 13.522 10.1018 13.3918L4.85867 9.02246C4.48706 8.71358 4.43619 8.16193 4.74507 7.79031C5.05395 7.4187 5.6056 7.36783 5.97721 7.67671L10.6611 11.5916L15.345 7.81653C15.5255 7.66992 15.7571 7.60132 15.9883 7.62593C16.2196 7.65053 16.4315 7.7663 16.5771 7.94761C16.7389 8.12925 16.8177 8.3701 16.7945 8.61223C16.7712 8.85436 16.6482 9.07586 16.4548 9.22345L11.2116 13.4442C11.0499 13.5539 10.8561 13.6062 10.6611 13.5927Z"
+      fill="#212B36"
+    />
+  </svg>
 );

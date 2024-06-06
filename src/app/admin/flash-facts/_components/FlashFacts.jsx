@@ -1,103 +1,82 @@
 "use client";
-import { searchIcon } from "@/svgs/topbarSvgs";
-import Button1 from "@/components/adminComponents/buttons/Button1";
-import Card from "./cards/Card";
+
 import ThreeDotLoader from "@/components/loaders/ThreeDotLoader";
-import { useSelector, useDispatch } from "react-redux";
-import DeleteModal from "@/components/adminComponents/modals/DeleteModal";
 import { AnimatePresence } from "framer-motion";
-import FlashCard from "./cards/FlashCard";
 import { useState } from "react";
-import { toggle } from "@/lib/features/editFlashCard/editFlashCradSlice";
+import AddFlashFactModal from "./modals/AddFlashFactModal";
+import FlashFactCard from "./cards/FlashFactCard";
+import DisciplineFilter from "./dropdowns/DisciplineFilter";
+import FlashFactSearchBar from "./inputs/FlashFactSearchBar";
 
-export default function FlashFacts() {
-  const [isOpen, setIsOpen] = useState(false);
-  const cardData = Array.from({ length: 12 }, (_, index) => index + 1);
-  const isDeleteModalOpen = useSelector((state) => state.deleteModal.value);
-  const isEditFlashCardOpen = useSelector((state) => state.editFlashCrad.value);
-  const dispatch = useDispatch();
-  const toggleFlash = () => {
-    setIsOpen(!isOpen);
-  };
+export default function FlashFactsPage({
+  flashFacts,
+  disciplines,
+  token,
+  revalidateData,
+}) {
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [selectedDiscipline, setSelectedDiscipline] = useState(null);
+  const [searchValue, setSearchValue] = useState("");
 
-  const toggleEditFlash = () => {
-    dispatch(toggle());
-  };
-
+  const filteredFacts = flashFacts
+    .filter((fact) => {
+      if (selectedDiscipline) {
+        console.log(fact.discipline, selectedDiscipline._id);
+        return fact.discipline._id === selectedDiscipline._id;
+      }
+      return true;
+    })
+    .filter((fact) => {
+      if (searchValue) {
+        return fact.question.toLowerCase().includes(searchValue.toLowerCase());
+      }
+      return true;
+    });
   return (
-    <div className="flex w-full flex-col ">
+    <div className="flex h-full w-full flex-col">
       <AnimatePresence>
-        {isDeleteModalOpen && (
-          <DeleteModal name1={"Flash Card"} name2={"flash card"} />
-        )}
-      </AnimatePresence>
-      <AnimatePresence>
-        {isOpen && (
-          <FlashCard
-            toggleFlash={toggleFlash}
-            title={"Add Flash Card"}
-            buttonTitle={"Add"}
+        {isAddModalOpen && (
+          <AddFlashFactModal
+            closeModal={() => setIsAddModalOpen(false)}
+            disciplines={disciplines}
+            token={token}
+            revalidateData={revalidateData}
           />
         )}
       </AnimatePresence>
-      <AnimatePresence>
-        {isEditFlashCardOpen && (
-          <FlashCard
-            toggleFlash={toggleEditFlash}
-            title={"Edit Flash Card"}
-            buttonTitle={"Update"}
-          />
-        )}
-      </AnimatePresence>
-
       <div className="flex w-full flex-col justify-between sm:flex-row sm:items-center">
         <h1 className=" text-[1.46rem] font-medium leading-10  sm:text-[1.125rem] lg:text-[1.46rem] ">
           Flash Facts
         </h1>
-        <span className="mt-3 flex items-center justify-between gap-2 sm:mt-0 lg:gap-6">
-          <div className="flex md:gap-1 lg:gap-3">
-            <p className="text-[10px] font-semibold text-text-gray-2 sm:text-xs">
-              Discipline
-            </p>
-            <div className="flex items-center gap-x-1">
-              <span className="ml-1 text-[10px] font-medium  sm:ml-2 sm:text-xs">
-                Show all
-              </span>
-              {chevronDown}
-            </div>
-          </div>
-          {/* Search bar */}
-          <div className="hidden items-center  bg-white justify-center gap-x-2 rounded-lg border border-border-color px-4 py-1 shadow-[0px_2px_12px_0px_#C9C9C938] md:flex">
-            <button>{searchIcon}</button>
-            <input
-              type="search"
-              name="search"
-              autoComplete="off"
-              id="search"
-              placeholder="Search"
-              className=" outline-none md:w-[180px] lg:w-[280px]"
+        <span className="mt-3 flex flex-col justify-between gap-2 sm:mt-0 sm:flex-row sm:items-center lg:gap-6">
+          <div className="flex items-center gap-3">
+            <DisciplineFilter
+              selectedDiscipline={selectedDiscipline}
+              setSelectedDiscipline={setSelectedDiscipline}
+              disciplines={disciplines}
+            />
+            <FlashFactSearchBar
+              searchValue={searchValue}
+              setSearchValue={setSearchValue}
             />
           </div>
-          <Button1
-            icon={addsvg}
-            title={"New Flash Card"}
-            bgColor={"black"}
-            onClick={toggleFlash} // Pass toggleFlash function here
-            textColor={"white"}
-          />
+          <button
+            className="flex w-fit items-center gap-2 rounded-md bg-almostBlack px-5 py-2 text-start text-sm self-end"
+            onClick={() => setIsAddModalOpen(true)}
+          >
+            {addsvg}
+            <span className="text-white">New Flash Card</span>
+          </button>
         </span>
       </div>
-      <div className="mt-10 grid grid-cols-1 justify-items-center gap-x-7 gap-y-5  md:grid-cols-2  lg:grid-cols-3 2xl:grid-cols-4">
-        {cardData.map((number) => (
-          <div key={number}>
-            <Card
-              text1={
-                "How can we differentiate so many different foods if we can only taste four flavors on our tongue: sweet, bitter, sour, and salty?"
-              }
-              text2={
-                "the nose plays an integral part in the experience of taste"
-              }
-              discipline={"Discipline Name"}
+      <div className="mt-10 grid w-full grid-cols-1 gap-x-7 gap-y-5 md:grid-cols-2 lg:grid-cols-3">
+        {filteredFacts.map((fact) => (
+          <div key={fact._id}>
+            <FlashFactCard
+              flashFact={fact}
+              revalidateData={revalidateData}
+              token={token}
+              disciplines={disciplines}
             />
           </div>
         ))}
@@ -131,24 +110,6 @@ const addsvg = (
       d="M12.5 16V8"
       stroke="#111213"
       strokeWidth="1.2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-const chevronDown = (
-  <svg
-    width="12"
-    height="8"
-    viewBox="0 0 12 8"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M10.5 1.65039L6 6.15039L1.5 1.65039"
-      stroke="#A1A5B7"
-      strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
     />

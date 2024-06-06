@@ -37,7 +37,7 @@ export default function Bricks() {
         Our comprehensive library of digital learning modules, designed to help
         you build your foundation of medical knowledge.
       </p>
-      <div className=" mt-8 flex w-[95%]  bg-white  items-center justify-center gap-x-2 self-center rounded-lg border border-border-color px-4 py-1 shadow-[0px_2px_12px_0px_#C9C9C938] sm:w-[372px]">
+      <div className=" mt-8 flex w-[95%]  items-center  justify-center gap-x-2 self-center rounded-lg border border-border-color bg-white px-4 py-1 shadow-[0px_2px_12px_0px_#C9C9C938] sm:w-[372px]">
         <button>{searchIcon}</button>
         <input
           type="search"
@@ -45,7 +45,7 @@ export default function Bricks() {
           id="search"
           autoComplete="off"
           placeholder="Search"
-          className="w-full  outline-none sm:w-[372px]"
+          className="w-full outline-none focus:ring-transparent sm:w-[372px]"
         />
       </div>
       <div className="mt-8 flex w-[227px] cursor-pointer justify-between self-center">
@@ -76,7 +76,7 @@ export default function Bricks() {
       </div>
       <div className="mt-8 grid grid-cols-1 justify-items-center gap-x-[18px] gap-y-6 px-3   sm:gap-y-6 sm:px-14 md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
         {cardData.map((number) => (
-          <div key={number} >
+          <div key={number}>
             <Card handleCardClick={handleCardClick} number={number} />
           </div>
         ))}

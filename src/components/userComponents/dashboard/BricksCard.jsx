@@ -56,7 +56,7 @@ export default function BricksCard() {
                 type="checkbox"
                 checked={task.completed}
                 onChange={() => handleCheckboxChange(index)}
-                className="mr-2 accent-primary  ring-[#E5E7EB] "
+                className="mr-2 accent-primary ring-[#E5E7EB]"
               />
               <span>{task.label}</span>
             </li>

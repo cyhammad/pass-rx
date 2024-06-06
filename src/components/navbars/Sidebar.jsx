@@ -20,7 +20,7 @@ const Sidebar = ({ user }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      <div className="relative z-50 flex h-[calc(100vh-83px)] w-5 items-end py-32 sm:hidden">
+      <div className="fixed z-50 flex h-[calc(100vh-83px)] w-5 items-end py-32 sm:hidden">
         <button
           className={`absolute -left-3 flex h-10 w-10 items-center justify-center rounded-r-full border border-dashed border-white/70 ${user ? "bg-primary" : "bg-dark/50"}  text-white`}
           onClick={() => setIsOpen(!isOpen)}

@@ -27,7 +27,7 @@ export default function UserTable() {
             id="search"
             autoComplete="off"
             placeholder="Search"
-            className="w-[280px] bg-transparent outline-none"
+            className="w-[280px] bg-transparent outline-none focus:ring-transparent"
           />
         </div>
       </div>
@@ -80,47 +80,12 @@ export default function UserTable() {
                 </div>
               </td>
               <td>
-                <span className="font-semibold ml-5 text-text-charcoal">$800</span>
+                <span className="ml-5 font-semibold text-text-charcoal">
+                  $800
+                </span>
               </td>
               <td>
                 <StatusBtn status={"active"} />
-              </td>             
-              <td>
-                <span className="font-semibold text-text-charcoal">
-                  02 Jan 23
-                </span>
-              </td>
-              <td>
-                <TableDropdown />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div className="flex items-center gap-x-5 py-5">
-                  <div className="h-[70px] w-[70px] rounded-lg bg-[url('/example/person.png')] bg-cover bg-center"></div>
-                  <div className="flex flex-col gap-y-1.5">
-                    <span className="text-charcoal font-semibold">
-                      Brad Simmons
-                    </span>
-                    <span className="text-sm font-medium text-text-gray-2">
-                      brad.simmons@gmail.com
-                    </span>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div className="flex flex-col gap-y-1.5 py-5">
-                  <span className="text-charcoal font-semibold">Monthly</span>
-                  <span className="text-sm font-medium text-text-gray-2">
-                    Both Exam Types
-                  </span>
-                </div>
-              </td>
-              <td>
-                <span className="font-semibold ml-5 text-text-charcoal">$800</span>
-              </td>
-              <td>
-              <StatusBtn status={"Suspend"} />
               </td>
               <td>
                 <span className="font-semibold text-text-charcoal">
@@ -154,10 +119,12 @@ export default function UserTable() {
                 </div>
               </td>
               <td>
-                <span className="font-semibold  ml-5 text-text-charcoal">$800</span>
+                <span className="ml-5 font-semibold text-text-charcoal">
+                  $800
+                </span>
               </td>
               <td>
-              <StatusBtn status={"Suspend"} />
+                <StatusBtn status={"Suspend"} />
               </td>
               <td>
                 <span className="font-semibold text-text-charcoal">
@@ -191,10 +158,12 @@ export default function UserTable() {
                 </div>
               </td>
               <td>
-                <span className="font-semibold ml-5 text-text-charcoal">$800</span>
+                <span className="ml-5  font-semibold text-text-charcoal">
+                  $800
+                </span>
               </td>
               <td>
-              <StatusBtn status={"active"} />
+                <StatusBtn status={"Suspend"} />
               </td>
               <td>
                 <span className="font-semibold text-text-charcoal">
@@ -228,10 +197,12 @@ export default function UserTable() {
                 </div>
               </td>
               <td>
-                <span className="font-semibold ml-5 text-text-charcoal">$800</span>
+                <span className="ml-5 font-semibold text-text-charcoal">
+                  $800
+                </span>
               </td>
               <td>
-              <StatusBtn status={"active"} />
+                <StatusBtn status={"active"} />
               </td>
               <td>
                 <span className="font-semibold text-text-charcoal">
@@ -265,10 +236,51 @@ export default function UserTable() {
                 </div>
               </td>
               <td>
-                <span className="font-semibold ml-5 text-text-charcoal">$800</span>
+                <span className="ml-5 font-semibold text-text-charcoal">
+                  $800
+                </span>
               </td>
               <td>
-              <StatusBtn status={"active"} />
+                <StatusBtn status={"active"} />
+              </td>
+              <td>
+                <span className="font-semibold text-text-charcoal">
+                  02 Jan 23
+                </span>
+              </td>
+              <td>
+                <TableDropdown />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div className="flex items-center gap-x-5 py-5">
+                  <div className="h-[70px] w-[70px] rounded-lg bg-[url('/example/person.png')] bg-cover bg-center"></div>
+                  <div className="flex flex-col gap-y-1.5">
+                    <span className="text-charcoal font-semibold">
+                      Brad Simmons
+                    </span>
+                    <span className="text-sm font-medium text-text-gray-2">
+                      brad.simmons@gmail.com
+                    </span>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div className="flex flex-col gap-y-1.5 py-5">
+                  <span className="text-charcoal font-semibold">Monthly</span>
+                  <span className="text-sm font-medium text-text-gray-2">
+                    Both Exam Types
+                  </span>
+                </div>
+              </td>
+              <td>
+                <span className="ml-5 font-semibold text-text-charcoal">
+                  $800
+                </span>
+              </td>
+              <td>
+                <StatusBtn status={"active"} />
               </td>
               <td>
                 <span className="font-semibold text-text-charcoal">

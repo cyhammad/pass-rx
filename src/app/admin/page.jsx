@@ -8,7 +8,7 @@ import NewSubscribersTable from "@/components/adminComponents/tables/NewSubscrib
 
 export default function AdminHome() {
   return (
-    <main className="flex w-full flex-col gap-y-6 p-3 py-5 sm:p-6 md:p-7">
+    <main className="flex w-full flex-col gap-y-6 p-5 py-5 sm:p-6 md:p-7">
       <h1 className="text-2xl">Goodmorning, Vikram</h1>
       {/* Large and higher screen stats */}
       <div className="hidden gap-3 pr-5 lg:flex xl:gap-6">

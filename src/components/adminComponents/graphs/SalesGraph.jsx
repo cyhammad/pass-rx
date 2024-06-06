@@ -116,7 +116,7 @@ const SalesGraph = () => {
   };
 
   return (
-    <div className="flex h-[236px] min-w-[300px] w-full flex-col rounded-[29px] py-2.5 shadow">
+    <div className="flex h-[236px] w-full min-w-[300px] flex-col rounded-[29px] px-1 py-2.5 sm:shadow">
       <div className="flex justify-between px-5">
         <div className="flex flex-col gap-y-1">
           <span className="">Sales</span>

@@ -125,7 +125,7 @@ const AddQuizBankForm = ({ disciplines, token }) => {
             value={searchDisciplineValue}
             onChange={(e) => setSearchDisciplineValue(e.target.value)}
             placeholder="Search"
-            className="w-full border-none text-sm outline-none  focus:outline-none md:min-w-[280px]"
+            className="w-full border-none text-sm outline-none focus:ring-transparent focus:outline-none md:min-w-[280px]"
           />
         </div>
         <div className="grid w-full grid-cols-2 gap-x-5 gap-y-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">

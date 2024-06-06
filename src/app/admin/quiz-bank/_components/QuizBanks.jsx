@@ -63,7 +63,7 @@ export default function QuizBanks({ quizzes, token, revalidateData }) {
                     value={searchValue}
                     onChange={(e) => setSearchValue(e.target.value)}
                     placeholder="Search"
-                    className=" outline-none md:w-[180px] lg:w-[280px]"
+                    className=" outline-none focus:ring-transparent md:w-[180px] lg:w-[280px]"
                   />
                 </motion.div>
               )}

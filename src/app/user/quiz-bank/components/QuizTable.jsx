@@ -12,13 +12,13 @@ export default function QuizTable() {
           <span className="text-[18px] font-semibold text-text-charcoal">
             My Tests (12)
           </span>
-          <span className="text-sm font-semibold text-text-gray">
-            All Time
-          </span>
+          <span className="text-sm font-semibold text-text-gray">All Time</span>
         </div>
         <div className="flex justify-between lg:gap-3">
-          <div className="md:flex  hidden items-center gap-x-2">
-            <span className=" lg:text-base md:text-sm font-medium">All Time</span>
+          <div className="hidden  items-center gap-x-2 md:flex">
+            <span className=" font-medium md:text-sm lg:text-base">
+              All Time
+            </span>
             {chevronDown}
           </div>
           <div className="hidden items-center justify-center gap-x-2 rounded-lg border border-border-color px-4 py-1 shadow-[0px_2px_12px_0px_#C9C9C938] md:flex">
@@ -29,7 +29,7 @@ export default function QuizTable() {
               id="search"
               autoComplete="off"
               placeholder="Search"
-              className="w-[280px] bg-transparent outline-none"
+              className="w-[280px] bg-transparent focus:ring-transparent"
             />
           </div>
         </div>
@@ -64,7 +64,7 @@ export default function QuizTable() {
                 <span className="text-charcoal font-semibold">Test Name</span>
               </td>
               <td>
-                <div className="flex -ml-10 items-center gap-x-1.5">
+                <div className="-ml-10 flex items-center gap-x-1.5">
                   <span className="h-[10px] w-[10px] rounded-full bg-primary "></span>
                   <span className="font-semibold text-text-charcoal">
                     Study Mode
@@ -72,10 +72,12 @@ export default function QuizTable() {
                 </div>
               </td>
               <td>
-                <span className="font-semibold ml-5 text-text-charcoal">120</span>
+                <span className="ml-5 font-semibold text-text-charcoal">
+                  120
+                </span>
               </td>
               <td>
-                <span className="font-semibold  ml-5 text-text-charcoal">
+                <span className="ml-5  font-semibold text-text-charcoal">
                   02 Jan 23
                 </span>
               </td>
@@ -91,7 +93,7 @@ export default function QuizTable() {
                 <span className="text-charcoal font-semibold">Test Name</span>
               </td>
               <td>
-                <div className="flex -ml-10 items-center gap-x-1.5">
+                <div className="-ml-10 flex items-center gap-x-1.5">
                   <span className="h-[10px] w-[10px] rounded-full bg-red-exam "></span>
                   <span className="font-semibold text-text-charcoal">
                     Exam Mode
@@ -99,10 +101,12 @@ export default function QuizTable() {
                 </div>
               </td>
               <td>
-                <span className="font-semibold ml-5 text-text-charcoal">120</span>
+                <span className="ml-5 font-semibold text-text-charcoal">
+                  120
+                </span>
               </td>
               <td>
-                <span className="font-semibold  ml-5 text-text-charcoal">
+                <span className="ml-5  font-semibold text-text-charcoal">
                   02 Jan 23
                 </span>
               </td>
@@ -115,10 +119,12 @@ export default function QuizTable() {
             </tr>
             <tr>
               <td className=" py-7 pl-6 ">
-                <span className="text-charcoal font-semibold">Lebron Wayde</span>
+                <span className="text-charcoal font-semibold">
+                  Lebron Wayde
+                </span>
               </td>
               <td>
-                <div className="flex -ml-10 items-center gap-x-1.5">
+                <div className="-ml-10 flex items-center gap-x-1.5">
                   <span className="h-[10px] w-[10px] rounded-full bg-red-exam "></span>
                   <span className="font-semibold text-text-charcoal">
                     Exam Mode
@@ -126,10 +132,12 @@ export default function QuizTable() {
                 </div>
               </td>
               <td>
-                <span className="font-semibold ml-5 text-text-charcoal">120</span>
+                <span className="ml-5 font-semibold text-text-charcoal">
+                  120
+                </span>
               </td>
               <td>
-                <span className="font-semibold  ml-5 text-text-charcoal">
+                <span className="ml-5  font-semibold text-text-charcoal">
                   02 Jan 23
                 </span>
               </td>
@@ -145,7 +153,7 @@ export default function QuizTable() {
                 <span className="text-charcoal font-semibold">Test Name</span>
               </td>
               <td>
-                <div className="flex -ml-10 items-center gap-x-1.5">
+                <div className="-ml-10 flex items-center gap-x-1.5">
                   <span className="h-[10px] w-[10px] rounded-full bg-red-exam "></span>
                   <span className="font-semibold text-text-charcoal">
                     Exam Mode
@@ -153,10 +161,12 @@ export default function QuizTable() {
                 </div>
               </td>
               <td>
-                <span className="font-semibold ml-5 text-text-charcoal">120</span>
+                <span className="ml-5 font-semibold text-text-charcoal">
+                  120
+                </span>
               </td>
               <td>
-                <span className="font-semibold  ml-5 text-text-charcoal">
+                <span className="ml-5  font-semibold text-text-charcoal">
                   02 Jan 23
                 </span>
               </td>
@@ -169,10 +179,12 @@ export default function QuizTable() {
             </tr>
             <tr>
               <td className=" py-7 pl-6 ">
-                <span className="text-charcoal font-semibold">Jessie Clarcson</span>
+                <span className="text-charcoal font-semibold">
+                  Jessie Clarcson
+                </span>
               </td>
               <td>
-                <div className="flex -ml-10 items-center gap-x-1.5">
+                <div className="-ml-10 flex items-center gap-x-1.5">
                   <span className="h-[10px] w-[10px] rounded-full bg-red-exam "></span>
                   <span className="font-semibold text-text-charcoal">
                     Exam Mode
@@ -180,10 +192,12 @@ export default function QuizTable() {
                 </div>
               </td>
               <td>
-                <span className="font-semibold ml-5 text-text-charcoal">120</span>
+                <span className="ml-5 font-semibold text-text-charcoal">
+                  120
+                </span>
               </td>
               <td>
-                <span className="font-semibold  ml-5 text-text-charcoal">
+                <span className="ml-5  font-semibold text-text-charcoal">
                   02 Jan 23
                 </span>
               </td>
