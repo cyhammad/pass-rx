@@ -51,6 +51,23 @@ export async function fetchFlashFactsAdmin(token) {
   return flashFacts.json();
 }
 
+export async function fetchBricksAdmin(token) {
+  noStore();
+  const headers = new Headers();
+  headers.append("Authorization", `Bearer ${token}`);
+  headers.append("Cookie", "token=" + token);
+  const requestOptions = {
+    method: "GET",
+    headers: headers,
+    redirect: "follow",
+  };
+  const flashFacts = await fetch(
+    `${process.env.BASE_URL}/admin/bricks`,
+    requestOptions,
+  );
+  return flashFacts.json();
+}
+
 export async function getUserData(token) {
   noStore();
   const headers = new Headers();

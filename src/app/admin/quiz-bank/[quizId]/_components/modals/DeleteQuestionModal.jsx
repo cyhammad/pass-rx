@@ -1,18 +1,23 @@
-import { deleteQuizBank } from "@/app/lib/actions/quizBankActions";
+import { deleteQuestion } from "@/app/lib/actions/questionActions";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-const DeleteQuizBankModal = ({ setIsOpen, quiz, token, revalidateData }) => {
+const DeleteQuestionModal = ({
+  setIsOpen,
+  questionId,
+  token,
+  revalidateData,
+}) => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
 
   const closeModal = () => {
     setIsOpen(false);
   };
-  const handleDeleteQuiz = async () => {
-    const res = await deleteQuizBank(token, quiz._id);
-    console.log("res", res);
-    if (res.message === "Quiz deleted successfully") {
+  const handleDeleteQuestion = async () => {
+    const res = await deleteQuestion(token, questionId);
+    console.log("RES", res);
+    if (res.message === "Deleted successfully") {
       revalidateData();
       setSuccess(true);
       setTimeout(() => {
@@ -29,16 +34,16 @@ const DeleteQuizBankModal = ({ setIsOpen, quiz, token, revalidateData }) => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -8 }}
       transition={{ duration: 0.3 }}
-      className="fixed inset-0 z-50 flex items-center justify-center px-5"
+      className="fixed inset-0 z-50 flex items-center justify-center px-5 text-white"
     >
       <div
         className="fixed inset-0 bg-black bg-opacity-50"
         onClick={() => closeModal()}
       ></div>
 
-      <div className="z-50  flex  h-[300px] max-w-lg flex-col items-center justify-between rounded-lg bg-white shadow-md md:h-[412.35px]">
+      <div className="z-50  flex  h-[300px] max-w-lg flex-col items-center justify-between rounded-lg bg-almostBlack shadow-md md:h-[412.35px]">
         <div className="flex w-full items-center justify-between border-b border-black/10 px-6 py-2 md:gap-56 md:py-3">
-          <p className="text-lg font-semibold ">Delete Quiz</p>
+          <p className="text-lg font-semibold ">Delete Question</p>
           <span onClick={() => closeModal()} className="cursor-pointer">
             {cross}
           </span>
@@ -47,22 +52,22 @@ const DeleteQuizBankModal = ({ setIsOpen, quiz, token, revalidateData }) => {
           <span className="">{alert}</span>
           <p className="text-center text-sm sm:text-lg ">
             {error === "" && !success
-              ? `Are you sure you want to delete "${quiz.title}" quiz.`
+              ? `Are you sure you want to delete this question?`
               : !success
                 ? error
-                : "Quiz deleted successfully"}
+                : "Question deleted successfully"}
           </p>
         </div>
         <div className="mb-3 flex w-full justify-between px-5 ">
           <button
-            className="hover:bg-gray-400 mr-2 w-1/2 rounded-lg border  border-black/10 py-2 font-medium focus:outline-none md:py-4"
+            className="hover:bg-gray-400 mr-2 w-1/2 rounded-lg border  border-white/10 py-2 font-medium focus:outline-none md:py-4"
             onClick={() => closeModal()}
           >
             Cancel
           </button>
           <button
             className="w-1/2 rounded-lg  bg-error-light  py-2   font-medium text-white focus:outline-none  md:py-4"
-            onClick={() => handleDeleteQuiz()}
+            onClick={() => handleDeleteQuestion()}
           >
             Delete
           </button>
@@ -72,7 +77,7 @@ const DeleteQuizBankModal = ({ setIsOpen, quiz, token, revalidateData }) => {
   );
 };
 
-export default DeleteQuizBankModal;
+export default DeleteQuestionModal;
 const cross = (
   <svg
     width="40"
@@ -101,14 +106,14 @@ const alert = (
   <svg
     viewBox="0 0 177 178"
     fill="none"
-    className="h-[100px] w-[100px] md:h-[156px] md:w-[156px]"
+    className="h-[100px] w-[100px] md:h-[156px] md:w-[156px]    "
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
       fillRule="evenodd"
       clipRule="evenodd"
       d="M166.38 120.565L109.814 26.7549C105.165 19.4831 97.1304 15.083 88.4999 15.083C79.8694 15.083 71.8345 19.4831 67.1861 26.7549L10.6199 120.565C6.55291 127.344 6.41234 135.779 10.2511 142.69C14.6907 150.472 22.9747 155.262 31.9336 155.227H145.066C153.964 155.322 162.234 150.653 166.749 142.985C170.702 135.998 170.561 127.418 166.38 120.565ZM88.4999 125.727C84.4268 125.727 81.1249 122.425 81.1249 118.352C81.1249 114.279 84.4268 110.977 88.4999 110.977C92.573 110.977 95.8749 114.279 95.8749 118.352C95.8749 122.425 92.573 125.727 88.4999 125.727ZM88.4999 103.602C92.573 103.602 95.8749 100.3 95.8749 96.2274V66.7274C95.8749 62.6543 92.573 59.3524 88.4999 59.3524C84.4268 59.3524 81.1249 62.6543 81.1249 66.7274V96.2274C81.1249 100.3 84.4268 103.602 88.4999 103.602Z"
-      fill="#FF5630"
+      fill="#FFFFFF"
     />
   </svg>
 );

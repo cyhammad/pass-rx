@@ -1,11 +1,9 @@
-
-
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import { openModal } from "@/lib/features/deleteModal/deleteModalSlice";
 
-const CardDropDown = ({ name }) => {
+const BrickCardDropDown = ({ setIsDeleteModalOpen }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const dropdownRef = useRef(null);
@@ -34,50 +32,52 @@ const CardDropDown = ({ name }) => {
   };
 
   return (
-    <div className="relative" ref={dropdownRef}>
-      <button
-        className=" flex justify-center rounded-full text-center"
-        onClick={() => toggleMenu()}
-      >
-        <span className="leading-6 text-white">{option}</span>
-      </button>
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-          className=" absolute right-0 top-7 flex w-40 flex-col justify-between rounded-xl bg-dark pb-2.5 text-white"
+    <>
+      <div className="relative" ref={dropdownRef}>
+        <button
+          className="flex justify-center rounded-full text-center"
+          onClick={() => toggleMenu()}
         >
-          <div className=" flex flex-col gap-y-1.5 py-2">
-            <button className="flex items-center justify-between px-4 py-1.5">
-              <div className="flex items-center gap-x-2">
-                {pencil}
-                <span className="text-xs">Edit</span>
-              </div>
-            </button>
-            <button
-              className="flex items-center justify-between px-4 py-1.5"
-              onClick={() => handleDeleteClick()} // Step 4: Call handleDeleteClick on delete button click
-            >
-              <div className="flex items-center gap-x-2">
-                {cross}
-                <span className="text-xs">Delete {name}</span>
-              </div>
-            </button>
-            <button className="flex items-center justify-between px-4 py-1.5">
-              <div className="flex items-center gap-x-2">
-                {lock}
-                <span className="text-xs">Lock</span>
-              </div>
-            </button>
-          </div>
-        </motion.div>
-      )}
-    </div>
+          <span className="leading-6 text-white">{option}</span>
+        </button>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className=" absolute right-0 top-4 flex w-40 flex-col justify-between rounded-xl bg-dark text-white"
+          >
+            <div className=" flex flex-col gap-y-1.5 py-2">
+              <button className="flex items-center justify-between px-4 py-1.5">
+                <div className="flex items-center gap-x-2">
+                  {pencil}
+                  <span className="text-xs">Edit</span>
+                </div>
+              </button>
+              <button className="flex items-center justify-between px-4 py-1.5">
+                <div className="flex items-center gap-x-2">
+                  {lock}
+                  <span className="text-xs">Lock</span>
+                </div>
+              </button>
+              <button
+                className="flex items-center justify-between px-4 py-1.5"
+                onClick={() => setIsDeleteModalOpen(true)} // Step 4: Call handleDeleteClick on delete button click
+              >
+                <div className="flex items-center gap-x-2">
+                  {cross}
+                  <span className="text-xs">Delete {name}</span>
+                </div>
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </div>
+    </>
   );
 };
 
-export default CardDropDown;
+export default BrickCardDropDown;
 
 const option = (
   <svg

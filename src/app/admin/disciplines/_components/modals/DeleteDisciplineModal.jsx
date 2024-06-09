@@ -52,7 +52,7 @@ const DeleteDisciplineModal = ({
           <span className="">{alert}</span>
           <p className="text-center text-sm sm:text-lg ">
             {error === "" && !success
-              ? `Are you sure you want to delete "${discipline.name}" discipline.`
+              ? `Are you sure you want to delete "${discipline.name}" discipline?`
               : !success
                 ? error
                 : "Discipline deleted successfully"}

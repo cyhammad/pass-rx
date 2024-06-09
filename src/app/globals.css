@@ -87,3 +87,11 @@ input:focus {
   outline: none;
   box-shadow: 0px 0px transparent;
 }
+
+.brick-title {
+  border-bottom: 2px solid #88888980 !important;
+}
+
+.brick-title:disabled {
+  border: none !important;
+}

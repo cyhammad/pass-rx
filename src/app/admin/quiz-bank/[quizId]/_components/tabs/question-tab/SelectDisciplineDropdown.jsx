@@ -7,6 +7,7 @@ const SelectDisciplineDropdown = ({
   disciplines,
   selectedDiscipline,
   setSelectedDiscipline,
+  disabled = false,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -14,11 +15,16 @@ const SelectDisciplineDropdown = ({
     setSelectedDiscipline(discipline);
     setIsOpen(false);
   };
+  const handleOpen = () => {
+    if (!disabled) {
+      setIsOpen(!isOpen);
+    }
+  };
   return (
     <div className="relative">
       <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="relative flex h-[54px] w-full items-center rounded-lg border border-blackBorder px-3 text-start sm:w-fit sm:min-w-[250px]"
+        onClick={() => handleOpen()}
+        className={`${disabled && "text-text-gray"} relative flex h-[54px] w-full items-center rounded-lg border border-blackBorder px-3 text-start sm:w-fit sm:min-w-[250px]`}
       >
         <span className="absolute -top-2 left-3 bg-almostBlack px-1 text-xs text-text-gray">
           Discipline

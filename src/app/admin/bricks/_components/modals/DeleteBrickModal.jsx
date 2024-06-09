@@ -1,18 +1,18 @@
-import { deleteQuizBank } from "@/app/lib/actions/quizBankActions";
+import { deleteBrick } from "@/app/lib/actions/brickActions";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-const DeleteQuizBankModal = ({ setIsOpen, quiz, token, revalidateData }) => {
+const DeleteBrickModal = ({ setIsOpen, brick, token, revalidateData }) => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
 
   const closeModal = () => {
     setIsOpen(false);
   };
-  const handleDeleteQuiz = async () => {
-    const res = await deleteQuizBank(token, quiz._id);
+  const handleDeleteBrick = async () => {
+    const res = await deleteBrick(token, brick._id);
     console.log("res", res);
-    if (res.message === "Quiz deleted successfully") {
+    if (res.message === "Deleted successfully") {
       revalidateData();
       setSuccess(true);
       setTimeout(() => {
@@ -36,9 +36,9 @@ const DeleteQuizBankModal = ({ setIsOpen, quiz, token, revalidateData }) => {
         onClick={() => closeModal()}
       ></div>
 
-      <div className="z-50  flex  h-[300px] max-w-lg flex-col items-center justify-between rounded-lg bg-white shadow-md md:h-[412.35px]">
+      <div className="z-50 flex  h-[300px] max-w-lg flex-col items-center justify-between rounded-lg bg-white shadow-md md:h-[412.35px]">
         <div className="flex w-full items-center justify-between border-b border-black/10 px-6 py-2 md:gap-56 md:py-3">
-          <p className="text-lg font-semibold ">Delete Quiz</p>
+          <p className="text-lg font-semibold ">Delete Brick</p>
           <span onClick={() => closeModal()} className="cursor-pointer">
             {cross}
           </span>
@@ -47,10 +47,10 @@ const DeleteQuizBankModal = ({ setIsOpen, quiz, token, revalidateData }) => {
           <span className="">{alert}</span>
           <p className="text-center text-sm sm:text-lg ">
             {error === "" && !success
-              ? `Are you sure you want to delete "${quiz.title}" quiz.`
+              ? `Are you sure you want to delete "${brick.title}" brick.`
               : !success
                 ? error
-                : "Quiz deleted successfully"}
+                : "Brick deleted successfully"}
           </p>
         </div>
         <div className="mb-3 flex w-full justify-between px-5 ">
@@ -62,7 +62,7 @@ const DeleteQuizBankModal = ({ setIsOpen, quiz, token, revalidateData }) => {
           </button>
           <button
             className="w-1/2 rounded-lg  bg-error-light  py-2   font-medium text-white focus:outline-none  md:py-4"
-            onClick={() => handleDeleteQuiz()}
+            onClick={() => handleDeleteBrick()}
           >
             Delete
           </button>
@@ -72,7 +72,7 @@ const DeleteQuizBankModal = ({ setIsOpen, quiz, token, revalidateData }) => {
   );
 };
 
-export default DeleteQuizBankModal;
+export default DeleteBrickModal;
 const cross = (
   <svg
     width="40"

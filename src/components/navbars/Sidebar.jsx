@@ -4,6 +4,7 @@ import {
   arrowRightIcon,
   bricksIcon,
   circleIcon,
+  disciplineIcon,
   flashFactsIcon,
   homeIcon,
   quizBankIcon,
@@ -15,8 +16,7 @@ import { usePathname } from "next/navigation";
 import { use, useState } from "react";
 
 const Sidebar = ({ user }) => {
-
-  const hoverText = user ? 'text-black' : 'text-primary';
+  const hoverText = user ? "text-black" : "text-primary";
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
@@ -56,6 +56,13 @@ const Sidebar = ({ user }) => {
             <span className={isOpen ? "block" : "hidden"}>
               Flash&nbsp;Facts
             </span>
+          </Link>
+          <Link
+            href={user ? "/user/disciplines" : "/admin/disciplines"}
+            className={`flex gap-x-2 p-4 text-white hover:${hoverText}`}
+          >
+            <div className="flex w-7 justify-center">{disciplineIcon}</div>{" "}
+            <span className={isOpen ? "block" : "hidden"}>Disciplines</span>
           </Link>
           <Link
             href={user ? "/user/bricks" : "/admin/bricks"}

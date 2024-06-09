@@ -19,6 +19,8 @@ const QuestionTab = ({
   setAnswers,
   correctAnswerIndex,
   setCorrectAnswerIndex,
+  disableDisciplineSelect = false,
+  disableQuestionSelect = false,
 }) => {
   return (
     <div className="flex flex-col gap-5">
@@ -27,17 +29,24 @@ const QuestionTab = ({
           disciplines={quizbank.disciplines}
           selectedDiscipline={selectedDiscipline}
           setSelectedDiscipline={setSelectedDiscipline}
+          disabled={disableDisciplineSelect}
         />
         <SelectDifficultyDropdown
           difficulty={difficulty}
           setDifficulty={setDifficulty}
         />
       </div>
-      <IncludeFlashFactsCheckbox
-        includeToFlashFacts={includeToFlashFacts}
-        setIncludeToFlashFacts={setIncludeToFlashFacts}
+      {includeToFlashFacts && setIncludeToFlashFacts && (
+        <IncludeFlashFactsCheckbox
+          includeToFlashFacts={includeToFlashFacts}
+          setIncludeToFlashFacts={setIncludeToFlashFacts}
+        />
+      )}
+      <QuestionField
+        question={question}
+        setQuestion={setQuestion}
+        disabled={disableQuestionSelect}
       />
-      <QuestionField question={question} setQuestion={setQuestion} />
       <PossibleOptions
         answers={answers}
         setAnswers={setAnswers}

@@ -5,7 +5,8 @@ import QuizBanks from "./_components/QuizBanks";
 
 export default async function QuizBankPage() {
   const session = await auth();
-  const quizzes = await fetchQuizBanksAdmin(session.user.accessToken);
+  const token = session.user.accessToken;
+  const quizzes = await fetchQuizBanksAdmin(token);
   const revalidateData = async () => {
     "use server";
     revalidatePath("/admin/quiz-bank");
@@ -13,7 +14,7 @@ export default async function QuizBankPage() {
   return (
     <QuizBanks
       quizzes={quizzes}
-      token={session.user.accessToken}
+      token={token}
       revalidateData={revalidateData}
     />
   );

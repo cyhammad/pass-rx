@@ -31,7 +31,7 @@ const SQPage = async ({ params }) => {
   };
   const revalidateData = async () => {
     "use server";
-    revalidatePath("/admin/quiz-bank");
+    revalidatePath(`/admin/quiz-bank/${quizId}/discipline/${disciplineId}`);
   };
   return (
     <section className="flex w-full flex-col gap-5 px-2 py-7">
@@ -72,7 +72,13 @@ const SQPage = async ({ params }) => {
           {filteredQuestions.length > 0 ? (
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
               {filteredQuestions.map((question) => (
-                <Question question={question} key={question._id} />
+                <Question
+                  question={question}
+                  key={question._id}
+                  token={token}
+                  quizbank={quizbank}
+                  revalidateData={revalidateData}
+                />
               ))}
             </div>
           ) : (

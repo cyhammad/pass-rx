@@ -1,3 +1,4 @@
+"use client";
 
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
@@ -11,7 +12,8 @@ export default function SectionDropdown() {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsRotated(false);
-        setIsOpen(false);      }
+        setIsOpen(false);
+      }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
@@ -29,10 +31,10 @@ export default function SectionDropdown() {
   };
 
   return (
-    <div className="w-full mt-3">
+    <div className="mt-3 w-full">
       <div className="relative z-20 w-full" ref={dropdownRef}>
         <button
-          className="bg-gray-bg z-50 flex h-10 w-full items-center  justify-center rounded-xl text-center  shadow"
+          className="z-50 flex h-10 w-full items-center justify-center  rounded-xl bg-gray-bg text-center  shadow"
           onClick={() => toggleMenu()}
         >
           <span className="flex w-full items-center justify-between gap-3 rounded-[100px] px-3 py-[5px]  text-sm text-dark">

@@ -4,56 +4,50 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import QuestionTab from "../tabs/question-tab/QuestionTab";
 import ExplanationTab from "../tabs/ExplanationTab";
-import { addQuestion } from "@/app/lib/actions/questionActions";
+import { editQuestion } from "@/app/lib/actions/questionActions";
 
-const AddQuestionModal = ({
+const EditQuestionModal = ({
   setShowModal,
   quizbank,
   token,
-  prevSelectedDiscipline,
+  prevQuestion,
   revalidateData,
 }) => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
   const [selectedTab, setSelectedTab] = useState("Question");
   const [selectedDiscipline, setSelectedDiscipline] = useState(
-    prevSelectedDiscipline,
+    prevQuestion.discipline,
   );
-  const [difficulty, setDifficulty] = useState("Easy");
-  const [includeToFlashFacts, setIncludeToFlashFacts] = useState(true);
-  const [question, setQuestion] = useState("");
-  const [answers, setAnswers] = useState([
-    { answer: "", explanation: "" },
-    { answer: "", explanation: "" },
-    { answer: "", explanation: "" },
-    { answer: "", explanation: "" },
-  ]);
-  const [correctAnswerIndex, setCorrectAnswerIndex] = useState(0);
-  const handleAddQuestion = async () => {
-    const res = await addQuestion(
+  const [difficulty, setDifficulty] = useState(prevQuestion.difficulty);
+  const [question, setQuestion] = useState(prevQuestion.question);
+  const [answers, setAnswers] = useState(prevQuestion.answers);
+  const [correctAnswerIndex, setCorrectAnswerIndex] = useState(
+    prevQuestion.correctAnswerIndex,
+  );
+  const handleEditQuestion = async () => {
+    console.log("prevQuestion", prevQuestion);
+    const res = await editQuestion(
       token,
+      prevQuestion._id,
       question,
       answers,
       correctAnswerIndex,
       difficulty.toLowerCase(),
       answers[correctAnswerIndex].explanation,
       selectedDiscipline._id,
-      quizbank._id,
-      includeToFlashFacts,
     );
-    console.log("RES", res);
-    if (res.message === "Created successfully") {
+    console.log("res", res);
+    if (res.message === "Updated successfully") {
       setSuccess(true);
       revalidateData();
       // close modal after 2 seconds
-      setTimeout(() => {
+      setInterval(() => {
         setShowModal(false);
       }, 2000);
     } else {
+      console.log("error", res);
       setError(true);
-      setTimeout(() => {
-        setError(false);
-      }, 2000);
     }
   };
   return (
@@ -70,7 +64,7 @@ const AddQuestionModal = ({
       ></div>
       <div className="z-50 flex h-full max-h-[90vh] w-full max-w-[700px] flex-col gap-8 overflow-auto rounded-lg bg-almostBlack p-8 shadow-md">
         <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-center">
-          <span className="text-xl">Add Question</span>
+          <span className="text-xl">Edit Question</span>
           <div className="flex items-center justify-between gap-8 sm:justify-start">
             <button
               className="flex items-center gap-4"
@@ -80,10 +74,10 @@ const AddQuestionModal = ({
               <span className="text-sm">Cancel</span>
             </button>
             <button
-              onClick={() => handleAddQuestion()}
+              onClick={() => handleEditQuestion()}
               className="rounded-md border border-primary px-10 py-1.5 text-sm text-primary sm:px-16"
             >
-              Add
+              Edit
             </button>
           </div>
         </div>
@@ -94,7 +88,7 @@ const AddQuestionModal = ({
         )}
         {success ? (
           <div className="flex h-full items-center justify-center text-center">
-            Created Successfully
+            Updated Successfully
           </div>
         ) : (
           <>
@@ -131,14 +125,13 @@ const AddQuestionModal = ({
                 setSelectedDiscipline={setSelectedDiscipline}
                 difficulty={difficulty}
                 setDifficulty={setDifficulty}
-                includeToFlashFacts={includeToFlashFacts}
-                setIncludeToFlashFacts={setIncludeToFlashFacts}
                 question={question}
                 setQuestion={setQuestion}
                 answers={answers}
                 setAnswers={setAnswers}
                 correctAnswerIndex={correctAnswerIndex}
                 setCorrectAnswerIndex={setCorrectAnswerIndex}
+                disableDisciplineSelect
               />
             ) : (
               <ExplanationTab
@@ -196,4 +189,4 @@ const searchIcon = (
   </svg>
 );
 
-export default AddQuestionModal;
+export default EditQuestionModal;
