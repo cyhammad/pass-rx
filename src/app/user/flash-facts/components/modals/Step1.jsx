@@ -1,8 +1,15 @@
-import React, { useState } from "react";
 import CheckBox from "@/components/userComponents/input-elements/CheckBox";
 import { Line } from "@/app/user/quiz-bank/components/modals/AddQuiz1";
 
-export default function Step1({ setStep }) {
+export default function Step1({ setStep, data, setData ,handleChange}) {
+  const handleOptionSelect = (option) => {
+    setData((prevData) => ({
+      ...prevData,
+      rating: prevData.rating.includes(option)
+        ? prevData.rating.filter((item) => item !== option) // Remove the option if already selected
+        : [...prevData.rating, option], // Add the option if not selected
+    }));
+  };
   return (
     <div className=" mt-3 flex h-full w-full select-none flex-col  justify-between px-6">
       <div className="flex self-center">
@@ -25,55 +32,68 @@ export default function Step1({ setStep }) {
           <div className="flex h-9 w-9 items-center justify-center self-center rounded-full border-2  border-text-gray  text-sm font-medium  ">
             03
           </div>
-          <p className="mt-2 text-center text-user-gray">Finalize Deckt</p>
+          <p className="mt-2 text-center text-user-gray">Finalize Deck</p>
         </div>
       </div>
       <div className="mt-8 flex  flex-col justify-between self-center">
         <div className="flex flex-col items-center">
           <h5 className="text-center text-lg font-semibold">Card Status</h5>
-          <div className="mt-2 flex items-center gap-[2vw] ">
-            <div className="flex items-center  gap-2 font-medium text-text-gray-2">
+          <div className="mt-2 flex items-center gap-[2vw]">
+            <div className="flex items-center gap-2 font-medium text-text-gray-2">
               <input
                 type="radio"
-                className="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
-                name="radio"
+                value="All"
+                checked={data.status === "All"}
+                onChange={handleChange}
+                className="cursor-pointer checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
+                name="status"
               />
               <p className="text-xs sm:text-base">All</p>
-            </div>
-            <div className="flex items-center gap-2   font-medium text-text-gray-2">
-              <input
-                type="radio"
-                className="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
-                name="radio"
-              />
-              <p className="text-xs sm:text-base">Rated</p>
             </div>
             <div className="flex items-center gap-2 font-medium text-text-gray-2">
               <input
                 type="radio"
-                className="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
-                name="radio"
+                value="Rated"
+                checked={data.status === "Rated"}
+                onChange={handleChange}
+                className="cursor-pointer checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
+                name="status"
+              />
+              <p className="text-xs sm:text-base">Rated</p>
+            </div>
+            <div className="flex items-center  gap-2 font-medium text-text-gray-2">
+              <input
+                type="radio"
+                value="Unrated"
+                checked={data.status === "Unrated"}
+                onChange={handleChange}
+                className="cursor-pointer checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
+                name="status"
               />
               <p className="text-xs sm:text-base">Unrated</p>
             </div>
           </div>
         </div>
-        <div className="flex flex-col items-center mt-10">
-          <h5 className="text-center text-lg font-semibold">Card Rating </h5>
-          <div className="mt-2  flex gap-5">
-            <div className="flex items-center gap-1  font-medium text-text-gray-2">
-              <CheckBox />
-              <p className="text-sm sm:text-base">Don’t Know</p>
-            </div>{" "}
-            <div className="flex items-center gap-1 font-medium text-text-gray-2">
-              <CheckBox />
-              <p className="text-sm sm:text-base">OK</p>
-            </div>
-            <div className="flex items-center gap-1 font-medium text-text-gray-2">
-              <CheckBox />
-              <p className="text-sm sm:text-base">Nailed It</p>
-            </div>
-          </div>
+
+        <div className="mt-10 flex flex-col items-center">
+        <h5 className="text-center text-lg font-semibold">Card Rating</h5>
+      <div className="mt-2 flex gap-6">
+        <CheckBox
+          text="Don’t Know"
+          selected={data.rating.includes("Don’t Know")}
+          onSelect={() => handleOptionSelect("Don’t Know")}
+        />
+        <CheckBox
+          text="OK"
+          selected={data.rating.includes("OK")}
+          onSelect={() => handleOptionSelect("OK")}
+        />
+        <CheckBox
+          text="Nailed It"
+          selected={data.rating.includes("Nailed It")}
+          onSelect={() => handleOptionSelect("Nailed It")}
+        />
+      </div>
         </div>
         <div className="mt-10 flex flex-col items-center">
           <h5 className="text-center text-lg font-semibold">Mark Status</h5>
@@ -81,24 +101,33 @@ export default function Step1({ setStep }) {
             <div className="flex items-center  gap-2 font-medium text-text-gray-2">
               <input
                 type="radio"
-                className="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
-                name="radio"
+                className="cursor-pointer checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
+                name="markStatus"
+                value="All"
+                checked={data.markStatus === "All"}
+                onChange={handleChange}
               />
               <p className="text-xs sm:text-base">All</p>
             </div>
             <div className="flex items-center gap-2   font-medium text-text-gray-2">
               <input
                 type="radio"
-                className="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
-                name="radio"
+                className="cursor-pointer checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
+                name="markStatus"
+                value="Marked Only"
+                checked={data.markStatus === "Marked Only"}
+                onChange={handleChange}
               />
               <p className="text-xs sm:text-base">Marked Only</p>
             </div>
             <div className="flex items-center gap-2 font-medium text-text-gray-2">
               <input
                 type="radio"
-                className="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
-                name="radio"
+                className="cursor-pointer checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
+                name="markStatus"
+                value="Unmarked Only"
+                checked={data.markStatus === "Unmarked Only"}
+                onChange={handleChange}
               />
               <p className="text-xs sm:text-base">Unmarked Only</p>
             </div>

@@ -3,12 +3,42 @@ import { useState } from "react";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
+import { addDeck } from "@/app/lib/actions/deckActions";
 
-export default function AddDeck({ toggle }) {
+export default function AddDeck({ toggle, disciplines ,token}) {
+  const [data, setData] = useState({
+    disciplines: [],
+    status: "",
+    rating: "",
+    markStatus: "",
+    deckName: "",
+    noOfQuestions: "",
+  });
   const closeModal = () => {
     toggle();
   };
   const [step, setStep] = useState("step1");
+  const handleChange = (event) => {
+    const { name, value } = event.target; // Assuming each input has a 'name' attribute corresponding to the field name
+    setData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleAdd = async () => {
+    console.log(data)
+    const res = await addDeck(
+      token,
+      data
+    );
+    if (res.message === "Created successfully") {
+      console.log("created")
+    } else {
+      console.log("not created")
+
+    }
+  };
 
   return (
     <motion.div
@@ -33,13 +63,18 @@ export default function AddDeck({ toggle }) {
             {cross}
           </button>
         </div>
-          {step == "step1" ? (
-            <Step1 setStep={setStep} />
-          ) : step == "step2" ? (
-            <Step2 setStep={setStep} />
-          ) : (
-            <Step3 setStep={setStep} />
-          )}
+        {step == "step1" ? (
+          <Step1 setStep={setStep} data={data} setData={setData} handleChange={handleChange} />
+        ) : step == "step2" ? (
+          <Step2
+            setStep={setStep}
+            data={data}
+            setData={setData}
+            disciplines={disciplines}
+          />
+        ) : (
+          <Step3 setData={setData} handleChange={handleChange} handleAdd={handleAdd}/>
+        )}
       </div>
     </motion.div>
   );

@@ -20,38 +20,19 @@ const Finished = ({ text1, text2, toggleFinish }) => {
         onClick={() => closeModal()}
       ></div>
 
-      <div className="z-50  w-[430 .1px] flex py-11 flex-col items-center justify-between rounded-[53.42px] bg-white shadow-md min-h-[530px] px-6">
+      <div className="z-50  w-[454.1px] flex py-11 flex-col items-center justify-between rounded-[53.42px] bg-white shadow-md min-h-[530px] px-6">
         <span>{svg}</span>
         <div className="text-center mt-5">
-          <h3 className="text-2xl font-semibold">{text1}</h3>
-          <p className="text-xl max-w-72 mt-2 text-text-gray ">{text2}</p>
+          <h3 className="text-xl font-bold">{text1}</h3>
+          <p className="text-lg max-w-72 mt-2 text-text-gray ">{text2}</p>
         </div>
         <button
           className="w-full  rounded-[13.3px]  bg-primary py-6 text-lg font-medium  text-white focus:outline-none "
           onClick={() => closeModal()}
         >
-          Cancel
+          View Result
         </button>
-        {/* <div className="flex w-full items-center justify-between border-b border-black/10 px-6 py-2 md:gap-56 md:py-3">
-          <p className="text-lg font-semibold ">Delete </p>
-          <span onClick={() => closeModal()} className="cursor-pointer">
-          </span>
-        </div>
-        <div className="mt-[-2rem] flex w-2/3 flex-col  items-center">
-          <span className="">{}</span>
-          <p className="text-center text-sm sm:text-lg ">
-            Are you sure you want to delete this .{" "}
-          </p>
-        </div>
-        <div className="mb-3 flex w-full justify-between px-5 ">
-          <button
-            className="hover:bg-gray-400 mr-2 w-1/2 rounded-lg border  border-black/10 py-2 font-medium focus:outline-none md:py-4"
-            onClick={() => closeModal()}
-          >
-            Cancel
-          </button>
-          
-        </div> */}
+
       </div>
     </motion.div>
   );

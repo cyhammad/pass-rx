@@ -1,16 +1,19 @@
-
 import React, { useState } from "react";
 
-export default function CheckBox({ text, selected, onSelect }) {
+export default function CheckBox({ name }) {
+  const [isChecked, setIsChecked] = useState(false);
+
+  const toggleCheckbox = () => {
+    setIsChecked((prevState) => !prevState);
+  };
   return (
-    <div className="flex items-center gap-x-2">
     <div
-      className={`h-[16.89px] w-[16.89px] rounded ${
-        selected ? "bg-primary" : "border border-checkbox bg-white"
+      className={` h-[16.89px] w-[16.89px] rounded  ${
+        isChecked ? "bg-primary" : "border border-checkbox bg-white"
       } flex cursor-pointer items-center justify-center`}
-      onClick={onSelect}
+      onClick={toggleCheckbox}
     >
-      {selected && (
+      {isChecked && (
         <svg
           width="12"
           height="8"
@@ -25,9 +28,6 @@ export default function CheckBox({ text, selected, onSelect }) {
           />
         </svg>
       )}
-
     </div>
-                <p className="text-xs sm:text-base font-medium text-text-gray-2">{text}</p>
-</div>
   );
 }

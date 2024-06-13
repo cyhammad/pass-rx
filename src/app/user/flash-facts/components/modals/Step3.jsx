@@ -1,16 +1,25 @@
 import React, { useState } from "react";
 import { Line } from "@/app/user/quiz-bank/components/modals/AddQuiz1";
 
-export default function Step3({ setStep }) {
+export default function Step3({ handleAdd,setData  ,handleChange}) {
   const [number, setNumber] = useState(0);
-
   const updateNumber = (operation) => {
-    if (operation === "increment") {
-      setNumber((prevNumber) => prevNumber + 1);
-    } else if (operation === "decrement") {
-      setNumber((prevNumber) => Math.max(prevNumber - 1, 0));
-    }
+    setNumber((prevNumber) => {
+      let newNumber;
+      if (operation === "increment") {
+        // Check if incrementing will exceed 100
+        newNumber = prevNumber < 100 ? prevNumber + 1 : prevNumber;
+      } else if (operation === "decrement") {
+        newNumber = Math.max(prevNumber - 1, 0);
+      }
+      setData((prevData) => ({
+        ...prevData,
+        noOfQuestions: newNumber
+      }));
+      return newNumber;
+    });
   };
+  
   return (
     <div className=" mt-3 flex h-full w-full select-none  flex-col justify-between px-6">
       <div className="flex justify-between self-center">
@@ -42,7 +51,9 @@ export default function Step3({ setStep }) {
           <input
             placeholder="Deck Test"
             type="text"
-            className=" mt-3 block w-[290px]  focus:ring-light-border focus:border-light-border focus:outline-none rounded-lg border border-light-border bg-white shadow-sm active:border-light-gray sm:w-[354px] "
+            name="deckName"
+            onChange={handleChange}
+            className=" mt-3 block w-[290px]  inputborder focus:ring-light-border focus:border-light-border rounded-lg  bg-white shadow-sm  sm:w-[354px] "
           ></input>
         </div>
         <div className="mt-8 flex flex-col items-center">
@@ -75,7 +86,7 @@ export default function Step3({ setStep }) {
         </div>
       </div>
       <button
-        onClick={() => setStep("step1")}
+        onClick={handleAdd}
         className="  mb-7 mt-8 flex w-[250px] select-none items-center justify-center  self-center rounded-[10px]  bg-primary px-4 py-4 text-lg font-semibold text-white sm:w-[335px] "
       >
         Start

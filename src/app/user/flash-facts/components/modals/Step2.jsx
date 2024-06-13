@@ -1,13 +1,20 @@
-
 import { Line } from "@/app/user/quiz-bank/components/modals/AddQuiz1";
 import CheckBox from "@/components/userComponents/input-elements/CheckBox";
+import CheckBox2 from "@/components/userComponents/input-elements/CheckBox2";
 
-export default function Step2({ setStep }) {
-  const data = Array.from({ length: 12 }, (_, index) => index + 1);
-
+export default function Step2({ setStep, setData, data, disciplines }) {
+  const handleDisciplineToggle = (id) => {
+    setData(prevFormData => ({
+      ...prevFormData,
+      disciplines: prevFormData.disciplines.includes(id)
+        ? prevFormData.disciplines.filter(disciplineId => disciplineId !== id)
+        : [...prevFormData.disciplines, id]
+    }));
+  };
+  console.log(data.disciplines)
   return (
-    <div className=" mt-3 flex h-full select-none w-full flex-col  justify-between px-6">
-      <div className="flex self-center justify-between">
+    <div className=" mt-3 flex h-full w-full select-none flex-col  justify-between px-6">
+      <div className="flex justify-between self-center">
         <div className="flex flex-col">
           <div className="flex h-9 w-9 items-center justify-center self-center rounded-full bg-primary text-sm font-medium text-white ">
             01
@@ -30,29 +37,51 @@ export default function Step2({ setStep }) {
           <p className="mt-2 text-center text-user-gray">Finalize Deck</p>
         </div>
       </div>
-      <div className=" flex sm:mt-0 mt-3 flex-col justify-between sm:self-center border-b border-checkbox pb-10 max-w[489px]">
-        <div className="overflow-auto  user-screen  h-[45svh] sm:px-6 mt-3 pr-3">
-          {data.map((number) => (
-            <div key={number} className="flex justify-between sm:gap-[8vw] ">
-              <div className="flex items-center gap-[10px]  border-b border-checkbox/40 sm:px-5   py-3.5">
-                <CheckBox />
-                <p className="sm:text-sm text-xs font-semibold">Discipline Name</p>
-              </div>
-              <div className="flex items-center gap-[10px] border-b border-checkbox sm:px-5  py-3.5">
-                <CheckBox />
-                <p className="sm:text-sm text-xs font-semibold">Discipline Name</p>
-              </div>
-            </div>
-          ))}
+      <div className=" max-w[489px] mt-3 flex flex-col justify-between border-b border-checkbox pb-10 sm:mt-0 sm:self-center">
+        <div className="mt-3 max-h-[45svh] overflow-auto pr-3 sm:px-6">
+          {disciplines.map((discipline, index) => {
+            const isSelected = data.disciplines.includes(discipline._id);
+            if (index % 2 === 0 && index + 1 < disciplines.length) {
+              return (
+                <div key={index} className="flex justify-between sm:gap-[10vw]">
+                  <div
+                    className={`flex items-center gap-[10px] border-b border-checkbox/40 py-3.5 sm:px-5 ${isSelected ? 'bg-gray-200' : ''}`}
+                    onClick={() => handleDisciplineToggle(discipline._id)}
+                  >
+                    <CheckBox2 checked={isSelected} />
+                    <p className="text-xs font-semibold sm:text-sm">{discipline.name}</p>
+                  </div>
+                  <div
+                    className={`flex items-center gap-[10px] border-b border-checkbox/40 py-3.5 sm:px-5 ${isSelected ? 'bg-gray-200' : ''}`}
+                    onClick={() => handleDisciplineToggle(disciplines[index + 1]._id)}
+                  >
+                    <CheckBox2 checked={isSelected} />
+                    <p className="text-xs font-semibold sm:text-sm">{disciplines[index + 1].name}</p>
+                  </div>
+                </div>
+              );
+            } else if (index === disciplines.length - 1) {
+              return (
+                <div key={index} className="flex justify-between sm:gap-[8vw]">
+                  <div
+                    className={`flex items-center gap-[10px] border-b border-checkbox/40 py-3.5 sm:px-5 ${isSelected ? 'bg-gray-200' : ''}`}
+                    onClick={() => handleDisciplineToggle(discipline._id)}
+                  >
+                    <CheckBox2 checked={isSelected} />
+                    <p className="text-xs font-semibold sm:text-sm">{discipline.name}</p>
+                  </div>
+                </div>
+              );
+            }
+          })}
         </div>
-        
       </div>
       <button
-          onClick={() => setStep("step3")}
-          className="  flex  items-center justify-center mb-7 mt-8 sm:w-[335px]  w-[250px] self-center  rounded-[10px] bg-primary px-4 py-5 text-sm font-semibold text-white "
-        >
-          Next Step {arrow}{" "}
-        </button>
+        onClick={() => setStep("step3")}
+        className="  mb-7  mt-8 flex w-[250px] items-center justify-center  self-center rounded-[10px]  bg-primary px-4 py-5 text-sm font-semibold text-white sm:w-[335px] "
+      >
+        Next Step {arrow}{" "}
+      </button>
     </div>
   );
 }

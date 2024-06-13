@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 const ReactApexChart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
-export default function Performance() {
+export default function FlashFactsPerformance() {
   const series = [63, 12, 15, 9];
   const options = {
     stroke: {

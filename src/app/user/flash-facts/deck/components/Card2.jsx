@@ -2,7 +2,7 @@
 
 export default function Card2() {
   return (
-    <div className="flip-card-back mt-6  min-h-[406px] max-w-[683.66px] grid  rounded-3xl bg-[url('/user/bg2.svg')] bg-cover bg-no-repeat pt-[26px]">
+    <div className="flip-card-back mt-6  min-h-[386px] max-w-[683.66px] grid  rounded-3xl bg-[url('/user/bg.svg')] bg-cover bg-no-repeat pt-[26px]">
     <p className="text-center px-8 sm:text-[27px] self-center">
       List the layers of the anterior abdominal wall lateral to the deep inguinal ring, from parietal peritoneum to external oblique aponeurosis.
     </p>

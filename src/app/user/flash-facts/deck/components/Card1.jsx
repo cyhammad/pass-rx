@@ -2,7 +2,7 @@
 
 export default function Card1({handelFlip}) {
   return (
-    <div onClick={handelFlip} className=" flip-card-front mt-6 flex min-h-[406px] max-w-[683.66px] flex-col justify-between self-center rounded-3xl bg-primary bg-[url('/user/bg.svg')] bg-cover bg-no-repeat px-8 pt-[26px]">
+    <div onClick={handelFlip} className=" flip-card-front mt-6 flex min-h-[386px] max-w-[683.66px] flex-col justify-between self-center rounded-3xl bg-primary bg-[url('/user/bg.svg')] bg-cover bg-no-repeat  px-8 pt-[26px]">
       <span className="self-end">{bookmark}</span>
       <p className="text-justify text-white   sm:text-[27px]">
         List the layers of the anterior abdominal wall lateral to the deep

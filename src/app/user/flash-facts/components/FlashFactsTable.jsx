@@ -2,7 +2,7 @@
 import ThreeDotLoader from "@/components/loaders/ThreeDotLoader";
 import { searchIcon } from "@/svgs/topbarSvgs";
 import TableDropdown from "./dropdowns/TableDropdown";
-import StatusBtn from "./StatusBtn";
+import StatusBtn from "./FlashFactsStatusBtn";
 
 export default function FlashFactsTable() {
   return (

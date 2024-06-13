@@ -99,8 +99,8 @@ export default function page() {
           count={"24"}
         />
       </div>
-      <div className="mt-8 flex justify-between">
-        <h2 className="text-[37px] font-semibold">Card 5</h2>
+      <div className="mt-12 flex justify-between">
+        <h2 className="text-[34px] font-semibold">Card 5</h2>
 
         <div className="flex items-center gap-1 ">
           <span
@@ -133,7 +133,7 @@ export default function page() {
           <span>{back}</span>Back
         </div>
         <div onClick={toggleFinish} className="broder flex  cursor-pointer size-[70px] items-center  justify-center  gap-1 self-end rounded-full border border-text-gray-2 text-sm">
-          <span>{back}</span>Next
+        Next<span className="rotate-180">{back}</span>
         </div>
       </div>
     </div>

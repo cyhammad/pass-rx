@@ -76,9 +76,16 @@ button:focus {
 }
 
 textarea,
-input {
+input{
   border: none;
   outline: none;
+}
+.inputborder{
+  border: 1px solid #DDDDDD !important;
+
+}
+input[type="radio"]{
+  border: 1px solid #E5E7EB !important;
 }
 
 textarea:focus,

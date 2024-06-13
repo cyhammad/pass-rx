@@ -144,3 +144,9 @@ export const addSquare = (
     />
   </svg>
 );
+export const hamburger=(<svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.882812 0.912598H17.1159" stroke="black" stroke-width="1.62331" stroke-linecap="round"/>
+<path d="M0.882812 7H17.1159" stroke="black" stroke-width="1.62331" stroke-linecap="round"/>
+<path d="M0.882812 13.0876H17.1159" stroke="black" stroke-width="1.62331" stroke-linecap="round"/>
+</svg>
+)
