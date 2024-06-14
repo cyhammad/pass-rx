@@ -1,19 +1,27 @@
 import React, { useState } from "react";
-import { Line } from "./AddQuiz1";
+import { Line } from "./AddTest";
 
-export default function Step3({ setStep }) {
+export default function Step3({ handleAdd, handleChange, setData, data }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [number,setNumber]=useState(0);
-
+  const [number, setNumber] = useState(0);
   const updateNumber = (operation) => {
-    if (operation === 'increment') {
-      setNumber(prevNumber => prevNumber + 1);
-    } else if (operation === 'decrement') {
-      setNumber(prevNumber => Math.max(prevNumber - 1, 0));
-    }
+    setNumber((prevNumber) => {
+      let newNumber;
+      if (operation === "increment") {
+        // Check if incrementing will exceed 100
+        newNumber = prevNumber < 100 ? prevNumber + 1 : prevNumber;
+      } else if (operation === "decrement") {
+        newNumber = Math.max(prevNumber - 1, 0);
+      }
+      setData((prevData) => ({
+        ...prevData,
+        noOfQuestions: newNumber,
+      }));
+      return newNumber;
+    });
   };
   return (
-    <div className=" mt-3 flex h-full w-full flex-col  select-none justify-between px-6">
+    <div className=" mt-3 flex h-full w-full select-none  flex-col justify-between px-6">
       <div className="flex justify-between self-center">
         <div className="flex flex-col">
           <div className="flex h-9 w-9 items-center justify-center self-center rounded-full bg-primary text-sm font-medium text-white ">
@@ -43,7 +51,9 @@ export default function Step3({ setStep }) {
           <input
             placeholder="Test333"
             type="text"
-            className=" mt-3  focus:ring-light-border focus:border-light-border focus:outline-none block w-[290px] 	modal rounded-lg border border-light-border bg-white shadow-sm active:border-light-gray sm:w-[354px] "
+            name="testName"
+            onChange={handleChange}
+            className=" inputborder mt-3 block  w-[290px] rounded-lg bg-white shadow-sm  focus:border-light-border focus:ring-light-border  sm:w-[354px] "
           ></input>
         </div>
         <div className="mt-10 flex flex-col items-center">
@@ -65,7 +75,10 @@ export default function Step3({ setStep }) {
               <input
                 type="radio"
                 className="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
-                name="radio"
+                name="mode"
+                value="study"
+                checked={data.mode === "study"}
+                onChange={handleChange}
               />
               <p>Study Mode</p>
             </div>
@@ -73,7 +86,10 @@ export default function Step3({ setStep }) {
               <input
                 type="radio"
                 className="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
-                name="radio"
+                name="mode"
+                value="exam"
+                checked={data.mode === "exam"}
+                onChange={handleChange}
               />
               <p>Exam Mode</p>
             </div>
@@ -83,20 +99,34 @@ export default function Step3({ setStep }) {
           <h5 className="text-center text-lg font-semibold">
             Number of Questions
           </h5>
-          <div className="flex gap-3 mt-4">
-            <span onClick={() => updateNumber('decrement')} className="cursor-pointer">{minus}</span>
-            <p className="text-[19.7px] select-none font-semibold">{number}</p>
-            <span onClick={() => updateNumber('increment')} className="cursor-pointer">{plus}</span>
+          <div className="mt-4 flex gap-3">
+            <span
+              onClick={() => updateNumber("decrement")}
+              className="cursor-pointer"
+            >
+              {minus}
+            </span>
+            <p className="select-none text-[19.7px] font-semibold">{number}</p>
+            <span
+              onClick={() => updateNumber("increment")}
+              className="cursor-pointer"
+            >
+              {plus}
+            </span>
           </div>
         </div>
-        <div className="self-center mt-8">
-          <p className="font-semibold select-none">Total available questions:&nbsp;1132</p>
-          <p className="text-sm text-primary mt-3 select-none text-center">Max 100 questions per test</p>
+        <div className="mt-8 self-center">
+          <p className="select-none font-semibold">
+            Total available questions:&nbsp;1132
+          </p>
+          <p className="mt-3 select-none text-center text-sm text-primary">
+            Max 100 questions per test
+          </p>
         </div>
       </div>
       <button
-        onClick={() => setStep("step3")}
-        className="  mb-7 select-none mt-8 flex w-[250px] items-center justify-center  self-center rounded-[10px]  bg-primary px-4 py-4 text-lg font-semibold text-white sm:w-[335px] "
+        onClick={handleAdd}
+        className="  mb-7 mt-8 flex w-[250px] select-none items-center justify-center  self-center rounded-[10px]  bg-primary px-4 py-4 text-lg font-semibold text-white sm:w-[335px] "
       >
         Start
       </button>

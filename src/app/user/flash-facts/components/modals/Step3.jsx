@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Line } from "@/app/user/quiz-bank/components/modals/AddQuiz1";
+import { Line } from "@/app/user/quiz-bank/components/modals/AddTest";
 
-export default function Step3({ handleAdd,setData  ,handleChange}) {
+export default function Step3({ handleAdd, setData, handleChange }) {
   const [number, setNumber] = useState(0);
   const updateNumber = (operation) => {
     setNumber((prevNumber) => {
@@ -14,12 +14,12 @@ export default function Step3({ handleAdd,setData  ,handleChange}) {
       }
       setData((prevData) => ({
         ...prevData,
-        noOfQuestions: newNumber
+        noOfQuestions: newNumber,
       }));
       return newNumber;
     });
   };
-  
+
   return (
     <div className=" mt-3 flex h-full w-full select-none  flex-col justify-between px-6">
       <div className="flex justify-between self-center">
@@ -53,7 +53,7 @@ export default function Step3({ handleAdd,setData  ,handleChange}) {
             type="text"
             name="deckName"
             onChange={handleChange}
-            className=" mt-3 block w-[290px]  inputborder focus:ring-light-border focus:border-light-border rounded-lg  bg-white shadow-sm  sm:w-[354px] "
+            className=" inputborder mt-3 block  w-[290px] rounded-lg bg-white shadow-sm  focus:border-light-border focus:ring-light-border  sm:w-[354px] "
           ></input>
         </div>
         <div className="mt-8 flex flex-col items-center">

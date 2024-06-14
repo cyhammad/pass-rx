@@ -1,6 +1,6 @@
 "use server";
 
-export async function addDeck(token,
+export async function addTest(token,
     data
   ) {
     try {
@@ -8,14 +8,17 @@ export async function addDeck(token,
       myHeaders.append("Content-Type", "application/json");
       myHeaders.append("Authorization", `Bearer ${token}`);
       myHeaders.append("Cookie", "token=" + token);
-      console.log(data)
+      console.log(data.difficulty)
       const raw = JSON.stringify({
-        deckName:data.deckName,
-        cardStatus:data.status,
-        cardRatings:data.rating , 
-        markStatus:data.markStatus, 
-        noOfQuestions:data.noOfQuestions,
-        disciplineIds: data.disciplines
+        difficulty: data.difficulty,
+        questionStatus: data.questionStatus,
+        answerStatus: data.answerStatus,
+        markStatus: data.markStatus,
+        disciplines: data.disciplines,
+        noOfQuestions: data.noOfQuestions,
+        testName: data.testName,
+        mode: data.mode,
+        
       });  
       const requestOptions = {
         method: "POST",
@@ -23,14 +26,14 @@ export async function addDeck(token,
         body: raw,
         redirect: "follow",
       };
-      let deckResponse;
+      let testResponse;
       const deck = await fetch(
-        `${process.env.BASE_URL}/user/decks`,
+        `${process.env.BASE_URL}/user/tests`,
         requestOptions,
       );
-      deckResponse = await deck.json();
-      console.log( deckResponse);
-      return deckResponse
+      testResponse = await deck.json();
+      console.log( testResponse);
+      return testResponse
     } catch (error) {
         console.log(error)
       throw error;

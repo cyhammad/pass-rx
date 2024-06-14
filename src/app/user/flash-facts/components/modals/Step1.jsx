@@ -1,7 +1,7 @@
+import { Line } from "@/app/user/quiz-bank/components/modals/AddTest";
 import CheckBox from "@/components/userComponents/input-elements/CheckBox";
-import { Line } from "@/app/user/quiz-bank/components/modals/AddQuiz1";
 
-export default function Step1({ setStep, data, setData ,handleChange}) {
+export default function Step1({ setStep, data, setData, handleChange }) {
   const handleOptionSelect = (option) => {
     setData((prevData) => ({
       ...prevData,
@@ -42,8 +42,8 @@ export default function Step1({ setStep, data, setData ,handleChange}) {
             <div className="flex items-center gap-2 font-medium text-text-gray-2">
               <input
                 type="radio"
-                value="All"
-                checked={data.status === "All"}
+                value="all"
+                checked={data.status === "all"}
                 onChange={handleChange}
                 className="cursor-pointer checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
                 name="status"
@@ -53,8 +53,8 @@ export default function Step1({ setStep, data, setData ,handleChange}) {
             <div className="flex items-center gap-2 font-medium text-text-gray-2">
               <input
                 type="radio"
-                value="Rated"
-                checked={data.status === "Rated"}
+                value="rated"
+                checked={data.status === "rated"}
                 onChange={handleChange}
                 className="cursor-pointer checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
                 name="status"
@@ -64,8 +64,8 @@ export default function Step1({ setStep, data, setData ,handleChange}) {
             <div className="flex items-center  gap-2 font-medium text-text-gray-2">
               <input
                 type="radio"
-                value="Unrated"
-                checked={data.status === "Unrated"}
+                value="unrated"
+                checked={data.status === "unrated"}
                 onChange={handleChange}
                 className="cursor-pointer checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
                 name="status"
@@ -76,24 +76,24 @@ export default function Step1({ setStep, data, setData ,handleChange}) {
         </div>
 
         <div className="mt-10 flex flex-col items-center">
-        <h5 className="text-center text-lg font-semibold">Card Rating</h5>
-      <div className="mt-2 flex gap-6">
-        <CheckBox
-          text="Don’t Know"
-          selected={data.rating.includes("Don’t Know")}
-          onSelect={() => handleOptionSelect("Don’t Know")}
-        />
-        <CheckBox
-          text="OK"
-          selected={data.rating.includes("OK")}
-          onSelect={() => handleOptionSelect("OK")}
-        />
-        <CheckBox
-          text="Nailed It"
-          selected={data.rating.includes("Nailed It")}
-          onSelect={() => handleOptionSelect("Nailed It")}
-        />
-      </div>
+          <h5 className="text-center text-lg font-semibold">Card Rating</h5>
+          <div className="mt-2 flex gap-6">
+            <CheckBox
+              text="Don’t Know"
+              selected={data.rating.includes("DONT_KNOW")}
+              onSelect={() => handleOptionSelect("DONT_KNOW")}
+            />
+            <CheckBox
+              text="OK"
+              selected={data.rating.includes("OK")}
+              onSelect={() => handleOptionSelect("OK")}
+            />
+            <CheckBox
+              text="Nailed It"
+              selected={data.rating.includes("NAILED_IT")}
+              onSelect={() => handleOptionSelect("NAILED_IT")}
+            />
+          </div>
         </div>
         <div className="mt-10 flex flex-col items-center">
           <h5 className="text-center text-lg font-semibold">Mark Status</h5>
@@ -103,8 +103,8 @@ export default function Step1({ setStep, data, setData ,handleChange}) {
                 type="radio"
                 className="cursor-pointer checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
                 name="markStatus"
-                value="All"
-                checked={data.markStatus === "All"}
+                value="all"
+                checked={data.markStatus === "all"}
                 onChange={handleChange}
               />
               <p className="text-xs sm:text-base">All</p>
@@ -114,8 +114,8 @@ export default function Step1({ setStep, data, setData ,handleChange}) {
                 type="radio"
                 className="cursor-pointer checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
                 name="markStatus"
-                value="Marked Only"
-                checked={data.markStatus === "Marked Only"}
+                value="marked"
+                checked={data.markStatus === "marked"}
                 onChange={handleChange}
               />
               <p className="text-xs sm:text-base">Marked Only</p>
@@ -125,8 +125,8 @@ export default function Step1({ setStep, data, setData ,handleChange}) {
                 type="radio"
                 className="cursor-pointer checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
                 name="markStatus"
-                value="Unmarked Only"
-                checked={data.markStatus === "Unmarked Only"}
+                value="unmarked"
+                checked={data.markStatus === "unmarked"}
                 onChange={handleChange}
               />
               <p className="text-xs sm:text-base">Unmarked Only</p>

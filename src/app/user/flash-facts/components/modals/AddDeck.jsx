@@ -5,7 +5,8 @@ import Step2 from "./Step2";
 import Step3 from "./Step3";
 import { addDeck } from "@/app/lib/actions/deckActions";
 
-export default function AddDeck({ toggle, disciplines ,token}) {
+export default function AddDeck({ toggle, disciplines, token }) {
+  const [step, setStep] = useState("step1");
   const [data, setData] = useState({
     disciplines: [],
     status: "",
@@ -17,7 +18,6 @@ export default function AddDeck({ toggle, disciplines ,token}) {
   const closeModal = () => {
     toggle();
   };
-  const [step, setStep] = useState("step1");
   const handleChange = (event) => {
     const { name, value } = event.target; // Assuming each input has a 'name' attribute corresponding to the field name
     setData((prevData) => ({
@@ -27,16 +27,12 @@ export default function AddDeck({ toggle, disciplines ,token}) {
   };
 
   const handleAdd = async () => {
-    console.log(data)
-    const res = await addDeck(
-      token,
-      data
-    );
+    console.log(data);
+    const res = await addDeck(token, data);
     if (res.message === "Created successfully") {
-      console.log("created")
+      console.log("created");
     } else {
-      console.log("not created")
-
+      console.log("not created");
     }
   };
 
@@ -64,7 +60,12 @@ export default function AddDeck({ toggle, disciplines ,token}) {
           </button>
         </div>
         {step == "step1" ? (
-          <Step1 setStep={setStep} data={data} setData={setData} handleChange={handleChange} />
+          <Step1
+            setStep={setStep}
+            data={data}
+            setData={setData}
+            handleChange={handleChange}
+          />
         ) : step == "step2" ? (
           <Step2
             setStep={setStep}
@@ -73,7 +74,11 @@ export default function AddDeck({ toggle, disciplines ,token}) {
             disciplines={disciplines}
           />
         ) : (
-          <Step3 setData={setData} handleChange={handleChange} handleAdd={handleAdd}/>
+          <Step3
+            setData={setData}
+            handleChange={handleChange}
+            handleAdd={handleAdd}
+          />
         )}
       </div>
     </motion.div>

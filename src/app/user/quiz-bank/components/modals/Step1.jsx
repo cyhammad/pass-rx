@@ -1,8 +1,14 @@
 import React, { useState } from "react";
-import { Line } from "./AddQuiz1";
+import { Line } from "./AddTest";
 import CheckBox from "@/components/userComponents/input-elements/CheckBox";
 
-export default function Step1({ setStep }) {
+export default function Step1({ setStep, data, setData, handleChange }) {
+  const handleOptionSelect = (option) => {
+    setData((prevData) => ({
+      ...prevData,
+      difficulty: option,
+    }));
+  };
   return (
     <div className=" mt-3 flex h-full w-full select-none flex-col  justify-between px-6">
       <div className="flex self-center">
@@ -33,18 +39,21 @@ export default function Step1({ setStep }) {
             Question Difficulty
           </h5>
           <div className="mt-2  flex gap-5">
-            <div className="flex items-center gap-3  font-medium text-text-gray-2">
-              <CheckBox />
-              <p className="text-sm sm:text-base">Easy</p>
-            </div>{" "}
-            <div className="flex items-center gap-3 font-medium text-text-gray-2">
-              <CheckBox />
-              <p className="text-sm sm:text-base">Medium</p>
-            </div>
-            <div className="flex items-center gap-3 font-medium text-text-gray-2">
-              <CheckBox />
-              <p className="text-sm sm:text-base">Hard</p>
-            </div>
+            <CheckBox
+              text="Easy"
+              selected={data.difficulty === "easy"}
+              onSelect={() => handleOptionSelect("easy")}
+            />
+            <CheckBox
+              text="Medium"
+              selected={data.difficulty === "medium"}
+              onSelect={() => handleOptionSelect("medium")}
+            />
+            <CheckBox
+              text="Hard"
+              selected={data.difficulty === "hard"}
+              onSelect={() => handleOptionSelect("hard")}
+            />
           </div>
         </div>
         <div className="mt-10 flex flex-col items-center">
@@ -54,7 +63,10 @@ export default function Step1({ setStep }) {
               <input
                 type="radio"
                 className="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
-                name="radio"
+                name="questionStatus"
+                value="all"
+                checked={data.questionStatus === "all"}
+                onChange={handleChange}
               />
               <p className="text-xs sm:text-base">All</p>
             </div>
@@ -62,7 +74,10 @@ export default function Step1({ setStep }) {
               <input
                 type="radio"
                 className="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
-                name="radio"
+                name="questionStatus"
+                value="used"
+                checked={data.questionStatus === "used"}
+                onChange={handleChange}
               />
               <p className="text-xs sm:text-base">Used Only</p>
             </div>
@@ -70,7 +85,10 @@ export default function Step1({ setStep }) {
               <input
                 type="radio"
                 className="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
-                name="radio"
+                name="questionStatus"
+                value="unused"
+                checked={data.questionStatus === "unused"}
+                onChange={handleChange}
               />
               <p className="text-xs sm:text-base">Unused Only</p>
             </div>
@@ -83,7 +101,10 @@ export default function Step1({ setStep }) {
               <input
                 type="radio"
                 className="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
-                name="radio"
+                name="answerStatus"
+                value="all"
+                checked={data.answerStatus === "all"}
+                onChange={handleChange}
               />
               <p className="text-xs sm:text-base">All</p>
             </div>
@@ -91,7 +112,10 @@ export default function Step1({ setStep }) {
               <input
                 type="radio"
                 className="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
-                name="radio"
+                name="answerStatus"
+                value="incorrect"
+                checked={data.answerStatus === "incorrect"}
+                onChange={handleChange}
               />
               <p className="text-xs sm:text-base">Incorrect Only</p>
             </div>
@@ -99,7 +123,10 @@ export default function Step1({ setStep }) {
               <input
                 type="radio"
                 className="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
-                name="radio"
+                name="answerStatus"
+                value="correct"
+                checked={data.answerStatus === "correct"}
+                onChange={handleChange}
               />
               <p className="text-xs sm:text-base">Correct Only</p>
             </div>
@@ -112,7 +139,10 @@ export default function Step1({ setStep }) {
               <input
                 type="radio"
                 className="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
-                name="radio"
+                name="markStatus"
+                value="all"
+                checked={data.markStatus === "all"}
+                onChange={handleChange}
               />
               <p className="text-xs sm:text-base">All</p>
             </div>
@@ -120,7 +150,10 @@ export default function Step1({ setStep }) {
               <input
                 type="radio"
                 className="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
-                name="radio"
+                name="markStatus"
+                value="marked"
+                checked={data.markStatus === "marked"}
+                onChange={handleChange}
               />
               <p className="text-xs sm:text-base">Marked Only</p>
             </div>
@@ -128,7 +161,10 @@ export default function Step1({ setStep }) {
               <input
                 type="radio"
                 className="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
-                name="radio"
+                name="markStatus"
+                value="unmarked"
+                checked={data.markStatus === "unmarked"}
+                onChange={handleChange}
               />
               <p className="text-xs sm:text-base">Unmarked Only</p>
             </div>

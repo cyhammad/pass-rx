@@ -1,17 +1,17 @@
-import { Line } from "@/app/user/quiz-bank/components/modals/AddQuiz1";
+import { Line } from "@/app/user/quiz-bank/components/modals/AddTest";
 import CheckBox from "@/components/userComponents/input-elements/CheckBox";
 import CheckBox2 from "@/components/userComponents/input-elements/CheckBox2";
 
 export default function Step2({ setStep, setData, data, disciplines }) {
   const handleDisciplineToggle = (id) => {
-    setData(prevFormData => ({
+    setData((prevFormData) => ({
       ...prevFormData,
       disciplines: prevFormData.disciplines.includes(id)
-        ? prevFormData.disciplines.filter(disciplineId => disciplineId !== id)
-        : [...prevFormData.disciplines, id]
+        ? prevFormData.disciplines.filter((disciplineId) => disciplineId !== id)
+        : [...prevFormData.disciplines, id],
     }));
   };
-  console.log(data.disciplines)
+  console.log(data.disciplines);
   return (
     <div className=" mt-3 flex h-full w-full select-none flex-col  justify-between px-6">
       <div className="flex justify-between self-center">
@@ -45,18 +45,24 @@ export default function Step2({ setStep, setData, data, disciplines }) {
               return (
                 <div key={index} className="flex justify-between sm:gap-[10vw]">
                   <div
-                    className={`flex items-center gap-[10px] border-b border-checkbox/40 py-3.5 sm:px-5 ${isSelected ? 'bg-gray-200' : ''}`}
+                    className={`flex items-center gap-[10px] border-b border-checkbox/40 py-3.5 sm:px-5 ${isSelected ? "bg-gray-200" : ""}`}
                     onClick={() => handleDisciplineToggle(discipline._id)}
                   >
                     <CheckBox2 checked={isSelected} />
-                    <p className="text-xs font-semibold sm:text-sm">{discipline.name}</p>
+                    <p className="text-xs font-semibold sm:text-sm">
+                      {discipline.name}
+                    </p>
                   </div>
                   <div
-                    className={`flex items-center gap-[10px] border-b border-checkbox/40 py-3.5 sm:px-5 ${isSelected ? 'bg-gray-200' : ''}`}
-                    onClick={() => handleDisciplineToggle(disciplines[index + 1]._id)}
+                    className={`flex items-center gap-[10px] border-b border-checkbox/40 py-3.5 sm:px-5 ${isSelected ? "bg-gray-200" : ""}`}
+                    onClick={() =>
+                      handleDisciplineToggle(disciplines[index + 1]._id)
+                    }
                   >
                     <CheckBox2 checked={isSelected} />
-                    <p className="text-xs font-semibold sm:text-sm">{disciplines[index + 1].name}</p>
+                    <p className="text-xs font-semibold sm:text-sm">
+                      {disciplines[index + 1].name}
+                    </p>
                   </div>
                 </div>
               );
@@ -64,11 +70,13 @@ export default function Step2({ setStep, setData, data, disciplines }) {
               return (
                 <div key={index} className="flex justify-between sm:gap-[8vw]">
                   <div
-                    className={`flex items-center gap-[10px] border-b border-checkbox/40 py-3.5 sm:px-5 ${isSelected ? 'bg-gray-200' : ''}`}
+                    className={`flex items-center gap-[10px] border-b border-checkbox/40 py-3.5 sm:px-5 ${isSelected ? "bg-gray-200" : ""}`}
                     onClick={() => handleDisciplineToggle(discipline._id)}
                   >
                     <CheckBox2 checked={isSelected} />
-                    <p className="text-xs font-semibold sm:text-sm">{discipline.name}</p>
+                    <p className="text-xs font-semibold sm:text-sm">
+                      {discipline.name}
+                    </p>
                   </div>
                 </div>
               );
