@@ -36,6 +36,7 @@ export default function BricksCard() {
             className="rounded-lg"
             width={121.6}
             height={99.42}
+            alt="brick"
           />
           <div className="flex flex-col  justify-between ">
             <p className="text-xs  text-black/50 sm:text-sm">

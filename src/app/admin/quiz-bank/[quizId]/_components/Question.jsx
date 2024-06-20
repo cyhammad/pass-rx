@@ -1,7 +1,11 @@
+"use client";
+
 import QuestionDropdown from "./dropdowns/QuestionDropdown";
 
 const Question = ({ question, token, quizbank, revalidateData }) => {
-  console.log("question", question);
+  const handleDetailedExplanation = () => {
+    console.log("View detailed explanation");
+  };
   return (
     <div className="flex w-full flex-col gap-y-3 p-3 text-sm">
       <div className="flex items-center justify-between gap-x-3">
@@ -28,9 +32,12 @@ const Question = ({ question, token, quizbank, revalidateData }) => {
             {question.correctAnswerIndex === index && greenTick}
           </div>
         ))}
-        <span className="mt-4 cursor-pointer text-xs text-primary hover:underline">
+        <button
+          className="mt-4 w-fit cursor-pointer text-start text-xs text-primary hover:underline"
+          onClick={() => handleDetailedExplanation()}
+        >
           View detailed explanation
-        </span>
+        </button>
       </div>
     </div>
   );

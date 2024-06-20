@@ -6,21 +6,23 @@ import { cross } from "@/svgs/commonSvgs";
 import { pencil } from "@/svgs/commonSvgs";
 import { addSquare } from "@/svgs/commonSvgs";
 import Button from "./buttons/Button";
-import ChapterDropdown from "./dropdowns/ChapterDropdown";
+import UnlockDropdown from "./dropdowns/UnlockDropdown";
 
-const BrickTopSection = () => {
-  const [title, setTitle] = useState("Biostatistics");
-  const [quote, setQuote] = useState(
-    '"Research is formalized curiosity. It is poking and prying with a purpose." -ZORA NEALE HURSTON',
-  );
-  const [tags, setTags] = useState([
-    "Biostatistics and Study Design",
-    "Public Health",
-  ]);
+const BrickTopSection = ({
+  brick,
+  editable,
+  setEditable,
+  title,
+  setTitle,
+  quote,
+  setQuote,
+  tags,
+  setTags,
+  image,
+  setImage,
+  handleSave,
+}) => {
   const newTagRef = useRef(null);
-  const [editable, setEditable] = useState(false);
-  const [buttonTitle1, setButtonTitle1] = useState("Delete");
-  const [buttonTitle2, setButtonTitle2] = useState("Edit");
   const [newTagInput, setNewTagInput] = useState("");
   const [addTag, setAddTag] = useState(false);
 
@@ -40,11 +42,6 @@ const BrickTopSection = () => {
     };
   }, []); // Empty dependency array ensures the effect runs only once
 
-  const handleEditClick = () => {
-    setEditable(true);
-    setButtonTitle1("Discard");
-    setButtonTitle2("Save");
-  };
   const handleRemoveTag = (index) => {
     const newTags = [...tags];
     newTags.splice(index, 1);
@@ -53,12 +50,6 @@ const BrickTopSection = () => {
 
   const handleAddTag = () => {
     setAddTag(true);
-  };
-  const handleSave = () => {
-    console.log("Quote", quote);
-    setButtonTitle1("Delete");
-    setButtonTitle2("Edit");
-    setEditable(false);
   };
   // If enter is pressed add the tag
   const handleKeyDown = (e) => {
@@ -74,13 +65,14 @@ const BrickTopSection = () => {
   };
   return (
     <div className="flex flex-col flex-wrap justify-between lg:flex-row xl:flex-nowrap">
-      <div className="mt-7 flex  flex-wrap justify-start gap-6 xl:flex-nowrap">
-        <div className="relative">
+      <div className="mt-7 flex w-full flex-wrap justify-start gap-6 xl:flex-nowrap">
+        <div className="relative h-fit">
           <Image
             src={"/bricks/brick.png"} // Use forward slash for the path
             className="w-full rounded-lg"
             width={347}
             height={264}
+            alt="Brick Image"
           />
           {editable && (
             <button className="absolute bottom-5 right-5 h-[32px] w-[68px] rounded-full border border-dark bg-light-gray py-1.5 text-sm font-medium">
@@ -88,7 +80,6 @@ const BrickTopSection = () => {
             </button>
           )}
         </div>
-
         <div className="flex-wrap xl:flex-nowrap">
           <div className="flex flex-wrap items-center gap-x-5 xl:flex-nowrap">
             {editable ? (
@@ -97,14 +88,14 @@ const BrickTopSection = () => {
                 name="text"
                 id="text"
                 placeholder=""
-                className="brick-title w-fit border-b border-text-secondary bg-transparent p-0 text-[40px] font-semibold text-text-secondary focus:ring-transparent"
+                className="brick-title w-full border-b border-text-secondary bg-transparent p-0 text-[40px] font-semibold text-text-secondary focus:ring-transparent"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
               />
             ) : (
               <h1 className="text-[40px] font-semibold">{title}</h1>
             )}
-            {!editable && <ChapterDropdown />}
+            {!editable && <UnlockDropdown />}
           </div>
           <div
             className={`mt-4 flex gap-2 text-2xl font-normal ${editable && "opacity-0"}`}
@@ -157,16 +148,34 @@ const BrickTopSection = () => {
           </div>
         </div>
       </div>
-      <div className="mt-8 flex gap-3">
-        <Button icon={!editable ? cross : null} title={buttonTitle1} />
-        <Button
-          icon={!editable ? pencil : null}
-          title={buttonTitle2}
-          onClick={editable ? handleSave : handleEditClick}
-          bgColor={"primary"}
-          textColor={"white"}
-        />
-      </div>
+      {editable ? (
+        <div className="mt-8 flex h-fit gap-3">
+          <button
+            className="max-h-[60px] w-[137px] rounded-md border border-black/20 bg-transparent"
+            onClick={() => setEditable(false)}
+          >
+            Discard
+          </button>
+          <button
+            className="max-h-[60px] min-h-[50px] w-[137px] rounded-md border border-black/20 bg-primary text-white"
+            onClick={handleSave}
+          >
+            Save
+          </button>
+        </div>
+      ) : (
+        <div className="mt-8 flex h-fit gap-3">
+          <button className="flex max-h-[60px] w-[137px] items-center justify-center gap-2 rounded-md border border-black/20 bg-transparent">
+            {cross} Delete
+          </button>
+          <button
+            className="flex max-h-[60px] min-h-[50px] w-[137px] items-center justify-center gap-2 rounded-md border border-black/20 bg-primary text-white"
+            onClick={() => setEditable(true)}
+          >
+            {pencil} Edit
+          </button>
+        </div>
+      )}
     </div>
   );
 };

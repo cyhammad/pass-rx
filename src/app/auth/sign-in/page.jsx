@@ -36,11 +36,11 @@ const SignInPage = () => {
         </div>
         <div className="mt-8 flex justify-center gap-5 text-gray">
           <div className="flex flex-col items-center">
-            <Image src="/appleIcon.svg" width={40} height={40} />
+            <Image src="/appleIcon.svg" width={40} height={40} alt="Apple Icon" />
             <p className="mt-2 text-sm">Apple</p>
           </div>
           <div className="flex flex-col items-center">
-            <Image src="/googleIcon.svg" width={40} height={40} />
+            <Image src="/googleIcon.svg" width={40} height={40} alt="Google Icon" />
             <p className="mt-2 text-sm">Google</p>
           </div>
         </div>

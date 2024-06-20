@@ -17,7 +17,6 @@ const SQPage = async ({ params }) => {
   const { quizId, disciplineId } = params;
   const quizbank = await getQuizBank(token, quizId);
   const questions = await getQuestionsByQuizId(token, quizId);
-  console.log("QUESTIONS", questions);
   const selectedDiscipline = quizbank.disciplines.find(
     (discipline) => discipline._id === disciplineId,
   );

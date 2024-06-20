@@ -11,7 +11,6 @@ const DeleteQuizBankModal = ({ setIsOpen, quiz, token, revalidateData }) => {
   };
   const handleDeleteQuiz = async () => {
     const res = await deleteQuizBank(token, quiz._id);
-    console.log("res", res);
     if (res.message === "Quiz deleted successfully") {
       revalidateData();
       setSuccess(true);

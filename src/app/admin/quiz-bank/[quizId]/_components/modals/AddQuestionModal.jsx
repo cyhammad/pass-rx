@@ -41,7 +41,6 @@ const AddQuestionModal = ({
       quizbank._id,
       includeToFlashFacts,
     );
-    console.log("RES", res);
     if (res.message === "Created successfully") {
       setSuccess(true);
       revalidateData();

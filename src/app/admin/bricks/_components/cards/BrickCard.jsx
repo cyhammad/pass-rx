@@ -28,6 +28,7 @@ export default function BrickCard({ brick, token, revalidateData }) {
           className="rounded-xl"
           width={284}
           height={190}
+          alt="brick"
         />
       </Link>
       <div className="mt-[-20px] flex w-full flex-col justify-between gap-3 bg-white p-3 drop-shadow-md">

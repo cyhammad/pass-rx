@@ -81,6 +81,7 @@ export default function page() {
             className="rounded-lg"
             width={347}
             height={264}
+            alt="brick"
           />
           {editable && (
             <div>

@@ -1,18 +1,23 @@
-import BrickTopSection from "./_components/BrickTopSection";
-import LearningObjectives from "./_components/LearningObjectives";
-import Topics from "./_components/Topics";
-import BackButton from "./_components/buttons/BackButton";
+import { auth } from "@/auth";
+import EditableBrick from "./_components/EditableBrick";
+import { getBrick } from "@/app/lib/actions/brickActions";
+import { revalidatePath } from "next/cache";
 
-export default function page() {
+export default async function page({ params }) {
+  const session = await auth();
+  const token = session.user.accessToken;
+  const brick = await getBrick(token, params.brickId);
+
+  const revalidateData = async () => {
+    "use server";
+    revalidatePath(`/admin/bricks/${params.brickId}`);
+  };
+
   return (
-    <div className="flex w-full flex-col">
-      <BackButton />
-      <BrickTopSection />
-      <div className="mt-10 w-full border border-light-border"></div>
-      <div className=" mt-6 flex flex-col justify-between gap-x-[4rem] pb-10 lg:flex-row lg:pr-11 xl:ml-[10rem]">
-        <Topics />
-        <LearningObjectives />
-      </div>
-    </div>
+    <EditableBrick
+      brick={brick}
+      token={token}
+      revalidateData={revalidateData}
+    />
   );
 }

@@ -3,9 +3,9 @@ import Sidebar from "@/components/navbars/Sidebar";
 import Topbar from "@/components/navbars/Topbar";
 import { permanentRedirect } from "next/navigation";
 
-
 export default async function layout({ children }) {
-  // const session = await auth();
+  const session = await auth();
+  console.log(session.user);
   // if (session && session.user.role !== "user") {
   //   return permanentRedirect("/admin")
   // }

@@ -16,7 +16,6 @@ const DeleteQuestionModal = ({
   };
   const handleDeleteQuestion = async () => {
     const res = await deleteQuestion(token, questionId);
-    console.log("RES", res);
     if (res.message === "Deleted successfully") {
       revalidateData();
       setSuccess(true);

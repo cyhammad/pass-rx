@@ -1,12 +1,18 @@
+"use client";
+
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { cross } from "@/svgs/commonSvgs";
 
-export default function ChapterDropdown() {
+export default function ChapterDropdown({ chapter }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const [isRotated, setIsRotated] = useState(false);
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsRotated(false);
         setIsOpen(false);
       }
     };
@@ -17,6 +23,7 @@ export default function ChapterDropdown() {
   }, []);
 
   const toggleMenu = () => {
+    setIsRotated(!isRotated);
     setIsOpen(!isOpen);
   };
 
@@ -25,67 +32,87 @@ export default function ChapterDropdown() {
   };
 
   return (
-    <div className="relative z-20" ref={dropdownRef}>
-      <button
-        className="z-50 flex justify-center rounded-full text-center"
-        onClick={() => toggleMenu()}
-      >
-        <span className="flex items-center gap-3 rounded-[100px]  border-[1.5px] border-dark-border px-3 py-[5px]  text-sm text-dark">
-          <div className="flex gap-1">{lock} Unlock</div> {chevron}
-        </span>
-      </button>
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-          className=" absolute right-0 top-10 flex w-40 flex-col justify-between rounded-xl bg-dark pb-2.5 text-white"
+    <div className="mt-3 w-full">
+      <div className="relative z-20 w-full" ref={dropdownRef}>
+        <button
+          className="z-50 flex h-10 w-full items-center justify-center  rounded-xl bg-gray-bg text-center  shadow"
+          onClick={() => toggleMenu()}
         >
-          <div className="z-50 flex flex-col gap-y-1.5 py-2">
-            <button className="flex items-center justify-between px-4 py-1.5">
-              <div className="flex items-center gap-x-2">
-                {addSquare}
-                <span className="text-xs">Add Chapter</span>
+          <span className="flex w-full items-center justify-between gap-3 rounded-[100px] px-3 py-[5px]  text-sm text-dark">
+            <div className="flex items-center justify-between gap-1">
+              {chapter?.title} {add}
+            </div>
+            <div className="flex items-center gap-2">
+              {lock}
+              <div
+                className={`transform cursor-pointer transition-transform ${isRotated ? "rotate-180" : ""}`}
+              >
+                {chevron}
               </div>
-            </button>
-            <button className="flex items-center justify-between px-4 py-1.5">
-              <div className="flex items-center gap-x-3">
-                {lock1}
-                <span className="text-xs">Lock</span>
-              </div>
-            </button>
-            <button
-              className="flex items-center justify-between px-4 py-1.5"
-              onClick={() => handleDeleteClick()} // Step 4: Call handleDeleteClick on delete button click
-            >
-              <div className="flex items-center gap-x-2">
-                {cross}
-                <span className="text-xs">Delete {name}</span>
-              </div>
-            </button>
-          </div>
-        </motion.div>
-      )}
+            </div>
+          </span>
+        </button>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className=" right-0 top-7 flex w-full flex-col justify-between rounded-xl  pb-2.5"
+          >
+            <div className="z-50 flex  w-full flex-col gap-y-1.5 py-2">
+              {chapter?.topics.map((topic) => (
+                <button
+                  className="flex  w-full items-center justify-between px-3 py-1.5"
+                  key={topic._id}
+                >
+                  <div className="flex w-full items-center justify-between">
+                    <span className="text-xs">{topic.title}</span>
+                    <div className="flex items-center gap-3">
+                      {cross}
+                      {pencil}
+                    </div>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </div>
     </div>
   );
 }
 
-const cross = (
+const pencil = (
   <svg
-    width="16"
-    height="16"
-    viewBox="0 0 16 16"
+    width="12"
+    height="13"
+    viewBox="0 0 12 13"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M7.9962 8.93906L11.7657 12.7088C11.8914 12.8302 12.0597 12.8974 12.2344 12.8959C12.4091 12.8944 12.5763 12.8243 12.6998 12.7007C12.8234 12.5772 12.8934 12.41 12.895 12.2353C12.8965 12.0606 12.8293 11.8922 12.7079 11.7666L8.93842 7.99678L12.7079 4.227C12.8293 4.10132 12.8965 3.93298 12.895 3.75826C12.8934 3.58353 12.8234 3.41639 12.6998 3.29284C12.5763 3.16928 12.4091 3.0992 12.2344 3.09768C12.0597 3.09616 11.8914 3.16333 11.7657 3.28472L7.9962 7.0545L4.22669 3.28472C4.10045 3.16633 3.93311 3.10171 3.76007 3.10452C3.58703 3.10733 3.42188 3.17735 3.29955 3.29978C3.17722 3.4222 3.10731 3.58742 3.10463 3.76047C3.10194 3.93352 3.16668 4.10083 3.28515 4.227L7.05399 7.99678L3.28448 11.7666C3.22084 11.828 3.17008 11.9016 3.13515 11.9829C3.10023 12.0642 3.08185 12.1516 3.08108 12.2401C3.08031 12.3286 3.09717 12.4163 3.13067 12.4982C3.16418 12.5801 3.21366 12.6545 3.27622 12.7171C3.33879 12.7797 3.41319 12.8291 3.49508 12.8627C3.57697 12.8962 3.66471 12.913 3.75319 12.9123C3.84167 12.9115 3.9291 12.8931 4.0104 12.8582C4.0917 12.8233 4.16522 12.7725 4.22669 12.7088L7.9962 8.93906Z"
-      fill="white"
-    />
+    <g clipPath="url(#clip0_481_6415)">
+      <path
+        d="M7.41065 2.51562L0.808079 9.11867C0.774861 9.15198 0.750876 9.19405 0.739455 9.23926L0.00762279 12.1767C-0.0142684 12.2651 0.0117155 12.3591 0.0762469 12.4237C0.125074 12.4725 0.191604 12.4995 0.259657 12.4995C0.280501 12.4995 0.301821 12.497 0.32257 12.4917L3.25999 11.7598C3.30577 11.7484 3.34736 11.7245 3.38058 11.6913L9.98372 5.0887L7.41065 2.51562Z"
+        fill="#121212"
+      />
+      <path
+        d="M11.6193 1.61493L10.8843 0.879955C10.3931 0.388736 9.53694 0.389211 9.04629 0.879955L8.146 1.78025L10.719 4.35323L11.6193 3.45293C11.8646 3.20765 11.9998 2.88119 11.9998 2.53398C11.9998 2.18676 11.8646 1.8603 11.6193 1.61493Z"
+        fill="#121212"
+      />
+    </g>
+    <defs>
+      <clipPath id="clip0_481_6415">
+        <rect
+          width="12"
+          height="12"
+          fill="white"
+          transform="translate(0 0.5)"
+        />
+      </clipPath>
+    </defs>
   </svg>
 );
+
 const lock = (
   <svg
     width="14"
@@ -104,37 +131,20 @@ const lock = (
     />
   </svg>
 );
-const lock1 = (
-  <svg
-    width="14"
-    height="18"
-    viewBox="0 0 14 18"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M6.96303 1C4.85522 1 3.14501 2.8243 3.14501 5.07445V7.25643H2.58619C1.71626 7.25643 1 8.01796 1 8.94761V15.3088C1 16.2385 1.71626 17 2.58619 17H11.4173C12.2872 17 13 16.2385 13 15.3088V8.94761C13 8.01796 12.2872 7.25643 11.4173 7.25643H10.7836V5.07445C10.7836 2.8243 9.07085 1 6.96303 1ZM6.96303 1.94118C8.59939 1.94118 9.90328 3.33055 9.90328 5.07445V7.25643H4.02536V5.07445C4.02536 3.33055 5.32666 1.94118 6.96303 1.94118ZM2.58619 8.19761H3.58346H10.3417H11.4173C11.8157 8.19761 12.1196 8.5242 12.1196 8.94761V15.3088C12.1196 15.7322 11.8157 16.0588 11.4173 16.0588H2.58619C2.18771 16.0588 1.88035 15.7322 1.88035 15.3088V8.94761C1.88035 8.5242 2.18771 8.19761 2.58619 8.19761ZM7.00172 9.86489C6.15965 9.86489 5.46454 10.6047 5.46454 11.5046C5.46454 12.2408 5.92961 12.8671 6.55982 13.0708V13.9228C6.56005 13.9846 6.57166 14.0457 6.59399 14.1027C6.61631 14.1597 6.64893 14.2115 6.68996 14.255C6.731 14.2985 6.77965 14.333 6.83314 14.3564C6.88663 14.3799 6.94391 14.3918 7.00172 14.3915C7.11787 14.3911 7.22913 14.3415 7.31126 14.2537C7.39338 14.1659 7.43972 14.047 7.44018 13.9228V13.0717C8.07092 12.8689 8.53547 12.2418 8.53546 11.5046C8.53546 10.6047 7.84379 9.86489 7.00172 9.86489ZM7.00172 10.8061C7.36906 10.8061 7.65511 11.1144 7.65511 11.5046C7.65511 11.8948 7.36906 12.1994 7.00172 12.1994C6.63438 12.1994 6.34489 11.8948 6.34489 11.5046C6.34489 11.1144 6.63438 10.8061 7.00172 10.8061Z"
-      fill="white"
-      stroke="white"
-      strokeWidth="0.1"
-    />
-  </svg>
-);
+
 const chevron = (
   <svg
-    width="16"
-    height="16"
-    viewBox="0 0 16 16"
+    width="12"
+    height="7"
+    viewBox="0 0 12 7"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M3.86177 5.52827C4.12212 5.26792 4.54423 5.26792 4.80458 5.52827L7.99984 8.72353L11.1951 5.52827C11.4554 5.26792 11.8776 5.26792 12.1379 5.52827C12.3983 5.78862 12.3983 6.21073 12.1379 6.47108L8.47124 10.1377C8.21089 10.3981 7.78878 10.3981 7.52843 10.1377L3.86177 6.47108C3.60142 6.21073 3.60142 5.78862 3.86177 5.52827Z"
-      fill="#222222"
+      d="M0.754393 1.27295L1.24506 0.787109L5.6535 5.23802L9.99357 0.969427L10.478 1.46182L5.64694 6.21315L0.754393 1.27295Z"
+      fill="black"
+      fillOpacity="0.6"
+      stroke="#121212"
     />
   </svg>
 );
@@ -161,6 +171,35 @@ const addSquare = (
     <path
       d="M8 10.4163V5.58301"
       stroke="white"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+const add = (
+  <svg
+    width="15"
+    height="15"
+    viewBox="0 0 15 15"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M5.43766 13.2913H9.06266C12.0835 13.2913 13.2918 12.083 13.2918 9.06217V5.43717C13.2918 2.41634 12.0835 1.20801 9.06266 1.20801H5.43766C2.41683 1.20801 1.2085 2.41634 1.2085 5.43717V9.06217C1.2085 12.083 2.41683 13.2913 5.43766 13.2913Z"
+      fill="white"
+      stroke="#2396F3"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M4.8335 7.25H9.66683"
+      stroke="#2396F3"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M7.25 9.66634V4.83301"
+      stroke="#2396F3"
       strokeLinecap="round"
       strokeLinejoin="round"
     />

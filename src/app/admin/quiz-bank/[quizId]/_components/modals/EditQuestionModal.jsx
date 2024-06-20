@@ -26,7 +26,6 @@ const EditQuestionModal = ({
     prevQuestion.correctAnswerIndex,
   );
   const handleEditQuestion = async () => {
-    console.log("prevQuestion", prevQuestion);
     const res = await editQuestion(
       token,
       prevQuestion._id,
@@ -37,7 +36,6 @@ const EditQuestionModal = ({
       answers[correctAnswerIndex].explanation,
       selectedDiscipline._id,
     );
-    console.log("res", res);
     if (res.message === "Updated successfully") {
       setSuccess(true);
       revalidateData();
@@ -46,7 +44,6 @@ const EditQuestionModal = ({
         setShowModal(false);
       }, 2000);
     } else {
-      console.log("error", res);
       setError(true);
     }
   };

@@ -19,7 +19,6 @@ const AddQuizBankForm = ({ disciplines, token }) => {
     const selectedDisciplineIds = selectedDisciplines.map(
       (discipline) => discipline._id,
     );
-    console.log(selectedDisciplineIds);
     try {
       const response = await addQuizBank(
         token,
@@ -29,7 +28,6 @@ const AddQuizBankForm = ({ disciplines, token }) => {
         false,
       );
       if (response) {
-        console.log(response);
         if (response.message === "Quiz created successfully") {
           setSuccess("Quizbank created successfully");
           setTitle("");

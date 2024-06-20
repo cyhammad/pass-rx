@@ -10,10 +10,8 @@ const DeleteFlashFactModal = ({
 }) => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
-  console.log("flashFact", flashFact);
   const handleDeleteFlashCard = async () => {
     const res = await deleteFlashFact(token, flashFact._id);
-    console.log("res", res);
     if (res.message === "Deleted successfully") {
       revalidateData();
       setSuccess(true);

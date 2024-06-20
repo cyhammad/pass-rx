@@ -11,6 +11,7 @@ export default function Card({ number, handleCardClick }) {
           className="rounded-xl"
           width={284}
           height={277.05}
+          alt="brick"
         />
       </div>
       <div className=" mt-[-20px] h-[96px] w-full bg-white p-3 drop-shadow-md">

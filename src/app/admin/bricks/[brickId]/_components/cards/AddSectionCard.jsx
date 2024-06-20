@@ -1,14 +1,14 @@
-
-
-export default function AddCard({ onClick }) {
+export default function AddSectionCard({ onClick }) {
   return (
-    <button
-      onClick={onClick}
-      className="top-[50%] left-[50%] right-1/2 absolute z-50 flex h-[95px] w-[126px] flex-col items-center justify-center rounded-2xl bg-dark text-white "
-    >
-      <span>{add}</span>
-      <p className="mt-4 text-sm font-medium">New Chapter</p>
-    </button>
+    <div className="flex w-full items-center justify-center py-10">
+      <button
+        onClick={onClick}
+        className="flex h-[95px] w-[126px] flex-col items-center justify-center rounded-2xl bg-dark text-white"
+      >
+        <span>{add}</span>
+        <p className="mt-4 text-sm font-medium">New Section</p>
+      </button>
+    </div>
   );
 }
 const add = (

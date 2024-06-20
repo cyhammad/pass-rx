@@ -47,8 +47,6 @@ const QuestionDropdown = ({ question, token, quizbank, revalidateData }) => {
             revalidateData={revalidateData}
           />
         )}
-      </AnimatePresence>
-      <AnimatePresence>
         {isEditModalOpen && (
           <EditQuestionModal
             setShowModal={setIsEditModalOpen}

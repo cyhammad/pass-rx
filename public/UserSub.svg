@@ -16,12 +16,12 @@
 </g>
 <defs>
 <linearGradient id="paint0_linear_1642_5679" x1="207.5" y1="0" x2="207.5" y2="238" gradientUnits="userSpaceOnUse">
-<stop stop-color="#2396F3"/>
-<stop offset="1" stop-color="#14578D"/>
+<stop stopColor="#2396F3"/>
+<stop offset="1" stopColor="#14578D"/>
 </linearGradient>
 <linearGradient id="paint1_linear_1642_5679" x1="207.5" y1="0" x2="207.5" y2="238" gradientUnits="userSpaceOnUse">
-<stop stop-color="#2396F3"/>
-<stop offset="1" stop-color="#14578D"/>
+<stop stopColor="#2396F3"/>
+<stop offset="1" stopColor="#14578D"/>
 </linearGradient>
 </defs>
 </svg>

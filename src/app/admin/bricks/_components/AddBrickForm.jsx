@@ -53,10 +53,6 @@ const AddBrickForm = ({ token, revalidateData }) => {
     }
   };
   const handleSaveBrick = async () => {
-    console.log("Title", title);
-    console.log("Quote", quote);
-    console.log("Learning Outcomes", learningOutcomes);
-    console.log("Topics", topics);
     const res = await addBrick(
       token,
       title,
@@ -65,7 +61,6 @@ const AddBrickForm = ({ token, revalidateData }) => {
       "",
       topics,
     );
-    console.log("RES", res);
     if (res.message === "Brick created successfully") {
       setSuccess(res.message);
       setTimeout(() => {

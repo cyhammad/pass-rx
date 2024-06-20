@@ -12,7 +12,6 @@ export default async function FlashFactsPage() {
     "use server";
     revalidatePath("/admin/flash-facts");
   };
-  console.log(flashFacts);
   return (
     <FlashFacts
       flashFacts={flashFacts}

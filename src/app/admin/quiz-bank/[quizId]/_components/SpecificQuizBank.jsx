@@ -9,7 +9,6 @@ const SpecificQuizBank = ({ quizbank, token }) => {
   const [selectedDiscipline, setSelectedDiscipline] = useState(
     quizbank.disciplines[0],
   );
-  console.log("QuizBank", quizbank);
   return (
     <></>
   );

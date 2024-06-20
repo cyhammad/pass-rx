@@ -21,7 +21,6 @@ export default function FlashFactsPage({
   const filteredFacts = flashFacts
     .filter((fact) => {
       if (selectedDiscipline) {
-        console.log(fact.discipline, selectedDiscipline._id);
         return fact.discipline._id === selectedDiscipline._id;
       }
       return true;
