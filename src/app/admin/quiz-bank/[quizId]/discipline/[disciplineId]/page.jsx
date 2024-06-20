@@ -9,7 +9,6 @@ import {
 } from "@/app/lib/actions/quizBankActions";
 import AddNewQuestionIconButton from "../../_components/buttons/AddNewQuestionIconButton";
 import Question from "../../_components/Question";
-import { revalidatePath } from "next/cache";
 
 const SQPage = async ({ params }) => {
   const session = await auth();
@@ -28,10 +27,7 @@ const SQPage = async ({ params }) => {
     const newDate = new Date(date);
     return newDate.toDateString();
   };
-  const revalidateData = async () => {
-    "use server";
-    revalidatePath(`/admin/quiz-bank/${quizId}/discipline/${disciplineId}`);
-  };
+
   return (
     <section className="flex w-full flex-col gap-5 px-2 py-7">
       <BackButton />
@@ -45,7 +41,6 @@ const SQPage = async ({ params }) => {
             quizbank={quizbank}
             token={token}
             selectedDiscipline={selectedDiscipline}
-            revalidateData={revalidateData}
           />
           <UploadCsvButton />
         </div>
@@ -63,7 +58,6 @@ const SQPage = async ({ params }) => {
                 quizbank={quizbank}
                 token={token}
                 selectedDiscipline={selectedDiscipline}
-                revalidateData={revalidateData}
               />
             </div>
             <button className="text-mattBlack">{searchIcon}</button>
@@ -76,7 +70,6 @@ const SQPage = async ({ params }) => {
                   key={question._id}
                   token={token}
                   quizbank={quizbank}
-                  revalidateData={revalidateData}
                 />
               ))}
             </div>

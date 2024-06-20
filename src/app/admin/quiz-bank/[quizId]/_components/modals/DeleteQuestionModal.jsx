@@ -1,13 +1,9 @@
 import { deleteQuestion } from "@/app/lib/actions/questionActions";
+import { revalidateData } from "@/app/utils/revalidate-data";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-const DeleteQuestionModal = ({
-  setIsOpen,
-  questionId,
-  token,
-  revalidateData,
-}) => {
+const DeleteQuestionModal = ({ setIsOpen, questionId, token }) => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
 
@@ -17,7 +13,7 @@ const DeleteQuestionModal = ({
   const handleDeleteQuestion = async () => {
     const res = await deleteQuestion(token, questionId);
     if (res.message === "Deleted successfully") {
-      revalidateData();
+      revalidateData("/admin/quiz-bank");
       setSuccess(true);
       setTimeout(() => {
         setSuccess(false);

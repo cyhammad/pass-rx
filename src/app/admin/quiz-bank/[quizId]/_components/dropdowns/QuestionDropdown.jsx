@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import EditQuestionModal from "../modals/EditQuestionModal";
 import DeleteQuestionModal from "../modals/DeleteQuestionModal";
 
-const QuestionDropdown = ({ question, token, quizbank, revalidateData }) => {
+const QuestionDropdown = ({ question, token, quizbank }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false); // Step 1: Create isDeleteModalOpen state
   const [isEditModalOpen, setIsEditModalOpen] = useState(false); // Step 2: Create isEditModalOpen state
@@ -44,7 +44,6 @@ const QuestionDropdown = ({ question, token, quizbank, revalidateData }) => {
             setIsOpen={setIsDeleteModalOpen}
             questionId={question._id}
             token={token}
-            revalidateData={revalidateData}
           />
         )}
         {isEditModalOpen && (
@@ -54,7 +53,6 @@ const QuestionDropdown = ({ question, token, quizbank, revalidateData }) => {
             token={token}
             prevQuestion={question}
             quizbank={quizbank}
-            revalidateData={revalidateData}
           />
         )}
       </AnimatePresence>

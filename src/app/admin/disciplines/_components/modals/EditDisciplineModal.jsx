@@ -1,15 +1,11 @@
 "use client";
 
 import { updateDiscipline } from "@/app/lib/actions/disciplineActions";
+import { revalidateData } from "@/app/utils/revalidate-data";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-export default function EditDisciplineModal({
-  setIsOpen,
-  discipline,
-  token,
-  revalidateData,
-}) {
+export default function EditDisciplineModal({ setIsOpen, discipline, token }) {
   const [newDisciplineName, setNewDisciplineName] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
@@ -32,7 +28,7 @@ export default function EditDisciplineModal({
     );
     const resObj = JSON.parse(res);
     if (resObj.message === "Discipline updated successfully") {
-      revalidateData();
+      revalidateData("/admin/disciplines");
       setSuccess(true);
       setTimeout(() => {
         setSuccess(false);

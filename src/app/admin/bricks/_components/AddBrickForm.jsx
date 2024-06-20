@@ -4,8 +4,9 @@ import { useRef, useState } from "react";
 import { cross } from "@/svgs/commonSvgs";
 import { addBrick } from "@/app/lib/actions/brickActions";
 import { AnimatePresence, motion } from "framer-motion";
+import { revalidateData } from "@/app/utils/revalidate-data";
 
-const AddBrickForm = ({ token, revalidateData }) => {
+const AddBrickForm = ({ token }) => {
   const [title, setTitle] = useState("");
   const [quote, setQuote] = useState("");
   const [learningOutcomes, setLearningOutcomes] = useState("");
@@ -64,7 +65,7 @@ const AddBrickForm = ({ token, revalidateData }) => {
     if (res.message === "Brick created successfully") {
       setSuccess(res.message);
       setTimeout(() => {
-        revalidateData();
+        revalidateData(`admin/bricks`);
         setTitle("");
         setQuote("");
         setLearningOutcomes("");

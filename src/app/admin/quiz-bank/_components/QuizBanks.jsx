@@ -6,7 +6,7 @@ import { searchIcon } from "@/svgs/topbarSvgs";
 import { motion, AnimatePresence } from "framer-motion";
 import QuizBankCard from "./cards/QuizBankCard";
 
-export default function QuizBanks({ quizzes, token, revalidateData }) {
+export default function QuizBanks({ quizzes, token }) {
   const [showSearchInput, setShowSearchInput] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const searchRef = useRef(null);
@@ -87,11 +87,7 @@ export default function QuizBanks({ quizzes, token, revalidateData }) {
           <div className="mt-4 grid grid-cols-1  gap-x-3 gap-y-3 sm:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4">
             {filterQuizzes(quizzes, searchValue).map((quiz) => (
               <div key={quiz._id}>
-                <QuizBankCard
-                  quiz={quiz}
-                  token={token}
-                  revalidateData={revalidateData}
-                />
+                <QuizBankCard quiz={quiz} token={token} />
               </div>
             ))}
           </div>

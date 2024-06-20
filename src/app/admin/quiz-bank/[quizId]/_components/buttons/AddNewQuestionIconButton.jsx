@@ -7,7 +7,6 @@ const AddNewQuestionIconButton = ({
   quizbank,
   token,
   selectedDiscipline,
-  revalidateData,
 }) => {
   const [showAddQuestionModal, setShowAddQuestionModal] = useState(false);
   return (
@@ -18,7 +17,7 @@ const AddNewQuestionIconButton = ({
           token={token}
           setShowModal={setShowAddQuestionModal}
           prevSelectedDiscipline={selectedDiscipline}
-          revalidateData={revalidateData}
+          
         />
       )}
       <button

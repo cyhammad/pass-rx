@@ -1,8 +1,9 @@
 import { deleteBrick } from "@/app/lib/actions/brickActions";
+import { revalidateData } from "@/app/utils/revalidate-data";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-const DeleteBrickModal = ({ setIsOpen, brick, token, revalidateData }) => {
+const DeleteBrickModal = ({ setIsOpen, brick, token }) => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
 
@@ -13,7 +14,7 @@ const DeleteBrickModal = ({ setIsOpen, brick, token, revalidateData }) => {
     const res = await deleteBrick(token, brick._id);
     console.log("res", res);
     if (res.message === "Deleted successfully") {
-      revalidateData();
+      revalidateData("/admin/bricks");
       setSuccess(true);
       setTimeout(() => {
         setSuccess(false);

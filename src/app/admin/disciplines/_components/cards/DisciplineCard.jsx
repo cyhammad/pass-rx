@@ -6,7 +6,7 @@ import DisciplineCardDropdown from "../dropdowns/DisciplineCardDropdown";
 import { AnimatePresence } from "framer-motion";
 import EditDisciplineModal from "../modals/EditDisciplineModal";
 
-export default function DisciplineCard({ discipline, token, revalidateData }) {
+export default function DisciplineCard({ discipline, token }) {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const renderDate = (date) => {
@@ -22,7 +22,7 @@ export default function DisciplineCard({ discipline, token, revalidateData }) {
             setIsOpen={setIsDeleteModalOpen}
             discipline={discipline}
             token={token}
-            revalidateData={revalidateData}
+            
           />
         )}
       </AnimatePresence>
@@ -32,7 +32,7 @@ export default function DisciplineCard({ discipline, token, revalidateData }) {
             setIsOpen={setIsEditModalOpen}
             discipline={discipline}
             token={token}
-            revalidateData={revalidateData}
+            
           />
         )}
       </AnimatePresence>

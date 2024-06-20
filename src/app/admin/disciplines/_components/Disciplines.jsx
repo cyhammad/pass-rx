@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import AddDisciplineModal from "./modals/AddDisciplineModal";
 import DisciplineCard from "./cards/DisciplineCard";
 
-export default function Disciplines({ disciplines, token, revalidateData }) {
+export default function Disciplines({ disciplines, token }) {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [showSearchInput, setShowSearchInput] = useState(false);
   const [searchValue, setSearchValue] = useState("");
@@ -48,7 +48,6 @@ export default function Disciplines({ disciplines, token, revalidateData }) {
           <AddDisciplineModal
             toggleModal={toggleModal}
             token={token}
-            revalidateData={revalidateData}
           />
         )}
       </AnimatePresence>
@@ -106,7 +105,6 @@ export default function Disciplines({ disciplines, token, revalidateData }) {
                 <DisciplineCard
                   discipline={discipline}
                   token={token}
-                  revalidateData={revalidateData}
                 />
               </div>
             ))}

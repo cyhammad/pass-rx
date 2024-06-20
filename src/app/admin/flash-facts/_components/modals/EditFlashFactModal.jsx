@@ -8,13 +8,13 @@ import {
   addFlashFact,
   editFlashFact,
 } from "@/app/lib/actions/flashFactActions";
+import { revalidateData } from "@/app/utils/revalidate-data";
 
 const EditFlashFactModal = ({
   closeModal,
   disciplines,
   prevFlashFact,
   token,
-  revalidateData,
 }) => {
   const [selectedDiscipline, setSelectedDiscipline] = useState(
     prevFlashFact.discipline,
@@ -35,7 +35,7 @@ const EditFlashFactModal = ({
     );
     if (res.message === "Updated successfully") {
       setSuccess(true);
-      revalidateData();
+      revalidateData("/admin/flash-facts");
       // close modal after 2 seconds
       setTimeout(() => {
         closeModal();

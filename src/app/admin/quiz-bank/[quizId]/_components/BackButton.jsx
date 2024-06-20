@@ -8,7 +8,7 @@ const BackButton = () => {
   return (
     <button
       className="flex gap-x-2 text-xs"
-      onClick={() => router.back()}
+      onClick={() => router.push("/admin/quiz-bank")}
     >
       {backArrow}
       Back

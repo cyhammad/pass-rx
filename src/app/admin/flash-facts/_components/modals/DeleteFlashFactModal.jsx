@@ -1,19 +1,15 @@
 import { deleteFlashFact } from "@/app/lib/actions/flashFactActions";
+import { revalidateData } from "@/app/utils/revalidate-data";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-const DeleteFlashFactModal = ({
-  closeModal,
-  flashFact,
-  token,
-  revalidateData,
-}) => {
+const DeleteFlashFactModal = ({ closeModal, flashFact, token }) => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   const handleDeleteFlashCard = async () => {
     const res = await deleteFlashFact(token, flashFact._id);
     if (res.message === "Deleted successfully") {
-      revalidateData();
+      revalidateData("/admin/flash-facts");
       setSuccess(true);
       setTimeout(() => {
         setSuccess(false);

@@ -93,6 +93,9 @@ const DisciplineColumn = ({
                     onClick={() =>
                       router.push(
                         `/admin/quiz-bank/${quizId}/discipline/${discipline._id}`,
+                        {
+                          scroll: false,
+                        },
                       )
                     }
                     discipline={discipline}

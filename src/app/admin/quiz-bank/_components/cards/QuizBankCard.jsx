@@ -6,7 +6,7 @@ import DeleteQuizBankModal from "../modals/DeleteQuizBankModal";
 import { useState } from "react";
 import Link from "next/link";
 
-export default function QuizBankCard({ quiz, revalidateData, token }) {
+export default function QuizBankCard({ quiz, token }) {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const renderDate = (date) => {
     if (!date) return "N/A";
@@ -21,7 +21,6 @@ export default function QuizBankCard({ quiz, revalidateData, token }) {
             setIsOpen={setIsDeleteModalOpen}
             quiz={quiz}
             token={token}
-            revalidateData={revalidateData}
           />
         )}
       </AnimatePresence>

@@ -8,7 +8,6 @@ import EditFlashFactModal from "../modals/EditFlashFactModal";
 
 export default function FlashFactCard({
   flashFact,
-  revalidateData,
   token,
   disciplines,
 }) {
@@ -27,7 +26,7 @@ export default function FlashFactCard({
             closeModal={() => setIsDeleteModalOpen(false)}
             flashFact={flashFact}
             token={token}
-            revalidateData={revalidateData}
+            
           />
         )}
       </AnimatePresence>
@@ -38,7 +37,7 @@ export default function FlashFactCard({
             disciplines={disciplines}
             prevFlashFact={flashFact}
             token={token}
-            revalidateData={revalidateData}
+            
           />
         )}
       </AnimatePresence>

@@ -6,8 +6,9 @@ import LearningObjectives from "./LearningObjectives";
 import Sections from "./Sections";
 import BackButton from "./buttons/BackButton";
 import { updateBrick } from "@/app/lib/actions/brickActions";
+import { revalidateData } from "@/app/utils/revalidate-data";
 
-const EditableBrick = ({ token, brick, revalidateData }) => {
+const EditableBrick = ({ token, brick }) => {
   const [editable, setEditable] = useState(false);
   const [title, setTitle] = useState(brick.title);
   const [quote, setQuote] = useState(brick.quote);
@@ -30,7 +31,7 @@ const EditableBrick = ({ token, brick, revalidateData }) => {
     );
     console.log("RES", res);
     if (res.message === "Updated successfully") {
-      revalidateData();
+      revalidateData(`admin/bricks/${brick._id}`);
       setEditable(false);
     }
   };
@@ -53,15 +54,7 @@ const EditableBrick = ({ token, brick, revalidateData }) => {
       />
       <div className="mt-10 w-full border border-light-border"></div>
       <div className=" mt-6 flex flex-col justify-between gap-x-[4rem] pb-10 lg:flex-row lg:pr-11 xl:ml-[10rem]">
-        <Sections
-          token={token}
-          revalidateData={revalidateData}
-          brickId={brick._id}
-          editable={editable}
-          setEditable={setEditable}
-          sections={sections}
-          setSections={setSections}
-        />
+        <Sections token={token} brickId={brick._id} sections={sections} />
         <LearningObjectives
           editable={editable}
           setEditable={setEditable}

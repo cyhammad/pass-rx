@@ -5,12 +5,12 @@ import SelectFactDisciplineDropdown from "../dropdowns/SelectFactDisciplineDropd
 import { useState } from "react";
 import CustomTextarea from "../inputs/CustomTextarea";
 import { addFlashFact } from "@/app/lib/actions/flashFactActions";
+import { revalidateData } from "@/app/utils/revalidate-data";
 
 const AddFlashFactModal = ({
   closeModal,
   disciplines,
   token,
-  revalidateData,
 }) => {
   const [selectedDiscipline, setSelectedDiscipline] = useState(disciplines[0]);
   const [question, setQuestion] = useState("");
@@ -28,7 +28,7 @@ const AddFlashFactModal = ({
     );
     if (res.message === "Created successfully") {
       setSuccess(true);
-      revalidateData();
+      revalidateData("/admin/flash-facts");
       // close modal after 2 seconds
       setTimeout(() => {
         closeModal();

@@ -1,13 +1,9 @@
 import { deleteDiscipline } from "@/app/lib/actions/disciplineActions";
+import { revalidateData } from "@/app/utils/revalidate-data";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-const DeleteDisciplineModal = ({
-  setIsOpen,
-  discipline,
-  token,
-  revalidateData,
-}) => {
+const DeleteDisciplineModal = ({ setIsOpen, discipline, token }) => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
 
@@ -18,7 +14,7 @@ const DeleteDisciplineModal = ({
     const res = await deleteDiscipline(token, discipline._id);
     const resObj = JSON.parse(res);
     if (resObj.message === "Discipline deleted successfully") {
-      revalidateData();
+      revalidateData("/admin/disciplines");
       setSuccess(true);
       setTimeout(() => {
         setSuccess(false);

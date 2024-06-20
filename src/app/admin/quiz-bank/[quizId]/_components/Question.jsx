@@ -2,7 +2,7 @@
 
 import QuestionDropdown from "./dropdowns/QuestionDropdown";
 
-const Question = ({ question, token, quizbank, revalidateData }) => {
+const Question = ({ question, token, quizbank }) => {
   const handleDetailedExplanation = () => {
     console.log("View detailed explanation");
   };
@@ -14,7 +14,7 @@ const Question = ({ question, token, quizbank, revalidateData }) => {
           question={question}
           token={token}
           quizbank={quizbank}
-          revalidateData={revalidateData}
+          
         />
       </div>
       <div className="flex flex-col gap-y-2 text-sm">

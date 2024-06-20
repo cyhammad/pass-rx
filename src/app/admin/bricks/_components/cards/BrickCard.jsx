@@ -5,7 +5,7 @@ import { AnimatePresence } from "framer-motion";
 import DeleteBrickModal from "../modals/DeleteBrickModal";
 import Link from "next/link";
 
-export default function BrickCard({ brick, token, revalidateData }) {
+export default function BrickCard({ brick, token }) {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   return (
     <>
@@ -15,7 +15,6 @@ export default function BrickCard({ brick, token, revalidateData }) {
             setIsOpen={setIsDeleteModalOpen}
             brick={brick}
             token={token}
-            revalidateData={revalidateData}
           />
         )}
       </AnimatePresence>
@@ -42,7 +41,6 @@ export default function BrickCard({ brick, token, revalidateData }) {
           <BrickCardDropDown
             brick={brick}
             token={token}
-            revalidateData={revalidateData}
             setIsDeleteModalOpen={setIsDeleteModalOpen}
           />
         </div>

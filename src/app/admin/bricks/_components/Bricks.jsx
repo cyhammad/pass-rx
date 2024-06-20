@@ -2,13 +2,10 @@
 
 import { useState } from "react";
 import { searchIcon } from "@/svgs/topbarSvgs";
-import DeleteModal from "@/components/adminComponents/modals/DeleteModal";
-import { useSelector, useDispatch } from "react-redux";
-import { AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import BrickCard from "./cards/BrickCard";
 
-export default function Bricks({ data, token, revalidateData }) {
+export default function Bricks({ data, token }) {
   const [selectedTab, setSelectedTab] = useState("All");
   const [searchValue, setSearchValue] = useState("");
   const filteredData = data.filter((brick) => {
@@ -84,7 +81,6 @@ export default function Bricks({ data, token, revalidateData }) {
           <div key={brick._id}>
             <BrickCard
               brick={brick}
-              revalidateData={revalidateData}
               token={token}
             />
           </div>

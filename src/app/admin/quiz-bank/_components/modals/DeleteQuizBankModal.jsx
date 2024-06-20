@@ -1,8 +1,9 @@
 import { deleteQuizBank } from "@/app/lib/actions/quizBankActions";
+import { revalidateData } from "@/app/utils/revalidate-data";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-const DeleteQuizBankModal = ({ setIsOpen, quiz, token, revalidateData }) => {
+const DeleteQuizBankModal = ({ setIsOpen, quiz, token }) => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
 
@@ -12,7 +13,7 @@ const DeleteQuizBankModal = ({ setIsOpen, quiz, token, revalidateData }) => {
   const handleDeleteQuiz = async () => {
     const res = await deleteQuizBank(token, quiz._id);
     if (res.message === "Quiz deleted successfully") {
-      revalidateData();
+      revalidateData("admin/quiz-bank");
       setSuccess(true);
       setTimeout(() => {
         setSuccess(false);

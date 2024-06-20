@@ -6,15 +6,9 @@ import ChapterDropdown from "./dropdowns/ChapterDropdown";
 import AddSectionCard from "./cards/AddSectionCard";
 import { useState } from "react";
 import { addSection } from "@/app/lib/actions/BrickSectionActions";
-export default function Sections({
-  token,
-  brickId,
-  revalidateData,
-  editable,
-  setEditable,
-  sections,
-  setSections,
-}) {
+import { revalidateData } from "@/app/utils/revalidate-data";
+
+export default function Sections({ token, brickId, sections }) {
   const [newSectionTitle, setNewSectionTitle] = useState("");
   const [newChapterTitle, setNewChapterTitle] = useState("");
   const [showAddSection, setShowAddSection] = useState(false);
@@ -23,8 +17,7 @@ export default function Sections({
     const res = await addSection(token, brickId, newSectionTitle);
     console.log("Add Section", res);
     if (res.message === "Created successfully") {
-      
-      revalidateData();
+      revalidateData(`admin/bricks/${brickId}`);
     }
   };
   return (

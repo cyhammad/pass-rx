@@ -6,7 +6,7 @@ import QuizTable from "./QuizTable";
 import PerformanceGraph from "./PerformanceGraph";
 import AddQuiz1 from "./modals/AddTest";
 
-export default function QuizBank({ disciplines, token, revalidateData }) {
+export default function QuizBank({ disciplines, token }) {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => {
     setIsOpen(!isOpen);

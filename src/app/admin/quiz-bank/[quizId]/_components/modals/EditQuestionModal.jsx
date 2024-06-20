@@ -5,13 +5,13 @@ import { useState } from "react";
 import QuestionTab from "../tabs/question-tab/QuestionTab";
 import ExplanationTab from "../tabs/ExplanationTab";
 import { editQuestion } from "@/app/lib/actions/questionActions";
+import { revalidateData } from "@/app/utils/revalidate-data";
 
 const EditQuestionModal = ({
   setShowModal,
   quizbank,
   token,
   prevQuestion,
-  revalidateData,
 }) => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
@@ -38,7 +38,7 @@ const EditQuestionModal = ({
     );
     if (res.message === "Updated successfully") {
       setSuccess(true);
-      revalidateData();
+      revalidateData("/admin/quiz-bank");
       // close modal after 2 seconds
       setInterval(() => {
         setShowModal(false);

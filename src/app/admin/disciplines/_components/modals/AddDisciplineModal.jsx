@@ -1,8 +1,9 @@
 import { addDiscipline } from "@/app/lib/actions/disciplineActions";
+import { revalidateData } from "@/app/utils/revalidate-data";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-export default function AddDisciplineModal({ toggleModal, token, revalidateData }) {
+export default function AddDisciplineModal({ toggleModal, token }) {
   const [disciplineName, setDisciplineName] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
@@ -17,7 +18,7 @@ export default function AddDisciplineModal({ toggleModal, token, revalidateData 
     const res = await addDiscipline(token, disciplineName);
     const resObj = JSON.parse(res);
     if (resObj.message === "Discipline created successfully") {
-      revalidateData();
+      revalidateData("/admin/disciplines");
       setSuccess(true);
       setTimeout(() => {
         setSuccess(false);

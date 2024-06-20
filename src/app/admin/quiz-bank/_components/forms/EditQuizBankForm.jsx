@@ -5,8 +5,9 @@ import { useEffect, useState } from "react";
 import SelectDisciplineButton from "../SelectDisciplineButton";
 import { updateQuizBank } from "@/app/lib/actions/quizBankActions";
 import { useRouter } from "next/navigation";
+import { revalidateData } from "@/app/utils/revalidate-data";
 
-const EditQuizBankForm = ({ disciplines, token, quiz, revalidateData }) => {
+const EditQuizBankForm = ({ disciplines, token, quiz }) => {
   const router = useRouter();
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
@@ -62,7 +63,7 @@ const EditQuizBankForm = ({ disciplines, token, quiz, revalidateData }) => {
       if (response) {
         if (response.message === "Quiz updated successfully") {
           setSuccess(response.message);
-          revalidateData();
+          revalidateData("/admin/quiz-bank");
           // wait 2 seconds before redirecting
           setTimeout(() => {
             router.push("/admin/quiz-bank");

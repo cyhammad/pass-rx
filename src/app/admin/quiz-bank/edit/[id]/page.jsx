@@ -3,16 +3,12 @@ import { fetchDisciplinesAdmin } from "@/app/lib/data";
 import { auth } from "@/auth";
 import EditQuizBankForm from "../../_components/forms/EditQuizBankForm";
 import { getQuizBank } from "@/app/lib/actions/quizBankActions";
-import { revalidatePath } from "next/cache";
 
 const QuizBankEditPage = async ({ params }) => {
   const session = await auth();
   const disciplines = await fetchDisciplinesAdmin(session.user.accessToken);
   const quiz = await getQuizBank(session.user.accessToken, params.id);
-  const revalidateData = async () => {
-    "use server"
-    revalidatePath("/admin/quiz-bank");
-  }
+
   return (
     <div className="flex w-full flex-col py-5">
       <GoBackBar />
@@ -27,7 +23,6 @@ const QuizBankEditPage = async ({ params }) => {
           disciplines={disciplines}
           token={session.user.accessToken}
           quiz={quiz}
-          revalidateData={revalidateData}
         />
       </div>
     </div>

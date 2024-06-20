@@ -12,7 +12,6 @@ export default function FlashFactsPage({
   flashFacts,
   disciplines,
   token,
-  revalidateData,
 }) {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [selectedDiscipline, setSelectedDiscipline] = useState(null);
@@ -39,7 +38,7 @@ export default function FlashFactsPage({
             closeModal={() => setIsAddModalOpen(false)}
             disciplines={disciplines}
             token={token}
-            revalidateData={revalidateData}
+            
           />
         )}
       </AnimatePresence>
@@ -73,7 +72,7 @@ export default function FlashFactsPage({
           <div key={fact._id}>
             <FlashFactCard
               flashFact={fact}
-              revalidateData={revalidateData}
+              
               token={token}
               disciplines={disciplines}
             />
