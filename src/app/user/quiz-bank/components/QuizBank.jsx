@@ -12,7 +12,7 @@ export default function QuizBank({ disciplines, token }) {
     setIsOpen(!isOpen);
   };
   return (
-    <div className="select-none bg-light-gray pr-3 pt-6 sm:px-6 md:px-8">
+    <div className="select-none bg-light-gray px-3 pt-6 sm:px-6 md:px-8">
       <AnimatePresence>
         {isOpen && (
           <AddQuiz1 toggle={toggle} disciplines={disciplines} token={token} />
