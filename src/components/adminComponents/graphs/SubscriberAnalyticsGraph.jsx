@@ -5,11 +5,13 @@ const ReactApexChart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
 
-const SalesGraph = () => {
+const SubscribersAnalyticsGraph = () => {
   const series = [
     {
       name: "Account Balance",
-      data: [25, 25, 40, 70, 100, 120, 115, 125, 140, 160, 135, 100],
+      data: [
+        1200, 800, 1000, 1100, 950, 1800, 850, 1050, 1250, 1600, 1350, 700,
+      ],
     },
   ];
 
@@ -17,12 +19,21 @@ const SalesGraph = () => {
     chart: {
       height: "100%",
       width: "97%",
-      type: "area",
+      type: "bar",
       zoom: {
         enabled: false,
       },
       toolbar: {
         show: false,
+      },
+    },
+    plotOptions: {
+      bar: {
+        horizontal: false,
+        columnWidth: "15%",
+        endingShape: "rounded",
+        borderRadius: 2,
+        borderRadiusApplication: "end",
       },
     },
     dataLabels: {
@@ -54,9 +65,6 @@ const SalesGraph = () => {
         style: {
           colors: "#919EAB",
           fontSize: "8px",
-        },
-        formatter: function (val) {
-          return "$" + val;
         },
       },
       forceNiceScale: true,
@@ -116,10 +124,10 @@ const SalesGraph = () => {
   };
 
   return (
-    <div className="flex h-[236px] w-full min-w-[300px] flex-col rounded-[29px] px-1 py-5 sm:shadow">
+    <div className="flex h-[336px] w-full min-w-[300px] flex-col rounded-[29px] px-1 py-5 sm:shadow">
       <div className="flex justify-between px-5">
         <div className="flex flex-col gap-y-1">
-          <span className="">Sales</span>
+          <span className="">Subscribers Analytics</span>
           <span className="text-[8px] text-gray/50">
             (+33%) than last Month
           </span>
@@ -133,7 +141,7 @@ const SalesGraph = () => {
         <ReactApexChart
           options={options}
           series={series}
-          type="area"
+          type="bar"
           height={"100%"}
           width={"97%"}
         />
@@ -157,4 +165,4 @@ const chevronDown = (
   </svg>
 );
 
-export default SalesGraph;
+export default SubscribersAnalyticsGraph;

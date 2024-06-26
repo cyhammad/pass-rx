@@ -5,6 +5,8 @@ import Card1 from "@/components/adminComponents/dashboard/Card1";
 import Card2 from "@/components/adminComponents/dashboard/Card2";
 import StatSlider from "@/components/adminComponents/dashboard/StatSlider";
 import NewSubscribersTable from "@/components/adminComponents/tables/NewSubscribersTable";
+import SubscribersAnalyticsGraph from "@/components/adminComponents/graphs/SubscriberAnalyticsGraph";
+import UsersAnalyticsGraph from "@/components/adminComponents/graphs/UsersAnalyticsGraph";
 
 export default function AdminHome() {
   return (
@@ -27,6 +29,10 @@ export default function AdminHome() {
       {/* Mobile Screen Stats */}
       <div className="sm:hidden">
         <StatSlider />
+      </div>
+      <div className="grid gap-8 lg:grid-cols-2">
+        <SubscribersAnalyticsGraph />
+        <UsersAnalyticsGraph />
       </div>
       <NewSubscribersTable />
     </main>

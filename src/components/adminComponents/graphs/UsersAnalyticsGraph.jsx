@@ -5,19 +5,14 @@ const ReactApexChart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
 
-const SalesGraph = () => {
-  const series = [
-    {
-      name: "Account Balance",
-      data: [25, 25, 40, 70, 100, 120, 115, 125, 140, 160, 135, 100],
-    },
-  ];
+const UsersAnalyticsGraph = () => {
+  const series = [200, 250, 1250];
 
   const options = {
     chart: {
       height: "100%",
-      width: "97%",
-      type: "area",
+      width: "100%",
+      type: "pie",
       zoom: {
         enabled: false,
       },
@@ -25,74 +20,18 @@ const SalesGraph = () => {
         show: false,
       },
     },
+    labels: ["Free Trial", "Trial Ended", "Subscribers"],
     dataLabels: {
-      enabled: false,
+      enabled: true,
+      style: {
+        fontSize: "14px",
+        fontWeight: "semibold",
+      }
     },
-    colors: ["#2396F3"],
-    grid: {
-      borderColor: "#919EAB33",
-      strokeDashArray: 3,
-      row: {
-        colors: ["transparent"],
-      },
-    },
-    stroke: {
-      width: 2,
-    },
+    colors: ["#E0E0E0", "#EB8C22", "#2396F3"],
     fill: {
+      type: "gradient",
       opacity: 1,
-      gradient: {
-        type: "vertical",
-        shadeIntensity: 0,
-        opacityFrom: 0.4,
-        opacityTo: 0,
-        stops: [0, 100],
-      },
-    },
-    yaxis: {
-      labels: {
-        style: {
-          colors: "#919EAB",
-          fontSize: "8px",
-        },
-        formatter: function (val) {
-          return "$" + val;
-        },
-      },
-      forceNiceScale: true,
-    },
-    xaxis: {
-      categories: [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec",
-      ],
-      axisBorder: {
-        show: false,
-      },
-      axisTicks: {
-        show: false,
-      },
-      title: {
-        style: {
-          color: "#919EAB",
-        },
-      },
-      labels: {
-        style: {
-          colors: "#919EAB",
-          fontSize: "8px",
-        },
-      },
     },
     tooltip: {
       theme: "dark",
@@ -116,10 +55,10 @@ const SalesGraph = () => {
   };
 
   return (
-    <div className="flex h-[236px] w-full min-w-[300px] flex-col rounded-[29px] px-1 py-5 sm:shadow">
+    <div className="flex h-[336px] w-full min-w-[300px] flex-col rounded-[29px] px-1 py-5 sm:shadow">
       <div className="flex justify-between px-5">
         <div className="flex flex-col gap-y-1">
-          <span className="">Sales</span>
+          <span className="">Subscribers Analytics</span>
           <span className="text-[8px] text-gray/50">
             (+33%) than last Month
           </span>
@@ -133,7 +72,7 @@ const SalesGraph = () => {
         <ReactApexChart
           options={options}
           series={series}
-          type="area"
+          type="pie"
           height={"100%"}
           width={"97%"}
         />
@@ -157,4 +96,4 @@ const chevronDown = (
   </svg>
 );
 
-export default SalesGraph;
+export default UsersAnalyticsGraph;
