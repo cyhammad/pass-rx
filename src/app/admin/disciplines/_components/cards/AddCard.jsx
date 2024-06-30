@@ -1,11 +1,11 @@
-export default function AddDisciplineCard({ onClick }) {
+export default function AddCard({ title, onClick }) {
   return (
     <button
       onClick={onClick}
-      className="mt-[38px] flex h-[233px] w-[262px] flex-col items-center justify-center rounded-2xl bg-dark text-white sm:w-[272px]"
+      className="mt-[38px] flex h-[233px] w-full flex-col items-center justify-center rounded-2xl bg-dark text-white sm:w-[272px]"
     >
       <span>{add}</span>
-      <p className="mt-4 text-sm font-medium">Add Discipline</p>
+      <p className="mt-4 text-sm font-medium">Add {title}</p>
     </button>
   );
 }

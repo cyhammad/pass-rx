@@ -7,10 +7,11 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import LogoutButton from "../buttons/LogoutButton";
 
-const ProfileDropdown = ({logoutButton}) => {
+const ProfileDropdown = ({ user, logoutButton }) => {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
   const dropdownRef = useRef(null);
+  const nameFirstLetters = user.firstName.charAt(0) + user.lastName.charAt(0);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -35,7 +36,7 @@ const ProfileDropdown = ({logoutButton}) => {
         className="flex h-10 w-10 items-center justify-center rounded-full bg-darkGray text-center"
         onClick={() => toggleMenu()}
       >
-        <span className="leading-6 text-white">JS</span>
+        <span className="leading-6 text-white">{nameFirstLetters}</span>
       </button>
       {isOpen && (
         <motion.div
@@ -47,14 +48,16 @@ const ProfileDropdown = ({logoutButton}) => {
           <div className="flex flex-col gap-y-1.5 border-b border-border-dark py-2">
             <div className="flex items-center gap-x-2 px-3.5 py-1.5">
               <div className="flex h-[30px] w-[30px] items-center justify-center rounded-full bg-darkGray">
-                <span className="text-sm">JS</span>
+                <span className="text-sm">{nameFirstLetters}</span>
               </div>
-              <span className="text-sm font-medium">Jason Staton</span>
+              <span className="text-sm font-medium">
+                {user.firstName} {user.lastName}
+              </span>
             </div>
             <button
               onClick={() => {
                 setIsOpen(false);
-                router.push("/profile-settings");
+                router.push("/admin/profile-settings");
               }}
               className="flex items-center justify-between px-5 py-1.5"
             >

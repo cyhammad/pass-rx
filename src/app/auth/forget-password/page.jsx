@@ -1,11 +1,33 @@
+"use client";
+
+import { forgetPassword } from "@/app/lib/actions/authActions";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const ForgetPasswordPage = () => {
+  const [email, setEmail] = useState("");
+  const router = useRouter();
+  const handleSendRequest = async () => {
+    const res = await forgetPassword(email);
+    const resObj = JSON.parse(res);
+    if (resObj.success) {
+      router.push(`/auth/forget-password/otp?email=${email}`);
+    }
+  };
+
+  // on press enter key submit form
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSendRequest();
+    }
+  };
+
   return (
     <div className="flex max-w-[400px] flex-col items-center justify-center px-5 py-10">
       <Image
-        src="/forget-password/locks-icon.svg"
+        src="/forget-password/locks-icon.png"
         width={96}
         height={96}
         alt="locks icon"
@@ -19,15 +41,18 @@ const ForgetPasswordPage = () => {
       </span>
       <input
         className="mt-10 h-[48px] w-full rounded-md border border-[#919EAB33] px-4 py-2 text-sm"
-        type="text"
+        type="email"
         placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        onKeyDown={handleKeyPress}
       />
-      <Link
-        href="/auth/forget-password/otp"
+      <button
+        onClick={() => handleSendRequest()}
         className="mt-6 h-[50px] w-full cursor-pointer rounded-md bg-primary py-3 text-center text-white"
       >
         Send Request
-      </Link>
+      </button>
     </div>
   );
 };

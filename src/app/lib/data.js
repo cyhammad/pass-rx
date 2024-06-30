@@ -34,6 +34,30 @@ export async function fetchDisciplinesAdmin(token) {
   return disciplines.json();
 }
 
+export async function fetchCategoriesAdmin(token) {
+  noStore();
+  const myHeaders = new Headers();
+  myHeaders.append("Authorization", `Bearer ${token}`);
+  myHeaders.append(
+    "Cookie",
+    "connect.sid=s%3AIaARxVJhjNWcWW3hkw6y-nQ7CySlJpQT.gG7eMs4VEXc81y1xDycbinF%2BmbIl6iXGDotb1OXQNWU",
+  );
+
+  const requestOptions = {
+    method: "GET",
+    headers: myHeaders,
+    redirect: "follow",
+  };
+  let categories;
+  await fetch(`${process.env.BASE_URL}/admin/category`, requestOptions)
+    .then((response) => response.text())
+    .then((result) => {
+      categories = result;
+    })
+    .catch((error) => console.error(error));
+  return JSON.parse(categories);
+}
+
 export async function fetchFlashFactsAdmin(token) {
   noStore();
   const headers = new Headers();
@@ -105,11 +129,11 @@ export async function fetchNotesUser(token) {
   try {
     const response = await fetch(
       `${process.env.BASE_URL}/user/notes`,
-      requestOptions
+      requestOptions,
     );
 
     if (!response.ok) {
-      console.log (response.status)
+      console.log(response.status);
     }
 
     const notes = await response.json();
@@ -117,7 +141,7 @@ export async function fetchNotesUser(token) {
 
     return notes;
   } catch (error) {
-    console.error('Error fetching notes:', error);
+    console.error("Error fetching notes:", error);
     throw error; // Propagate the error up to the caller
   }
 }

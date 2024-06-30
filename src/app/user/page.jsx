@@ -7,8 +7,7 @@ import QuizPerformanceCard from "@/components/userComponents/dashboard/QuizPerfo
 import StatSlider from "@/components/userComponents/dashboard/StatsSlider";
 import SubscriptionCard from "@/components/userComponents/dashboard/SubscriptionCard";
 
-
-export default function page() {
+export default function UserPanelPage() {
   return (
     <main className=" flex w-full flex-col gap-y-6 bg-light-gray p-3 py-5 sm:p-6 md:p-7">
       <h1 className="text-2xl">Goodmorning, Vikram</h1>
@@ -33,7 +32,7 @@ export default function page() {
       <div className="md:hidden">
         <StatSlider />
       </div>
-      <div className="flex justify-between gap-3 flex-col lg:flex-row ">
+      <div className="flex flex-col justify-between gap-3 lg:flex-row ">
         <QuizPerformanceCard />
         <FlashFactsPerformanceCard />
         <BricksCard />

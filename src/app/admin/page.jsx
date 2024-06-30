@@ -1,5 +1,3 @@
-"use client";
-
 import SalesGraph from "@/components/adminComponents/graphs/SalesGraph";
 import Card1 from "@/components/adminComponents/dashboard/Card1";
 import Card2 from "@/components/adminComponents/dashboard/Card2";
@@ -7,11 +5,14 @@ import StatSlider from "@/components/adminComponents/dashboard/StatSlider";
 import NewSubscribersTable from "@/components/adminComponents/tables/NewSubscribersTable";
 import SubscribersAnalyticsGraph from "@/components/adminComponents/graphs/SubscriberAnalyticsGraph";
 import UsersAnalyticsGraph from "@/components/adminComponents/graphs/UsersAnalyticsGraph";
+import { auth } from "@/auth";
 
-export default function AdminHome() {
+export default async function AdminHome() {
+  const session = await auth();
+  const user = session.user;
   return (
     <main className="flex w-full flex-col gap-y-6 p-5 py-5 sm:p-6 md:p-7">
-      <h1 className="text-2xl">Goodmorning, Vikram</h1>
+      <h1 className="text-2xl">Goodmorning, {user.firstName}</h1>
       {/* Large and higher screen stats */}
       <div className="hidden gap-3 pr-5 lg:flex xl:gap-6">
         <Card1 />

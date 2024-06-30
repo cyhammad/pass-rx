@@ -2,6 +2,7 @@
 
 import { authenticate } from "@/app/lib/actions/authActions";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 
@@ -11,7 +12,7 @@ const SignInForm = () => {
   return (
     <form action={dispatch} className="flex flex-col gap-4 py-5">
       <input
-        className="h-[54px] w-full rounded-md border border-[#919EAB33] px-4 py-2 text-sm"
+        className="h-[54px] w-full rounded-md px-4 py-2 text-sm ring-transparent focus:ring-transparent"
         type="email"
         placeholder="Email"
         name="email"
@@ -20,7 +21,7 @@ const SignInForm = () => {
       />
       <div className="relative">
         <input
-          className="h-[54px] w-full rounded-md border border-[#919EAB33] px-4 py-2 text-sm"
+          className="h-[54px] w-full rounded-md px-4 py-2 text-sm ring-transparent focus:ring-transparent"
           type={showPassword ? "text" : "password"}
           placeholder="Password"
           id="password"
@@ -40,9 +41,12 @@ const SignInForm = () => {
           />
         </div>
       </div>
-      <h3 className="flex justify-end text-sm leading-[22.4px] text-[#212B36]">
+      <Link
+        href="/auth/forget-password"
+        className="flex justify-end text-sm leading-[22.4px] text-[#212B36] hover:text-primary"
+      >
         Forgot Password?
-      </h3>
+      </Link>
       <LoginButton />
       <div
         className="flex h-8 items-end space-x-1"

@@ -1,15 +1,18 @@
-import { fetchDisciplinesAdmin } from "@/app/lib/data";
+import { fetchCategoriesAdmin, fetchDisciplinesAdmin } from "@/app/lib/data";
 import { auth } from "@/auth";
 
 import Disciplines from "./_components/Disciplines";
 
 export default async function DisciplinePage() {
   const session = await auth();
-  const disciplines = await fetchDisciplinesAdmin(session.user.accessToken);
+  const token = session.user.accessToken;
+  const disciplines = await fetchDisciplinesAdmin(token);
+  const categories = await fetchCategoriesAdmin(token);
   return (
     <Disciplines
       disciplines={disciplines}
-      token={session.user.accessToken}
+      categories={categories}
+      token={token}
     />
   );
 }

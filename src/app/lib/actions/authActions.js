@@ -107,3 +107,81 @@ export const verifyEmailOTP = async (email, OTP) => {
     .catch((error) => console.error(error));
   return res;
 };
+
+export const forgetPassword = async (email) => {
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  const raw = JSON.stringify({
+    email: email,
+  });
+
+  const requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: raw,
+    redirect: "follow",
+  };
+
+  let res;
+  console.log("URL", `${process.env.BASE_URL}/auth/forget-password`);
+
+  await fetch(`${process.env.BASE_URL}/auth/forget-password`, requestOptions)
+    .then((response) => response.text())
+    .then((result) => {
+      res = result;
+    })
+    .catch((error) => console.error(error));
+  return res;
+};
+
+export const verifyPasswordResetOTP = async (email, OTP) => {
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  const raw = JSON.stringify({
+    email: email,
+    otp: parseInt(OTP),
+  });
+  const requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: raw,
+    redirect: "follow",
+  };
+  let res;
+  await fetch(
+    `${process.env.BASE_URL}/auth/verify-password-reset-otp`,
+    requestOptions,
+  )
+    .then((response) => response.text())
+    .then((result) => {
+      res = result;
+    })
+    .catch((error) => console.error(error));
+  return res;
+};
+
+export const resetPassword = async (email, password) => {
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  const raw = JSON.stringify({
+    email: email,
+    password: password,
+  });
+
+  const requestOptions = {
+    method: "PATCH",
+    headers: myHeaders,
+    body: raw,
+    redirect: "follow",
+  };
+  let res;
+  await fetch(`${process.env.BASE_URL}/auth/update-password`, requestOptions)
+    .then((response) => response.text())
+    .then((result) => {
+      res = result;
+    })
+    .catch((error) => console.error(error));
+  return res;
+};

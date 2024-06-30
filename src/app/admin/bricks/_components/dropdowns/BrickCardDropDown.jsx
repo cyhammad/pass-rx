@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { useDispatch } from "react-redux";
-import { openModal } from "@/lib/features/deleteModal/deleteModalSlice";
 
 const BrickCardDropDown = ({ setIsDeleteModalOpen }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,13 +20,6 @@ const BrickCardDropDown = ({ setIsDeleteModalOpen }) => {
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
-  };
-
-  const dispatch = useDispatch();
-
-  const handleDeleteClick = () => {
-    toggleMenu();
-    dispatch(openModal());
   };
 
   return (
@@ -66,7 +57,7 @@ const BrickCardDropDown = ({ setIsDeleteModalOpen }) => {
               >
                 <div className="flex items-center gap-x-2">
                   {cross}
-                  <span className="text-xs">Delete {name}</span>
+                  <span className="text-xs">Delete</span>
                 </div>
               </button>
             </div>

@@ -76,23 +76,33 @@ button:focus {
 }
 
 textarea,
-input{
-  border: none;
+input,
+input[type] {
+  border: 1px solid #0000001a;
   outline: none;
-}
-.inputborder{
-  border: 1px solid #DDDDDD !important;
-
-}
-input[type="radio"]{
-  border: 1px solid #E5E7EB !important;
 }
 
 textarea:focus,
-input:focus {
-  border: none;
+input:focus,
+input[type]:focus {
+  border: 1px solid #2396f3;
   outline: none;
   box-shadow: 0px 0px transparent;
+}
+.inputborder {
+  border: 1px solid #dddddd !important;
+}
+
+input[type="radio"] {
+  border: 1px solid #e5e7eb !important;
+}
+
+input[type="search"] {
+  border: none;
+}
+
+input[type="search"]:focus {
+  border: none;
 }
 
 .brick-title {

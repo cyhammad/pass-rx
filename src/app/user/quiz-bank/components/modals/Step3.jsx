@@ -48,13 +48,13 @@ export default function Step3({ handleAdd, handleChange, setData, data }) {
       <div className="  relative mt-8 flex  flex-col justify-between self-center">
         <div className="flex flex-col ">
           <label className="text-sm text-text-gray-2">Test Name</label>
-          <input
+          <in
             placeholder="Test333"
             type="text"
             name="testName"
             onChange={handleChange}
-            className=" inputborder mt-3 block  w-[290px] rounded-lg bg-white shadow-sm  focus:border-light-border focus:ring-light-border  sm:w-[354px] "
-          ></input>
+            className="mt-3 block  w-[290px] rounded-lg bg-white shadow-sm  focus:border-light-border focus:ring-light-border  sm:w-[354px] "
+          />
         </div>
         <div className="mt-10 flex flex-col items-center">
           <div className="flex items-center gap-2">

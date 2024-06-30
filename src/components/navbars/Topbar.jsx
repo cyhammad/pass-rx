@@ -4,7 +4,7 @@ import ProfileDropdown from "../adminComponents/dropdowns/ProfileDropdown";
 import ExampleDropdown from "../adminComponents/dropdowns/ExampleDropdown";
 import LogoutButton from "../adminComponents/buttons/LogoutButton";
 
-const Topbar = () => {
+const Topbar = ({ user }) => {
   return (
     <header className="flex h-[83px] w-full items-center border-b border-border-color">
       <div className="px-5 py-3 sm:px-10 sm:py-5">
@@ -30,7 +30,7 @@ const Topbar = () => {
             className="border-none py-[0.55rem] focus:border-white focus:ring-transparent md:min-w-[280px]"
           />
         </div>
-        <ProfileDropdown logoutButton={<LogoutButton />} />
+        <ProfileDropdown user={user} logoutButton={<LogoutButton />} />
         {/* <ExampleDropdown /> */}
       </div>
     </header>

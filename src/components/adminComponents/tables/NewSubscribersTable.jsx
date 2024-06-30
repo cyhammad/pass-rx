@@ -1,3 +1,5 @@
+"use client";
+
 import { searchIcon } from "@/svgs/topbarSvgs";
 import Image from "next/image";
 

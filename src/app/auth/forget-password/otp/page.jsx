@@ -1,16 +1,44 @@
 "use client";
 
+import {
+  forgetPassword,
+  verifyPasswordResetOTP,
+} from "@/app/lib/actions/authActions";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import OTPInput from "react-otp-input";
 
 const OtpPage = () => {
+  const searchParams = useSearchParams();
+  const email = searchParams.get("email");
+  const router = useRouter();
   const [otp, setOtp] = useState("");
+  const [error, setError] = useState("");
+
+  const handleVerify = async () => {
+    // verify otp
+    const res = await verifyPasswordResetOTP(email, otp);
+    const resObj = JSON.parse(res);
+    if (resObj.success) {
+      router.push(`/auth/forget-password/reset-password?email=${email}`);
+    } else {
+      setError(resObj.message);
+    }
+  };
+
+  const handleResendCode = async () => {
+    // resend code
+    const res = await forgetPassword(email);
+    const resObj = JSON.parse(res);
+    console.log("RES", resObj);
+  };
+
   return (
     <div className="flex max-w-[400px] flex-col items-center justify-center px-5 py-10">
       <Image
-        src="/forget-password/envelope-icon.svg"
+        src="/forget-password/envelopes.png"
         width={96}
         height={96}
         alt="locks icon"
@@ -26,6 +54,8 @@ const OtpPage = () => {
         className="mb-5 mt-10 h-[48px] w-full rounded-md border border-[#919EAB33] px-4 py-2 text-sm"
         type="text"
         placeholder="Email"
+        value={email}
+        disabled
       />
       <OTPInput
         value={otp}
@@ -42,15 +72,18 @@ const OtpPage = () => {
           textAlign: "center",
         }}
       />
-      <Link
-        href="/auth/forget-password/reset-password"
+      <span className="pt-2 text-xs text-red-400">{error}</span>
+      <button
+        onClick={() => handleVerify()}
         className="mt-6 h-[50px] w-full cursor-pointer rounded-md bg-primary py-3 text-center text-white"
       >
         Verify
-      </Link>
+      </button>
       <h3 className="mt-5 text-xs leading-[22.4px] text-text-gray lg:text-sm">
-        Don’t have a code?&nbsp;
-        <button className="text-primary">Resend code</button>
+        Don't have a code?&nbsp;
+        <button className="text-primary" onClick={() => handleResendCode()}>
+          Resend code
+        </button>
       </h3>
       <Link
         href="/auth/sign-up"

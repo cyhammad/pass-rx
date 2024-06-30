@@ -1,29 +1,35 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import ThreeDotLoader from "@/components/loaders/ThreeDotLoader";
-import AddDisciplineCard from "./cards/AddDisciplineCard";
 import { searchIcon } from "@/svgs/topbarSvgs";
 import { motion, AnimatePresence } from "framer-motion";
 import AddDisciplineModal from "./modals/AddDisciplineModal";
 import DisciplineCard from "./cards/DisciplineCard";
+import AddCategoryModal from "./modals/AddCategoryModal";
+import AddCard from "./cards/AddCard";
 
-export default function Disciplines({ disciplines, token }) {
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+export default function Disciplines({ disciplines, categories, token }) {
+  const [selectedTab, setSelectedTab] = useState("Disciplines");
+  const [isAddDisciplineModalOpen, setIsAddDiciplineModalOpen] =
+    useState(false);
+  const [isAddCategoryModalOpen, setIsAddCategoryModalOpen] = useState(false);
   const [showSearchInput, setShowSearchInput] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const searchRef = useRef(null);
 
-  const filterDisciplines = (disciplines, searchValue) => {
-    return disciplines.filter((discipline) =>
-      discipline.name.toLowerCase().includes(searchValue.toLowerCase()),
-    );
-  };
+  const filterDisciplines = disciplines.filter((discipline) =>
+    discipline.name.toLowerCase().includes(searchValue.toLowerCase()),
+  );
+
+  const filterCategories = categories?.filter((category) =>
+    category.name.toLowerCase().includes(searchValue.toLowerCase()),
+  );
 
   const handleSearchButtonClick = () => {
     setShowSearchInput(!showSearchInput);
     setSearchValue("");
   };
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (searchRef.current && !searchRef.current.contains(event.target)) {
@@ -37,29 +43,55 @@ export default function Disciplines({ disciplines, token }) {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
   const toggleModal = () => {
-    setIsAddModalOpen(!isAddModalOpen);
+    setIsAddDiciplineModalOpen(!isAddDisciplineModalOpen);
   };
 
   return (
-    <div className="mt-8 flex w-full flex-col ">
+    <div className="flex w-full flex-col">
       <AnimatePresence>
-        {isAddModalOpen && (
-          <AddDisciplineModal
-            toggleModal={toggleModal}
+        {isAddDisciplineModalOpen && (
+          <AddDisciplineModal toggleModal={toggleModal} token={token} />
+        )}
+        {isAddCategoryModalOpen && (
+          <AddCategoryModal
+            toggleModal={() => setIsAddCategoryModalOpen(false)}
             token={token}
           />
         )}
       </AnimatePresence>
-      <div className="flex w-full flex-col justify-start">
+      <div className="flex w-full flex-col justify-start py-10">
         <h1 className=" text-[1.125rem] font-semibold  sm:text-2xl ">
           Disciplines
         </h1>
-        <AddDisciplineCard onClick={toggleModal} />
-        <div className="mt-9  flex  h-8 items-center justify-between">
-          <p className="text-text-gray">
-            Total Quiz banks ({disciplines.length})
-          </p>
+        <div className="flex gap-x-5">
+          <AddCard
+            title={"Discipline"}
+            onClick={() =>
+              setIsAddDiciplineModalOpen(!isAddDisciplineModalOpen)
+            }
+          />
+          <AddCard
+            title={"Category"}
+            onClick={() => setIsAddCategoryModalOpen(!isAddCategoryModalOpen)}
+          />
+        </div>
+        <div className="mt-9 flex h-8 items-center justify-between">
+          <div className="flex gap-5 py-9">
+            <button
+              className={`${selectedTab === "Disciplines" ? "border-b-2 border-dark text-black" : "bg-transparent text-black/40"} py-2 text-sm`}
+              onClick={() => setSelectedTab("Disciplines")}
+            >
+              Disciplines
+            </button>
+            <button
+              className={`${selectedTab === "Categories" ? "border-b-2 border-dark text-black" : "bg-transparent text-black/40"} py-2 text-sm`}
+              onClick={() => setSelectedTab("Categories")}
+            >
+              Categories
+            </button>
+          </div>
           <div className="flex">
             <AnimatePresence>
               {showSearchInput && (
@@ -98,27 +130,37 @@ export default function Disciplines({ disciplines, token }) {
             )}
           </div>
         </div>
-        {filterDisciplines(disciplines, searchValue).length > 0 ? (
+        {selectedTab === "Disciplines" ? (
+          filterDisciplines.length > 0 ? (
+            <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {filterDisciplines.map((discipline) => (
+                <div key={discipline._id}>
+                  <DisciplineCard discipline={discipline} token={token} />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="flex h-40 w-full items-center justify-center">
+              <p className="text-text-gray">
+                No discipline found with search term "{searchValue}"
+              </p>
+            </div>
+          )
+        ) : filterCategories.length > 0 ? (
           <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {filterDisciplines(disciplines, searchValue).map((discipline) => (
-              <div key={discipline._id}>
-                <DisciplineCard
-                  discipline={discipline}
-                  token={token}
-                />
+            {filterCategories.map((category) => (
+              <div key={category._id}>
+                <DisciplineCard discipline={category} token={token} />
               </div>
             ))}
           </div>
         ) : (
           <div className="flex h-40 w-full items-center justify-center">
             <p className="text-text-gray">
-              No discipline found with search term "{searchValue}"
+              No category found with search term "{searchValue}"
             </p>
           </div>
         )}
-        <div className="my-5 flex justify-center">
-          <ThreeDotLoader />
-        </div>
       </div>
     </div>
   );

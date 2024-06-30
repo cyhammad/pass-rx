@@ -53,8 +53,8 @@ export default function Step3({ handleAdd, setData, handleChange }) {
             type="text"
             name="deckName"
             onChange={handleChange}
-            className=" inputborder mt-3 block  w-[290px] rounded-lg bg-white shadow-sm  focus:border-light-border focus:ring-light-border  sm:w-[354px] "
-          ></input>
+            className="mt-3 block w-[290px] rounded-lg bg-white shadow-sm focus:border-light-border focus:ring-light-border sm:w-[354px]"
+          />
         </div>
         <div className="mt-8 flex flex-col items-center">
           <h5 className="text-center text-lg font-semibold">
