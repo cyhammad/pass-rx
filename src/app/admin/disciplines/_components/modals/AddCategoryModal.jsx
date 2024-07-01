@@ -19,7 +19,7 @@ export default function AddCategoryModal({ toggleModal, token }) {
     const resObj = JSON.parse(res);
     console.log("res", res);
     if (resObj.createdAt) {
-      revalidateData("/admin/category");
+      revalidateData("/admin/disciplines?tab=Categories");
       setSuccess(true);
       setTimeout(() => {
         setSuccess(false);

@@ -1,20 +1,20 @@
-import { deleteDiscipline } from "@/app/lib/actions/disciplineActions";
+import { deleteCategory } from "@/app/lib/actions/categoryActions";
 import { revalidateData } from "@/app/utils/revalidate-data";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-const DeleteDisciplineModal = ({ setIsOpen, discipline, token }) => {
+const DeleteCategoryModal = ({ setIsOpen, category, token }) => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
 
   const closeModal = () => {
     setIsOpen(false);
   };
-  const handleDeleteDiscipline = async () => {
-    const res = await deleteDiscipline(token, discipline._id);
+  const handleDeleteCategory = async () => {
+    const res = await deleteCategory(token, category._id);
     const resObj = JSON.parse(res);
-    if (resObj.message === "Discipline deleted successfully") {
-      revalidateData("/admin/disciplines?tab=Disciplines");
+    if (resObj.message === "Category deleted successfully") {
+      revalidateData("/admin/disciplines?tab=Categories");
       setSuccess(true);
       setTimeout(() => {
         setSuccess(false);
@@ -39,7 +39,7 @@ const DeleteDisciplineModal = ({ setIsOpen, discipline, token }) => {
 
       <div className="z-50  flex  h-[300px] max-w-lg flex-col items-center justify-between rounded-lg bg-white shadow-md md:h-[412.35px]">
         <div className="flex w-full items-center justify-between border-b border-black/10 px-6 py-2 md:gap-56 md:py-3">
-          <p className="text-lg font-semibold ">Delete Discipline</p>
+          <p className="text-lg font-semibold ">Delete Category</p>
           <span onClick={() => closeModal()} className="cursor-pointer">
             {cross}
           </span>
@@ -48,10 +48,10 @@ const DeleteDisciplineModal = ({ setIsOpen, discipline, token }) => {
           <span className="">{alert}</span>
           <p className="text-center text-sm sm:text-lg ">
             {error === "" && !success
-              ? `Are you sure you want to delete "${discipline.name}" discipline?`
+              ? `Are you sure you want to delete "${category.name}" category?`
               : !success
                 ? error
-                : "Discipline deleted successfully"}
+                : "Category deleted successfully"}
           </p>
         </div>
         <div className="mb-3 flex w-full justify-between px-5 ">
@@ -63,7 +63,7 @@ const DeleteDisciplineModal = ({ setIsOpen, discipline, token }) => {
           </button>
           <button
             className="w-1/2 rounded-lg  bg-error-light  py-2   font-medium text-white focus:outline-none  md:py-4"
-            onClick={() => handleDeleteDiscipline()}
+            onClick={() => handleDeleteCategory()}
           >
             Delete
           </button>
@@ -73,7 +73,7 @@ const DeleteDisciplineModal = ({ setIsOpen, discipline, token }) => {
   );
 };
 
-export default DeleteDisciplineModal;
+export default DeleteCategoryModal;
 const cross = (
   <svg
     width="40"

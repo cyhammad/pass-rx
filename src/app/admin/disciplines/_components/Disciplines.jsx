@@ -1,15 +1,35 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { searchIcon } from "@/svgs/topbarSvgs";
 import { motion, AnimatePresence } from "framer-motion";
 import AddDisciplineModal from "./modals/AddDisciplineModal";
 import DisciplineCard from "./cards/DisciplineCard";
 import AddCategoryModal from "./modals/AddCategoryModal";
 import AddCard from "./cards/AddCard";
+import CategoryCard from "./cards/CategoryCard";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export default function Disciplines({ disciplines, categories, token }) {
-  const [selectedTab, setSelectedTab] = useState("Disciplines");
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const tab = searchParams.get("tab");
+
+  const createQueryString = useCallback(
+    (name, value) => {
+      const params = new URLSearchParams(searchParams);
+      params.set(name, value);
+
+      return params.toString();
+    },
+    [searchParams],
+  );
+
+  if (!tab) {
+    router.push(pathname + "?" + createQueryString("tab", "Disciplines"));
+  }
+
   const [isAddDisciplineModalOpen, setIsAddDiciplineModalOpen] =
     useState(false);
   const [isAddCategoryModalOpen, setIsAddCategoryModalOpen] = useState(false);
@@ -48,6 +68,14 @@ export default function Disciplines({ disciplines, categories, token }) {
     setIsAddDiciplineModalOpen(!isAddDisciplineModalOpen);
   };
 
+  const handleDisciplineTabClick = () => {
+    router.push(pathname + "?" + createQueryString("tab", "Disciplines"));
+  };
+
+  const handleCategoryTabClick = () => {
+    router.push(pathname + "?" + createQueryString("tab", "Categories"));
+  };
+
   return (
     <div className="flex w-full flex-col">
       <AnimatePresence>
@@ -80,16 +108,16 @@ export default function Disciplines({ disciplines, categories, token }) {
         <div className="mt-9 flex h-8 items-center justify-between">
           <div className="flex gap-5 py-9">
             <button
-              className={`${selectedTab === "Disciplines" ? "border-b-2 border-dark text-black" : "bg-transparent text-black/40"} py-2 text-sm`}
-              onClick={() => setSelectedTab("Disciplines")}
+              className={`${tab === "Disciplines" ? "border-b-2 border-dark text-black" : "bg-transparent text-black/40"} py-2 text-sm`}
+              onClick={handleDisciplineTabClick}
             >
-              Disciplines
+              Disciplines ({disciplines.length})
             </button>
             <button
-              className={`${selectedTab === "Categories" ? "border-b-2 border-dark text-black" : "bg-transparent text-black/40"} py-2 text-sm`}
-              onClick={() => setSelectedTab("Categories")}
+              className={`${tab === "Categories" ? "border-b-2 border-dark text-black" : "bg-transparent text-black/40"} py-2 text-sm`}
+              onClick={handleCategoryTabClick}
             >
-              Categories
+              Categories ({categories.length})
             </button>
           </div>
           <div className="flex">
@@ -130,7 +158,7 @@ export default function Disciplines({ disciplines, categories, token }) {
             )}
           </div>
         </div>
-        {selectedTab === "Disciplines" ? (
+        {tab === "Disciplines" ? (
           filterDisciplines.length > 0 ? (
             <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {filterDisciplines.map((discipline) => (
@@ -150,7 +178,7 @@ export default function Disciplines({ disciplines, categories, token }) {
           <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {filterCategories.map((category) => (
               <div key={category._id}>
-                <DisciplineCard discipline={category} token={token} />
+                <CategoryCard category={category} token={token} />
               </div>
             ))}
           </div>

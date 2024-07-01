@@ -18,7 +18,7 @@ export default function AddDisciplineModal({ toggleModal, token }) {
     const res = await addDiscipline(token, disciplineName);
     const resObj = JSON.parse(res);
     if (resObj.message === "Discipline created successfully") {
-      revalidateData("/admin/disciplines");
+      revalidateData("/admin/disciplines?tab=Disciplines");
       setSuccess(true);
       setTimeout(() => {
         setSuccess(false);
