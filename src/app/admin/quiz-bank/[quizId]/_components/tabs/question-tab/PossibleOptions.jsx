@@ -21,7 +21,7 @@ const PossibleOptions = ({
             </span>
             <input
               type="text"
-              className="w-3/4 border-none bg-transparent text-sm outline-none ring-transparent focus:outline-none focus:ring-transparent"
+              className="no-border w-3/4 bg-transparent text-sm ring-transparent focus:ring-transparent"
               placeholder="Option here"
               value={answer.answer}
               onChange={(e) =>

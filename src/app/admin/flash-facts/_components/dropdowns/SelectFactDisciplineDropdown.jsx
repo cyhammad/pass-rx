@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const SelectFactDisciplineDropdown = ({
   disciplines,
@@ -9,13 +9,28 @@ const SelectFactDisciplineDropdown = ({
   setSelectedDiscipline,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   const handleSelectDiscipline = (discipline) => {
     setSelectedDiscipline(discipline);
     setIsOpen(false);
   };
+
+  // handle click outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
   return (
-    <div className="relative w-fit">
+    <div className="relative w-fit" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="relative flex h-[54px] w-full items-center rounded-lg border border-border-color px-3 text-start sm:w-fit sm:min-w-[250px]"

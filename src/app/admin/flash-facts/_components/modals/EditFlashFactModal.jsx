@@ -73,7 +73,7 @@ const EditFlashFactModal = ({
               {cross} Discard
             </button>
             <button
-              className="rounded-lg border border-primary px-16 text-xs font-medium text-primary focus:outline-none sm:text-sm"
+              className="rounded-lg border border-primary px-16 text-xs font-medium text-primary  sm:text-sm"
               onClick={() => handleAdd()}
             >
               Add

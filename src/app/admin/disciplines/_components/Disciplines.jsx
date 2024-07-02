@@ -125,9 +125,9 @@ export default function Disciplines({ disciplines, categories, token }) {
               {showSearchInput && (
                 <motion.div
                   ref={searchRef}
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 0 }}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 10 }}
+                  exit={{ opacity: 0, x: -10 }}
                   transition={{ duration: 0.1 }}
                   className="flex items-center justify-center gap-x-2 rounded-lg border border-border-color bg-white px-4 py-1 shadow-[0px_2px_12px_0px_#C9C9C938] md:flex"
                 >
@@ -140,15 +140,15 @@ export default function Disciplines({ disciplines, categories, token }) {
                     placeholder="Search"
                     value={searchValue}
                     onChange={(e) => setSearchValue(e.target.value)}
-                    className="outline-none focus:ring-transparent md:w-[180px] lg:w-[280px]"
+                    className=" focus:ring-transparent md:w-[180px] lg:w-[280px]"
                   />
                 </motion.div>
               )}
             </AnimatePresence>
             {!showSearchInput && (
               <motion.button
-                initial={{ opacity: 1, y: -5 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: 10 }}
+                animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.1 }}
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-white"
                 onClick={handleSearchButtonClick}

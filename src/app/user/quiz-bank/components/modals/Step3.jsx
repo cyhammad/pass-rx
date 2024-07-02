@@ -74,7 +74,7 @@ export default function Step3({ handleAdd, handleChange, setData, data }) {
             <div className="flex items-center  gap-1 font-medium text-text-gray-2">
               <input
                 type="radio"
-                className="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
+                className="checked:bg-primary checked:hover:bg-primary focus:bg-primary  focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
                 name="mode"
                 value="study"
                 checked={data.mode === "study"}
@@ -85,7 +85,7 @@ export default function Step3({ handleAdd, handleChange, setData, data }) {
             <div className="flex items-center gap-1   font-medium text-text-gray-2">
               <input
                 type="radio"
-                className="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
+                className="checked:bg-primary checked:hover:bg-primary focus:bg-primary  focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
                 name="mode"
                 value="exam"
                 checked={data.mode === "exam"}

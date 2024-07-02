@@ -99,7 +99,7 @@ export default function page() {
               name="text"
               id="text"
               placeholder=""
-              className={` -mt-2.5 bricks border border-light-gray focus:ring-light-gray focus:border-b-black/20 focus:border-light-gray focus:outline-none  max-w-72 bg-transparent md:text-[40px] text-3xl font-semibold outline-none placeholder:text-black  ${editable ? " text-text-gray border-b-black/20 broder-b " : "pointer-events-none "}`}
+              className={` -mt-2.5 bricks border border-light-gray focus:ring-light-gray focus:border-b-black/20 focus:border-light-gray   max-w-72 bg-transparent md:text-[40px] text-3xl font-semibold  placeholder:text-black  ${editable ? " text-text-gray border-b-black/20 broder-b " : "pointer-events-none "}`}
               value={text}
               onChange={handleChange}
               disabled={!editable}
@@ -138,7 +138,7 @@ export default function page() {
                 ref={newTagRef}
                 placeholder="Type Name"
                 value={newTagInput}
-                className="min-w[126.81px] w-fit rounded-md border border-gray-border border-opacity-20 bg-white  px-3 py-2 outline-none"
+                className="min-w[126.81px] w-fit rounded-md border border-gray-border border-opacity-20 bg-white  px-3 py-2 "
                 onChange={(e) => setNewTagInput(e.target.value)}
               />
             ) : (

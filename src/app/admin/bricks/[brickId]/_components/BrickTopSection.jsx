@@ -138,7 +138,7 @@ const BrickTopSection = ({
                 ref={newTagRef}
                 placeholder="Type Name"
                 value={newTagInput}
-                className="min-w[126.81px] w-fit rounded-md border border-gray-border border-opacity-20 bg-white  px-3 py-2 outline-none"
+                className="min-w[126.81px] w-fit rounded-md border border-gray-border border-opacity-20 bg-white  px-3 py-2 "
                 onChange={handleTagInputChange}
                 onKeyDown={handleKeyDown}
               />

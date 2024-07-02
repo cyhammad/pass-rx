@@ -27,7 +27,7 @@ const Topbar = ({ user }) => {
             autoComplete="off"
             id="search"
             placeholder="Search"
-            className="border-none py-[0.55rem] focus:border-white focus:ring-transparent md:min-w-[280px]"
+            className=" py-[0.55rem] focus:border-white focus:ring-transparent md:min-w-[280px]"
           />
         </div>
         <ProfileDropdown user={user} logoutButton={<LogoutButton />} />

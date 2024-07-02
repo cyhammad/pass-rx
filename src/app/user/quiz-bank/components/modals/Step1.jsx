@@ -62,7 +62,7 @@ export default function Step1({ setStep, data, setData, handleChange }) {
             <div className="flex items-center  gap-2 font-medium text-text-gray-2">
               <input
                 type="radio"
-                className="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
+                className="checked:bg-primary checked:hover:bg-primary focus:bg-primary  focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
                 name="questionStatus"
                 value="all"
                 checked={data.questionStatus === "all"}
@@ -73,7 +73,7 @@ export default function Step1({ setStep, data, setData, handleChange }) {
             <div className="flex items-center gap-2   font-medium text-text-gray-2">
               <input
                 type="radio"
-                className="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
+                className="checked:bg-primary checked:hover:bg-primary focus:bg-primary  focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
                 name="questionStatus"
                 value="used"
                 checked={data.questionStatus === "used"}
@@ -84,7 +84,7 @@ export default function Step1({ setStep, data, setData, handleChange }) {
             <div className="flex items-center gap-2 font-medium text-text-gray-2">
               <input
                 type="radio"
-                className="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
+                className="checked:bg-primary checked:hover:bg-primary focus:bg-primary  focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
                 name="questionStatus"
                 value="unused"
                 checked={data.questionStatus === "unused"}
@@ -100,7 +100,7 @@ export default function Step1({ setStep, data, setData, handleChange }) {
             <div className="flex items-center  gap-2 font-medium text-text-gray-2">
               <input
                 type="radio"
-                className="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
+                className="checked:bg-primary checked:hover:bg-primary focus:bg-primary  focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
                 name="answerStatus"
                 value="all"
                 checked={data.answerStatus === "all"}
@@ -111,7 +111,7 @@ export default function Step1({ setStep, data, setData, handleChange }) {
             <div className="flex items-center gap-2 font-medium text-text-gray-2">
               <input
                 type="radio"
-                className="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
+                className="checked:bg-primary checked:hover:bg-primary focus:bg-primary  focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
                 name="answerStatus"
                 value="incorrect"
                 checked={data.answerStatus === "incorrect"}
@@ -122,7 +122,7 @@ export default function Step1({ setStep, data, setData, handleChange }) {
             <div className="flex items-center gap-2 font-medium text-text-gray-2">
               <input
                 type="radio"
-                className="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
+                className="checked:bg-primary checked:hover:bg-primary focus:bg-primary  focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
                 name="answerStatus"
                 value="correct"
                 checked={data.answerStatus === "correct"}
@@ -138,7 +138,7 @@ export default function Step1({ setStep, data, setData, handleChange }) {
             <div className="flex items-center   gap-2 font-medium text-text-gray-2">
               <input
                 type="radio"
-                className="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
+                className="checked:bg-primary checked:hover:bg-primary focus:bg-primary  focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
                 name="markStatus"
                 value="all"
                 checked={data.markStatus === "all"}
@@ -149,7 +149,7 @@ export default function Step1({ setStep, data, setData, handleChange }) {
             <div className="flex items-center  gap-2   font-medium text-text-gray-2">
               <input
                 type="radio"
-                className="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
+                className="checked:bg-primary checked:hover:bg-primary focus:bg-primary  focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
                 name="markStatus"
                 value="marked"
                 checked={data.markStatus === "marked"}
@@ -160,7 +160,7 @@ export default function Step1({ setStep, data, setData, handleChange }) {
             <div className="flex items-center gap-2 font-medium text-text-gray-2">
               <input
                 type="radio"
-                className="checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
+                className="checked:bg-primary checked:hover:bg-primary focus:bg-primary  focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
                 name="markStatus"
                 value="unmarked"
                 checked={data.markStatus === "unmarked"}

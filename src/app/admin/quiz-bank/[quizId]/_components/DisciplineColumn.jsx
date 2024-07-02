@@ -53,7 +53,7 @@ const DisciplineColumn = ({
             placeholder="Search Disciplines"
             value={disciplineSearch}
             onChange={(e) => setDisciplineSearch(e.target.value)}
-            className="w-full border-none bg-transparent text-xs text-white outline-none ring-transparent focus:border-none focus:outline-none focus:ring-transparent"
+            className="w-full  bg-transparent text-xs text-white  ring-transparent focus:  focus:ring-transparent"
           />
         </div>
       </div>
@@ -83,7 +83,7 @@ const DisciplineColumn = ({
                     placeholder="Search Disciplines"
                     value={disciplineSearch}
                     onChange={(e) => setDisciplineSearch(e.target.value)}
-                    className="w-full border-none bg-transparent text-xs text-white outline-none ring-transparent focus:border-none focus:outline-none focus:ring-transparent"
+                    className="w-full  bg-transparent text-xs text-white  ring-transparent focus:  focus:ring-transparent"
                   />
                 </div>
                 {filteredDisciplines.map((discipline) => (

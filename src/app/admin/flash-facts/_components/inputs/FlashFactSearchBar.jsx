@@ -14,7 +14,7 @@ const FlashFactSearchBar = ({ searchValue, setSearchValue }) => {
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}
         placeholder="Search flash card"
-        className="text-sm outline-none focus:ring-transparent md:w-[180px] lg:w-[280px]"
+        className="text-sm  focus:ring-transparent md:w-[180px] lg:w-[280px]"
       />
     </div>
   );

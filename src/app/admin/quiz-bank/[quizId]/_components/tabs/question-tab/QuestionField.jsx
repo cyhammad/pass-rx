@@ -1,11 +1,11 @@
 const QuestionField = ({ question, setQuestion, disabled = false }) => {
   return (
-    <div className="relative flex min-w-[250px] items-center rounded-lg border border-blackBorder px-1 py-2 text-start">
+    <div className="relative">
       <span className="absolute -top-2 left-3 bg-almostBlack px-1 text-xs text-text-gray">
         Question
       </span>
       <textarea
-        className="w-full border-none bg-transparent text-sm outline-none ring-transparent focus:outline-none focus:ring-transparent disabled:text-text-gray"
+        className="w-full min-w-[250px] rounded-md border-blackBorder bg-transparent px-3 py-4 text-sm ring-transparent focus:ring-transparent disabled:text-text-gray"
         value={question}
         onChange={(e) => setQuestion(e.target.value)}
         placeholder="Type your question here"

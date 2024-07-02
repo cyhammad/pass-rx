@@ -14,7 +14,6 @@ export default async function FlashFactsPage() {
       flashFacts={flashFacts}
       disciplines={disciplines}
       token={token}
-      
     />
   );
 }

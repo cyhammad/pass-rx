@@ -45,7 +45,7 @@ export default function Step1({ setStep, data, setData, handleChange }) {
                 value="all"
                 checked={data.status === "all"}
                 onChange={handleChange}
-                className="cursor-pointer checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
+                className="cursor-pointer checked:bg-primary checked:hover:bg-primary focus:bg-primary  focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
                 name="status"
               />
               <p className="text-xs sm:text-base">All</p>
@@ -56,7 +56,7 @@ export default function Step1({ setStep, data, setData, handleChange }) {
                 value="rated"
                 checked={data.status === "rated"}
                 onChange={handleChange}
-                className="cursor-pointer checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
+                className="cursor-pointer checked:bg-primary checked:hover:bg-primary focus:bg-primary  focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
                 name="status"
               />
               <p className="text-xs sm:text-base">Rated</p>
@@ -67,7 +67,7 @@ export default function Step1({ setStep, data, setData, handleChange }) {
                 value="unrated"
                 checked={data.status === "unrated"}
                 onChange={handleChange}
-                className="cursor-pointer checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
+                className="cursor-pointer checked:bg-primary checked:hover:bg-primary focus:bg-primary  focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
                 name="status"
               />
               <p className="text-xs sm:text-base">Unrated</p>
@@ -101,7 +101,7 @@ export default function Step1({ setStep, data, setData, handleChange }) {
             <div className="flex items-center  gap-2 font-medium text-text-gray-2">
               <input
                 type="radio"
-                className="cursor-pointer checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
+                className="cursor-pointer checked:bg-primary checked:hover:bg-primary focus:bg-primary  focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
                 name="markStatus"
                 value="all"
                 checked={data.markStatus === "all"}
@@ -112,7 +112,7 @@ export default function Step1({ setStep, data, setData, handleChange }) {
             <div className="flex items-center gap-2   font-medium text-text-gray-2">
               <input
                 type="radio"
-                className="cursor-pointer checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
+                className="cursor-pointer checked:bg-primary checked:hover:bg-primary focus:bg-primary  focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
                 name="markStatus"
                 value="marked"
                 checked={data.markStatus === "marked"}
@@ -123,7 +123,7 @@ export default function Step1({ setStep, data, setData, handleChange }) {
             <div className="flex items-center gap-2 font-medium text-text-gray-2">
               <input
                 type="radio"
-                className="cursor-pointer checked:bg-primary checked:hover:bg-primary focus:bg-primary focus:outline-none focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
+                className="cursor-pointer checked:bg-primary checked:hover:bg-primary focus:bg-primary  focus:ring-0 focus:ring-emerald-400 checked:focus:bg-primary checked:active:bg-primary"
                 name="markStatus"
                 value="unmarked"
                 checked={data.markStatus === "unmarked"}

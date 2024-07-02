@@ -64,18 +64,16 @@ export default function AddDisciplineModal({ toggleModal, token }) {
         </div>
         <div className="flex w-full flex-col gap-y-10 p-5">
           <div className="flex w-full flex-col gap-y-2">
-            <div className="h-12 rounded-lg border border-border-color px-2 md:flex">
-              <input
-                type="text"
-                name="disciplineName"
-                id="disciplineName"
-                placeholder="Discipline Name"
-                className="w-full border-none text-sm outline-none focus:border-none focus:outline-none focus:ring-transparent"
-                value={disciplineName}
-                onChange={(e) => setDisciplineName(e.target.value)}
-                onKeyDown={(e) => handleKeyPress(e)}
-              />
-            </div>
+            <input
+              type="text"
+              name="disciplineName"
+              id="disciplineName"
+              placeholder="Discipline Name"
+              className="h-12 w-full rounded-md text-sm focus:ring-transparent"
+              value={disciplineName}
+              onChange={(e) => setDisciplineName(e.target.value)}
+              onKeyDown={(e) => handleKeyPress(e)}
+            />
             {error && <p className="px-2 text-xs text-red-500">*{error}</p>}
             {success && (
               <p className="px-2 text-xs text-green">
@@ -85,13 +83,13 @@ export default function AddDisciplineModal({ toggleModal, token }) {
           </div>
           <div className="mb-3 flex w-full justify-between">
             <button
-              className="hover:bg-gray-400 mr-2 w-1/2 rounded-lg border  border-black/10 py-2 font-medium focus:outline-none md:py-4"
+              className="hover:bg-gray-400 mr-2 w-1/2 rounded-lg border  border-black/10 py-2 font-medium  md:py-4"
               onClick={() => closeModal()}
             >
               Cancel
             </button>
             <button
-              className="w-1/2 rounded-lg bg-primary py-2 font-medium text-white focus:outline-none md:py-4"
+              className="w-1/2 rounded-lg bg-primary py-2 font-medium text-white  md:py-4"
               onClick={() => handleCreateDiscipline()}
             >
               Add

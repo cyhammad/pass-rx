@@ -15,7 +15,7 @@ export default function Card( {title , text,value}) {
         name="text"
         id="text"
         placeholder={value}
-        className={`mt-7 h-[72px] focus:ring-light-gray focus:border-white focus:outline-none  w-full bg-transparent text-5xl border border-white font-bold outline-none placeholder:text-black md:mt-11 `}
+        className={`mt-7 h-[72px] focus:ring-light-gray focus:border-white   w-full bg-transparent text-5xl border border-white font-bold  placeholder:text-black md:mt-11 `}
         disabled={true}
       />
      

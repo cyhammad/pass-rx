@@ -45,7 +45,7 @@ export default function Bricks() {
           id="search"
           autoComplete="off"
           placeholder="Search"
-          className="w-full outline-none focus:ring-transparent sm:w-[372px]"
+          className="w-full  focus:ring-transparent sm:w-[372px]"
         />
       </div>
       <div className="mt-8 flex w-[227px] cursor-pointer justify-between self-center">

@@ -27,7 +27,7 @@ const Finished = ({ text1, text2, toggleFinish }) => {
           <p className="text-lg max-w-72 mt-2 text-text-gray ">{text2}</p>
         </div>
         <button
-          className="w-full  rounded-[13.3px]  bg-primary py-6 text-lg font-medium  text-white focus:outline-none "
+          className="w-full  rounded-[13.3px]  bg-primary py-6 text-lg font-medium  text-white  "
           onClick={() => closeModal()}
         >
           View Result

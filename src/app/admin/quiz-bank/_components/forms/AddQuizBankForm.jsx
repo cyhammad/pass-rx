@@ -4,6 +4,7 @@ import { searchIcon } from "@/svgs/topbarSvgs";
 import { useState } from "react";
 import SelectDisciplineButton from "../SelectDisciplineButton";
 import { addQuizBank } from "@/app/lib/actions/quizBankActions";
+import { revalidateData } from "@/app/utils/revalidate-data";
 
 const AddQuizBankForm = ({ disciplines, token }) => {
   const [title, setTitle] = useState("");
@@ -29,10 +30,13 @@ const AddQuizBankForm = ({ disciplines, token }) => {
       );
       if (response) {
         if (response.message === "Quiz created successfully") {
-          setSuccess("Quizbank created successfully");
+          setSuccess(
+            "Quizbank created successfully. Create another quiz bank?",
+          );
           setTitle("");
           setDesc("");
           setSelectedDisciplines([]);
+          revalidateData("/admin/quiz-bank");
         } else {
           setError(response.message);
         }
@@ -76,9 +80,9 @@ const AddQuizBankForm = ({ disciplines, token }) => {
   return (
     <div className="flex w-full max-w-[793px] flex-col">
       <div className="flex w-full flex-col gap-y-8 rounded-xl bg-white px-6 py-7 shadow">
-        <div className="relative flex min-h-[54px] w-full items-center rounded-md border border-black/10 px-4 py-3">
+        <div className="relative">
           <input
-            className="w-full border-none p-0 text-sm outline-none focus:border-light-border focus:outline-none focus:ring-white active:border-light-gray"
+            className="w-full rounded-md p-0 px-4 py-3 text-sm focus:ring-transparent active:border-light-gray"
             type="text"
             name="title"
             id="title"
@@ -93,9 +97,9 @@ const AddQuizBankForm = ({ disciplines, token }) => {
             Quizbank Title
           </label>
         </div>
-        <div className="relative flex w-full items-center rounded-md border border-black/10 px-4 py-3">
+        <div className="relative">
           <textarea
-            className="min-h-[138px] w-full border-none p-0 text-sm ring-transparent focus:ring-transparent"
+            className="min-h-[138px] w-full rounded-md border-black/10 px-4 py-3 text-sm ring-transparent focus:ring-transparent"
             type="text"
             name="desc"
             id="desc"
@@ -123,7 +127,7 @@ const AddQuizBankForm = ({ disciplines, token }) => {
             value={searchDisciplineValue}
             onChange={(e) => setSearchDisciplineValue(e.target.value)}
             placeholder="Search"
-            className="w-full border-none text-sm outline-none focus:outline-none focus:ring-transparent md:min-w-[280px]"
+            className="w-full text-sm focus:ring-transparent md:min-w-[280px]"
           />
         </div>
         <div className="grid w-full grid-cols-2 gap-x-5 gap-y-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">

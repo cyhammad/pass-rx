@@ -27,7 +27,7 @@ export default function UserTable() {
             id="search"
             autoComplete="off"
             placeholder="Search"
-            className="w-[280px] bg-transparent outline-none focus:ring-transparent"
+            className="w-[280px] bg-transparent  focus:ring-transparent"
           />
         </div>
       </div>

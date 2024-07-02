@@ -104,7 +104,7 @@ const AddBrickForm = ({ token }) => {
               </div>
               <div className="mb-3 flex w-full justify-center">
                 <button
-                  className="hover:bg-gray-400 mr-2 w-1/2 rounded-lg border  border-black/10 py-2 font-medium focus:outline-none md:py-4"
+                  className="hover:bg-gray-400 mr-2 w-1/2 rounded-lg border  border-black/10 py-2 font-medium  md:py-4"
                   onClick={() => setError("")}
                 >
                   Cancel
@@ -139,7 +139,7 @@ const AddBrickForm = ({ token }) => {
               </div>
               <div className="mb-3 flex w-full justify-center">
                 <button
-                  className="hover:bg-gray-400 mr-2 w-1/2 rounded-lg border  border-black/10 py-2 font-medium focus:outline-none md:py-4"
+                  className="hover:bg-gray-400 mr-2 w-1/2 rounded-lg border  border-black/10 py-2 font-medium  md:py-4"
                   onClick={() => setSuccess("")}
                 >
                   Cancel
@@ -152,7 +152,7 @@ const AddBrickForm = ({ token }) => {
       <div className="flex w-full flex-col gap-y-8 rounded-xl bg-white px-6 py-7 shadow-[0px_4px_24px_0px_#0000000F]">
         <div className="relative flex h-[54px] w-full items-center rounded-md border border-black/10 px-1">
           <input
-            className="w-full border-none text-sm outline-none focus:border-light-border focus:outline-none focus:ring-white active:border-light-gray"
+            className="w-full  text-sm  focus:border-light-border  focus:ring-white active:border-light-gray"
             type="text"
             name="title"
             id="title"
@@ -169,7 +169,7 @@ const AddBrickForm = ({ token }) => {
         </div>
         <div className="relative flex w-full items-center rounded-md border border-black/10 px-1 py-1">
           <textarea
-            className="min-h-[138px] w-full border-none text-sm ring-transparent focus:ring-transparent"
+            className="min-h-[138px] w-full  text-sm ring-transparent focus:ring-transparent"
             type="text"
             name="quote"
             id="quote"
@@ -187,7 +187,7 @@ const AddBrickForm = ({ token }) => {
         <div className="relative flex w-full items-center rounded-md border border-black/10 p-1">
           <textarea
             onKeyUp={handleInput}
-            className="min-h-[138px] w-full border-none text-sm ring-transparent focus:ring-transparent"
+            className="min-h-[138px] w-full  text-sm ring-transparent focus:ring-transparent"
             type="text"
             name="learning Outcomes"
             id="learningOutcomes"
@@ -209,7 +209,7 @@ const AddBrickForm = ({ token }) => {
           {addTopic && (
             <div className="relative flex h-[54px] w-[65%] items-center justify-between self-center rounded-md border border-black/10 pl-4">
               <input
-                className="w-full border-none text-sm outline-none focus:border-light-border focus:outline-none focus:ring-white active:border-light-gray"
+                className="w-full  text-sm  focus:border-light-border  focus:ring-white active:border-light-gray"
                 type="topic"
                 ref={newTopicRef}
                 autoComplete="off"

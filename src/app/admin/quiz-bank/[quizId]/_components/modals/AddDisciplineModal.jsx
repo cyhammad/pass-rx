@@ -42,7 +42,7 @@ const AddDisciplineModal = ({ setShowModal }) => {
               type="search"
               name="discSearch"
               id="discSearch"
-              className="w-full border-none bg-transparent text-sm text-white ring-transparent focus:border-none focus:outline-none focus:ring-transparent"
+              className="w-full  bg-transparent text-sm text-white ring-transparent focus:  focus:ring-transparent"
             />
           </div>
         </div>

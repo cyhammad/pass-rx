@@ -3,12 +3,12 @@ const ExplanationTab = ({ question, answers, setAnswers }) => {
     <div className="flex flex-col gap-5">
       <span className="text-sm">{question}</span>
       {answers.map((answer, index) => (
-        <div className="relative flex min-w-[250px] items-center rounded-lg border border-blackBorder px-1 py-2 text-start">
+        <div className="relative">
           <span className="absolute -top-2 left-3 bg-almostBlack px-1 text-xs text-text-gray">
             Explanation of option {index + 1}
           </span>
           <textarea
-            className="w-full border-none bg-transparent text-sm outline-none ring-transparent focus:outline-none focus:ring-transparent"
+            className="w-full min-w-[250px] rounded-md border-blackBorder bg-transparent px-3 py-4 text-sm ring-transparent focus:ring-transparent disabled:text-text-gray"
             value={answer.explanation}
             onChange={(e) =>
               setAnswers((prev) =>

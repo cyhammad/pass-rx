@@ -128,7 +128,7 @@ const EditQuizBankForm = ({ disciplines, token, quiz }) => {
       <div className="flex w-full flex-col gap-y-8 rounded-xl bg-white px-6 py-7 shadow">
         <div className="relative flex min-h-[54px] w-full items-center rounded-md border border-black/10 px-4 py-3">
           <input
-            className="w-full border-none text-sm outline-none focus:border-light-border focus:outline-none focus:ring-white active:border-light-gray "
+            className="w-full  text-sm  focus:border-light-border  focus:ring-white active:border-light-gray "
             type="text"
             name="title"
             id="title"
@@ -145,7 +145,7 @@ const EditQuizBankForm = ({ disciplines, token, quiz }) => {
         </div>
         <div className="relative flex w-full items-center rounded-md border border-black/10 px-4 py-3">
           <textarea
-            className="min-h-[138px] w-full border-none text-sm outline-none focus:outline-none"
+            className="min-h-[138px] w-full  text-sm  "
             type="text"
             name="desc"
             id="desc"
@@ -173,7 +173,7 @@ const EditQuizBankForm = ({ disciplines, token, quiz }) => {
             value={searchDisciplineValue}
             onChange={(e) => setSearchDisciplineValue(e.target.value)}
             placeholder="Search"
-            className="w-full border-none text-sm outline-none focus:outline-none focus:ring-transparent md:min-w-[280px]"
+            className="w-full  text-sm   focus:ring-transparent md:min-w-[280px]"
           />
         </div>
         <div className="grid w-full grid-cols-2 gap-x-5 gap-y-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">

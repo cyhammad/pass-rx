@@ -51,13 +51,13 @@ const DeleteFlashFactModal = ({ closeModal, flashFact, token }) => {
         </div>
         <div className="mb-3 flex w-full justify-between px-5 ">
           <button
-            className="hover:bg-gray-400 mr-2 w-1/2 rounded-lg border  border-black/10 py-2 font-medium focus:outline-none md:py-4"
+            className="hover:bg-gray-400 mr-2 w-1/2 rounded-lg border  border-black/10 py-2 font-medium  md:py-4"
             onClick={() => closeModal()}
           >
             Cancel
           </button>
           <button
-            className="w-1/2 rounded-lg  bg-error-light  py-2   font-medium text-white focus:outline-none  md:py-4"
+            className="w-1/2 rounded-lg  bg-error-light  py-2   font-medium text-white   md:py-4"
             onClick={() => handleDeleteFlashCard()}
           >
             Delete

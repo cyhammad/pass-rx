@@ -1,9 +1,10 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const SelectDifficultyDropdown = ({ difficulty, setDifficulty }) => {
+  const dropdownRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
   const difficulties = ["Easy", "Medium", "Hard"];
 
@@ -11,8 +12,20 @@ const SelectDifficultyDropdown = ({ difficulty, setDifficulty }) => {
     setDifficulty(difficulty);
     setIsOpen(false);
   };
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
   return (
-    <div className="relative">
+    <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="relative flex h-[54px] w-full items-center rounded-lg border border-blackBorder px-3 text-start sm:w-fit sm:min-w-[250px]"
