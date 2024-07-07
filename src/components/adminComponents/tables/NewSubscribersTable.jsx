@@ -241,13 +241,13 @@ const NewSubscribersTable = () => {
                 </span>
               </td>
             </tr>
-            <tr>
+            {/* <tr>
               <td colSpan={4}>
                 <div className="my-5 flex sm:justify-center">
                   <ThreeDotLoader />
                 </div>
               </td>
-            </tr>
+            </tr> */}
           </tbody>
         </table>
       </div>

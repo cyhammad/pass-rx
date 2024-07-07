@@ -14,12 +14,24 @@ export default function Subscription() {
             Subscription Plans
           </p>
           <div className="mt-1 flex flex-col items-center justify-center gap-5 md:flex-row  ">
-            <Card  title={"Monthly Subscription"} text={"Display stars in Google organic search risult and showcase reviews on your website"} value={"$110"}/>
-            <Card  title={"Yearly Subscription"} text={"Display stars in Google organic search risult and showcase reviews on your website"} value={"$330"}/>
+            <Card
+              title={"Monthly Subscription"}
+              text={
+                "Display stars in Google organic search risult and showcase reviews on your website"
+              }
+              value={110}
+            />
+            <Card
+              title={"Yearly Subscription"}
+              text={
+                "Display stars in Google organic search risult and showcase reviews on your website"
+              }
+              value={330}
+            />
           </div>
         </div>
       </div>
-      <div className="md:mt-[111px] mt-12 flex  flex-col bg-light-gray pr-4 sm:px-5 md:px-8">
+      <div className="mt-12 flex flex-col  bg-light-gray pr-4 sm:px-5 md:mt-[111px] md:px-8">
         <SubscribersTable />
       </div>
     </div>

@@ -6,6 +6,8 @@ import SelectDisciplineButton from "../SelectDisciplineButton";
 import { updateQuizBank } from "@/app/lib/actions/quizBankActions";
 import { useRouter } from "next/navigation";
 import { revalidateData } from "@/app/utils/revalidate-data";
+import CustomTextarea from "@/components/adminComponents/inputs/CustomTextarea";
+import InputField from "@/components/adminComponents/inputs/InputField";
 
 const EditQuizBankForm = ({ disciplines, token, quiz }) => {
   const router = useRouter();
@@ -126,40 +128,25 @@ const EditQuizBankForm = ({ disciplines, token, quiz }) => {
   return (
     <div className="flex w-full max-w-[793px] flex-col">
       <div className="flex w-full flex-col gap-y-8 rounded-xl bg-white px-6 py-7 shadow">
-        <div className="relative flex min-h-[54px] w-full items-center rounded-md border border-black/10 px-4 py-3">
-          <input
-            className="w-full  text-sm  focus:border-light-border  focus:ring-white active:border-light-gray "
-            type="text"
-            name="title"
-            id="title"
-            placeholder={"Old Title: " + quiz.title}
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <label
-            className="absolute -top-2 left-3 bg-white px-1 text-xs text-text-gray"
-            htmlFor="title"
-          >
-            Quizbank Title
-          </label>
-        </div>
-        <div className="relative flex w-full items-center rounded-md border border-black/10 px-4 py-3">
-          <textarea
-            className="min-h-[138px] w-full  text-sm  "
-            type="text"
-            name="desc"
-            id="desc"
-            placeholder={"Old Desc: " + quiz.description}
-            value={desc}
-            onChange={(e) => setDesc(e.target.value)}
-          ></textarea>
-          <label
-            className="absolute -top-2 left-3 bg-white px-1 text-xs text-text-gray"
-            htmlFor="desc"
-          >
-            Description
-          </label>
-        </div>
+        <InputField
+          title="Quizbank Title"
+          type="text"
+          name="title"
+          id="title"
+          placeholder="Type your title here"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <CustomTextarea
+          title="Description"
+          value={desc}
+          onChange={(e) => setDesc(e.target.value)}
+          placeholder={"Old Desc: " + quiz.description}
+          columns="1"
+          rows="2"
+          height={"100px"}
+          titleClassName={"bg-white"}
+        />
         <span className="text-center text-sm font-medium text-dark">
           Add Disciplines
         </span>

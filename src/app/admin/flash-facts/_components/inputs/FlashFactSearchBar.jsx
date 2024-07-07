@@ -4,7 +4,7 @@ import { searchIcon } from "@/svgs/topbarSvgs";
 
 const FlashFactSearchBar = ({ searchValue, setSearchValue }) => {
   return (
-    <div className="items-center justify-center rounded-lg border border-border-color bg-white px-4 py-1 shadow-[0px_2px_12px_0px_#C9C9C938] md:flex">
+    <div className="h-[50px] items-center justify-center rounded-lg border border-border-color bg-white px-4 py-1 shadow-[0px_2px_12px_0px_#C9C9C938] md:flex">
       <button>{searchIcon}</button>
       <input
         type="search"

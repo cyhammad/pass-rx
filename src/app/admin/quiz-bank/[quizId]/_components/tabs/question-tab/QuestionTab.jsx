@@ -1,6 +1,6 @@
+import CustomTextarea from "@/components/adminComponents/inputs/CustomTextarea";
 import IncludeFlashFactsCheckbox from "./IncludeFlashFactsCheckbox";
 import PossibleOptions from "./PossibleOptions";
-import QuestionField from "./QuestionField";
 import SelectDifficultyDropdown from "./SelectDifficultyDropdown";
 import SelectDisciplineDropdown from "./SelectDisciplineDropdown";
 
@@ -42,11 +42,15 @@ const QuestionTab = ({
           setIncludeToFlashFacts={setIncludeToFlashFacts}
         />
       )}
-      <QuestionField
-        question={question}
-        setQuestion={setQuestion}
-        disabled={disableQuestionSelect}
-      />
+      <CustomTextarea
+        title="Question"
+        value={question}
+        onChange={(e) => setQuestion(e.target.value)}
+        placeholder="Type your question here"
+        height={"100px"}
+        textAreaClassName={"border-blackBorder text-text-gray"}
+        titleClassName={"bg-almostBlack"}
+      />  
       <PossibleOptions
         answers={answers}
         setAnswers={setAnswers}

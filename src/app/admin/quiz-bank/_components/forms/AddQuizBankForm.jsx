@@ -5,6 +5,8 @@ import { useState } from "react";
 import SelectDisciplineButton from "../SelectDisciplineButton";
 import { addQuizBank } from "@/app/lib/actions/quizBankActions";
 import { revalidateData } from "@/app/utils/revalidate-data";
+import CustomTextarea from "@/components/adminComponents/inputs/CustomTextarea";
+import InputField from "@/components/adminComponents/inputs/InputField";
 
 const AddQuizBankForm = ({ disciplines, token }) => {
   const [title, setTitle] = useState("");
@@ -80,40 +82,25 @@ const AddQuizBankForm = ({ disciplines, token }) => {
   return (
     <div className="flex w-full max-w-[793px] flex-col">
       <div className="flex w-full flex-col gap-y-8 rounded-xl bg-white px-6 py-7 shadow">
-        <div className="relative">
-          <input
-            className="w-full rounded-md p-0 px-4 py-3 text-sm focus:ring-transparent active:border-light-gray"
-            type="text"
-            name="title"
-            id="title"
-            placeholder="Title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <label
-            className="absolute -top-2 left-3 bg-white px-1 text-xs text-text-gray"
-            htmlFor="title"
-          >
-            Quizbank Title
-          </label>
-        </div>
-        <div className="relative">
-          <textarea
-            className="min-h-[138px] w-full rounded-md border-black/10 px-4 py-3 text-sm ring-transparent focus:ring-transparent"
-            type="text"
-            name="desc"
-            id="desc"
-            placeholder="desc"
-            value={desc}
-            onChange={(e) => setDesc(e.target.value)}
-          ></textarea>
-          <label
-            className="absolute -top-2 left-3 bg-white px-1 text-xs text-text-gray"
-            htmlFor="desc"
-          >
-            Description
-          </label>
-        </div>
+        <InputField
+          title="Quizbank Title"
+          type="text"
+          name="title"
+          id="title"
+          placeholder="Type your title here"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <CustomTextarea
+          title="Description"
+          value={desc}
+          onChange={(e) => setDesc(e.target.value)}
+          placeholder="Type your description here"
+          columns="1"
+          rows="4"
+          height={"138px"}
+          titleClassName={"bg-white"}
+        />
         <span className="text-center text-sm font-medium text-dark">
           Add Disciplines
         </span>

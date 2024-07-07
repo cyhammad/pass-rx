@@ -6,10 +6,13 @@ import { backArrow } from "@/svgs/commonSvgs";
 const BackButton = () => {
   const router = useRouter();
   return (
-    <div className="mt-7 flex items-center  gap-x-2">
-      <button onClick={() => router.back()}>{backArrow}</button>
+    <button
+      onClick={() => router.back()}
+      className="mt-7 flex items-center gap-x-2"
+    >
+      {backArrow}
       <span className="text-xs font-medium ">Back</span>
-    </div>
+    </button>
   );
 };
 

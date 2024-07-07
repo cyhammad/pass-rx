@@ -35,7 +35,7 @@ export default function QuizBanks({ quizzes, token }) {
     };
   }, []);
   return (
-    <div className="mt-8 flex w-full flex-col ">
+    <div className="my-8 flex w-full flex-col ">
       <div className="flex w-full flex-col  justify-start">
         <h1 className=" text-[1.125rem] font-semibold  sm:text-2xl ">
           Quiz Bank
@@ -93,9 +93,9 @@ export default function QuizBanks({ quizzes, token }) {
           </div>
         )}
 
-        <div className="my-5 flex justify-center">
+        {/* <div className="my-5 flex justify-center">
           <ThreeDotLoader />
-        </div>
+        </div> */}
       </div>
     </div>
   );

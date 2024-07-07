@@ -69,11 +69,15 @@ export default function Disciplines({ disciplines, categories, token }) {
   };
 
   const handleDisciplineTabClick = () => {
-    router.push(pathname + "?" + createQueryString("tab", "Disciplines"));
+    router.push(pathname + "?" + createQueryString("tab", "Disciplines"), {
+      scroll: false,
+    });
   };
 
   const handleCategoryTabClick = () => {
-    router.push(pathname + "?" + createQueryString("tab", "Categories"));
+    router.push(pathname + "?" + createQueryString("tab", "Categories"), {
+      scroll: false,
+    });
   };
 
   return (

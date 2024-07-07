@@ -1,3 +1,5 @@
+"use client";
+
 import { searchIcon } from "@/svgs/topbarSvgs";
 import ThreeDotLoader from "@/components/loaders/ThreeDotLoader";
 import TableDropdown from "../dropdowns/TableDropdown";
@@ -5,7 +7,7 @@ import StatusBtn from "../StatusBtn";
 
 export default function UserTable() {
   return (
-    <div className="flex w-full flex-col rounded-xl border border-black/10 bg-white p-7">
+    <div className="flex w-full flex-col rounded-xl border border-black/10 bg-white p-7 mb-10">
       <div className="flex w-full justify-between">
         <div className="flex flex-col">
           <div className="flex items-center gap-2">
@@ -32,7 +34,7 @@ export default function UserTable() {
         </div>
       </div>
       {/* Table */}
-      <div className="max-w-full overflow-x-auto bg-white">
+      <div className="max-w-full overflow-x-auto overscroll-auto bg-white">
         <table className="mt-5 w-full min-w-fit table-auto">
           <thead className="bg-table-header">
             <tr className="text-text-gray-2">
@@ -291,13 +293,13 @@ export default function UserTable() {
                 <TableDropdown />
               </td>
             </tr>
-            <tr>
+            {/* <tr>
               <td colSpan={6}>
                 <div className="my-5 flex sm:justify-center">
                   <ThreeDotLoader />
                 </div>
               </td>
-            </tr>
+            </tr> */}
           </tbody>
         </table>
       </div>

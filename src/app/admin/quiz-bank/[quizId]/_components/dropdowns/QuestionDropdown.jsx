@@ -61,7 +61,7 @@ const QuestionDropdown = ({ question, token, quizbank }) => {
           className="flex justify-center rounded-full text-center"
           onClick={() => toggleMenu()}
         >
-          <span className="leading-6 text-white">{threeDots}</span>
+          <span className="px-2 py-1 leading-6 text-white">{threeDots}</span>
         </button>
         {isOpen && (
           <motion.div

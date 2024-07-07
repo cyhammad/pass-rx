@@ -14,7 +14,6 @@ const Question = ({ question, token, quizbank }) => {
           question={question}
           token={token}
           quizbank={quizbank}
-          
         />
       </div>
       <div className="flex flex-col gap-y-2 text-sm">

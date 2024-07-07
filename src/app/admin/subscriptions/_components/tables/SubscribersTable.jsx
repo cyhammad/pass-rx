@@ -33,8 +33,8 @@ const SubscribersTable = () => {
         </div>
       </div>
       {/* Table */}
-      <div className="max-w-full overflow-x-auto bg-white">
-        <table className="mt-5 w-full min-w-fit table-auto">
+      <div className="max-w-full overflow-x-auto overscroll-auto bg-white">
+        <table className="mt-5 w-full min-w-fit table-auto overflow-auto">
           <thead className="bg-table-header">
             <tr className="text-text-gray-2">
               <th className="min-w-[400px] rounded-s-md py-3 pl-6 text-start font-semibold">
@@ -280,13 +280,13 @@ const SubscribersTable = () => {
                 <TableDropdown />
               </td>
             </tr>
-            <tr>
+            {/* <tr>
               <td colSpan={6}>
                 <div className="my-5 flex sm:justify-center">
                   <ThreeDotLoader />
                 </div>
               </td>
-            </tr>
+            </tr> */}
           </tbody>
         </table>
       </div>

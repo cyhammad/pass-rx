@@ -38,7 +38,6 @@ export default function FlashFactsPage({
             closeModal={() => setIsAddModalOpen(false)}
             disciplines={disciplines}
             token={token}
-            
           />
         )}
       </AnimatePresence>
@@ -59,7 +58,7 @@ export default function FlashFactsPage({
             />
           </div>
           <button
-            className="flex w-fit items-center gap-2 rounded-md bg-almostBlack px-5 py-2 text-start text-sm self-end"
+            className="flex w-fit h-[50px] items-center gap-2 rounded-md bg-almostBlack px-5 py-2 text-start text-sm self-end"
             onClick={() => setIsAddModalOpen(true)}
           >
             {addsvg}
@@ -67,21 +66,20 @@ export default function FlashFactsPage({
           </button>
         </span>
       </div>
-      <div className="mt-10 grid w-full grid-cols-1 gap-x-7 gap-y-5 md:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-10 grid w-full grid-cols-1 gap-x-4 gap-y-3 md:grid-cols-2 lg:grid-cols-3">
         {filteredFacts.map((fact) => (
           <div key={fact._id}>
             <FlashFactCard
               flashFact={fact}
-              
               token={token}
               disciplines={disciplines}
             />
           </div>
         ))}
       </div>
-      <div className="my-5 flex justify-center">
+      {/* <div className="my-5 flex justify-center">
         <ThreeDotLoader />
-      </div>
+      </div> */}
     </div>
   );
 }

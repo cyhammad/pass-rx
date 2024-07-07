@@ -1,24 +1,15 @@
-"use client";
-import { useState } from "react";
-
-export default function Card( {title , text,value}) {
-
+export default function Card({ title, text, value }) {
   return (
-    <div className="   max-w-[330px] rounded-2xl  bg-white p-6 shadow-lg  md:p-9 h-[308px]">
+    <div className="   h-[308px] max-w-[330px]  rounded-2xl bg-white p-6  shadow-lg md:p-9">
       <span>{star}</span>
       <p className="mt-3 font-semibold">{title}</p>
-      <p className="mt-4 text-xs text-dark-grayish-red">
-        {text}
-      </p>
-      <input
-        type="text"
-        name="text"
-        id="text"
-        placeholder={value}
-        className={`mt-7 h-[72px] focus:ring-light-gray focus:border-white   w-full bg-transparent text-5xl border border-white font-bold  placeholder:text-black md:mt-11 `}
+      <p className="mt-4 text-xs text-dark-grayish-red">{text}</p>
+      <div
+        className={`mt-7 h-[72px] w-full border border-white bg-transparent text-5xl font-bold placeholder:text-black focus:border-white focus:ring-light-gray md:mt-11`}
         disabled={true}
-      />
-     
+      >
+        <span className="text-4xl">$</span>{value}
+      </div>
     </div>
   );
 }

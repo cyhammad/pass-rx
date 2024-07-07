@@ -3,12 +3,12 @@
 import { motion } from "framer-motion";
 import SelectFactDisciplineDropdown from "../dropdowns/SelectFactDisciplineDropdown";
 import { useState } from "react";
-import CustomTextarea from "../inputs/CustomTextarea";
 import {
   addFlashFact,
   editFlashFact,
 } from "@/app/lib/actions/flashFactActions";
 import { revalidateData } from "@/app/utils/revalidate-data";
+import CustomTextarea from "@/components/adminComponents/inputs/CustomTextarea";
 
 const EditFlashFactModal = ({
   closeModal,
@@ -60,7 +60,7 @@ const EditFlashFactModal = ({
         onClick={closeModal}
       ></div>
 
-      <div className="z-50 flex h-[70vh] w-full max-w-[700px] flex-col items-center rounded-lg bg-white p-8 shadow-md">
+      <div className="z-50 flex h-[70vh] w-full max-w-[700px] flex-col items-center overflow-auto rounded-lg bg-white p-8 shadow-md">
         <div className="flex w-full items-center justify-between">
           <span className="text-sm font-medium md:text-xl">
             Edit Flash Card
@@ -100,12 +100,16 @@ const EditFlashFactModal = ({
               <CustomTextarea
                 title="Question"
                 value={question}
-                setValue={setQuestion}
+                onChange={(e) => setQuestion(e.target.value)}
+                height={"100px"}
+                titleClassName={"bg-white"}
               />
               <CustomTextarea
                 title="Answer"
                 value={answer}
-                setValue={setAnswer}
+                onChange={() => setAnswer()}
+                height={"100px"}
+                titleClassName={"bg-white"}
               />
             </div>
           </>
