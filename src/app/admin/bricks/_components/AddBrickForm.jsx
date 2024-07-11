@@ -64,7 +64,7 @@ const AddBrickForm = ({ token }) => {
       title,
       quote,
       learningOutcomes,
-      "",
+      image,
       topics,
     );
     if (res.message === "Brick created successfully") {
@@ -168,7 +168,7 @@ const AddBrickForm = ({ token }) => {
         <InputField
           title={"Brick Collection Title"}
           value={title}
-          setValue={setTitle}
+          onChange={(e) => setTitle(e.target.value)}
           placeholder="Title"
           id="title"
           name="title"
@@ -176,7 +176,7 @@ const AddBrickForm = ({ token }) => {
         <CustomTextarea
           title={"Quote"}
           value={quote}
-          setValue={() => setQuote()}
+          onChange={(e) => setQuote(e.target.value)}
           titleClassName={"bg-white"}
           placeholder={"Quote"}
           height={"190px"}
@@ -189,7 +189,7 @@ const AddBrickForm = ({ token }) => {
           id="learningOutcomes"
           placeholder="Learning Outcomes"
           value={learningOutcomes}
-          onChange={setLearningOutcomes}
+          onChange={(e) => setLearningOutcomes(e.target.value)}
           titleClassName={"bg-white"}
           height={"200px"}
         />
@@ -198,26 +198,23 @@ const AddBrickForm = ({ token }) => {
             Topics Covered
           </span>
           {addTopic && (
-            <div className="relative flex h-[54px] w-[65%] items-center justify-between self-center rounded-md border border-black/10 pl-4">
-              <input
-                className="w-full  text-sm  focus:border-light-border  focus:ring-white active:border-light-gray"
-                type="topic"
-                ref={newTopicRef}
-                autoComplete="off"
-                name="topic"
-                id="topic"
+            <div className="flex w-full items-center justify-center">
+              <InputField
+                title={"Topic Name"}
                 value={newTopicInput}
-                placeholder=""
-                onKeyDown={handleKeyDown}
                 onChange={(e) => setNewTopicInput(e.target.value)}
+                placeholder="Topic Name"
+                id="topic"
+                name="topic"
+                onKeyDown={handleKeyDown}
+                titleClassName={"bg-white"}
+                inputClassName="max-w-[350px]"
+                autoComplete="off"
+                ref={newTopicRef}
+                closeIcon={true}
+                handleClose={() => setAddTopic(false)}
+                containerClassName="max-w-[350px] w-full"
               />
-              <label
-                className="absolute -top-2 left-3 bg-white px-1 text-xs text-text-gray"
-                htmlFor="topic"
-              >
-                Topic Name
-              </label>
-              <button onClick={() => setAddTopic(false)}>{closeIcon}</button>
             </div>
           )}
           <button
@@ -269,7 +266,7 @@ const AddBrickForm = ({ token }) => {
           </button>
         )}
       </div>
-      <div className="flex w-full justify-center lg:mt-12 lg:justify-end">
+      <div className="mt-5 flex w-full justify-center lg:justify-end">
         <button
           className="h-[60px] min-w-[305px] rounded-md bg-primary text-white"
           onClick={() => handleSaveBrick()}
@@ -302,31 +299,6 @@ const add = (
     />
     <path
       d="M10 14.5V6.5"
-      stroke="#121212"
-      strokeWidth="1.2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-const closeIcon = (
-  <svg
-    width="40"
-    height="40"
-    viewBox="0 0 40 40"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M14.9043 24.9189L24.7424 15.0808"
-      stroke="#121212"
-      strokeWidth="1.2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M24.7424 24.9192L14.9043 15.0811"
       stroke="#121212"
       strokeWidth="1.2"
       strokeLinecap="round"

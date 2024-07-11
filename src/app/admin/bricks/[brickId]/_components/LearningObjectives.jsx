@@ -30,7 +30,7 @@ export default function LearningObjectives({
     }
   };
   return (
-    <div className="mt-9 w-full max-w-[26.5rem] lg:mt-0">
+    <div className="mt-8 w-full max-w-[26.5rem]">
       <p className="text-lg font-semibold ">Learning Objectives</p>
       {editable ? (
         <textarea

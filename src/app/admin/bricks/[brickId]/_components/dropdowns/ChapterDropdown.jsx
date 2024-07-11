@@ -27,15 +27,11 @@ export default function ChapterDropdown({ chapter }) {
     setIsOpen(!isOpen);
   };
 
-  const handleDeleteClick = () => {
-    toggleMenu();
-  };
-
   return (
     <div className="mt-3 w-full">
-      <div className="relative z-20 w-full" ref={dropdownRef}>
+      <div className="relative w-full" ref={dropdownRef}>
         <button
-          className="z-50 flex h-10 w-full items-center justify-center  rounded-xl bg-gray-bg text-center  shadow"
+          className="flex h-10 w-full items-center justify-center rounded-xl bg-gray-bg text-center  shadow"
           onClick={() => toggleMenu()}
         >
           <span className="flex w-full items-center justify-between gap-3 rounded-[100px] px-3 py-[5px]  text-sm text-dark">
@@ -59,7 +55,7 @@ export default function ChapterDropdown({ chapter }) {
             transition={{ duration: 0.3 }}
             className=" right-0 top-7 flex w-full flex-col justify-between rounded-xl  pb-2.5"
           >
-            <div className="z-50 flex  w-full flex-col gap-y-1.5 py-2">
+            <div className="flex w-full flex-col gap-y-1.5 py-2">
               {chapter?.topics.map((topic) => (
                 <button
                   className="flex  w-full items-center justify-between px-3 py-1.5"

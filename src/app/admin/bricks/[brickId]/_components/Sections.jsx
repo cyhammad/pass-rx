@@ -1,12 +1,13 @@
 "use client";
 
 import { grayPencil } from "@/svgs/commonSvgs";
-import { option } from "@/svgs/commonSvgs";
 import ChapterDropdown from "./dropdowns/ChapterDropdown";
 import AddSectionCard from "./cards/AddSectionCard";
 import { useState } from "react";
-import { addSection } from "@/app/lib/actions/BrickSectionActions";
 import { revalidateData } from "@/app/utils/revalidate-data";
+import { addChapter } from "@/app/lib/actions/brickChapterActions";
+import SectionDropdown from "./dropdowns/SectionDropdown";
+import { addSection } from "@/app/lib/actions/brickSectionActions";
 
 export default function Sections({ token, brickId, sections }) {
   const [newSectionTitle, setNewSectionTitle] = useState("");
@@ -14,51 +15,70 @@ export default function Sections({ token, brickId, sections }) {
   const [showAddSection, setShowAddSection] = useState(false);
 
   const handleSave = async () => {
+    if (!newSectionTitle || !newChapterTitle) {
+      return;
+    }
     const res = await addSection(token, brickId, newSectionTitle);
     console.log("Add Section", res);
     if (res.message === "Created successfully") {
-      revalidateData(`admin/bricks/${brickId}`);
+      const res2 = await addChapter(
+        token,
+        brickId,
+        res.data._id,
+        newChapterTitle,
+      );
+      console.log("Add Chapter", res2);
+      if (res2.message === "Created successfully") {
+        setNewSectionTitle("");
+        setNewChapterTitle("");
+        setShowAddSection(false);
+        revalidateData(`/admin/bricks/${brickId}`);
+      }
     }
   };
   return (
     <div className="md:w-[624.23px]">
       <div className="relative w-full">
         {sections.map((section) => (
-          <div className="flex w-full flex-col" key={section._id}>
-            <div className="flex w-full justify-between px-4">
+          <div className="mt-8 flex w-full flex-col" key={section._id}>
+            <div className="flex w-full items-center justify-between">
               <p className="flex items-center gap-x-[14px] text-lg font-bold">
                 {section.title}
                 {grayPencil}
               </p>
-              {option}
+              <SectionDropdown
+                token={token}
+                brickId={brickId}
+                sectionId={section._id}
+              />
             </div>
             {section.chapters.map((chapter) => {
-              console.log("Chapter", chapter);
               return <ChapterDropdown key={chapter._id} chapter={chapter} />;
             })}
           </div>
         ))}
         {showAddSection ? (
-          <div className="flex flex-col gap-5">
+          <div className="mt-5 flex flex-col gap-5">
             <div className="flex flex-col gap-3">
               <input
                 type="text"
                 name="text"
                 id="text"
-                className="brick-title w-fit border-b border-text-secondary bg-transparent p-0 py-2 text-[18px] font-semibold placeholder:text-black/40 focus:ring-transparent"
+                className="add-section-input w-fit bg-transparent p-0 py-2 text-[18px] font-semibold placeholder:text-black/40 focus:ring-transparent"
                 value={newSectionTitle}
                 placeholder="Section Name"
                 onChange={(e) => setNewSectionTitle(e.target.value)}
               />
               <div className="flex w-full items-center justify-between gap-3 rounded-[12px] px-3 py-[5px] text-sm text-dark shadow">
                 <input
-                  className="flex w-full items-center justify-between gap-1 bg-transparent px-0 text-xs ring-transparent focus:ring-transparent"
+                  className="no-border flex w-full items-center justify-between gap-1 bg-transparent px-0 text-xs ring-transparent focus:ring-transparent"
                   type="text"
                   id="newChapter"
                   name="newChapter"
                   placeholder="First Chapter Name"
                   value={newChapterTitle}
                   onChange={(e) => setNewChapterTitle(e.target.value)}
+                  autoComplete="off"
                 />
                 <div className="flex items-center gap-2">{chevron}</div>
               </div>

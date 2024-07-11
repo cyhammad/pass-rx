@@ -5,7 +5,6 @@ import Image from "next/image";
 import { cross } from "@/svgs/commonSvgs";
 import { pencil } from "@/svgs/commonSvgs";
 import { addSquare } from "@/svgs/commonSvgs";
-import Button from "./buttons/Button";
 import UnlockDropdown from "./dropdowns/UnlockDropdown";
 
 const BrickTopSection = ({
@@ -124,7 +123,7 @@ const BrickTopSection = ({
             {tags.map((tag, index) => (
               <div
                 key={index}
-                className="flex w-fit items-center justify-center gap-3 rounded-md border border-gray-border border-opacity-20 bg-white px-3 py-2"
+                className="flex w-fit items-center justify-center gap-3 rounded-md border border-gray-border   bg-white px-3 py-2"
               >
                 {tag}
                 {editable && (

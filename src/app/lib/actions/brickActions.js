@@ -9,6 +9,7 @@ export const addBrick = async (
   topicsCovered,
 ) => {
   try {
+    console.log("Image",image)
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Authorization", `Bearer ${token}`);

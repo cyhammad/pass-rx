@@ -53,7 +53,7 @@ const EditableBrick = ({ token, brick }) => {
         handleSave={handleUpdateBrick}
       />
       <div className="mt-10 w-full border border-light-border"></div>
-      <div className=" mt-6 flex flex-col justify-between gap-x-[4rem] pb-10 lg:flex-row lg:pr-11 xl:ml-[10rem]">
+      <div className="flex flex-col justify-between gap-x-[4rem] pb-10 lg:flex-row lg:pr-11 xl:ml-[10rem]">
         <Sections token={token} brickId={brick._id} sections={sections} />
         <LearningObjectives
           editable={editable}

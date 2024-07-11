@@ -1,8 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { option } from "@/svgs/commonSvgs";
+import { deleteSection } from "@/app/lib/actions/brickSectionActions";
+import { revalidateData } from "@/app/utils/revalidate-data";
+import DeleteSectionModal from "../modals/DeleteSectionModal";
 
-export default function UnlockDropdown() {
+export default function SectionDropdown({ token, brickId, sectionId }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const dropdownRef = useRef(null);
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -20,53 +25,55 @@ export default function UnlockDropdown() {
     setIsOpen(!isOpen);
   };
 
-  const handleDeleteClick = () => {
-    toggleMenu();
+  const handleDeleteClick = async () => {
+    setIsDeleteModalOpen(true);
   };
 
   return (
-    <div className="relative z-20" ref={dropdownRef}>
-      <button
-        className="z-50 flex justify-center rounded-full text-center"
-        onClick={() => toggleMenu()}
-      >
-        <span className="flex items-center gap-3 rounded-[100px] border-[1.5px] border-dark-border pl-2.5 pr-2 py-[5px] text-sm text-dark">
-          <div className="flex gap-1">{lock} Unlock</div> {chevron}
-        </span>
-      </button>
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-          className="absolute right-0 top-10 flex w-36 flex-col justify-between rounded-xl bg-dark text-white"
-        >
-          <div className="z-50 flex flex-col gap-y-1.5 py-2">
-            <button className="flex items-center justify-between px-3 py-1">
-              <div className="flex items-center gap-x-2">
-                {addSquare}
-                <span className="text-xs">Add Chapter</span>
-              </div>
-            </button>
-            <button className="flex items-center justify-between px-3 py-1">
-              <div className="flex items-center gap-x-3">
-                {lock1}
-                <span className="text-xs">Lock</span>
-              </div>
-            </button>
-            <button
-              className="flex items-center justify-between px-3 py-1"
-              onClick={() => handleDeleteClick()} // Step 4: Call handleDeleteClick on delete button click
-            >
-              <div className="flex items-center gap-x-2">
-                {cross}
-                <span className="text-xs">Delete</span>
-              </div>
-            </button>
-          </div>
-        </motion.div>
+    <>
+      {isDeleteModalOpen && (
+        <DeleteSectionModal
+          setIsOpen={setIsDeleteModalOpen}
+          token={token}
+          brickId={brickId}
+          sectionId={sectionId}
+        />
       )}
-    </div>
+      <div className="relative z-20" ref={dropdownRef}>
+        <button
+          className="z-50 flex justify-center rounded-full text-center"
+          onClick={() => toggleMenu()}
+        >
+          {option}
+        </button>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className="absolute right-0 top-5 flex w-36 flex-col justify-between rounded-xl bg-dark text-white"
+          >
+            <div className="z-50 flex flex-col gap-y-1.5 py-2">
+              <button className="flex items-center justify-between px-3 py-1">
+                <div className="flex items-center gap-x-3">
+                  {lock1}
+                  <span className="text-xs">Lock</span>
+                </div>
+              </button>
+              <button
+                className="flex items-center justify-between px-3 py-1"
+                onClick={() => handleDeleteClick()} // Step 4: Call handleDeleteClick on delete button click
+              >
+                <div className="flex items-center gap-x-2">
+                  {cross}
+                  <span className="text-xs">Delete</span>
+                </div>
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </div>
+    </>
   );
 }
 
