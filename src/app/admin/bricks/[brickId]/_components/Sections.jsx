@@ -4,7 +4,6 @@ import { grayPencil } from "@/svgs/commonSvgs";
 import ChapterDropdown from "./dropdowns/ChapterDropdown";
 import AddSectionCard from "./cards/AddSectionCard";
 import { useState } from "react";
-import { revalidateData } from "@/app/utils/revalidate-data";
 import { addChapter } from "@/app/lib/actions/brickChapterActions";
 import SectionDropdown from "./dropdowns/SectionDropdown";
 import { addSection } from "@/app/lib/actions/brickSectionActions";
@@ -13,8 +12,9 @@ export default function Sections({ token, brickId, sections }) {
   const [newSectionTitle, setNewSectionTitle] = useState("");
   const [newChapterTitle, setNewChapterTitle] = useState("");
   const [showAddSection, setShowAddSection] = useState(false);
+  const [showAddChapter, setShowAddChapter] = useState(-1);
 
-  const handleSave = async () => {
+  const handleSaveSection = async () => {
     if (!newSectionTitle || !newChapterTitle) {
       return;
     }
@@ -32,14 +32,27 @@ export default function Sections({ token, brickId, sections }) {
         setNewSectionTitle("");
         setNewChapterTitle("");
         setShowAddSection(false);
-        revalidateData(`/admin/bricks/${brickId}`);
+        console.log("BRICKID", brickId);
+        window.location.reload();
       }
+    }
+  };
+  const handleSaveChapter = async (sectionId) => {
+    if (!newChapterTitle) {
+      return;
+    }
+    const res = await addChapter(token, brickId, sectionId, newChapterTitle);
+    console.log("Add Chapter", res);
+    if (res.message === "Created successfully") {
+      setNewChapterTitle("");
+      setShowAddChapter(-1);
+      window.location.reload();
     }
   };
   return (
     <div className="md:w-[624.23px]">
       <div className="relative w-full">
-        {sections.map((section) => (
+        {sections.map((section, index) => (
           <div className="mt-8 flex w-full flex-col" key={section._id}>
             <div className="flex w-full items-center justify-between">
               <p className="flex items-center gap-x-[14px] text-lg font-bold">
@@ -50,11 +63,50 @@ export default function Sections({ token, brickId, sections }) {
                 token={token}
                 brickId={brickId}
                 sectionId={section._id}
+                index={index}
+                setShowAddChapter={setShowAddChapter}
               />
             </div>
             {section.chapters.map((chapter) => {
-              return <ChapterDropdown key={chapter._id} chapter={chapter} />;
+              return (
+                <ChapterDropdown
+                  key={chapter._id}
+                  brickId={brickId}
+                  chapter={chapter}
+                  sectionId={section._id}
+                />
+              );
             })}
+            {showAddChapter == index && (
+              <div className="mt-2 flex flex-col gap-5">
+                <div className="flex w-full items-center gap-3 rounded-[12px] px-3 py-[5px] text-sm text-dark shadow">
+                  <input
+                    className="no-border flex w-full items-center justify-between gap-1 bg-transparent px-0 text-xs ring-transparent focus:ring-transparent"
+                    type="text"
+                    id="newChapter"
+                    name="newChapter"
+                    placeholder="Enter Chapter Name"
+                    value={newChapterTitle}
+                    onChange={(e) => setNewChapterTitle(e.target.value)}
+                    autoComplete="off"
+                  />
+                </div>
+                <div className="flex items-center justify-center gap-2">
+                  <button
+                    className="max-h-[60px] min-h-[50px] w-[137px] rounded-md border border-black/20 bg-transparent"
+                    onClick={() => setShowAddChapter(-1)}
+                  >
+                    Discard
+                  </button>
+                  <button
+                    className="max-h-[60px] min-h-[50px] w-[137px] rounded-md border border-black/20 bg-primary text-white"
+                    onClick={() => handleSaveChapter(section._id)}
+                  >
+                    Save
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         ))}
         {showAddSection ? (
@@ -92,7 +144,7 @@ export default function Sections({ token, brickId, sections }) {
               </button>
               <button
                 className="max-h-[60px] min-h-[50px] w-[137px] rounded-md border border-black/20 bg-primary text-white"
-                onClick={handleSave}
+                onClick={() => handleSaveSection()}
               >
                 Save
               </button>

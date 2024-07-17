@@ -3,11 +3,13 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { cross } from "@/svgs/commonSvgs";
+import { useRouter } from "next/navigation";
 
-export default function ChapterDropdown({ chapter }) {
+export default function ChapterDropdown({ chapter, sectionId, brickId }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
   const [isRotated, setIsRotated] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -30,24 +32,32 @@ export default function ChapterDropdown({ chapter }) {
   return (
     <div className="mt-3 w-full">
       <div className="relative w-full" ref={dropdownRef}>
-        <button
-          className="flex h-10 w-full items-center justify-center rounded-xl bg-gray-bg text-center  shadow"
-          onClick={() => toggleMenu()}
-        >
-          <span className="flex w-full items-center justify-between gap-3 rounded-[100px] px-3 py-[5px]  text-sm text-dark">
-            <div className="flex items-center justify-between gap-1">
-              {chapter?.title} {add}
+        <div className="flex h-10 w-full items-center justify-center rounded-xl bg-gray-bg text-center shadow">
+          <div className="flex w-full items-center justify-between gap-3 rounded-[100px] py-[5px] pl-3 pr-1.5 text-sm text-dark">
+            <div className="flex items-center justify-between gap-1 text-xs">
+              {chapter?.title}
+              <button
+                onClick={() =>
+                  router.push(
+                    `/admin/bricks/${brickId}/add-topic?sectionId=${sectionId}&chapterId=${chapter._id}`,
+                  )
+                }
+                className="p-1"
+              >
+                {add}
+              </button>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1">
               {lock}
-              <div
-                className={`transform cursor-pointer transition-transform ${isRotated ? "rotate-180" : ""}`}
+              <button
+                onClick={() => toggleMenu()}
+                className={`transform cursor-pointer p-1 transition-transform ${isRotated ? "rotate-180" : ""}`}
               >
                 {chevron}
-              </div>
+              </button>
             </div>
-          </span>
-        </button>
+          </div>
+        </div>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, y: -10 }}

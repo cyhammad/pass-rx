@@ -13,7 +13,7 @@ const EditableBrick = ({ token, brick }) => {
   const [title, setTitle] = useState(brick.title);
   const [quote, setQuote] = useState(brick.quote);
   const [tags, setTags] = useState(brick.disciplines);
-  const [image, setImage] = useState(brick.image);
+  const [image, setImage] = useState(null);
   const [learningOutcomes, setLearningOutcomes] = useState(
     brick.learningOutcomes,
   );

@@ -15,7 +15,7 @@ const DeleteSectionModal = ({ setIsOpen, token, brickId, sectionId }) => {
     const res = await deleteSection(token, brickId, sectionId);
     if (res.message === "Deleted successfully") {
       setSuccess(true);
-      revalidateData(`/admin/bricks/${brickId}`);
+      window.location.reload();
       setTimeout(() => {
         setSuccess(false);
         closeModal();

@@ -5,7 +5,13 @@ import { deleteSection } from "@/app/lib/actions/brickSectionActions";
 import { revalidateData } from "@/app/utils/revalidate-data";
 import DeleteSectionModal from "../modals/DeleteSectionModal";
 
-export default function SectionDropdown({ token, brickId, sectionId }) {
+export default function SectionDropdown({
+  token,
+  brickId,
+  sectionId,
+  index,
+  setShowAddChapter,
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -54,6 +60,15 @@ export default function SectionDropdown({ token, brickId, sectionId }) {
             className="absolute right-0 top-5 flex w-36 flex-col justify-between rounded-xl bg-dark text-white"
           >
             <div className="z-50 flex flex-col gap-y-1.5 py-2">
+              <button
+                onClick={() => setShowAddChapter(index)}
+                className="flex items-center justify-between px-3 py-1"
+              >
+                <div className="flex items-center gap-x-2">
+                  {addSquare}
+                  <span className="text-xs">Add Chapter</span>
+                </div>
+              </button>
               <button className="flex items-center justify-between px-3 py-1">
                 <div className="flex items-center gap-x-3">
                   {lock1}

@@ -21,9 +21,21 @@ const BrickTopSection = ({
   setImage,
   handleSave,
 }) => {
+  const imageRef = useRef(null);
   const newTagRef = useRef(null);
   const [newTagInput, setNewTagInput] = useState("");
   const [addTag, setAddTag] = useState(false);
+  console.log("BRICK", brick);
+  console.log("TAGS", tags);
+  
+
+  const handleImageInput = (e) => {
+    const file = e.target.files[0];
+    console.log("FILE", file);
+    if (file) {
+      setImage(file);
+    }
+  };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -67,17 +79,29 @@ const BrickTopSection = ({
       <div className="mt-7 flex w-full flex-wrap justify-start gap-6 xl:flex-nowrap">
         <div className="relative h-fit">
           <Image
-            src={"/bricks/brick.png"} // Use forward slash for the path
-            className="w-full rounded-lg"
+            src={image == null ? brick.image : URL.createObjectURL(image)} // Use forward slash for the path
+            className="rounded-lg"
             width={347}
             height={264}
             alt="Brick Image"
           />
           {editable && (
-            <button className="absolute bottom-5 right-5 h-[32px] w-[68px] rounded-full border border-dark bg-light-gray py-1.5 text-sm font-medium">
+            <button
+              className="absolute bottom-5 right-5 h-[32px] w-[68px] rounded-full border border-dark bg-light-gray py-1.5 text-sm font-medium"
+              onClick={() => imageRef.current.click()}
+            >
               Upload
             </button>
           )}
+          <input
+            className="hidden"
+            type="file"
+            name="image"
+            id="image"
+            ref={imageRef}
+            accept="image/*"
+            onChange={(e) => handleImageInput(e)}
+          />
         </div>
         <div className="flex-wrap xl:flex-nowrap">
           <div className="flex flex-wrap items-center gap-x-5 xl:flex-nowrap">
@@ -86,7 +110,6 @@ const BrickTopSection = ({
                 type="text"
                 name="text"
                 id="text"
-                placeholder=""
                 className="brick-title w-full border-b border-text-secondary bg-transparent p-0 text-[40px] font-semibold text-text-secondary focus:ring-transparent"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
@@ -99,7 +122,7 @@ const BrickTopSection = ({
           <div
             className={`mt-4 flex gap-2 text-2xl font-normal ${editable && "opacity-0"}`}
           >
-            28 <p className="font-bold">Bricks</p>
+            {brick.sections.length} <p className="font-bold">Sections</p>
           </div>
           {editable ? (
             <textarea

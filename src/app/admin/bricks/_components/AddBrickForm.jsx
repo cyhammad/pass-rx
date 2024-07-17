@@ -59,15 +59,16 @@ const AddBrickForm = ({ token }) => {
     }
   };
   const handleSaveBrick = async () => {
-    const res = await addBrick(
-      token,
-      title,
-      quote,
-      learningOutcomes,
-      image,
-      topics,
-    );
-    if (res.message === "Brick created successfully") {
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("quote", quote);
+    formData.append("learningOutcomes", learningOutcomes);
+    formData.append("image", image, "banner.jpg");
+    formData.append("disciplines", topics);
+    const res = await addBrick(token, formData);
+    console.log("RES", res);
+    const resObj = JSON.parse(res);
+    if (resObj.message == "Brick created successfully") {
       setSuccess(res.message);
       setTimeout(() => {
         revalidateData(`admin/bricks`);
@@ -83,12 +84,9 @@ const AddBrickForm = ({ token }) => {
 
   const handleImageInput = (e) => {
     const file = e.target.files[0];
+    console.log("FILE", file);
     if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        setImage(e.target.result);
-      };
-      reader.readAsDataURL(file);
+      setImage(file);
     }
   };
   return (
@@ -250,7 +248,7 @@ const AddBrickForm = ({ token }) => {
               Change Image
             </span>
             <Image
-              src={image}
+              src={URL.createObjectURL(image)}
               alt="image"
               width={250}
               height={250}

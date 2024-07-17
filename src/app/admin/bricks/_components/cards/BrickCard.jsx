@@ -7,6 +7,7 @@ import Link from "next/link";
 
 export default function BrickCard({ brick, token }) {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  console.log("BrickCard", brick)
   return (
     <>
       <AnimatePresence>
@@ -23,7 +24,7 @@ export default function BrickCard({ brick, token }) {
         className="flex flex-col shadow-[0px_6.29px_15.73px_0px_#0000001A]"
       >
         <Image
-          src={"/bricks/brick.png"} // Use forward slash for the path
+          src={brick.image} // Use forward slash for the path
           className="rounded-xl"
           width={284}
           height={190}
