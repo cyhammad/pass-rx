@@ -1,6 +1,6 @@
 "use server";
 
-export const addDiscipline = async (token, disciplineName) => {
+export const addDiscipline = async (token, disciplineName, categoryId) => {
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
   myHeaders.append("Authorization", `Bearer ${token}`);
@@ -8,6 +8,7 @@ export const addDiscipline = async (token, disciplineName) => {
 
   const raw = JSON.stringify({
     name: disciplineName,
+    category: categoryId,
   });
 
   const requestOptions = {

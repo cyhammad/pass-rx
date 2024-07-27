@@ -25,13 +25,9 @@ const BrickTopSection = ({
   const newTagRef = useRef(null);
   const [newTagInput, setNewTagInput] = useState("");
   const [addTag, setAddTag] = useState(false);
-  console.log("BRICK", brick);
-  console.log("TAGS", tags);
-  
 
   const handleImageInput = (e) => {
     const file = e.target.files[0];
-    console.log("FILE", file);
     if (file) {
       setImage(file);
     }
@@ -79,8 +75,8 @@ const BrickTopSection = ({
       <div className="mt-7 flex w-full flex-wrap justify-start gap-6 xl:flex-nowrap">
         <div className="relative h-fit">
           <Image
-            src={image == null ? brick.image : URL.createObjectURL(image)} // Use forward slash for the path
-            className="rounded-lg"
+            src={typeof image == "string" ? image : URL.createObjectURL(image)} // Use forward slash for the path
+            className="h-[264px] w-[347px] rounded-lg"
             width={347}
             height={264}
             alt="Brick Image"
@@ -112,6 +108,11 @@ const BrickTopSection = ({
                 id="text"
                 className="brick-title w-full border-b border-text-secondary bg-transparent p-0 text-[40px] font-semibold text-text-secondary focus:ring-transparent"
                 value={title}
+                style={{
+                  borderTopWidth: "0px",
+                  borderLeftWidth: "0px",
+                  borderRightWidth: "0px",
+                }}
                 onChange={(e) => setTitle(e.target.value)}
               />
             ) : (
@@ -130,6 +131,10 @@ const BrickTopSection = ({
               name="text"
               id="text"
               placeholder=""
+              style={{
+                borderColor: "#E5E5E5",
+                padding: "5px",
+              }}
               className="w-full bg-transparent p-0 underline focus:ring-transparent"
               value={quote}
               onChange={(e) => setQuote(e.target.value)}

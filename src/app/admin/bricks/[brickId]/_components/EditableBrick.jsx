@@ -12,23 +12,26 @@ const EditableBrick = ({ token, brick }) => {
   const [editable, setEditable] = useState(false);
   const [title, setTitle] = useState(brick.title);
   const [quote, setQuote] = useState(brick.quote);
-  const [tags, setTags] = useState(brick.disciplines);
-  const [image, setImage] = useState(null);
+  const [tags, setTags] = useState(JSON.parse(brick.disciplines));
+  const [image, setImage] = useState(brick.image);
   const [learningOutcomes, setLearningOutcomes] = useState(
     brick.learningOutcomes,
   );
   const [sections, setSections] = useState(brick.sections);
 
   const handleUpdateBrick = async () => {
-    const res = await updateBrick(
-      token,
-      brick._id,
-      title,
-      quote,
-      learningOutcomes,
-      image,
-      tags,
-    );
+    console.log("Token", token);
+    console.log("Title", title);
+    console.log("Quote", quote);
+    console.log("Tags", tags);
+    console.log("Image", image);
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("quote", quote);
+    formData.append("disciplines", JSON.stringify(tags));
+    formData.append("image", image);
+    formData.append("learningOutcomes", learningOutcomes);
+    const res = await updateBrick(token, brick._id, formData);
     console.log("RES", res);
     if (res.message === "Updated successfully") {
       revalidateData(`admin/bricks/${brick._id}`);

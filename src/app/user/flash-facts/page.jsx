@@ -5,7 +5,6 @@ import FlashFacts from "./components/FlashFacts";
 
 export default async function FlashFactsPage() {
   const session = await auth();
-  console.log(session.user);
   const revalidateData = async () => {
     "use server";
     revalidatePath("/user/flash-facts");

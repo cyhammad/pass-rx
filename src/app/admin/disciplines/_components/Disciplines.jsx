@@ -64,10 +64,6 @@ export default function Disciplines({ disciplines, categories, token }) {
     };
   }, []);
 
-  const toggleModal = () => {
-    setIsAddDiciplineModalOpen(!isAddDisciplineModalOpen);
-  };
-
   const handleDisciplineTabClick = () => {
     router.push(pathname + "?" + createQueryString("tab", "Disciplines"), {
       scroll: false,
@@ -84,7 +80,11 @@ export default function Disciplines({ disciplines, categories, token }) {
     <div className="flex w-full flex-col">
       <AnimatePresence>
         {isAddDisciplineModalOpen && (
-          <AddDisciplineModal toggleModal={toggleModal} token={token} />
+          <AddDisciplineModal
+            categories={categories}
+            toggleModal={() => setIsAddDiciplineModalOpen(false)}
+            token={token}
+          />
         )}
         {isAddCategoryModalOpen && (
           <AddCategoryModal

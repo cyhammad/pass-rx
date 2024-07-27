@@ -2,20 +2,26 @@ import { addDiscipline } from "@/app/lib/actions/disciplineActions";
 import { revalidateData } from "@/app/utils/revalidate-data";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import SelectCategoryDropdown from "../dropdowns/SelectCategoryDropdown";
 
-export default function AddDisciplineModal({ toggleModal, token }) {
+export default function AddDisciplineModal({ categories, toggleModal, token }) {
   const [disciplineName, setDisciplineName] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState(null);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   const closeModal = () => {
     toggleModal();
   };
   const handleCreateDiscipline = async () => {
-    if (disciplineName === "") {
+    if (disciplineName === "" || selectedCategory === null) {
       setError("Discipline Name is required");
       return;
     }
-    const res = await addDiscipline(token, disciplineName);
+    const res = await addDiscipline(
+      token,
+      disciplineName,
+      selectedCategory._id,
+    );
     const resObj = JSON.parse(res);
     if (resObj.message === "Discipline created successfully") {
       revalidateData("/admin/disciplines?tab=Disciplines");
@@ -73,6 +79,11 @@ export default function AddDisciplineModal({ toggleModal, token }) {
               value={disciplineName}
               onChange={(e) => setDisciplineName(e.target.value)}
               onKeyDown={(e) => handleKeyPress(e)}
+            />
+            <SelectCategoryDropdown
+              categories={categories}
+              selectedCategory={selectedCategory}
+              setSelectedCategory={setSelectedCategory}
             />
             {error && <p className="px-2 text-xs text-red-500">*{error}</p>}
             {success && (

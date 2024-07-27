@@ -8,7 +8,6 @@ export async function addDeck(token,
       myHeaders.append("Content-Type", "application/json");
       myHeaders.append("Authorization", `Bearer ${token}`);
       myHeaders.append("Cookie", "token=" + token);
-      console.log(data)
       const raw = JSON.stringify({
         deckName:data.deckName,
         cardStatus:data.status,
@@ -29,7 +28,6 @@ export async function addDeck(token,
         requestOptions,
       );
       deckResponse = await deck.json();
-      console.log( deckResponse);
       return deckResponse
     } catch (error) {
         console.log(error)

@@ -124,8 +124,6 @@ export const forgetPassword = async (email) => {
   };
 
   let res;
-  console.log("URL", `${process.env.BASE_URL}/auth/forget-password`);
-
   await fetch(`${process.env.BASE_URL}/auth/forget-password`, requestOptions)
     .then((response) => response.text())
     .then((result) => {

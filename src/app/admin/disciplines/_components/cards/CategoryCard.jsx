@@ -38,7 +38,7 @@ export default function CategoryCard({ category, token }) {
         <div className="w-10/12">
           <p className="text-lg">{category.name}</p>
           <p className="mt-2 flex items-center gap-[5px] text-[13px]">
-            12 Questions
+            12 disciplines
           </p>
           <p className="mt-7 text-[10px] text-text-gray-2">
             Last updated on {renderDate(category.updatedAt)}

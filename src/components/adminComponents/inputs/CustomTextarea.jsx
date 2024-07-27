@@ -16,7 +16,7 @@ const CustomTextarea = ({
   return (
     <div className={`relative ${containerClassName}`}>
       <span
-        className={`absolute -top-2 left-3 px-1 text-xs text-gray/70 ${titleClassName}`}
+        className={`absolute -top-2 left-3 px-1 text-xs text-text-gray ${titleClassName}`}
       >
         {title}
       </span>

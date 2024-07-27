@@ -22,7 +22,7 @@ const InputField = ({
   return (
     <div className={`relative flex items-center ${containerClassName}`}>
       <input
-        className={`h-[54px] w-full rounded-md p-0 px-4 py-3 text-sm focus:ring-transparent active:border-light-gray ${inputClassName}`}
+        className={`h-[54px] w-full rounded-md bg-transparent p-0 px-4 py-3 text-sm focus:ring-transparent active:border-light-gray ${inputClassName}`}
         type={type}
         ref={ref}
         name={name}
@@ -35,7 +35,7 @@ const InputField = ({
         onKeyUp={onKeyUp}
       />
       <label
-        className={`absolute -top-2 left-3 bg-white px-1 text-xs text-text-gray ${titleClassName}`}
+        className={`absolute -top-2 left-3 px-1 text-xs text-text-gray ${titleClassName}`}
         htmlFor="title"
       >
         {title}

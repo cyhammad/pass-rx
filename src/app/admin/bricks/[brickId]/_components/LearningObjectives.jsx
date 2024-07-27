@@ -39,7 +39,7 @@ export default function LearningObjectives({
           name="text"
           id="text"
           placeholder=""
-          className="w-full bg-transparent px-0 py-3 text-xs text-gray focus:ring-transparent"
+          className="no-border w-full bg-transparent px-0 py-3 text-xs text-gray focus:ring-transparent"
           value={learningObjectives}
           onChange={(e) => setLearningObjectives(e.target.value)}
           rows={4}

@@ -1,10 +1,6 @@
 "use server";
 
 export const addChapter = async (token, brickId, sectionId, title) => {
-  console.log("SECTIONID", sectionId);
-  console.log("BRICKID", brickId);
-  console.log("TITLE", title);
-  
   try {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");

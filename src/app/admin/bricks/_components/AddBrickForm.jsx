@@ -8,8 +8,10 @@ import { revalidateData } from "@/app/utils/revalidate-data";
 import InputField from "@/components/adminComponents/inputs/InputField";
 import CustomTextarea from "@/components/adminComponents/inputs/CustomTextarea";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const AddBrickForm = ({ token }) => {
+  const router = useRouter();
   const imageRef = useRef(null);
   const [title, setTitle] = useState("");
   const [quote, setQuote] = useState("");
@@ -51,6 +53,7 @@ const AddBrickForm = ({ token }) => {
   };
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
+      console.log("TOPICS", topics);
       // Check if the input value is not empty
       if (newTopicInput.trim() !== "") {
         setTopics((prevTopics) => [...prevTopics, newTopicInput]);
@@ -64,9 +67,8 @@ const AddBrickForm = ({ token }) => {
     formData.append("quote", quote);
     formData.append("learningOutcomes", learningOutcomes);
     formData.append("image", image, "banner.jpg");
-    formData.append("disciplines", topics);
+    formData.append("disciplines", JSON.stringify(topics));
     const res = await addBrick(token, formData);
-    console.log("RES", res);
     const resObj = JSON.parse(res);
     if (resObj.message == "Brick created successfully") {
       setSuccess(res.message);
@@ -76,6 +78,7 @@ const AddBrickForm = ({ token }) => {
         setQuote("");
         setLearningOutcomes("");
         setTopics([]);
+        router.push("/admin/bricks");
       }, 2000);
     } else {
       setError(res.message);
@@ -84,7 +87,6 @@ const AddBrickForm = ({ token }) => {
 
   const handleImageInput = (e) => {
     const file = e.target.files[0];
-    console.log("FILE", file);
     if (file) {
       setImage(file);
     }
@@ -167,6 +169,7 @@ const AddBrickForm = ({ token }) => {
           title={"Brick Collection Title"}
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          titleClassName="bg-white"
           placeholder="Title"
           id="title"
           name="title"
@@ -223,7 +226,10 @@ const AddBrickForm = ({ token }) => {
           </button>
           <div className="grid w-full grid-cols-1 gap-x-5 gap-y-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {topics.map((topic, index) => (
-              <button className="flex items-center   justify-between rounded-md border border-black/20 px-3 py-2 text-sm hover:border-primary/35 hover:bg-primary/5 hover:text-primary">
+              <button
+                key={index}
+                className="flex items-center justify-between rounded-md border border-black/20 px-3 py-2 text-sm hover:border-primary/35 hover:bg-primary/5 hover:text-primary"
+              >
                 {topic}
                 <span onClick={() => handleRemoveTag(index)}>{cross}</span>
               </button>

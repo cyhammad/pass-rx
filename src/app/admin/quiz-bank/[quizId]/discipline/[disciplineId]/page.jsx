@@ -19,7 +19,6 @@ const SQPage = async ({ params }) => {
   const selectedDiscipline = quizbank.disciplines.find(
     (discipline) => discipline._id === disciplineId,
   );
-  console.log("DISCIPLINE", selectedDiscipline);
   const filteredQuestions = questions.filter(
     (question) => question.discipline._id === selectedDiscipline._id,
   );

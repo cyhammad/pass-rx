@@ -4,9 +4,17 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { cross } from "@/svgs/commonSvgs";
 import { useRouter } from "next/navigation";
+import DeleteTopicModal from "../modals/DeleteTopicModal";
 
-export default function ChapterDropdown({ chapter, sectionId, brickId }) {
+export default function ChapterDropdown({
+  token,
+  chapter,
+  sectionId,
+  brickId,
+}) {
   const [isOpen, setIsOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+
   const dropdownRef = useRef(null);
   const [isRotated, setIsRotated] = useState(false);
   const router = useRouter();
@@ -39,7 +47,7 @@ export default function ChapterDropdown({ chapter, sectionId, brickId }) {
               <button
                 onClick={() =>
                   router.push(
-                    `/admin/bricks/${brickId}/add-topic?sectionId=${sectionId}&chapterId=${chapter._id}`,
+                    `/admin/bricks/${brickId}/add/section/${sectionId}/chapter/${chapter._id}/topic`,
                   )
                 }
                 className="p-1"
@@ -67,18 +75,44 @@ export default function ChapterDropdown({ chapter, sectionId, brickId }) {
           >
             <div className="flex w-full flex-col gap-y-1.5 py-2">
               {chapter?.topics.map((topic) => (
-                <button
-                  className="flex  w-full items-center justify-between px-3 py-1.5"
-                  key={topic._id}
-                >
-                  <div className="flex w-full items-center justify-between">
-                    <span className="text-xs">{topic.title}</span>
-                    <div className="flex items-center gap-3">
-                      {cross}
-                      {pencil}
+                <>
+                  {isDeleteModalOpen && (
+                    <DeleteTopicModal
+                      setIsOpen={setIsDeleteModalOpen}
+                      token={token}
+                      brickId={brickId}
+                      sectionId={sectionId}
+                      chapterId={chapter._id}
+                      topicId={topic._id}
+                    />
+                  )}
+                  <div
+                    className="flex  w-full items-center justify-between px-3 py-1.5"
+                    key={topic._id}
+                  >
+                    <div className="flex w-full items-center justify-between">
+                      <button
+                        onClick={() =>
+                          router.push(
+                            `/admin/bricks/${brickId}/update/section/${sectionId}/chapter/${chapter._id}/topic/${topic._id}`,
+                          )
+                        }
+                        className="text-xs underline hover:text-primary"
+                      >
+                        {topic.title}
+                      </button>
+                      <div className="flex items-center gap-1">
+                        <button
+                          className="px-1"
+                          onClick={() => setIsDeleteModalOpen(true)}
+                        >
+                          {cross}
+                        </button>
+                        <button className="px-1">{pencil}</button>
+                      </div>
                     </div>
                   </div>
-                </button>
+                </>
               ))}
             </div>
           </motion.div>

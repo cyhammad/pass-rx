@@ -8,7 +8,6 @@ export async function addTest(token,
       myHeaders.append("Content-Type", "application/json");
       myHeaders.append("Authorization", `Bearer ${token}`);
       myHeaders.append("Cookie", "token=" + token);
-      console.log(data.difficulty)
       const raw = JSON.stringify({
         difficulty: data.difficulty,
         questionStatus: data.questionStatus,

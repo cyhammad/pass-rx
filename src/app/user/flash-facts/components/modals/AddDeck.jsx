@@ -27,7 +27,6 @@ export default function AddDeck({ toggle, disciplines, token }) {
   };
 
   const handleAdd = async () => {
-    console.log(data);
     const res = await addDeck(token, data);
     if (res.message === "Created successfully") {
       console.log("created");

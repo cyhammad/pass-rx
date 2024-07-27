@@ -31,7 +31,7 @@ export default function FlashFactsPage({
       return true;
     });
   return (
-    <div className="flex h-full w-full flex-col">
+    <div className="flex h-full w-full min-h-[82vh] flex-col">
       <AnimatePresence>
         {isAddModalOpen && (
           <AddFlashFactModal

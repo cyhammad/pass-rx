@@ -19,7 +19,6 @@ export default function Sections({ token, brickId, sections }) {
       return;
     }
     const res = await addSection(token, brickId, newSectionTitle);
-    console.log("Add Section", res);
     if (res.message === "Created successfully") {
       const res2 = await addChapter(
         token,
@@ -27,12 +26,10 @@ export default function Sections({ token, brickId, sections }) {
         res.data._id,
         newChapterTitle,
       );
-      console.log("Add Chapter", res2);
       if (res2.message === "Created successfully") {
         setNewSectionTitle("");
         setNewChapterTitle("");
         setShowAddSection(false);
-        console.log("BRICKID", brickId);
         window.location.reload();
       }
     }
@@ -42,7 +39,6 @@ export default function Sections({ token, brickId, sections }) {
       return;
     }
     const res = await addChapter(token, brickId, sectionId, newChapterTitle);
-    console.log("Add Chapter", res);
     if (res.message === "Created successfully") {
       setNewChapterTitle("");
       setShowAddChapter(-1);
@@ -70,6 +66,7 @@ export default function Sections({ token, brickId, sections }) {
             {section.chapters.map((chapter) => {
               return (
                 <ChapterDropdown
+                  token={token}
                   key={chapter._id}
                   brickId={brickId}
                   chapter={chapter}
