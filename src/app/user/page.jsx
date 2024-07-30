@@ -1,3 +1,4 @@
+import { auth } from "@/auth";
 import BricksCard from "@/components/userComponents/dashboard/BricksCard";
 import Card1 from "@/components/userComponents/dashboard/Card1";
 import Card2 from "@/components/userComponents/dashboard/Card2";
@@ -7,10 +8,12 @@ import QuizPerformanceCard from "@/components/userComponents/dashboard/QuizPerfo
 import StatSlider from "@/components/userComponents/dashboard/StatsSlider";
 import SubscriptionCard from "@/components/userComponents/dashboard/SubscriptionCard";
 
-export default function UserPanelPage() {
+export default async function UserPanelPage() {
+  const session = await auth();
+  const user = session.user;
   return (
     <main className=" flex w-full flex-col gap-y-6 bg-light-gray p-3 py-5 sm:p-6 md:p-7">
-      <h1 className="text-2xl">Goodmorning, Vikram</h1>
+      <h1 className="text-2xl">Goodmorning, {user.firstName}</h1>
       {/* Large and higher screen stats */}
       <div className=" hidden justify-between gap-x-3 xl:flex">
         <Card1 />

@@ -12,26 +12,26 @@ export default function Step1({ setStep, data, setData, handleChange }) {
   return (
     <div className=" mt-3 flex h-full w-full select-none flex-col  justify-between px-6">
       <div className="flex self-center">
-        <div className="flex flex-col">
+        <button className="flex flex-col" onClick={()=>setStep("step1")}>
           <div className="flex h-9 w-9 items-center justify-center self-center rounded-full bg-primary text-sm font-medium text-white ">
             01
           </div>
           <p className=" mt-2   text-center text-primary ">Test Settings</p>
-        </div>
+        </button>
         <Line bg={"bg-text-gray"} />
-        <div className="flex flex-col">
+        <button className="flex flex-col" onClick={()=>setStep("step2")}>
           <div className="flex h-9 w-9 items-center justify-center self-center rounded-full border-2  border-text-gray  text-sm font-medium  ">
             02
           </div>
           <p className=" mt-2 text-center text-user-gray">Choose Questions</p>
-        </div>
+        </button>
         <Line bg={"bg-text-gray"} />
-        <div className="flex flex-col">
+        <button className="flex flex-col" onClick={()=>setStep("step3")}>
           <div className="flex h-9 w-9 items-center justify-center self-center rounded-full border-2  border-text-gray  text-sm font-medium  ">
             03
           </div>
           <p className="mt-2 text-center text-user-gray">Finalize Test</p>
-        </div>
+        </button>
       </div>
       <div className="mt-8 flex  flex-col justify-between self-center">
         <div className="flex flex-col items-center">

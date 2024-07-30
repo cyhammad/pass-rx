@@ -14,27 +14,26 @@ export default function Step2({ setStep, setData, data, disciplines }) {
   return (
     <div className=" mt-3 flex h-full w-full select-none flex-col  justify-between px-6">
       <div className="flex justify-between self-center">
-        <div className="flex flex-col">
+        <button className="flex flex-col" onClick={()=>setStep("step1")}>
           <div className="flex h-9 w-9 items-center justify-center self-center rounded-full bg-primary text-sm font-medium text-white ">
             01
           </div>
           <p className=" mt-2  text-center text-primary ">Deck Settings</p>
-        </div>
+        </button>
         <Line bg={"bg-primary"} />
-        <div className="flex flex-col">
+        <button className="flex flex-col" onClick={()=>setStep("step2")}>
           <div className="flex h-9 w-9 items-center justify-center self-center rounded-full bg-primary text-sm  font-medium text-white ">
             02
           </div>
           <p className=" mt-2 text-center  text-primary">Choose Cards</p>
-        </div>
+        </button>
         <Line bg={"bg-text-gray-2"} />
-
-        <div className="flex flex-col">
+        <button className="flex flex-col" onClick={()=>setStep("step3")}>
           <div className="flex h-9 w-9 items-center justify-center self-center rounded-full border-2  border-text-gray  text-sm font-medium  ">
             03
           </div>
           <p className="mt-2 text-center text-user-gray">Finalize Deck</p>
-        </div>
+        </button>
       </div>
       <div className=" max-w[489px] mt-3 flex flex-col justify-between border-b border-checkbox pb-10 sm:mt-0 sm:self-center">
         <div className="mt-3 max-h-[45svh] overflow-auto pr-3 sm:px-6">

@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import { Line } from "./AddTest";
 
-export default function Step3({ handleAdd, handleChange, setData, data }) {
+export default function Step3({
+  handleAdd,
+  setStep,
+  handleChange,
+  setData,
+  data,
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const [number, setNumber] = useState(0);
   const updateNumber = (operation) => {
@@ -23,32 +29,31 @@ export default function Step3({ handleAdd, handleChange, setData, data }) {
   return (
     <div className=" mt-3 flex h-full w-full select-none  flex-col justify-between px-6">
       <div className="flex justify-between self-center">
-        <div className="flex flex-col">
+        <button onClick={() => setStep("step1")} className="flex flex-col">
           <div className="flex h-9 w-9 items-center justify-center self-center rounded-full bg-primary text-sm font-medium text-white ">
             01
           </div>
           <p className=" mt-2  text-center text-primary ">Test Settings</p>
-        </div>
+        </button>
         <Line bg={"bg-primary"} />
-        <div className="flex flex-col">
+        <button className="flex flex-col" onClick={() => setStep("step2")}>
           <div className="flex h-9 w-9 items-center justify-center self-center rounded-full bg-primary text-sm  font-medium text-white ">
             02
           </div>
           <p className=" mt-2 text-center  text-primary">Choose Questions</p>
-        </div>
+        </button>
         <Line bg={"bg-primary"} />
-
-        <div className="flex flex-col">
+        <button onClick={() => setStep("step3")} className="flex flex-col">
           <div className="flex h-9 w-9 items-center justify-center self-center rounded-full  bg-primary   text-sm font-medium text-white ">
             03
           </div>
           <p className="mt-2 text-center text-primary">Finalize Test</p>
-        </div>
+        </button>
       </div>
       <div className="  relative mt-8 flex  flex-col justify-between self-center">
         <div className="flex flex-col ">
           <label className="text-sm text-text-gray-2">Test Name</label>
-          <in
+          <input
             placeholder="Test333"
             type="text"
             name="testName"
@@ -126,7 +131,7 @@ export default function Step3({ handleAdd, handleChange, setData, data }) {
       </div>
       <button
         onClick={handleAdd}
-        className="  mb-7 mt-8 flex w-[250px] select-none items-center justify-center  self-center rounded-[10px]  bg-primary px-4 py-4 text-lg font-semibold text-white sm:w-[335px] "
+        className="  mb-7 mt-8 flex w-[250px] select-none items-center justify-center  self-center rounded-[10px]  bg-primary px-4 py-4 text-lg font-semibold text-white sm:w-[335px]"
       >
         Start
       </button>

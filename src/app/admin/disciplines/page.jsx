@@ -8,6 +8,7 @@ export default async function DisciplinePage() {
   const token = session.user.accessToken;
   const disciplines = await fetchDisciplinesAdmin(token);
   const categories = await fetchCategoriesAdmin(token);
+
   return (
     <Disciplines
       disciplines={disciplines}

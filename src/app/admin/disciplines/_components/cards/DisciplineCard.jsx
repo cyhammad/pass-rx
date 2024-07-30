@@ -22,7 +22,6 @@ export default function DisciplineCard({ discipline, token }) {
             setIsOpen={setIsDeleteModalOpen}
             discipline={discipline}
             token={token}
-            
           />
         )}
       </AnimatePresence>
@@ -32,7 +31,6 @@ export default function DisciplineCard({ discipline, token }) {
             setIsOpen={setIsEditModalOpen}
             discipline={discipline}
             token={token}
-            
           />
         )}
       </AnimatePresence>
@@ -40,7 +38,7 @@ export default function DisciplineCard({ discipline, token }) {
         <div className="w-10/12">
           <p className="text-lg">{discipline.name}</p>
           <p className="mt-2 flex items-center gap-[5px] text-[13px]">
-            12 Questions
+            {discipline.totalQuestions} Questions
           </p>
           <p className="mt-7 text-[10px] text-text-gray-2">
             Last updated on {renderDate(discipline.updatedAt)}

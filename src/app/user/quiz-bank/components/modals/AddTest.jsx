@@ -3,7 +3,7 @@ import { useState } from "react";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
-import { addTest } from "@/app/lib/actions/testActions";
+import { addTest } from "@/app/lib/user-actions/quizbankActions";
 export function Line({ bg }) {
   return (
     <div className="mt-4 flex w-[13vw] justify-between opacity-20 sm:w-[111px]">
@@ -35,7 +35,7 @@ export default function AddTest({ toggle, disciplines, token }) {
     disciplines: [],
     noOfQuestions: "",
     testName: "",
-    mode: ""
+    mode: "",
   });
   const closeModal = () => {
     toggle();
@@ -47,19 +47,14 @@ export default function AddTest({ toggle, disciplines, token }) {
       [name]: value,
     }));
   };
-  console.log(data)
-  console.log(disciplines)
-  const handleAdd = async () => {
-    console.log(data)
-    const res = await addTest(
-      token,
-      data
-    );
-    if (res.message === "Created successfully") {
-      console.log("created")
-    } else {
-      console.log("not created")
 
+  const handleAdd = async () => {
+    console.log(data);
+    const res = await addTest(token, data);
+    if (res.message === "Created successfully") {
+      console.log("created");
+    } else {
+      console.log("not created");
     }
   };
   return (
@@ -72,7 +67,7 @@ export default function AddTest({ toggle, disciplines, token }) {
     >
       <div
         className="fixed inset-0 bg-black bg-opacity-50"
-      // onClick={() => closeModal()}
+        // onClick={() => closeModal()}
       ></div>
 
       <div className="z-[52]  flex  w-[655px] flex-col items-center rounded-lg   bg-white  shadow-md ">
@@ -86,14 +81,27 @@ export default function AddTest({ toggle, disciplines, token }) {
           </button>
         </div>
         {step == "step1" ? (
-          <Step1 setStep={setStep} data={data} setData={setData} handleChange={handleChange} />
-        ) : step == "step2" ? (
-          <Step2 setStep={setStep}
+          <Step1
+            setStep={setStep}
             data={data}
             setData={setData}
-            disciplines={disciplines} />
+            handleChange={handleChange}
+          />
+        ) : step == "step2" ? (
+          <Step2
+            setStep={setStep}
+            data={data}
+            setData={setData}
+            disciplines={disciplines}
+          />
         ) : (
-          <Step3 setData={setData} handleChange={handleChange} data={data} handleAdd={handleAdd} />
+          <Step3
+            setStep={setStep}
+            setData={setData}
+            handleChange={handleChange}
+            data={data}
+            handleAdd={handleAdd}
+          />
         )}
       </div>
     </motion.div>

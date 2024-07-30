@@ -8,6 +8,8 @@ import {
   disciplinesIcon,
   flashFactsIcon,
   homeIcon,
+  notesIcon,
+  plansIcon,
   quizBankIcon2,
   subscriptionIcon,
   usersIcon,
@@ -41,13 +43,15 @@ const Sidebar = ({ role }) => {
             <div className="flex w-7 justify-center">{homeIcon}</div>{" "}
             <span className={isOpen ? "block" : "hidden"}>Dashboard</span>
           </Link>
-          <Link
-            href={role == "user" ? "/user/disciplines" : "/admin/disciplines"}
-            className={`flex gap-x-2 p-4 text-white  hover:${hoverText}`}
-          >
-            <div className="flex w-7 justify-center">{disciplinesIcon}</div>{" "}
-            <span className={isOpen ? "block" : "hidden"}>Disciplines</span>
-          </Link>
+          {role == "admin" && (
+            <Link
+              href={role == "user" ? "/user/disciplines" : "/admin/disciplines"}
+              className={`flex gap-x-2 p-4 text-white  hover:${hoverText}`}
+            >
+              <div className="flex w-7 justify-center">{disciplinesIcon}</div>{" "}
+              <span className={isOpen ? "block" : "hidden"}>Disciplines</span>
+            </Link>
+          )}
           <Link
             href={role == "user" ? "/user/quiz-bank" : "/admin/quiz-bank"}
             className={`flex gap-x-2 p-4 text-white hover:${hoverText}`}
@@ -64,13 +68,15 @@ const Sidebar = ({ role }) => {
               Flash&nbsp;Facts
             </span>
           </Link>
-          <Link
-            href={role == "user" ? "/user/users" : "/admin/users"}
-            className={`flex gap-x-2 p-4 text-white hover:${hoverText}`}
-          >
-            <div className="flex w-7 justify-center">{usersIcon}</div>{" "}
-            <span className={isOpen ? "block" : "hidden"}>Users</span>
-          </Link>
+          {role == "admin" && (
+            <Link
+              href={role == "user" ? "/user/users" : "/admin/users"}
+              className={`flex gap-x-2 p-4 text-white hover:${hoverText}`}
+            >
+              <div className="flex w-7 justify-center">{usersIcon}</div>{" "}
+              <span className={isOpen ? "block" : "hidden"}>Users</span>
+            </Link>
+          )}
           <Link
             href={role == "user" ? "/user/bricks" : "/admin/bricks"}
             className={`flex gap-x-2 p-4 text-white hover:${hoverText}`}
@@ -78,19 +84,38 @@ const Sidebar = ({ role }) => {
             <div className="flex w-7 justify-center">{bricksIcon}</div>{" "}
             <span className={isOpen ? "block" : "hidden"}>Bricks</span>
           </Link>
+          {role == "user" && (
+            <Link
+              href="/user/notes"
+              className={`flex gap-x-2 p-4 text-white hover:${hoverText}`}
+            >
+              <div className="flex w-7 justify-center">{notesIcon}</div>{" "}
+              <span className={isOpen ? "block" : "hidden"}>Notes</span>
+            </Link>
+          )}
         </div>
         <div
           className={`flex h-full flex-col ${isOpen ? "transition-all duration-300" : "transition-all duration-300"} justify-between border-b border-white/10 py-2`}
         >
-          <Link
-            href={
-              role == "user" ? "/user/subscriptions" : "/admin/subscriptions"
-            }
-            className={`flex gap-x-2 p-4 text-white hover:${hoverText}`}
-          >
-            <div className="flex w-7 justify-center">{subscriptionIcon}</div>{" "}
-            <span className={isOpen ? "block" : "hidden"}>Subscriptions</span>
-          </Link>
+          {role == "user" ? (
+            <Link
+              href="/user/plans"
+              className={`flex gap-x-2 p-4 text-white hover:${hoverText}`}
+            >
+              <div className="flex w-7 justify-center">{plansIcon}</div>{" "}
+              <span className={isOpen ? "block" : "hidden"}>Plans</span>
+            </Link>
+          ) : (
+            <Link
+              href={
+                role == "user" ? "/user/subscriptions" : "/admin/subscriptions"
+              }
+              className={`flex gap-x-2 p-4 text-white hover:${hoverText}`}
+            >
+              <div className="flex w-7 justify-center">{subscriptionIcon}</div>{" "}
+              <span className={isOpen ? "block" : "hidden"}>Subscriptions</span>
+            </Link>
+          )}
           <button
             className={`flex w-full justify-center p-4 text-white hover:${hoverText} ${isOpen ? "rotate-180 transform transition-all duration-300" : "rotate-0 transform transition-all duration-300"}`}
             onClick={() => setIsOpen(!isOpen)}
